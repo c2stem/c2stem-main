@@ -1,4 +1,22 @@
-
 .module-img {
     height: 50%;
+}
+
+.c2stem-nav {
+    height: 38px!important;
+}
+
+.c2stem-nav-wrapper {
+    line-height: 38px!important;
+    min-height: 38px!important;
+}
+
+.tabs,
+.tab {
+    line-height: 24px!important;
+    height: 24px!important;
+}
+
+p {
+    margin: 15px;
 }
