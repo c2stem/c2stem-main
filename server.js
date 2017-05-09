@@ -30,7 +30,7 @@ function start(options) {
             }));
 
             app.use('/SnapPhysics', express.static(__dirname + '/snap-physics/'));
-            app.use(express.static(__dirname + '/web/'));
+            app.use(express.static(__dirname + '/html/'));
 
             // Start the server
             options.port = +options.port || 8080;
