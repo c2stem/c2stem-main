@@ -1,0 +1,36 @@
+{
+  "name": "c2stem-main",
+  "version": "1.0.1",
+  "description": "C2STEM main website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "bin": {
+    "snap-server": "./server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/c2stem/c2stem-main.git"
+  },
+  "keywords": [
+    "c2stem",
+    "snap",
+    "express"
+  ],
+  "author": {
+    "name": "Miklos Maroti",
+    "email": "mmaroti@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/c2stem/c2stem-main/issues"
+  },
+  "homepage": "https://github.com/c2stem/c2stem-main",
+  "dependencies": {
+    "snap-cloud": "file:snap-cloud"
+  },
+  "devDependencies": {
+    "snap-cloud": "file:snap-cloud"
+  }
+}
