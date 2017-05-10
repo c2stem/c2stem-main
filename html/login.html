@@ -13,26 +13,26 @@
     <h5 class="center">Please login to your C2STEM account</h5>
     <div class="container">
         <div class="row">
-            <div class="col s12 m6 offset-m3">
+            <div class="col s12 m8 offset-m2 l6 offset-l3">
                 <div class="card">
                     <div class="card-content">
                         <form id="form">
                             <div class="row">
                                 <div class="input-field">
-                                    <input id="username" type="text" class="validate">
-                                    <label for="username">User name</label>
+                                    <input id="username" type="text">
+                                    <label id="xxx" for="username">User name</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field">
-                                    <input id="password" type="password" class="validate">
+                                    <input id="password" type="password">
                                     <label for="password">Password</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col s6">
                                     <p>
-                                        <input type="checkbox" id="remember">
+                                        <input id="remember" type="checkbox">
                                         <label for="remember">Remember me</label>
                                     </p>
                                 </div>
@@ -42,7 +42,7 @@
                                     </p>
                                 </div>
                             </div>
-                            <input id="login" type="button" class="btn waves-effect" name="" value="Submit">
+                            <input id="login" type="submit" class="btn waves-effect" value="Login">
                         </form>
                     </div>
                 </div>
@@ -51,8 +51,9 @@
     </div>
 </body>
 
-<script type="text/javascript " src="https://code.jquery.com/jquery-2.1.1.min.js "></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js "></script>
-<script type="text/javascript " src="js/login.js "></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<script type="text/javascript" src="lib/js.cookie.js"></script>
+<script type="text/javascript" src="js/login.js"></script>
 
 </html>

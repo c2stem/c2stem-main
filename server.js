@@ -42,9 +42,9 @@ function start(options) {
 }
 
 program.version('1.0.2')
-    .option('-m, --mongo <uri>', 'sets MongoDB URI [//localhost/snapcloud]', '//localhost/snapcloud')
+    .option('-m, --mongo <uri>', 'sets MongoDB URI [//localhost/c2stem-main]', '//localhost/c2stem-main')
     .option('-v, --verbose', 'enable logging of snap-cloud')
-    .option('-p, --port <n>', 'port number to use [8080]', 8080)
+    .option('-p, --port <n>', 'port number to use [9999]', 9999)
     .action(start)
     .parse(process.argv);
 
