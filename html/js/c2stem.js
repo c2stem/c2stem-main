@@ -21,7 +21,7 @@ C2stem.prototype.login = function (username, password, remember, callback) {
         req.send(JSON.stringify({
             '__h': password && hex_sha512(password),
             '__u': username,
-            'remember': !!remember,
+            'remember': remember === true,
         }));
     } catch (err) {
         callback(err || "Could not login");
@@ -48,3 +48,25 @@ C2stem.prototype.logout = function (callback) {
         callback(err || "Could not logout");
     }
 };
+
+C2stem.prototype.getModules = function (callback) {
+    var modules = [{
+        id: 'mod1',
+        title: "1D motion",
+        icon: "img/school-bus.png"
+    }, {
+        id: 'mod2',
+        title: "Relative motion",
+        icon: "img/boat.png"
+    }, {
+        id: 'mod3',
+        title: "Gravity",
+        icon: "img/plane.png"
+    }, {
+        id: 'mod4',
+        title: "Rocket landing",
+        icon: "img/falcon9.png"
+    }];
+
+    callback(null, modules);
+}

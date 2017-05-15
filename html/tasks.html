@@ -13,6 +13,7 @@
     <nav class="c2stem-nav">
         <div class="nav-wrapper c2stem-nav-wrapper">
             <a href="modules.html" class="breadcrumb">Modules</a>
+            <a href="tasks.html" class="breadcrumb">Tasks</a>
             <ul class="right hide-on-med-and-down">
                 <li><a id="logout" href="login.html">Logout</a></li>
             </ul>
@@ -20,7 +21,7 @@
     </nav>
     <div class="container">
         <p style="height:1em"></p>
-        <div id="modules" class="row">
+        <div id="tasks" class="row">
         </div>
     </div>
 </body>
@@ -37,37 +38,6 @@
         c2stem.logout(function (err) {
             window.location.href = "login.html";
         });
-    });
-
-    function addModuleCard(module) {
-        this.append(
-            `
-            <div class="col m3">
-                <a href="tasks.html">
-                    <div class="card">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img class="activator module-img" src="${module.icon}" title="">
-                        </div>
-                        <div class="card-content">
-                            <span class="card-title">${module.title}</span>
-                            <input type="checkbox" id="${module.id}">
-                            <label for="${module.id}">Submit solution</label>
-                        </div>
-                    </div>
-                </a>
-            </div>
-    `
-        );
-    }
-
-    $(document).ready(function () {
-        c2stem.getModules(function (err, modules) {
-            if (err || !(modules instanceof Array)) {
-                Materialize.toast(err || 'Could not load modules');
-            } else {
-                modules.forEach(addModuleCard, $("#modules"));
-            }
-        })
     });
 
 </script>
