@@ -4,7 +4,7 @@ function addModule(title, img) {
 
     modules.append(`
         <div class="col m3">
-            <a href="tasks.html">
+            <a href="models.html">
                 <div class="card">
                     <div class="card-image waves-effect waves-block waves-light">
                         <img class="activator module-img" src="img/${img}" title="">

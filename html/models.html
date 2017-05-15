@@ -14,7 +14,7 @@
         <div class="nav-wrapper c2stem-nav-wrapper">
             <a href="modules.html" class="brand-logo">C2STEM modules</a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="">Account</a></li>
+                <li><a id="logout" href="login.html">Logout</a></li>
             </ul>
         </div>
         <div class="nav-content">
@@ -42,6 +42,19 @@
 
 <script type="text/javascript " src="https://code.jquery.com/jquery-2.1.1.min.js "></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js "></script>
-<script type="text/javascript " src="js/tasks.js "></script>
+<script type="text/javascript" src="js/c2stem.js"></script>
+<script type="text/javascript " src="js/models.js "></script>
+
+<script type="text/javascript">
+    var c2stem = new C2stem();
+
+    $("#logout").click(function (event) {
+        event.preventDefault();
+        c2stem.logout(function (err) {
+            window.location.href = "login.html";
+        });
+    });
+
+</script>
 
 </html>
