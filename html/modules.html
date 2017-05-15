@@ -31,19 +31,12 @@
 
 <script type="text/javascript">
     var c2stem = new C2stem();
+    c2stem.fixupHtml();
 
-    $("#logout").click(function (event) {
-        event.preventDefault();
-        c2stem.logout(function (err) {
-            window.location.href = "login.html";
-        });
-    });
-
-    function addModuleCard(module) {
-        this.append(
-            `
+    function getModuleCard(module) {
+        return `
             <div class="col m3">
-                <a href="tasks.html">
+                <a href="tasks.html?${$.param({m: module.id})}">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light">
                             <img class="activator module-img" src="${module.icon}" title="">
@@ -56,8 +49,7 @@
                     </div>
                 </a>
             </div>
-    `
-        );
+        `;
     }
 
     $(document).ready(function () {
@@ -65,7 +57,9 @@
             if (err || !(modules instanceof Array)) {
                 Materialize.toast(err || 'Could not load modules');
             } else {
-                modules.forEach(addModuleCard, $("#modules"));
+                var div = $("#modules");
+                for (var i = 0; i < modules.length; i++)
+                    div.append(getModuleCard(modules[i]));
             }
         })
     });

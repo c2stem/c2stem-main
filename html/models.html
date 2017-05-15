@@ -13,17 +13,17 @@
     <nav class="nav-extended">
         <div class="nav-wrapper c2stem-nav-wrapper">
             <a href="modules.html" class="breadcrumb">Modules</a>
-            <a href="tasks.html" class="breadcrumb">Tasks</a>
-            <a href="models.html" class="breadcrumb">Models</a>
+            <a id="taskslink" href="tasks.html" class="breadcrumb">Tasks</a>
+            <a id="modelslink" href="models.html" class="breadcrumb">Models</a>
             <ul class="right hide-on-med-and-down">
                 <li><a id="logout" href="login.html">Logout</a></li>
             </ul>
         </div>
         <div class="nav-content">
             <ul class="tabs tabs-transparent">
-                <li class="tab"><a href="#description">Description</a></li>
+                <li class="tab"><a class="active" href="#description">Description</a></li>
                 <li class="tab"><a href="#concepts">Concepts</a></li>
-                <li class="tab"><a class="active" href="#computation">Computation</a></li>
+                <li class="tab"><a href="#computation">Computation</a></li>
                 <li class="tab"><a href="#assessment">Assessment</a></li>
             </ul>
         </div>
@@ -49,12 +49,12 @@
 
 <script type="text/javascript">
     var c2stem = new C2stem();
+    c2stem.fixupHtml();
 
-    $("#logout").click(function (event) {
-        event.preventDefault();
-        c2stem.logout(function (err) {
-            window.location.href = "login.html";
-        });
+    $(document).ready(function () {
+        var snap = $("#computation > iframe").get(0);
+        snap = snap.contentWindow || snap.contentDocument.defaultView;
+        snap.SnapCloud.url = location.origin + "/SnapCloud/";
     });
 
 </script>

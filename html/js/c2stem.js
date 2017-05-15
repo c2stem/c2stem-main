@@ -1,6 +1,7 @@
 function C2stem(snapCloudUrl) {
     this.snapCloudUrl = snapCloudUrl || "";
     this.withCredentials = false;
+    this.query = this.parseQueryString();
 };
 
 C2stem.prototype.login = function (username, password, remember, callback) {
@@ -49,6 +50,21 @@ C2stem.prototype.logout = function (callback) {
     }
 };
 
+C2stem.prototype.parseQueryString = function () {
+    var s = window.location.search,
+        q = {};
+
+    if (s.length >= 2) {
+        s = s.substr(1).split('&');
+        for (var i = 0; i < s.length; i++) {
+            var b = s[i].split('=');
+            q[decodeURIComponent(b[0])] = decodeURIComponent(b[1] || '');
+        }
+    }
+
+    return q;
+}
+
 C2stem.prototype.getModules = function (callback) {
     var modules = [{
         id: 'mod1',
@@ -69,4 +85,34 @@ C2stem.prototype.getModules = function (callback) {
     }];
 
     callback(null, modules);
+}
+
+C2stem.prototype.getTasks = function (moduleId, callback) {
+    var tasks = [{
+        id: 'tsk1',
+        title: 'Explore the environment'
+    }, {
+        id: 'tsk2',
+        title: 'Challenge problem for module ' + moduleId
+    }];
+
+    callback(null, tasks);
+}
+
+C2stem.prototype.fixupHtml = function () {
+    $("#logout").click(function (event) {
+        event.preventDefault();
+        c2stem.logout(function (err) {
+            window.location.href = "login.html";
+        });
+    });
+
+    $("#taskslink").attr('href', "tasks.html?" + $.param({
+        m: this.query.m
+    }));
+
+    $("#modelslink").attr('href', "models.html?" + $.param({
+        m: this.query.m,
+        t: this.query.t
+    }));
 }
