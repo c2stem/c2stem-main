@@ -58,43 +58,27 @@
 <script type="text/javascript" src="js/c2stem.js"></script>
 
 <script type="text/javascript">
-    c2stem = new C2Stem();
+    var c2stem = new C2stem();
 
-    if (Cookies.get("remember")) {
-        $("#remember").prop('checked', true);
-        $("#username").val(Cookies.get("remember"));
-        $("#username").next("label").addClass("active");
-    }
-
-    $("#remember").click(function () {
-        console.log($("#remember").prop('checked'));
-        if (!$("#remember").prop('checked')) {
-            Cookies.remove("remember");
-        }
+    $(document).ready(function () {
+        c2stem.login(null, null, null, function (err) {
+            if (!err) {
+                window.location.href = "modules.html";
+            }
+        });
     });
 
     $("#login").click(function (event) {
-        if ($("#remember").prop('checked') && $("#username").val()) {
-            Cookies.set("remember", $("#username").val(), {
-                expires: 30
-            });
-        } else {
-            Cookies.remove("remember");
-        }
-
         event.preventDefault();
-        c2stem.login($("#username").val(), $("#password").val(), function (err, session) {
-            console.log(err, session);
-            if (err || !session) {
-                Cookies.remove("session");
-                Materialize.toast(error);
-            } else {
-                Cookies.set("session", session, {
-                    expires: 1
-                });
-                $("#form").submit();
-            }
-        });
+        c2stem.login($("#username").val(), $("#password").val(), $("#remember").val(),
+            function (err) {
+                console.log(err);
+                if (err) {
+                    Materialize.toast(err);
+                } else {
+                    $("#form").submit();
+                }
+            });
     });
 
 </script>
