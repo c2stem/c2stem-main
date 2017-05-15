@@ -31,6 +31,5 @@
     "snap-cloud": "file:snap-cloud"
   },
   "devDependencies": {
-    "snap-cloud": "file:snap-cloud"
   }
 }
