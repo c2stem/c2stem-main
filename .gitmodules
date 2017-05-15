@@ -1,6 +1,6 @@
 [submodule "snap-physics"]
 	path = snap-physics
-	url = git@github.com:c2stem/snap-physics.git
+	url = https://github.com/c2stem/snap-physics.git
 [submodule "snap-cloud"]
 	path = snap-cloud
-	url = git@github.com:c2stem/snap-cloud.git
+	url = https://github.com/c2stem/snap-cloud.git
