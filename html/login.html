@@ -16,7 +16,7 @@
             <div class="col s12 m8 offset-m2 l6 offset-l3">
                 <div class="card">
                     <div class="card-content">
-                        <form id="form" action="modules.html">
+                        <form id="form" action="index.html">
                             <div class="row">
                                 <div class="input-field">
                                     <input id="username" type="text">
@@ -53,7 +53,6 @@
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-<script type="text/javascript" src="lib/js.cookie.js"></script>
 <script type="text/javascript" src="/SnapPhysics/sha512.js"></script>
 <script type="text/javascript" src="js/c2stem.js"></script>
 
@@ -63,7 +62,7 @@
     $(document).ready(function () {
         c2stem.login(null, null, null, function (err) {
             if (!err) {
-                window.location.href = "modules.html";
+                window.location.href = "index.html";
             }
         });
     });
@@ -72,11 +71,10 @@
         event.preventDefault();
         c2stem.login($("#username").val(), $("#password").val(), $("#remember").val(),
             function (err) {
-                console.log(err);
                 if (err) {
                     Materialize.toast(err);
                 } else {
-                    $("#form").submit();
+                    window.location.href = "index.html";
                 }
             });
     });
