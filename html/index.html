@@ -12,7 +12,7 @@
 <body>
     <nav class="c2stem-nav">
         <div class="nav-wrapper c2stem-nav-wrapper">
-            <a href="modules.html" class="breadcrumb">Modules</a>
+            <a href="index.html" class="breadcrumb">Home</a>
             <ul class="right hide-on-med-and-down">
                 <li><a id="logout" href="login.html">Logout</a></li>
             </ul>
@@ -53,13 +53,17 @@
     }
 
     $(document).ready(function () {
-        c2stem.getModules(function (err, modules) {
-            if (err || !(modules instanceof Array)) {
-                Materialize.toast(err || 'Could not load modules');
+        c2stem.loadHomeData(function (err, res) {
+            if (err) {
+                if (err === "ERROR: Not logged in") {
+                    window.location.href = "login.html";
+                } else {
+                    Materialize.toast(err || 'Could not load modules');
+                }
             } else {
                 var div = $("#modules");
-                for (var i = 0; i < modules.length; i++)
-                    div.append(getModuleCard(modules[i]));
+                for (var i = 0; i < res.modules.length; i++)
+                    div.append(getModuleCard(res.modules[i]));
             }
         })
     });

@@ -30,7 +30,6 @@ C2stem.prototype.login = function (username, password, remember, callback) {
 };
 
 C2stem.prototype.logout = function (callback) {
-    console.log("logout");
     try {
         var req = new XMLHttpRequest();
         req.open('GET', this.snapCloudUrl + "/SnapCloud/logout", true);
@@ -65,26 +64,31 @@ C2stem.prototype.parseQueryString = function () {
     return q;
 }
 
-C2stem.prototype.getModules = function (callback) {
-    var modules = [{
-        id: 'mod1',
-        title: "1D motion",
-        icon: "img/school-bus.png"
-    }, {
-        id: 'mod2',
-        title: "Relative motion",
-        icon: "img/boat.png"
-    }, {
-        id: 'mod3',
-        title: "Gravity",
-        icon: "img/plane.png"
-    }, {
-        id: 'mod4',
-        title: "Rocket landing",
-        icon: "img/falcon9.png"
-    }];
+C2stem.prototype.loadHomeData = function (callback) {
+    var result = {
+        modules: [{
+            id: 'mod1',
+            title: "1D motion",
+            icon: "img/school-bus.png"
+        }, {
+            id: 'mod2',
+            title: "Relative motion",
+            icon: "img/boat.png"
+        }, {
+            id: 'mod3',
+            title: "Gravity",
+            icon: "img/plane.png"
+        }, {
+            id: 'mod4',
+            title: "Rocket landing",
+            icon: "img/falcon9.png"
+        }]
+    };
 
-    callback(null, modules);
+    // hack, to make sure that we are logged in
+    this.login(null, null, null, function (err) {
+        callback(err, err ? null : result);
+    });
 }
 
 C2stem.prototype.getTasks = function (moduleId, callback) {
