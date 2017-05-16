@@ -13,7 +13,7 @@
     <nav class="nav-extended">
         <div class="nav-wrapper c2stem-nav-wrapper">
             <a href="index.html" class="breadcrumb">Home</a>
-            <a id="taskslink" href="tasks.html" class="breadcrumb">Tasks</a>
+            <a id="modulelink" href="module.html" class="breadcrumb">Module</a>
             <a id="modelslink" href="models.html" class="breadcrumb">Models</a>
             <ul class="right hide-on-med-and-down">
                 <li><a id="logout" href="login.html">Logout</a></li>
@@ -49,7 +49,7 @@
 
 <script type="text/javascript">
     var c2stem = new C2stem();
-    c2stem.fixupHtml();
+    c2stem.fixupLogout();
 
     $(document).ready(function () {
         var snap = $("#computation > iframe").get(0);

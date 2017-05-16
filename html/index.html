@@ -31,18 +31,18 @@
 
 <script type="text/javascript">
     var c2stem = new C2stem();
-    c2stem.fixupHtml();
+    c2stem.fixupLogout();
 
     function getModuleCard(module) {
         return `
             <div class="col m3">
-                <a href="tasks.html?${$.param({m: module.id})}">
+                <a href="module.html?${$.param({id: module.id})}">
                     <div class="card">
                         <div class="card-image waves-effect waves-block waves-light">
                             <img class="activator module-img" src="${module.icon}" title="">
                         </div>
                         <div class="card-content">
-                            <span class="card-title">${module.title}</span>
+                            <span class="card-title">${module.name}</span>
                             <input type="checkbox" id="${module.id}">
                             <label for="${module.id}">Submit solution</label>
                         </div>

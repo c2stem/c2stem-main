@@ -13,7 +13,7 @@
     <nav class="c2stem-nav">
         <div class="nav-wrapper c2stem-nav-wrapper">
             <a href="index.html" class="breadcrumb">Home</a>
-            <a id="taskslink" href="tasks.html" class="breadcrumb">Tasks</a>
+            <a id="modulelink" href="module.html" class="breadcrumb">Module</a>
             <ul class="right hide-on-med-and-down">
                 <li><a id="logout" href="login.html">Logout</a></li>
             </ul>
@@ -31,25 +31,27 @@
 
 <script type="text/javascript">
     var c2stem = new C2stem();
-    c2stem.fixupHtml();
+    c2stem.fixupLogout();
 
-    function getTaskItem(moduleId, task) {
+    function getTaskItem(task) {
         return `
             <li>
-                <a href="models.html?${$.param({m: moduleId, t: task.id})}"
+                <a href="models.html?${$.param({id: task.id})}"
                     class="collection-item">${task.title}</a>
             </li>
             `;
     }
 
     $(document).ready(function () {
-        c2stem.getTasks(c2stem.query.m, function (err, tasks) {
-            if (err || !(tasks instanceof Array)) {
+        c2stem.loadModuleData(c2stem.query.id, function (err, res) {
+            if (err) {
                 Materialize.toast(err || 'Could not load tasks');
             } else {
+                c2stem.fixupModule(res.id, res.name);
+
                 var div = $("#tasks");
-                for (var i = 0; i < tasks.length; i++)
-                    div.append(getTaskItem(c2stem.query.m, tasks[i]));
+                for (var i = 0; i < res.tasks.length; i++)
+                    div.append(getTaskItem(res.tasks[i]));
             }
         })
     });
