@@ -52,20 +52,18 @@
         `;
     }
 
-    $(document).ready(function () {
-        c2stem.loadHomeData(function (err, res) {
-            if (err) {
-                if (err === "ERROR: Not logged in") {
-                    window.location.href = "login.html";
-                } else {
-                    Materialize.toast(err || 'Could not load modules');
-                }
+    c2stem.loadHomeData(function (err, res) {
+        if (err) {
+            if (err === "ERROR: Not logged in") {
+                window.location.href = "login.html";
             } else {
-                var div = $("#modules");
-                for (var i = 0; i < res.modules.length; i++)
-                    div.append(getModuleCard(res.modules[i]));
+                Materialize.toast(err || 'Could not load modules');
             }
-        })
+        } else {
+            var div = $("#modules");
+            for (var i = 0; i < res.modules.length; i++)
+                div.append(getModuleCard(res.modules[i]));
+        }
     });
 
 </script>

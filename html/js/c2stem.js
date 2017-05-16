@@ -67,19 +67,19 @@ C2stem.prototype.parseQueryString = function () {
 C2stem.prototype.loadHomeData = function (callback) {
     var res = {
         modules: [{
-            id: 'mod1',
+            id: 'm1',
             name: "1D motion",
             icon: "img/school-bus.png"
         }, {
-            id: 'mod2',
+            id: 'm2',
             name: "Relative motion",
             icon: "img/boat.png"
         }, {
-            id: 'mod3',
+            id: 'm3',
             name: "Gravity",
             icon: "img/plane.png"
         }, {
-            id: 'mod4',
+            id: 'm4',
             name: "Rocket landing",
             icon: "img/falcon9.png"
         }]
@@ -94,28 +94,28 @@ C2stem.prototype.loadHomeData = function (callback) {
 C2stem.prototype.loadModuleData = function (id, callback) {
     var res;
 
-    if (id === 'mod1') {
+    if (id === 'm1') {
         res = {
             id: id,
             name: '1D motion',
             tasks: [{
-                id: 'tsk1',
-                title: 'Explore the environment'
+                id: 't1',
+                name: 'Explore the environment'
             }, {
-                id: 'tsk2',
-                title: 'Challenge problem'
+                id: 't2',
+                name: 'Challenge problem'
             }]
         };
-    } else if (id === 'mod2') {
+    } else if (id === 'm2') {
         res = {
             id: id,
             name: 'Relative motion',
             tasks: [{
-                id: 'tsk3',
-                title: 'Get the boat across the river'
+                id: 't3',
+                name: 'Get the boat across the river'
             }, {
-                id: 'tsk4',
-                title: 'Challenge problem with chrocodiles'
+                id: 't4',
+                name: 'Challenge problem with chrocodiles'
             }]
         };
     } else {
@@ -126,7 +126,61 @@ C2stem.prototype.loadModuleData = function (id, callback) {
         }
     }
 
-    callback(null, res);
+    // hack, to make sure that we are logged in
+    this.login(null, null, null, function (err) {
+        callback(err, err ? null : res);
+    });
+}
+
+C2stem.prototype.loadTaskData = function (id, callback) {
+    var res;
+
+    if (id === 't1') {
+        res = {
+            parent: {
+                id: 'm1',
+                name: '1D motion'
+            },
+            id: id,
+            name: 'Explore the environment',
+            tabs: []
+        };
+    } else if (id === 't2') {
+        res = {
+            parent: {
+                id: 'm1',
+                name: '1D motion'
+            },
+            id: id,
+            name: 'Challenge problem',
+            tabs: []
+        };
+    } else if (id === 't3') {
+        res = {
+            parent: {
+                id: 'm2',
+                name: 'Relative motion'
+            },
+            id: id,
+            name: 'Get the boat across the river',
+            tabs: []
+        };
+    } else {
+        res = {
+            parent: {
+                id: '',
+                name: 'Unknown module'
+            },
+            id: id,
+            name: 'Unknown task',
+            tabs: []
+        }
+    }
+
+    // hack, to make sure that we are logged in
+    this.login(null, null, null, function (err) {
+        callback(err, err ? null : res);
+    });
 }
 
 C2stem.prototype.fixupLogout = function () {
@@ -144,8 +198,8 @@ C2stem.prototype.fixupModule = function (id, name) {
     })).text(name);
 }
 
-C2stem.prototype.fixupHtml = function () {
-    $("#taskslink").attr('href', "tasks.html?" + $.param({
-        m: this.query.m
-    }));
+C2stem.prototype.fixupTask = function (id, name) {
+    $("#tasklink").attr('href', "task.html?" + $.param({
+        id: id,
+    })).text(name);
 }

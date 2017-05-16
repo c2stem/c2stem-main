@@ -36,24 +36,22 @@
     function getTaskItem(task) {
         return `
             <li>
-                <a href="models.html?${$.param({id: task.id})}"
-                    class="collection-item">${task.title}</a>
+                <a href="task.html?${$.param({id: task.id})}"
+                    class="collection-item">${task.name}</a>
             </li>
             `;
     }
 
-    $(document).ready(function () {
-        c2stem.loadModuleData(c2stem.query.id, function (err, res) {
-            if (err) {
-                Materialize.toast(err || 'Could not load tasks');
-            } else {
-                c2stem.fixupModule(res.id, res.name);
+    c2stem.loadModuleData(c2stem.query.id, function (err, res) {
+        if (err) {
+            Materialize.toast(err || 'Could not load tasks');
+        } else {
+            c2stem.fixupModule(res.id, res.name);
 
-                var div = $("#tasks");
-                for (var i = 0; i < res.tasks.length; i++)
-                    div.append(getTaskItem(res.tasks[i]));
-            }
-        })
+            var div = $("#tasks");
+            for (var i = 0; i < res.tasks.length; i++)
+                div.append(getTaskItem(res.tasks[i]));
+        }
     });
 
 </script>
