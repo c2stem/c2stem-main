@@ -1,0 +1,36 @@
+<%console.log("name: ", name) %>
+
+<div class="col l2" style="min-width: 300px; " id = "<%=concept.elementID%>">
+    <ul class="collection" >
+        <li class="collection-item" style="text-align: center; ">
+            <h5><%=concept.name%>
+            <a id = "delete_<%=concept.elementID%>" class="waves-effect waves-light secondary-content " ><i class="material-icons">close</i></a>
+            </h5>
+        </li>
+
+        <%if("properties" in concept){%>
+        <li class="collection-item" style="border-bottom: 1px #9d9d9d dotted;border-top: 1px #9d9d9d dotted;">
+            <span style="font-weight: bold;">Properties</span>
+        </li>
+        <select id = "sel_prop_<%=concept.elementID%>" class="form-control dropdown-select" style="position: relative; display: inline;">
+            <option value="">[-- Create new property --]</option>
+            <% for(var p in concept.properties) { %>
+            <option value= <%= p%>><%= concept.properties[p].name%></option>
+            <% } %>
+        </select>
+        <div  id = "row_prop_<%=concept.elementID%>" class="collection"></div>
+        <%}%>
+        <%if("behaviors" in concept){%>
+        <li class="collection-item" style="border-bottom: 1px #9d9d9d dotted; border-top: 1px #9d9d9d dotted;">
+            <span  style="font-weight: bold;">Behaviors</span>
+        </li>
+        <select id = "sel_be_<%=concept.elementID%>" class="form-control dropdown-select" style="position: relative; display: inline;">
+            <option value="">[-- Create new behavior --]</option>
+            <% for(var p in concept.behaviors) {%>
+            <option value= <%= p%>><%= concept.behaviors[p].name%></option>
+            <% } %>
+        </select>
+        <ul id = "row_be_<%=concept.elementID%>" class="collection"></ul>
+        <%}%>
+    </ul>
+</div>
