@@ -28,8 +28,11 @@
   },
   "homepage": "https://github.com/c2stem/c2stem-main",
   "dependencies": {
+
+    "commander": "^2.9.0",
+    "express": "^4.15.2",
+    "mongodb": "^2.2.26",
     "snap-cloud": "file:snap-cloud"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }
