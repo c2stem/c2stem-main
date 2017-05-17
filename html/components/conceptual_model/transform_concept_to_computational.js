@@ -8,39 +8,39 @@ function updateComputationalModel() {
     agents = concepts.agents;
     environment = concepts.environment;
     rules = concepts.rules;
-    console.log("Agents");
-    console.log(agents);
+    //console.log("Agents");
+    //console.log(agents);
 
     var str = document.getElementById(id_snap).contentWindow.export_project_to_xml_str();
-    // console.log("str");
-    // console.log(str);
+    // //console.log("str");
+    // //console.log(str);
     var parser = new DOMParser();
     var xmlDoc = parser.parseFromString(str, "text/xml");
 
     for (var key in agents) {
-        // console.log(agents[key]);
+        // //console.log(agents[key]);
         plugin_agent(xmlDoc, agents[key])
     }
     plugin_environment_variables(xmlDoc, environment);
-    // console.log("convertedSTR");
+    // //console.log("convertedSTR");
     var convertedSTR = new XMLSerializer().serializeToString(xmlDoc);
-    // console.log(convertedSTR);
+    // //console.log(convertedSTR);
     load_project_xml(convertedSTR);
 
 
-    // console.log(JSON.stringify(AgentStates));
+    // //console.log(JSON.stringify(AgentStates));
     // var xml = ejs.render({data: AgentStates});
-    // console.log("xml: ", xml);
+    // //console.log("xml: ", xml);
     // load_project_xml(xml);
 }
 
 function plugin_environment_variables(xmlDoc, environment) {
     var parentNode = xmlDoc.getElementsByTagName("project")[0];
-    // console.log("plugin_environment_variables, parentNode: ", parentNode);
+    // //console.log("plugin_environment_variables, parentNode: ", parentNode);
     var parent = getChildByTag(xmlDoc.getElementsByTagName("project")[0], "variables");
     for (var key in environment) {
         var e = environment[key];
-        console.log("e: ", e);
+        //console.log("e: ", e);
         if (e.selected) {
             for (var p in e.properties) {
                 if (e.properties[p].selected) {
@@ -48,12 +48,12 @@ function plugin_environment_variables(xmlDoc, environment) {
                     var bkup = null;
                     if (id in backups)
                         bkup = backups[id];
-                    console.log(id,"bkup: ", bkup);
-                    console.log("plugin_properties: ", e.properties[p]);
+                    //console.log(id,"bkup: ", bkup);
+                    //console.log("plugin_properties: ", e.properties[p]);
                     plugin_properties_direct(xmlDoc, parent, e.properties[p], bkup);
                 }
                 else {
-                    console.log("xml_remove_property: ", e.properties[p]);
+                    //console.log("xml_remove_property: ", e.properties[p]);
                     // xml_remove_property(e.name, parentNode, e.properties[p].name);
                     xml_remove_property_direct(e.name, parent, e.properties[p].name)
                 }
@@ -87,8 +87,8 @@ function plugin_agent(xmlDoc, agent) {
                 agentNode.appendChild(scripts);
             }
             else {
-                console.log("using bkup agent: ");
-                console.log(bkup);
+                //console.log("using bkup agent: ");
+                //console.log(bkup);
                 agentNode = bkup;
             }
             xmlDoc.getElementsByTagName("sprites")[0].appendChild(agentNode);
@@ -107,8 +107,8 @@ function plugin_agent(xmlDoc, agent) {
             }
             var id = agent.name;
             backups[id] = agentNode;
-            console.log("backing up, id: " + id + " agent: ");
-            console.log(agentNode);
+            //console.log("backing up, id: " + id + " agent: ");
+            //console.log(agentNode);
             agentNode.parentNode.removeChild(agentNode);
             return;
         }
@@ -143,10 +143,10 @@ function plugin_agent(xmlDoc, agent) {
 function plugin_constructs_by_rules(xmlDoc, agent, agnetNode) {
     if(true)
         return;
-    console.log("plugin_constructs_by_rules", rules);
+    //console.log("plugin_constructs_by_rules", rules);
     for (var r in rules) {
         var rule = rules[r]
-        console.log("rule:", rule);
+        //console.log("rule:", rule);
         if (isRuleSatisfied(rule, agent)) {
             generate_constructs_of_rule(xmlDoc, agnetNode, rule, null);
         }
@@ -154,12 +154,12 @@ function plugin_constructs_by_rules(xmlDoc, agent, agnetNode) {
 }
 
 function generate_constructs_of_rule(xmlDoc, agentNode, rule, bkup) {
-    console.log("generate_constructs_of_rule: ", rule);
+    //console.log("generate_constructs_of_rule: ", rule);
     for (var cid in rule.GeneratedConstructs) {
         var c = rule.GeneratedConstructs[cid];
         switch (c.type) {
             case "Method":
-                console.log("generating method: ", c);
+                //console.log("generating method: ", c);
                 var node = getExistingNode(agentNode, "block-definition", "s", c.label);
                 if (node === null) {
                     if (bkup == null) {
@@ -188,8 +188,8 @@ function generate_constructs_of_rule(xmlDoc, agentNode, rule, bkup) {
                             inputs.appendChild(input);
                         }
                     } else {
-                        console.log("using bkup behavior: ");
-                        console.log(bkup);
+                        //console.log("using bkup behavior: ");
+                        //console.log(bkup);
                         node = bkup;
                     }
                     agentNode.getElementsByTagName("blocks")[0].appendChild(node);
@@ -198,7 +198,7 @@ function generate_constructs_of_rule(xmlDoc, agentNode, rule, bkup) {
             case "Variable":
                 break;
             default:
-                console.log("generate_constructs_of_rule: rule has unrecognized construct type", rule);
+                //console.log("generate_constructs_of_rule: rule has unrecognized construct type", rule);
         }
     }
 }
@@ -208,7 +208,7 @@ function isRuleSatisfied(rule, agent) {
     var found = false;
     for (var q in rule.Required) {
         var rq = rule.Required[q];
-        console.log("checking Required", rq, (rq in agent.properties));
+        //console.log("checking Required", rq, (rq in agent.properties));
         if (rq in agent.behaviors) {
             found = true;
             if (!agent.behaviors[rq].selected) {
@@ -218,8 +218,7 @@ function isRuleSatisfied(rule, agent) {
             found = true;
             if (!agent.properties[rq].selected) {
                 pass = false;
-            }else
-                console.log("pass is ", pass);
+            }
         } else {
             for (var e in environment) {
                 if (environment[e].selected) {
@@ -237,12 +236,12 @@ function isRuleSatisfied(rule, agent) {
                     }
                 }
             }
-            console.log("rule reburies constructs which is not present in the agent or environment");
+            //console.log("rule reburies constructs which is not present in the agent or environment");
         }
         if (!found)
             pass = false;
     }
-    console.log("checking rule", rule, "result:", pass);
+    //console.log("checking rule", rule, "result:", pass);
 
     return pass;
 }
@@ -254,22 +253,22 @@ function xml_remove_property(agentName, agentNode, propertyName) {
         agentNode.getElementsByTagName("variables")[0].removeChild(e);
         var id = agentName + "_p_" + propertyName;
         backups[id] = e;
-        console.log("backing up, id: " + id + " property: ");
-        console.log(e);
+        //console.log("backing up, id: " + id + " property: ");
+        //console.log(e);
     }
 }
 
 function xml_remove_property_direct(agentName, parent, propertyName) {
     var e = getChildByName(parent, propertyName);
-    console.log(parent, "xml_remove_property_direct", propertyName, e);
+    //console.log(parent, "xml_remove_property_direct", propertyName, e);
     // var e = getExistingNode(parent, "variable", "name", propertyName)
     if (!(e === null)) {
         // parent.getElementsByTagName("variables")[0].removeChild(e);
         parent.removeChild(e);
         var id = agentName + "_p_" + propertyName;
         backups[id] = e;
-        console.log("backing up, id: " + id + " property: ");
-        console.log(e);
+        //console.log("backing up, id: " + id + " property: ");
+        //console.log(e);
     }
 }
 
@@ -279,8 +278,8 @@ function xml_remove_behavior(agentName, agentNode, behaviorName) {
         agentNode.getElementsByTagName("blocks")[0].removeChild(e);
         var id = agentName + "_b_" + behaviorName;
         backups[id] = e;
-        console.log("backing up, id: " + id + " behavior: ");
-        console.log(e);
+        //console.log("backing up, id: " + id + " behavior: ");
+        //console.log(e);
     }
 }
 
@@ -295,8 +294,8 @@ function plugin_properties(xmlDoc, agentNode, property, bkup) {
             nodeValue.nodeValue = 0;
             node.appendChild(nodeValue);
         } else {
-            console.log("using bkup property: ");
-            console.log(bkup);
+            //console.log("using bkup property: ");
+            //console.log(bkup);
             node = bkup;
         }
         agentNode.getElementsByTagName("variables")[0].appendChild(node);
@@ -328,8 +327,8 @@ function plugin_properties_direct(xmlDoc, parent, property, bkup) {
             nodeValue.nodeValue = 0;
             node.appendChild(nodeValue);
         } else {
-            console.log("using bkup property: ");
-            console.log(bkup);
+            //console.log("using bkup property: ");
+            //console.log(bkup);
             node = bkup;
         }
         parent.appendChild(node);
@@ -350,8 +349,8 @@ function plugin_behaviors(xmlDoc, agentNode, behavior, bkup) {
             node.appendChild(xmlDoc.createElement("code"));
             node.appendChild(xmlDoc.createElement("inputs"));
         } else {
-            console.log("using bkup behavior: ");
-            console.log(bkup);
+            //console.log("using bkup behavior: ");
+            //console.log(bkup);
             node = bkup;
         }
         agentNode.getElementsByTagName("blocks")[0].appendChild(node);

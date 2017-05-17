@@ -11,7 +11,7 @@ function handle_property_events(selected_concept, selected_prop_key) {
     $("#sel_prop_" + selected_concept.elementID + " option[value='']").prop('selected', true);
     var $container_prop_row = $("#row_prop_"+selected_concept.elementID);
 
-    console.log(selected_prop_key,"selected_property",selected_property);
+    //console.log(selected_prop_key,"selected_property",selected_property);
     var html = new EJS({url: 'components/conceptual_model/template_prop_row.ejs'}).render(selected_property);
     $container_prop_row.append(html);
     selected_property.selected = true;
@@ -34,7 +34,7 @@ function handle_property_events(selected_concept, selected_prop_key) {
         $("#"+selected_property.elementID).remove();
         $("#sel_prop_" + selected_concept.elementID + " option[value='"+ selected_prop_key +"']").show();
         selected_property.selected = false;
-        console.log("delete selected_property",selected_property);
+        //console.log("delete selected_property",selected_property);
         OnModelChanged();
     });
 }
@@ -51,7 +51,7 @@ function handle_behavior_events(selected_concept, selected_behavior_key) {
     var html = new EJS({url: 'components/conceptual_model/template_prop_row.ejs'}).render(selected_behavior);
     $container_be_row.append(html);
     selected_behavior.selected = true;
-    console.log("selected_behavior",selected_behavior);
+    //console.log("selected_behavior",selected_behavior);
 
 
     var n = document.getElementById("delete_"+selected_behavior.elementID);
@@ -72,14 +72,14 @@ function handle_behavior_events(selected_concept, selected_behavior_key) {
         $("#"+selected_behavior.elementID).remove();
         $("#sel_be_" + selected_concept.elementID + " option[value='"+ selected_behavior_key +"']").show();
         selected_behavior.selected = false;
-        console.log("delete selected_behavior",selected_behavior);
+        //console.log("delete selected_behavior",selected_behavior);
         OnModelChanged();
     });
 }
 
 function create_new_concept(selected_concept_key, selected_concept) {
     selected_concept.selected = true;
-    console.log("creating new concept: " + selected_concept);
+    //console.log("creating new concept: " + selected_concept);
     data = {};
     data.concept = selected_concept;
     var html = new EJS({url: 'components/conceptual_model/template_concept.ejs'}).render(data);
@@ -91,7 +91,7 @@ function create_new_concept(selected_concept_key, selected_concept) {
         $("#"+selected_concept.elementID).remove();
         $("#cm_concepts option[value='"+ selected_concept_key +"']").show();
         selected_concept.selected = false;
-        console.log("delete selected_concept",selected_concept);
+        //console.log("delete selected_concept",selected_concept);
         OnModelChanged();
     });
 
@@ -150,7 +150,7 @@ function check_then_create_concept() {
 }
 
 function OnModelChanged() {
-    console.log("OnModelChanged");
+    //console.log("OnModelChanged");
     updateComputationalModel();
 }
 function OnViewLoaded() {
@@ -188,7 +188,7 @@ function conceptual_model_load_views(parent_id) {
 
 function populate_view() {
     var $combo_agents = $('#cm_concepts');
-    console.log("conceptual_model_load_views loading options of concepts that can be created, total agents: ", Object.keys(concepts.environment).length);
+    //console.log("conceptual_model_load_views loading options of concepts that can be created, total agents: ", Object.keys(concepts.environment).length);
 
     $combo_agents.append(function() {
         var output = '';
@@ -197,7 +197,7 @@ function populate_view() {
             output += '<option value="' + key + '">' + value.name + '</option>';
         });
         output += '</optgroup>';
-        console.log("output: " , output)
+        //console.log("output: " , output)
         return output;
     });
     $combo_agents.append(function() {
@@ -207,7 +207,7 @@ function populate_view() {
             output += '<option value="' + key + '">' + value.name + '</option>';
         });
         output += '</optgroup>';
-        console.log("output: " , output)
+        //console.log("output: " , output)
         return output;
     });
 }

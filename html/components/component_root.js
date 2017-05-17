@@ -5,7 +5,7 @@ function load_components() {
     // load data of all the modules
     conceptual_model_load_data();
     execute_when_ready(load_views, 100);
-    console.log("load_components");
+    //console.log("load_components");
 }
 
 function load_views() {
@@ -14,7 +14,7 @@ function load_views() {
 }
 
 function execute_when_ready(action, wait_period) {
-    console.log("execute_when_ready");
+    //console.log("execute_when_ready");
     if (!is_ready_components()) {
         setTimeout(function () {
             execute_when_ready(load_views, wait_period);

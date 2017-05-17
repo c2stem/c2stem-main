@@ -3,13 +3,13 @@
  */
 var concepts = null;
 function dao_conceptual_model() {
-    data_path = 'components/conceptual_model/default_concepts.json';
-    // data_path = 'components/conceptual_model/default_concepts _preselected.json';
+    // data_path = 'components/conceptual_model/default_concepts.json';
+    data_path = 'components/conceptual_model/default_concepts _preselected.json';
     $.getJSON(data_path, function (data) {
-        console.log("conceptual model data:")
-        console.log(data);
+        //console.log("conceptual model data:")
+        //console.log(data);
         concepts = data
-        console.log("total agents: ", Object.keys(concepts.agents).length);
+        //console.log("total agents: ", Object.keys(concepts.agents).length);
     });
 }
 
