@@ -9,6 +9,7 @@ function start(options) {
     }
 
     var express = require('express'),
+        bodyParser = require('body-parser'),
         snapCloud = require('./snap-cloud/snap-cloud'),
         MongoClient = require('mongodb').MongoClient;
 
@@ -31,6 +32,16 @@ function start(options) {
 
             app.use('/SnapPhysics', express.static(__dirname + '/snap-physics/'));
             app.use(express.static(__dirname + '/html/'));
+            app.use(bodyParser.json());
+
+            // event logging endpoint
+            var events = db.collection('event-logs');
+            app.post('/events/record', function(req, res) {
+                const event = req.body;
+                console.log('received event:', event);
+                return events.save(event)
+                    .then(() => res.sendStatus(200));
+            });
 
             // Start the server
             options.port = +options.port || 8080;

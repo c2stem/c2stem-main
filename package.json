@@ -28,8 +28,8 @@
   },
   "homepage": "https://github.com/c2stem/c2stem-main",
   "dependencies": {
+    "body-parser": "^1.17.1",
     "snap-cloud": "file:snap-cloud"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {}
 }

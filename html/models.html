@@ -45,16 +45,38 @@
 <script type="text/javascript " src="https://code.jquery.com/jquery-2.1.1.min.js "></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js "></script>
 <script type="text/javascript" src="js/c2stem.js"></script>
-<script type="text/javascript " src="js/models.js "></script>
+<!--<script type="text/javascript " src="js/models.js "></script>-->
+<script type="text/javascript " src="js/actions.js "></script>
 
 <script type="text/javascript">
     var c2stem = new C2stem();
     c2stem.fixupLogout();
 
     $(document).ready(function () {
+        var SNAP_ID = 'computation';
         var snap = $("#computation > iframe").get(0);
         snap = snap.contentWindow || snap.contentDocument.defaultView;
-        snap.SnapCloud.url = location.origin + "/SnapCloud/";
+
+        $(snap).on('load', function() {
+            snap.SnapCloud.url = location.origin + "/SnapCloud/";
+
+            // Register the computational action manager
+            C2StemActions.register(SNAP_ID, snap.SnapActions);
+
+            // Configure SnapActions to route everything through the global manager
+            snap.SnapActions.applyEvent = function(event) {
+                if (!event.namespace) {
+                    event.namespace = SNAP_ID;
+                    return C2StemActions.applyEvent(event);
+                } else {
+                    return snap.ActionManager.prototype.applyEvent.call(this, event);
+                }
+            };
+        });
+
+        $(snap).on('beforeunload', function() {
+            C2StemActions.unregister(SNAP_ID);
+        });
     });
 
 </script>
