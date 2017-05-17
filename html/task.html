@@ -37,8 +37,8 @@
     <nav class="nav-extended">
         <div class="nav-wrapper c2stem-nav-wrapper">
             <a href="index.html" class="breadcrumb">Home</a>
-            <a id="taskslink" href="tasks.html" class="breadcrumb">Tasks</a>
-            <a id="modelslink" href="models.html" class="breadcrumb">Models</a>
+            <a id="modulelink" href="module.html" class="breadcrumb">Module</a>
+            <a id="tasklink" href="task.html" class="breadcrumb">Task</a>
             <ul class="right hide-on-med-and-down">
                 <li><a id="logout" href="login.html">Logout</a></li>
             </ul>
@@ -56,7 +56,7 @@
         <p>Module description goes here</p>
     </div>
     <div id="concepts">
-        <p>Conceptual modelling goes here</p>
+        <p>Conceptual modeling goes here</p>
     </div>
     <div class="c2stem-snap" id="computation">
         <iframe id="snapframe" src="/SnapPhysics/snap.html"></iframe>
@@ -69,16 +69,44 @@
 <script type="text/javascript " src="https://code.jquery.com/jquery-2.1.1.min.js "></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js "></script>
 <script type="text/javascript" src="js/c2stem.js"></script>
-<script type="text/javascript " src="js/models.js "></script>
+<script type="text/javascript " src="js/actions.js "></script>
 
 <script type="text/javascript">
     var c2stem = new C2stem();
-    c2stem.fixupHtml();
+    c2stem.fixupLogout();
 
-    $(document).ready(function () {
-        var snap = $("#computation > iframe").get(0);
-        snap = snap.contentWindow || snap.contentDocument.defaultView;
+    c2stem.loadTaskData(c2stem.query.id, function (err, res) {
+        if (err) {
+            Materialize.toast(err || 'Could not load tasks');
+        } else {
+            c2stem.fixupModule(res.parent.id, res.parent.name);
+            c2stem.fixupTask(res.id, res.name);
+        }
+    });
+
+    var SNAP_ID = 'computation';
+    var snap = $("#computation > iframe").get(0);
+    snap = snap.contentWindow || snap.contentDocument.defaultView;
+    $(snap).on('load', function () {
+        // set the database backend
         snap.SnapCloud.url = location.origin + "/SnapCloud/";
+
+        // Register the computational action manager
+        C2StemActions.register(SNAP_ID, snap.SnapActions);
+
+        // Configure SnapActions to route everything through the global manager
+        snap.SnapActions.applyEvent = function (event) {
+            if (!event.namespace) { // route all internal events through C2StemActions
+                event.namespace = SNAP_ID;
+                return C2StemActions.applyEvent(event);
+            } else {
+                return snap.ActionManager.prototype.applyEvent.call(this, event);
+            }
+        };
+    });
+
+    $(snap).on('beforeunload', function () {
+        C2StemActions.unregister(SNAP_ID);
     });
 
 </script>

@@ -9,6 +9,7 @@
 .c2stem-nav-wrapper {
     line-height: 38px!important;
     min-height: 38px!important;
+    margin-left: 12px;
 }
 
 .tabs,
