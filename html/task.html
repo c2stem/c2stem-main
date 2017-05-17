@@ -52,7 +52,10 @@
     c2stem.fixupLogout();
 
     c2stem.loadTaskData(c2stem.query.id, function (err, res) {
-        if (err) {
+        if (err === "ERROR: Not logged in") {
+            window.location.href = "login.html";
+        }
+        else if (err) {
             Materialize.toast(err || 'Could not load tasks');
         } else {
             c2stem.fixupModule(res.parent.id, res.parent.name);

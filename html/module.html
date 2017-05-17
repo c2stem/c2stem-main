@@ -43,8 +43,10 @@
     }
 
     c2stem.loadModuleData(c2stem.query.id, function (err, res) {
-        if (err) {
-            Materialize.toast(err || 'Could not load tasks');
+        if (err === "ERROR: Not logged in") {
+            window.location.href = "login.html";
+        } else if (err) {
+            Materialize.toast(err || 'Could not load module');
         } else {
             c2stem.fixupModule(res.id, res.name);
 

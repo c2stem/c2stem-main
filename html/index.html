@@ -53,12 +53,11 @@
     }
 
     c2stem.loadHomeData(function (err, res) {
-        if (err) {
-            if (err === "ERROR: Not logged in") {
-                window.location.href = "login.html";
-            } else {
-                Materialize.toast(err || 'Could not load modules');
-            }
+        if (err === "ERROR: Not logged in") {
+            window.location.href = "login.html";
+        }
+        else if (err) {
+            Materialize.toast(err || 'Could not load modules');
         } else {
             var div = $("#modules");
             for (var i = 0; i < res.modules.length; i++)
