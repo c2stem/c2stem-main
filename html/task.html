@@ -7,30 +7,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="c2stem.css">
-
-    <!--Libraries-->
-    <!--<link rel="stylesheet" href="lib/bootstrap.min.css">-->
-    <script type="text/javascript" src="lib/jquery.min.js"></script>
-    <!--<script type="text/javascript" src="lib/bootstrap.min.js"></script>-->
-    <script type="text/javascript" src="lib/ejs_production.js"></script>
-    <!--End Libraries-->
-
-    <!--Components-->
-
-    <!--Conceptual Model-->
-    <script type="text/javascript" src="components/conceptual_model/template_concept.ejs"></script>
-    <script type="text/javascript" src="components/conceptual_model/template_prop_row.ejs"></script>
-    <script type="text/javascript" src="components/conceptual_model/dao_conceptual_model.js"></script>
-    <script type="text/javascript" src="components/conceptual_model/transform_concept_to_computational.js"></script>
-    <script type="text/javascript" src="components/conceptual_model/controller_conceptual_model.js"></script>
-    <!--End Conceptual Model-->
-
-    <script type="text/javascript" src="components/component_root.js"></script>
-    <!--End Components-->
-
-
-
-
 </head>
 
 <body>
@@ -68,8 +44,23 @@
 
 <script type="text/javascript " src="https://code.jquery.com/jquery-2.1.1.min.js "></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js "></script>
+<script type="text/javascript" src="lib/ejs_production.js"></script>
 <script type="text/javascript" src="js/c2stem.js"></script>
 <script type="text/javascript " src="js/actions.js "></script>
+
+<!--Components-->
+
+<!--Conceptual Model-->
+<script type="text/javascript" src="components/conceptual_model/template_concept.ejs"></script>
+<script type="text/javascript" src="components/conceptual_model/template_prop_row.ejs"></script>
+<script type="text/javascript" src="components/conceptual_model/dao_conceptual_model.js"></script>
+<script type="text/javascript" src="components/conceptual_model/transform_concept_to_computational.js"></script>
+<script type="text/javascript" src="components/conceptual_model/controller_conceptual_model.js"></script>
+<!--End Conceptual Model-->
+
+<script type="text/javascript" src="components/component_root.js"></script>
+<!--End Components-->
+
 
 <script type="text/javascript">
     var c2stem = new C2stem();
@@ -88,6 +79,7 @@
     var snap = $("#computation > iframe").get(0);
     snap = snap.contentWindow || snap.contentDocument.defaultView;
     $(snap).on('load', function () {
+        load_components();
         // set the database backend
         snap.SnapCloud.url = location.origin + "/SnapCloud/";
 
