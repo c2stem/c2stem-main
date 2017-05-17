@@ -187,29 +187,33 @@ function conceptual_model_load_views(parent_id) {
 
 
 function populate_view() {
-    var $combo_agents = $('#cm_concepts');
+    var $combo_concepts = $('#cm_concepts');
     //console.log("conceptual_model_load_views loading options of concepts that can be created, total agents: ", Object.keys(concepts.environment).length);
 
-    $combo_agents.append(function() {
-        var output = '';
-        output += '<optgroup label="Environment">';
-        $.each(concepts.environment, function(key, value) {
-            output += '<option value="' + key + '">' + value.name + '</option>';
+    if (Object.keys(concepts.environment).length > 0) {
+        $combo_concepts.append(function () {
+            var output = '';
+            output += '<optgroup label="Environment">';
+            $.each(concepts.environment, function (key, value) {
+                output += '<option value="' + key + '">' + value.name + '</option>';
+            });
+            output += '</optgroup>';
+            //console.log("output: " , output)
+            return output;
         });
-        output += '</optgroup>';
-        //console.log("output: " , output)
-        return output;
-    });
-    $combo_agents.append(function() {
-        var output = '';
-        output += '<optgroup label="Agents">';
-        $.each(concepts.agents, function(key, value) {
-            output += '<option value="' + key + '">' + value.name + '</option>';
+    }
+    if (Object.keys(concepts.agents).length > 0) {
+        $combo_concepts.append(function () {
+            var output = '';
+            output += '<optgroup label="Agents">';
+            $.each(concepts.agents, function (key, value) {
+                output += '<option value="' + key + '">' + value.name + '</option>';
+            });
+            output += '</optgroup>';
+            //console.log("output: " , output)
+            return output;
         });
-        output += '</optgroup>';
-        //console.log("output: " , output)
-        return output;
-    });
+    }
 }
 
 function is_ready_cm() {
