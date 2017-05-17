@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
-var program = require('commander');
+var program = require('commander'),
+    version = require('./package.json').version;
 
 function start(options) {
     if (options.verbose) {
@@ -52,7 +53,7 @@ function start(options) {
     });
 }
 
-program.version('1.0.2')
+program.version(version)
     .option('-m, --mongo <uri>', 'sets MongoDB URI [//localhost/c2stem-main]', '//localhost/c2stem-main')
     .option('-v, --verbose', 'enable logging of snap-cloud')
     .option('-p, --port <n>', 'port number to use [9090]', 9090)

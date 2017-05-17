@@ -1,6 +1,6 @@
 {
   "name": "c2stem-main",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "C2STEM main website",
   "main": "server.js",
   "scripts": {
