@@ -48,14 +48,13 @@
 <script type="text/javascript " src="js/actions.js "></script>
 
 <script type="text/javascript">
-    var c2stem = new C2stem();
+    var c2stem = new C2Stem();
     c2stem.fixupLogout();
 
     c2stem.loadTaskData(c2stem.query.id, function (err, res) {
         if (err === "ERROR: Not logged in") {
             window.location.href = "login.html";
-        }
-        else if (err) {
+        } else if (err) {
             Materialize.toast(err || 'Could not load tasks');
         } else {
             c2stem.fixupModule(res.parent.id, res.parent.name);
@@ -74,7 +73,7 @@
         C2StemActions.register(SNAP_ID, snap.SnapActions);
 
         // Configure SnapActions to route everything through the global manager
-        snap.SnapActions.applyEvent = function (event) {
+        C2StemActions.applyEvent = function (event) {
             if (!event.namespace) { // route all internal events through C2StemActions
                 event.namespace = SNAP_ID;
                 return C2StemActions.applyEvent(event);

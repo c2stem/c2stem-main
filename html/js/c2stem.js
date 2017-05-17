@@ -1,10 +1,10 @@
-function C2stem(snapCloudUrl) {
+function C2Stem(snapCloudUrl) {
     this.snapCloudUrl = snapCloudUrl || "";
     this.withCredentials = false;
     this.query = this.parseQueryString();
 };
 
-C2stem.prototype.login = function (username, password, remember, callback) {
+C2Stem.prototype.login = function (username, password, remember, callback) {
     try {
         var req = new XMLHttpRequest();
         req.open('POST', this.snapCloudUrl + "/SnapCloud/", true);
@@ -29,7 +29,7 @@ C2stem.prototype.login = function (username, password, remember, callback) {
     }
 };
 
-C2stem.prototype.logout = function (callback) {
+C2Stem.prototype.logout = function (callback) {
     try {
         var req = new XMLHttpRequest();
         req.open('GET', this.snapCloudUrl + "/SnapCloud/logout", true);
@@ -49,7 +49,7 @@ C2stem.prototype.logout = function (callback) {
     }
 };
 
-C2stem.prototype.parseQueryString = function () {
+C2Stem.prototype.parseQueryString = function () {
     var s = window.location.search,
         q = {};
 
@@ -64,7 +64,7 @@ C2stem.prototype.parseQueryString = function () {
     return q;
 }
 
-C2stem.prototype.loadHomeData = function (callback) {
+C2Stem.prototype.loadHomeData = function (callback) {
     var res = {
         modules: [{
             id: 'm1',
@@ -91,7 +91,7 @@ C2stem.prototype.loadHomeData = function (callback) {
     });
 }
 
-C2stem.prototype.loadModuleData = function (id, callback) {
+C2Stem.prototype.loadModuleData = function (id, callback) {
     var res;
 
     if (id === 'm1') {
@@ -132,7 +132,7 @@ C2stem.prototype.loadModuleData = function (id, callback) {
     });
 }
 
-C2stem.prototype.loadTaskData = function (id, callback) {
+C2Stem.prototype.loadTaskData = function (id, callback) {
     var res;
 
     if (id === 't1') {
@@ -183,7 +183,7 @@ C2stem.prototype.loadTaskData = function (id, callback) {
     });
 }
 
-C2stem.prototype.fixupLogout = function () {
+C2Stem.prototype.fixupLogout = function () {
     $("#logout").click(function (event) {
         event.preventDefault();
         c2stem.logout(function (err) {
@@ -192,13 +192,13 @@ C2stem.prototype.fixupLogout = function () {
     });
 }
 
-C2stem.prototype.fixupModule = function (id, name) {
+C2Stem.prototype.fixupModule = function (id, name) {
     $("#modulelink").attr('href', "module.html?" + $.param({
         id: id,
     })).text(name);
 }
 
-C2stem.prototype.fixupTask = function (id, name) {
+C2Stem.prototype.fixupTask = function (id, name) {
     $("#tasklink").attr('href', "task.html?" + $.param({
         id: id,
     })).text(name);

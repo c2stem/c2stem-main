@@ -30,7 +30,7 @@
 <script type="text/javascript" src="js/c2stem.js"></script>
 
 <script type="text/javascript">
-    var c2stem = new C2stem();
+    var c2stem = new C2Stem();
     c2stem.fixupLogout();
 
     function getModuleCard(module) {
@@ -55,8 +55,7 @@
     c2stem.loadHomeData(function (err, res) {
         if (err === "ERROR: Not logged in") {
             window.location.href = "login.html";
-        }
-        else if (err) {
+        } else if (err) {
             Materialize.toast(err || 'Could not load modules');
         } else {
             var div = $("#modules");
