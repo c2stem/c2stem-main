@@ -24,6 +24,7 @@
                 <li class="tab"><a class="active" href="#description">Description</a></li>
                 <li class="tab"><a href="#concepts">Concepts</a></li>
                 <li class="tab"><a href="#computation">Computation</a></li>
+                <li class="tab"><a href="#computation2">Computation 2</a></li>
                 <li class="tab"><a href="#assessment">Assessment</a></li>
             </ul>
         </div>
@@ -37,15 +38,36 @@
     <div class="c2stem-snap" id="computation">
         <iframe id="snapframe" src="/SnapPhysics/snap.html"></iframe>
     </div>
+    <div class="c2stem-snap2" id="computation2">
+        <canvas id="world2" />
+    </div>
     <div id="assessment">
         <p>Assessment goes here</p>
     </div>
 </body>
 
-<script type="text/javascript " src="https://code.jquery.com/jquery-2.1.1.min.js "></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js "></script>
+<script type="text/javascript " src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<script type="text/javascript" src="/SnapPhysics/morphic.js"></script>
+<script type="text/javascript" src="/SnapPhysics/widgets.js"></script>
+<script type="text/javascript" src="/SnapPhysics/blocks.js"></script>
+<script type="text/javascript" src="/SnapPhysics/threads.js"></script>
+<script type="text/javascript" src="/SnapPhysics/objects.js"></script>
+<script type="text/javascript" src="/SnapPhysics/gui.js"></script>
+<script type="text/javascript" src="/SnapPhysics/paint.js"></script>
+<script type="text/javascript" src="/SnapPhysics/lists.js"></script>
+<script type="text/javascript" src="/SnapPhysics/byob.js"></script>
+<script type="text/javascript" src="/SnapPhysics/tables.js"></script>
+<script type="text/javascript" src="/SnapPhysics/xml.js"></script>
+<script type="text/javascript" src="/SnapPhysics/store.js"></script>
+<script type="text/javascript" src="/SnapPhysics/locale.js"></script>
+<script type="text/javascript" src="/SnapPhysics/cloud.js"></script>
+<script type="text/javascript" src="/SnapPhysics/sha512.js"></script>
+<script type="text/javascript" src="/SnapPhysics/p2.js"></script>
+<script type="text/javascript" src="/SnapPhysics/physics.js"></script>
+<script type="text/javascript" src="/SnapPhysics/FileSaver.min.js"></script>
 <script type="text/javascript" src="js/c2stem.js"></script>
-<script type="text/javascript " src="js/actions.js "></script>
+<script type="text/javascript" src="js/actions.js"></script>
 
 <script type="text/javascript">
     var c2stem = new C2Stem();
@@ -60,6 +82,26 @@
             c2stem.fixupModule(res.parent.id, res.parent.name);
             c2stem.fixupTask(res.id, res.name);
         }
+    });
+
+    $(document).ready(function () {
+        console.log('ready');
+
+        var canvas = $("#world2").get(0);
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+        console.log(canvas);
+        var world = new WorldMorph(canvas, false);
+        console.log(world);
+        world.worldCanvas.focus();
+        console.log(IDE_Morph);
+        new IDE_Morph().openIn(world);
+
+        function loop() {
+            requestAnimationFrame(loop);
+            world.doOneCycle();
+        }
+        loop();
     });
 
     var SNAP_ID = 'computation';

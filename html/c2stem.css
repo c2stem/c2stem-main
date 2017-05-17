@@ -41,3 +41,14 @@ body {
     width: 100%;
     height: 100%;
 }
+
+.c2stem-snap2 {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.c2stem-snap2 canvas {
+    display: block;
+    flex-grow: 1;
+}
