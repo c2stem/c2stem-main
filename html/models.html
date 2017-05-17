@@ -65,7 +65,7 @@
 
             // Configure SnapActions to route everything through the global manager
             snap.SnapActions.applyEvent = function(event) {
-                if (!event.namespace) {
+                if (!event.namespace) {  // route all internal events through C2StemActions
                     event.namespace = SNAP_ID;
                     return C2StemActions.applyEvent(event);
                 } else {

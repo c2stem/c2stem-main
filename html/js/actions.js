@@ -1,8 +1,11 @@
 // Global action manager
+//
+// Interface:
+//   - register(id, manager)
+//   - unregister(id)
+//   - applyEvent(event)
+
 (function(global) {
-    // Interface:
-    //   - register(id, manager)
-    //   - applyEvent(event)
     var ActionManager = function() {
         this.submanagers = {};
     };
