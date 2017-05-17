@@ -32,7 +32,7 @@
         <p>Module description goes here</p>
     </div>
     <div id="concepts">
-        <p>Conceptual modelling goes here</p>
+        <p>Conceptual modeling goes here</p>
     </div>
     <div class="c2stem-snap" id="computation">
         <iframe id="snapframe" src="/SnapPhysics/snap.html"></iframe>
@@ -45,6 +45,7 @@
 <script type="text/javascript " src="https://code.jquery.com/jquery-2.1.1.min.js "></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js "></script>
 <script type="text/javascript" src="js/c2stem.js"></script>
+<script type="text/javascript " src="js/actions.js "></script>
 
 <script type="text/javascript">
     var c2stem = new C2stem();
@@ -59,10 +60,29 @@
         }
     });
 
+    var SNAP_ID = 'computation';
     var snap = $("#computation > iframe").get(0);
-    var snap = snap.contentWindow || snap.contentDocument.defaultView;
+    snap = snap.contentWindow || snap.contentDocument.defaultView;
     $(snap).on('load', function () {
+        // set the database backend
         snap.SnapCloud.url = location.origin + "/SnapCloud/";
+
+        // Register the computational action manager
+        C2StemActions.register(SNAP_ID, snap.SnapActions);
+
+        // Configure SnapActions to route everything through the global manager
+        snap.SnapActions.applyEvent = function (event) {
+            if (!event.namespace) { // route all internal events through C2StemActions
+                event.namespace = SNAP_ID;
+                return C2StemActions.applyEvent(event);
+            } else {
+                return snap.ActionManager.prototype.applyEvent.call(this, event);
+            }
+        };
+    });
+
+    $(snap).on('beforeunload', function () {
+        C2StemActions.unregister(SNAP_ID);
     });
 
 </script>
