@@ -4,8 +4,8 @@
 var concepts = null;
 function dao_conceptual_model() {
     // data_path = 'components/conceptual_model/default_concepts.json';
-    // data_path = 'components/conceptual_model/default_concepts_preselected.json';
-    data_path = 'components/conceptual_model/default_concepts_no_environment.json';
+    data_path = 'components/conceptual_model/default_concepts_preselected.json';
+    // data_path = 'components/conceptual_model/default_concepts_no_environment.json';
     $.getJSON(data_path, function (data) {
         //console.log("conceptual model data:")
         //console.log(data);

@@ -35,7 +35,7 @@
         <p>Conceptual modeling goes here</p>
     </div>
     <div class="c2stem-snap" id="computation">
-        <iframe id="snapframe" src="snap.html"></iframe>
+        <iframe id="snapframe" src="/SnapPhysics/snap.html"></iframe>
     </div>
     <div id="assessment">
         <p>Assessment goes here</p>
@@ -85,13 +85,36 @@
         C2StemActions.register(SNAP_ID, snap.SnapActions);
 
         // Configure SnapActions to route everything through the global manager
-        snap.SnapActions.applyEvent = function (event) {
+        C2StemActions.applyEvent = function (event) {
             if (!event.namespace) { // route all internal events through C2StemActions
                 event.namespace = SNAP_ID;
                 return C2StemActions.applyEvent(event);
             } else {
                 return snap.ActionManager.prototype.applyEvent.call(this, event);
             }
+        };
+
+
+        snap.load_project_xml = function(xml) {
+            var ide = snap.world.children[0];
+            ide.droppedText(xml);
+        };
+        snap.export_project_to_xml_str = function() {
+            var ide = snap.world.children[0];
+            return ide.serializer.serialize(ide.stage);
+        };
+
+        snap.hide_primitive = function(cat, prim){
+            var ide = snap.world.children[0];
+            ide.stage.hiddenPrimitives[prim] = true;
+            ide.flushBlocksCache(cat);
+            ide.refreshPalette();
+        };
+        snap.show_primitive = function(cat, prim){
+            var ide = snap.world.children[0];
+            ide.stage.hiddenPrimitives[prim] = false;
+            ide.flushBlocksCache(cat);
+            ide.refreshPalette();
         };
     });
 

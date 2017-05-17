@@ -11,7 +11,7 @@ function updateComputationalModel() {
     //console.log("Agents");
     //console.log(agents);
 
-    var str = document.getElementById(id_snap).contentWindow.export_project_to_xml_str();
+    var str = snap.export_project_to_xml_str();
     // //console.log("str");
     // //console.log(str);
     var parser = new DOMParser();
@@ -141,8 +141,6 @@ function plugin_agent(xmlDoc, agent) {
 }
 
 function plugin_constructs_by_rules(xmlDoc, agent, agnetNode) {
-    if(true)
-        return;
     //console.log("plugin_constructs_by_rules", rules);
     for (var r in rules) {
         var rule = rules[r]
@@ -160,15 +158,17 @@ function generate_constructs_of_rule(xmlDoc, agentNode, rule, bkup) {
         switch (c.type) {
             case "Method":
                 //console.log("generating method: ", c);
-                var node = getExistingNode(agentNode, "block-definition", "s", c.label);
+
+                var label = c.label;
+                for (var p in c.params) {
+                    var param = c.params[p];
+                    label= label + " %&apos;" + param.label + "&apos; ";
+                }
+                var node = getExistingNode(agentNode, "block-definition", "s", label);
+                console.log("generating method: ", c, " existing node: ", node);
                 if (node === null) {
                     if (bkup == null) {
                         node = xmlDoc.createElement("block-definition");
-                        var label = c.label;
-                        for (var p in c.params) {
-                            var param = c.params[p];
-                            label= label + " %&apos;" + param.label + "&apos; ";
-                        }
                         node.setAttribute("s", label);
                         node.setAttribute("type", "command");
                         node.setAttribute("category", "other");
@@ -367,5 +367,5 @@ function getExistingNode(xmlDoc, nodeType, attrName, attrValue) {
 
 function load_project_xml(text) {
 
-    return document.getElementById(id_snap).contentWindow.load_project_xml(text);
+    return snap.load_project_xml(text);
 }
