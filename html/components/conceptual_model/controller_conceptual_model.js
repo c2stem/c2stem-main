@@ -3,8 +3,17 @@
  */
 function conceptual_model_load_data(){
     dao_conceptual_model();
-    init_transform_concept_to_computational();
 }
+
+
+function conceptual_model_load_views(parent_id) {
+    $('#'+parent_id).load('components/conceptual_model/view_conceptual_model.html', function () {
+        transform_cm.init(concepts);
+        OnViewLoaded();
+    });
+}
+
+
 
 function handle_property_events(selected_concept, selected_prop_key) {
     var selected_property = selected_concept.properties[selected_prop_key];
@@ -97,7 +106,10 @@ function create_new_concept(selected_concept_key, selected_concept) {
     $concept_container.append(html);
 
     if(selected_concept.isSprite){
-        selected_concept.sprite = transform_cm.create_new_sprite(selected_concept);
+        if(selected_concept.isBuiltIn)
+            selected_concept.sprite = transform_cm.show_sprite(selected_concept);
+        else
+            selected_concept.sprite = transform_cm.create_new_sprite(selected_concept);
         transform_cm.transform_concept_by_rules(selected_concept, "create", concepts.rules, concepts.environment );
     }
 
@@ -199,13 +211,6 @@ function OnViewLoaded() {
         check_then_create_concept();
     });
 }
-
-function conceptual_model_load_views(parent_id) {
-    $('#'+parent_id).load('components/conceptual_model/view_conceptual_model.html', function () {
-        OnViewLoaded();
-    });
-}
-
 
 function populate_view() {
     var $combo_concepts = $('#cm_concepts');

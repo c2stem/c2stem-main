@@ -33,11 +33,12 @@
     }
   },
   "agents": {
-    "Point Mass": {
+    "Sprite": {
       "name": "Point Mass",
       "elementID": "point_mass",
-      "selected": true,
+      "selected": false,
       "isSprite": true,
+      "isBuiltIn": true,
       "properties": {
         "point_mass_mass": {
           "name": "Mass",
@@ -214,6 +215,11 @@
         {
           "name": "changePhysicsYPosition",
           "category":"physics",
+          "type": "built_in"
+        },
+        {
+          "name": "test",
+          "category":"variables",
           "type": "built_in"
         }
       ]
