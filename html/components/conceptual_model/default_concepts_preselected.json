@@ -4,6 +4,7 @@
       "name": "Time",
       "elementID": "env_time",
       "selected": true,
+      "isSprite": false,
       "properties": {
         "environment_DeltaTime": {
           "name": "DeltaTime",
@@ -21,6 +22,7 @@
       "name": "Physics",
       "elementID": "env_physics",
       "selected": false,
+      "isSprite": false,
       "properties": {
         "environment_GravityX": {
           "name": "Gravity",
@@ -35,6 +37,7 @@
       "name": "Point Mass",
       "elementID": "point_mass",
       "selected": true,
+      "isSprite": true,
       "properties": {
         "point_mass_mass": {
           "name": "Mass",
