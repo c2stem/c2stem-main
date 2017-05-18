@@ -52,7 +52,7 @@
 
 <!--Conceptual Model-->
 <script type="text/javascript" src="components/conceptual_model/dao_conceptual_model.js"></script>
-<script type="text/javascript" src="components/conceptual_model/transform_concept_to_computational.js"></script>
+<script type="text/javascript" src="components/conceptual_model/deprecated_transform_concept_to_computational.js"></script>
 <script type="text/javascript" src="components/conceptual_model/controller_conceptual_model.js"></script>
 <!--End Conceptual Model-->
 
@@ -116,6 +116,37 @@
             ide.flushBlocksCache(cat);
             ide.refreshPalette();
         };
+
+        snap.create_new_sprite = function(agent) {
+            var ide = snap.world.children[0];
+            var sprite = new snap.SpriteMorph(ide.globalVariables),
+                rnd = snap.Process.prototype.reportRandom;
+
+            sprite.name = agent.name;
+            sprite.setCenter(ide.stage.center());
+            ide.stage.add(sprite);
+
+            // randomize sprite properties
+            sprite.setHue(rnd.call(ide, 0, 100));
+            sprite.setBrightness(rnd.call(ide, 50, 100));
+            sprite.turn(rnd.call(ide, 1, 360));
+            sprite.setXPosition(rnd.call(ide, -220, 220));
+            sprite.setYPosition(rnd.call(ide, -160, 160));
+
+            ide.sprites.add(sprite);
+            ide.corral.addSprite(sprite);
+            ide.selectSprite(sprite);
+            return sprite;
+        };
+
+        snap.remove_sprite = function(sprite) {
+            var ide = snap.world.children[0];
+            ide.removeSprite(sprite);
+        };
+
+
+
+
     });
 
     $(snap).on('beforeunload', function () {

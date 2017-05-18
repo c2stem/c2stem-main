@@ -122,10 +122,12 @@
         "point_mass_mass"
       ],
       "GeneratedConstructs": [
-        {"label": "Mass", "type": "Variable", "defaultValue": "5"
+        {
+          "name": "Mass", "type": "Variable", "defaultValue": "5"
         },
         {
-          "label": "setMass", "type": "Method", "params": [{"label": "mass", "type": "Number"}], "return_type": "void"}
+          "name": "setMass", "type": "Method", "params": [{
+          "name": "mass", "type": "Number"}], "return_type": "void"}
       ]
     },
     {
@@ -134,15 +136,15 @@
       ],
       "GeneratedConstructs": [
         {
-          "label": "setSpeed",
+          "name": "setSpeed",
           "type": "Method",
-          "params": [{ "label": "speed", "type": "Number"}],
+          "params": [{ "name": "speed", "type": "Number"}],
           "return_type": "void"
         },
         {
-          "label": "changeSpeed",
+          "name": "changeSpeed",
           "type": "Method",
-          "params": [{ "label": "speed", "type": "Number"}],
+          "params": [{ "name": "speed", "type": "Number"}],
           "return_type": "void"
         }
       ]
