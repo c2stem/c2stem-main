@@ -52,8 +52,14 @@ IDE_Morph.prototype.resourceURL = function () {
 
 // user name is not stored locally, server checks if connected
 Cloud.prototype.reconnect = function (callBack, errorCall) {
-    this.login('', '', callBack, errorCall);
+    this.login(null, null, callBack, errorCall);
 };
 
 // disconnect is disabled, called sometimes
 Cloud.prototype.disconnect = function () {};
+
+// ignore setroute
+Cloud.prototype.setRoute = function (username) {};
+
+// set the backend database url
+SnapCloud.url = location.origin + "/SnapCloud/";

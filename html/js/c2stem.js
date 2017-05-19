@@ -276,9 +276,6 @@ C2Stem.prototype.addSnap1Tab = function (id, name, markup) {
     var snapWindow = $(`#tab${id} > iframe`).get(0);
     snapWindow = snapWindow.contentWindow || snapWindow.contentDocument.defaultView;
     $(snapWindow).on('load', function () {
-        // set the database backend
-        snapWindow.SnapCloud.url = location.origin + "/SnapCloud/";
-
         // Register the computational action manager
         C2StemActions.register('snap' + id, snapWindow.SnapActions);
 
