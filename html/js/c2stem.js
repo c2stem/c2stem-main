@@ -125,11 +125,14 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
             id: id,
             name: '1D motion',
             tasks: [{
-                id: 't1',
+                id: '1d-basics',
                 name: 'Back to the Basics'
             }, {
-                id: 't2',
-                name: 'Challenge problem'
+                id: '1d-loops',
+                name: 'Getting Back in the Loop'
+            }, {
+                id: '1d-steps',
+                name: 'One, Two, Step'
             }]
         };
     } else if (id === 'devmod') {
@@ -158,16 +161,16 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
 C2Stem.prototype.loadTaskData = function (id, callback) {
     var res;
 
-    if (id === 't1') {
+    if (id === '1d-basics') {
         res = {
             parent: {
                 id: '1dmotion',
                 name: '1D motion'
             },
             id: id,
-            name: 'Back to the Basics',
+            name: 'Basics',
             tabs: [{
-                id: 'b1',
+                id: 'desc',
                 type: 'desc',
                 name: 'Description',
                 markup: `
@@ -195,13 +198,74 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 </p>
                 `
             }, {
-                id: 'b2',
+                id: 'parta',
                 type: 'snap1',
                 name: 'Part A'
             }, {
-                id: 'b3',
+                id: 'partb',
                 type: 'snap1',
                 name: 'Part B'
+            }]
+        };
+    } else if (id === '1d-loops') {
+        res = {
+            parent: {
+                id: '1dmotion',
+                name: '1D motion'
+            },
+            id: id,
+            name: 'Loops',
+            tabs: [{
+                id: 'desc',
+                type: 'desc',
+                name: 'Description',
+                markup: `
+                <p>
+                    Position is a critical component to our understanding of kinematics topics such as
+                    acceleration, velocity, and speed. In the previous task, we manually moved the sprite
+                    to the right. But we aren’t manually moving a vehicle meter by meter - so it seems
+                    quite tedious to do that in a computer simulation! You may have experienced using 
+                    programming loops in previous classes or with other programming environments 
+                    (NetsBlox, Scratch, etc.). In this task, we will be implementing such loops with
+                    our physics blocks in order to more accurately simulate kinematics motion.
+
+                    <br/><br/>Knowledge Goals for This Task Include:
+                    <ul>
+                        <li>Initializing Variables</li>
+                        <li>Iteration (the act of repeating a process)</li>
+                        <li>Conditionals (e.g. completing an action until the event reaches a certain stage)</li>
+                        <li>Physics Base-Change: x_k+1 = x_k + Δx</li>
+                        <li>Δt</li>
+                        <li>position-velocity- time: Δx = vΔt</li>
+                        <li>Mathematical relationships</li>
+                        <li>Operators and expressions</li>
+                        <li>Input and output</li>
+                        <li>Conditionals</li>
+                        <li>Debugging and test cases</li>
+                    </ul>
+                </p>
+                <p>
+                    Part A. Take your final code from Task One and elaborate the program to simulate
+                        the motion of the sprite at 1 m/s to the right from coordinate 0 to coordinate 10.
+                    <br/>Part B. This time, use a smaller time step and allow the user of your program to 
+                        specify the length of the time step. This process can be similar to how you 
+                        requested information for position in Task One.
+                    <br/>Part C. Finally, let’s give the user more options. Allow user to specify additional 
+                        motion variables such as velocity, starting point, and ending point of the simulation.
+                </p>
+                `
+            }, {
+                id: 'parta',
+                type: 'snap1',
+                name: 'Part A'
+            }, {
+                id: 'partb',
+                type: 'snap1',
+                name: 'Part B'
+            }, {
+                id: 'partc',
+                type: 'snap1',
+                name: 'Part C'
             }]
         };
     } else if (id === 'snaptest') {
