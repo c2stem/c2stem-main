@@ -191,6 +191,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                         <li>A Basic Algorithm Structure</li>
                     </ul>
                 </p>
+                <img src="img/turtle.jpg" alt="turtle" width="10%"/>
                 <p>
                     Part A. Write a program that asks the user for x coordinate when the Green Flag 
                     is clicked and places the sprite at that location.
@@ -228,7 +229,6 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                     programming loops in previous classes or with other programming environments 
                     (NetsBlox, Scratch, etc.). In this task, we will be implementing such loops with
                     our physics blocks in order to more accurately simulate kinematics motion.
-
                     <br/><br/>Knowledge Goals for This Task Include:
                     <ul>
                         <li>Initializing Variables</li>
@@ -266,6 +266,44 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 id: 'partc',
                 type: 'snap1',
                 name: 'Part C'
+            }]
+        };
+    } else if (id === '1d-steps') {
+        res = {
+            parent: {
+                id: '1dmotion',
+                name: '1D motion'
+            },
+            id: id,
+            name: 'Steps',
+            tabs: [{
+                id: 'desc',
+                type: 'desc',
+                name: 'Description',
+                markup: `
+                <p>
+                    So far, all of our actions happen as soon as the green flag is clicked. As a means
+                    of adding more structure to the program, let’s create a simulation step. To do so, 
+                    initial variable creation will still happen at the green flag (such as asking the
+                    user for input and setting the respective variable to the submitted answer), but the
+                    simulation actions will take place in a simulation step that is called once all
+                    variables are initialized.
+                    <br/><br/>Knowledge Goals for This Task:
+                    <ul>
+                        <li>Utilizing a simulation step</li>
+                    </ul>
+                </p>
+                <p>
+                    Part A. Use your code from Part C in Task Two and add the simulation step by separating
+                    the loop component from the main block of code and setting it to begin at “simulation step.”
+                    Keep in mind that the simulation step will only run when it is called, so you must
+                    include the appropriate call to the block of code that occurs when the green flag is clicked.
+                </p>
+                `
+            }, {
+                id: 'parta',
+                type: 'snap1',
+                name: 'Part A'
             }]
         };
     } else if (id === 'snaptest') {
