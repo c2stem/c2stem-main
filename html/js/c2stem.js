@@ -138,7 +138,7 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
     } else if (id === 'devmod') {
         res = {
             id: id,
-            name: 'RDevelopment',
+            name: 'Development',
             tasks: [{
                 id: 'snaptest',
                 name: 'How to embed SNAP'
@@ -292,23 +292,20 @@ C2Stem.prototype.fixupTaskLink = function (id, name) {
 }
 
 C2Stem.prototype.addDescriptionTab = function (id, name, markup) {
-    $("#tabs").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`)
+    $("#tabs-div ul").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`)
     $("body").append(`<div class="c2stem-desc" id="tab${id}">${markup}</div>`);
 }
 
 C2Stem.prototype.addSnap1Tab = function (id, name, markup) {
-    $("#tabs").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`)
+    $("#tabs-div ul").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`)
     $("body").append(`
         <div class="c2stem-snap1" id="tab${id}">
-            <iframe src="c2snap.html"></iframe>
+            <iframe src="mysnap.html"></iframe>
         </div>`);
 
     var snapWindow = $(`#tab${id} > iframe`).get(0);
     snapWindow = snapWindow.contentWindow || snapWindow.contentDocument.defaultView;
     $(snapWindow).on('load', function () {
-        // set the database backend
-        snapWindow.SnapCloud.url = location.origin + "/SnapCloud/";
-
         // Register the computational action manager
         C2StemActions.register('snap' + id, snapWindow.SnapActions);
 
@@ -329,7 +326,7 @@ C2Stem.prototype.addSnap1Tab = function (id, name, markup) {
 }
 
 C2Stem.prototype.addSnap2Tab = function (id, name, markup) {
-    $("#tabs").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`)
+    $("#tabs-div ul").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`)
     $("body").append(`
         <div class="c2stem-snap2" id="tab${id}">
             <canvas></canvas>

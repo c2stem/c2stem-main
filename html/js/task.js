@@ -10,6 +10,8 @@ c2stem.loadTaskData(c2stem.query.id, function (err, res) {
         c2stem.fixupModuleLink(res.parent.id, res.parent.name);
         c2stem.fixupTaskLink(res.id, res.name);
 
+        $('#tabs-div').append('<ul class="tabs tabs-transparent"></ul>');
+
         for (var i = 0; i < res.tabs.length; i++) {
             var tab = res.tabs[i];
             if (tab.type === 'desc') {
