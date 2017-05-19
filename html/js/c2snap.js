@@ -36,10 +36,18 @@ IDE_Morph.prototype.createControlBar = function () {
     }
 }
 
+// Hide cloud button
 IDE_Morph.prototype.c2StemToggleAppMode = IDE_Morph.prototype.toggleAppMode;
 IDE_Morph.prototype.toggleAppMode = function (appMode) {
     this.c2StemToggleAppMode(appMode);
     this.controlBar.cloudButton.hide();
+}
+
+// Load the proper resources from SnapPhysics
+IDE_Morph.prototype.resourceURL = function () {
+    var args = Array.prototype.slice.call(arguments, 0);
+    args.splice(0, 0, 'SnapPhysics');
+    return args.join('/');
 }
 
 // user name is not stored locally, server checks if connected
