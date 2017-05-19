@@ -31,6 +31,7 @@ function start(options) {
                 mailer_smpt: undefined
             }));
 
+            // show public projects
             app.use('/projects.html',
                 express.static(__dirname + '/snap-cloud/views/projects.html'));
 
