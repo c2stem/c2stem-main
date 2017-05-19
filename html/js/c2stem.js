@@ -49,6 +49,28 @@ C2Stem.prototype.logout = function (callback) {
     }
 };
 
+C2Stem.prototype.signup = function (username, email, callback) {
+    try {
+        var req = new XMLHttpRequest();
+        req.open('GET', this.snapCloudUrl + "/SnapCloud/SignUp" +
+            '?Username=' + encodeURIComponent(username) +
+            '&Email=' + encodeURIComponent(email), true);
+        req.withCredentials = this.withCredentials;
+        req.onreadystatechange = function () {
+            if (req.readyState === 4) {
+                if (req.status === 200) {
+                    callback(null);
+                } else {
+                    callback(req.responseText || 'Connection refused');
+                }
+            }
+        };
+        req.send();
+    } catch (err) {
+        callback(err || "Could not register");
+    }
+};
+
 C2Stem.prototype.parseQueryString = function () {
     var s = window.location.search,
         q = {};
