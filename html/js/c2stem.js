@@ -89,7 +89,7 @@ C2Stem.prototype.parseQueryString = function () {
 C2Stem.prototype.loadHomeData = function (callback) {
     var res = {
         modules: [{
-            id: 'm1',
+            id: '1dmotion',
             name: "1D motion",
             icon: "img/school-bus.png"
         }, {
@@ -104,6 +104,10 @@ C2Stem.prototype.loadHomeData = function (callback) {
             id: 'm4',
             name: "Rocket landing",
             icon: "img/falcon9.png"
+        }, {
+            id: 'devmod',
+            name: "Development",
+            icon: "img/work-in-prog.png"
         }]
     };
 
@@ -116,33 +120,30 @@ C2Stem.prototype.loadHomeData = function (callback) {
 C2Stem.prototype.loadModuleData = function (id, callback) {
     var res;
 
-    if (id === 'm1') {
+    if (id === '1dmotion') {
         res = {
             id: id,
             name: '1D motion',
             tasks: [{
                 id: 't1',
-                name: 'Explore the environment'
+                name: 'Back to the Basics'
             }, {
                 id: 't2',
                 name: 'Challenge problem'
             }]
         };
-    } else if (id === 'm2') {
+    } else if (id === 'devmod') {
         res = {
             id: id,
-            name: 'Relative motion',
+            name: 'RDevelopment',
             tasks: [{
-                id: 't3',
-                name: 'Get the boat across the river'
-            }, {
-                id: 't4',
-                name: 'Challenge problem with chrocodiles'
+                id: 'snaptest',
+                name: 'How to embed SNAP'
             }]
         };
     } else {
         res = {
-            id: id,
+            id: 'unknown',
             name: 'Unknown module',
             tasks: []
         }
@@ -160,40 +161,74 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
     if (id === 't1') {
         res = {
             parent: {
-                id: 'm1',
+                id: '1dmotion',
                 name: '1D motion'
             },
             id: id,
-            name: 'Explore the environment',
-            tabs: []
+            name: 'Back to the Basics',
+            tabs: [{
+                id: 'b1',
+                type: 'desc',
+                name: 'Description',
+                markup: `
+                <blockquote>
+                    Get the fundamentals down and the level of everything you do will rise.
+                    <cite>Michael Jordan</cite>
+                </blockquote>
+                <p>
+                    Before we dive into the physics challenges, we are going to practice 
+                    using the physics blocks in our program. By the end of this task,
+                    you should have an understanding of the following Knowledge Goals:
+                    <ul>
+                        <li>The Coordinate System</li>
+                        <li>Defining Variables and Assigning Values</li>
+                        <li>Updating Position</li>
+                        <li>Input and Output Abilities</li>
+                        <li>C2STEM Operators and Expressions</li>
+                        <li>A Basic Algorithm Structure</li>
+                    </ul>
+                </p>
+                <p>
+                    Part A. Write a program that asks the user for x coordinate when the Green Flag 
+                    is clicked and places the sprite at that location.
+                    <br/>Part B. Without using loops, make the sprite move 1 m/s to the right.
+                </p>
+                `
+            }, {
+                id: 'b2',
+                type: 'snap1',
+                name: 'Part A'
+            }, {
+                id: 'b3',
+                type: 'snap1',
+                name: 'Part B'
+            }]
         };
-    } else if (id === 't2') {
+    } else if (id === 'snaptest') {
         res = {
             parent: {
-                id: 'm1',
-                name: '1D motion'
+                id: 'devmod',
+                name: 'Development'
             },
             id: id,
-            name: 'Challenge problem',
-            tabs: []
-        };
-    } else if (id === 't3') {
-        res = {
-            parent: {
-                id: 'm2',
-                name: 'Relative motion'
-            },
-            id: id,
-            name: 'Get the boat across the river',
-            tabs: []
+            name: 'SNAP embedding',
+            tabs: [{
+                id: 'b4',
+                type: 'snap1',
+                name: 'Snap 1'
+            }, {
+                id: 'b5',
+                type: 'snap2',
+                name: 'Snap 2'
+            }]
         };
     } else {
         res = {
             parent: {
-                id: '',
+                id: 'unknown',
                 name: 'Unknown module'
             },
-            id: id,
+            id: 'unknown',
             name: 'Unknown task',
             tabs: []
         }
@@ -205,7 +240,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
     });
 }
 
-C2Stem.prototype.fixupLogout = function () {
+C2Stem.prototype.fixupLogoutLink = function () {
     $("#logout").click(function (event) {
         event.preventDefault();
         c2stem.logout(function (err) {
@@ -214,14 +249,93 @@ C2Stem.prototype.fixupLogout = function () {
     });
 }
 
-C2Stem.prototype.fixupModule = function (id, name) {
+C2Stem.prototype.fixupModuleLink = function (id, name) {
     $("#modulelink").attr('href', "module.html?" + $.param({
         id: id,
     })).text(name);
 }
 
-C2Stem.prototype.fixupTask = function (id, name) {
+C2Stem.prototype.fixupTaskLink = function (id, name) {
     $("#tasklink").attr('href', "task.html?" + $.param({
         id: id,
     })).text(name);
+}
+
+C2Stem.prototype.addDescriptionTab = function (id, name, markup) {
+    $("#tabs").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`)
+    $("body").append(`<div class="c2stem-desc" id="tab${id}">${markup}</div>`);
+}
+
+C2Stem.prototype.addSnap1Tab = function (id, name, markup) {
+    $("#tabs").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`)
+    $("body").append(`
+        <div class="c2stem-snap1" id="tab${id}">
+            <iframe src="c2snap.html"></iframe>
+        </div>`);
+
+    var snapWindow = $(`#tab${id} > iframe`).get(0);
+    snapWindow = snapWindow.contentWindow || snapWindow.contentDocument.defaultView;
+    $(snapWindow).on('load', function () {
+        // set the database backend
+        snapWindow.SnapCloud.url = location.origin + "/SnapCloud/";
+
+        // Register the computational action manager
+        C2StemActions.register('snap' + id, snapWindow.SnapActions);
+
+        // Configure SnapActions to route everything through the global manager
+        C2StemActions.applyEvent = function (event) {
+            if (!event.namespace) { // route all internal events through C2StemActions
+                event.namespace = SNAP_ID;
+                return C2StemActions.applyEvent(event);
+            } else {
+                return snapWindow.ActionManager.prototype.applyEvent.call(this, event);
+            }
+        };
+    });
+
+    $(snapWindow).on('beforeunload', function () {
+        C2StemActions.unregister('snap' + id);
+    });
+}
+
+C2Stem.prototype.addSnap2Tab = function (id, name, markup) {
+    $("#tabs").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`)
+    $("body").append(`
+        <div class="c2stem-snap2" id="tab${id}">
+            <canvas></canvas>
+        </div>`);
+
+    $(document).ready(function () {
+        console.log('ready');
+
+        var canvas = $(`#tab${id} > canvas`).get(0);
+        var world = new WorldMorph(canvas, false);
+
+        window.addEventListener(
+            "resize",
+            function () {
+                world.updateSize();
+            },
+            false
+        );
+
+        world.worldCanvas.focus();
+        var ide = new IDE_Morph();
+        ide.openIn(world);
+        // world.updateSize();
+
+        // Resize on tab change ('display' attr set to 'none')
+        var detectTabShown = new MutationObserver(function () {
+            world.updateSize();
+        });
+        detectTabShown.observe($(`#tab${id}`).get(0), {
+            attributes: true
+        });
+
+        function loop() {
+            requestAnimationFrame(loop);
+            world.doOneCycle();
+        }
+        loop();
+    });
 }

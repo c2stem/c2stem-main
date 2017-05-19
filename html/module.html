@@ -31,7 +31,7 @@
 
 <script type="text/javascript">
     var c2stem = new C2Stem();
-    c2stem.fixupLogout();
+    c2stem.fixupLogoutLink();
 
     function getTaskItem(task) {
         return `
@@ -48,7 +48,7 @@
         } else if (err) {
             Materialize.toast(err || 'Could not load module');
         } else {
-            c2stem.fixupModule(res.id, res.name);
+            c2stem.fixupModuleLink(res.id, res.name);
 
             var div = $("#tasks");
             for (var i = 0; i < res.tasks.length; i++)
