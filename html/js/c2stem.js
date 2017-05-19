@@ -125,14 +125,17 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
             id: id,
             name: '1D motion',
             tasks: [{
-                id: 't1',
+                id: '1d-basics',
                 name: 'Back to the Basics'
             }, {
-                id: 't2',
-                name: 'Challenge problem'
+                id: '1d-loops',
+                name: 'Getting Back in the Loop'
             }, {
-                id: 't4',
-                name: 'Conceptual Modeling'
+                id: '1d-steps',
+                name: 'One, Two, Step'
+            }, {
+                id: 'cm',
+                name: 'Conceptual Modeling Demo'
             }]
         };
     } else if (id === 'devmod') {
@@ -161,16 +164,16 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
 C2Stem.prototype.loadTaskData = function (id, callback) {
     var res;
 
-    if (id === 't1') {
+    if (id === '1d-basics') {
         res = {
             parent: {
                 id: '1dmotion',
                 name: '1D motion'
             },
             id: id,
-            name: 'Back to the Basics',
+            name: 'Basics',
             tabs: [{
-                id: 'b1',
+                id: 'desc',
                 type: 'desc',
                 name: 'Description',
                 markup: `
@@ -191,6 +194,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                         <li>A Basic Algorithm Structure</li>
                     </ul>
                 </p>
+                <img src="img/turtle.jpg" alt="turtle" width="10%"/>
                 <p>
                     Part A. Write a program that asks the user for x coordinate when the Green Flag 
                     is clicked and places the sprite at that location.
@@ -198,13 +202,111 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 </p>
                 `
             }, {
-                id: 'b2',
+                id: 'parta',
                 type: 'snap1',
                 name: 'Part A'
             }, {
-                id: 'b3',
+                id: 'partb',
                 type: 'snap1',
                 name: 'Part B'
+            }]
+        };
+    } else if (id === '1d-loops') {
+        res = {
+            parent: {
+                id: '1dmotion',
+                name: '1D motion'
+            },
+            id: id,
+            name: 'Loops',
+            tabs: [{
+                id: 'desc',
+                type: 'desc',
+                name: 'Description',
+                markup: `
+                <p>
+                    Position is a critical component to our understanding of kinematics topics such as
+                    acceleration, velocity, and speed. In the previous task, we manually moved the sprite
+                    to the right. But we aren’t manually moving a vehicle meter by meter - so it seems
+                    quite tedious to do that in a computer simulation! You may have experienced using 
+                    programming loops in previous classes or with other programming environments 
+                    (NetsBlox, Scratch, etc.). In this task, we will be implementing such loops with
+                    our physics blocks in order to more accurately simulate kinematics motion.
+                    <br/><br/>Knowledge Goals for This Task Include:
+                    <ul>
+                        <li>Initializing Variables</li>
+                        <li>Iteration (the act of repeating a process)</li>
+                        <li>Conditionals (e.g. completing an action until the event reaches a certain stage)</li>
+                        <li>Physics Base-Change: x_k+1 = x_k + Δx</li>
+                        <li>Δt</li>
+                        <li>position-velocity- time: Δx = vΔt</li>
+                        <li>Mathematical relationships</li>
+                        <li>Operators and expressions</li>
+                        <li>Input and output</li>
+                        <li>Conditionals</li>
+                        <li>Debugging and test cases</li>
+                    </ul>
+                </p>
+                <p>
+                    Part A. Take your final code from Task One and elaborate the program to simulate
+                        the motion of the sprite at 1 m/s to the right from coordinate 0 to coordinate 10.
+                    <br/>Part B. This time, use a smaller time step and allow the user of your program to 
+                        specify the length of the time step. This process can be similar to how you 
+                        requested information for position in Task One.
+                    <br/>Part C. Finally, let’s give the user more options. Allow user to specify additional 
+                        motion variables such as velocity, starting point, and ending point of the simulation.
+                </p>
+                `
+            }, {
+                id: 'parta',
+                type: 'snap1',
+                name: 'Part A'
+            }, {
+                id: 'partb',
+                type: 'snap1',
+                name: 'Part B'
+            }, {
+                id: 'partc',
+                type: 'snap1',
+                name: 'Part C'
+            }]
+        };
+    } else if (id === '1d-steps') {
+        res = {
+            parent: {
+                id: '1dmotion',
+                name: '1D motion'
+            },
+            id: id,
+            name: 'Steps',
+            tabs: [{
+                id: 'desc',
+                type: 'desc',
+                name: 'Description',
+                markup: `
+                <p>
+                    So far, all of our actions happen as soon as the green flag is clicked. As a means
+                    of adding more structure to the program, let’s create a simulation step. To do so, 
+                    initial variable creation will still happen at the green flag (such as asking the
+                    user for input and setting the respective variable to the submitted answer), but the
+                    simulation actions will take place in a simulation step that is called once all
+                    variables are initialized.
+                    <br/><br/>Knowledge Goals for This Task:
+                    <ul>
+                        <li>Utilizing a simulation step</li>
+                    </ul>
+                </p>
+                <p>
+                    Part A. Use your code from Part C in Task Two and add the simulation step by separating
+                    the loop component from the main block of code and setting it to begin at “simulation step.”
+                    Keep in mind that the simulation step will only run when it is called, so you must
+                    include the appropriate call to the block of code that occurs when the green flag is clicked.
+                </p>
+                `
+            }, {
+                id: 'parta',
+                type: 'snap1',
+                name: 'Part A'
             }]
         };
     } else if (id === 'snaptest') {
@@ -339,8 +441,6 @@ C2Stem.prototype.addSnap2Tab = function (id, name, markup) {
         var world = new WorldMorph(canvas, false);
         window.snap = {};
         snap.world = world;
-        snap.ide = snap.world.children[0];
-        snap.stage = snap.ide.stage;
 
         window.addEventListener(
             "resize",

@@ -40,7 +40,8 @@ transform_cm.preprocess = function (concepts) {
             }
         }
     }
-    var stage = snap.stage;
+
+    var stage = ide.stage;
     console.log("Pre-existing global blocks");
     transform_cm.global_blocks = {};
     for (var block_id in stage.globalBlocks){
@@ -70,7 +71,8 @@ transform_cm.preprocess = function (concepts) {
 
 transform_cm.delete_variable = function (sprite, variable_name, isGlobal) {
     if (isGlobal) {
-        var stage = snap.stage;
+        var ide = snap.world.children[0];
+        var stage = ide.stage;
         stage.deleteVariable(variable_name);
     } else {
         sprite.deleteVariable(variable_name);
@@ -79,7 +81,8 @@ transform_cm.delete_variable = function (sprite, variable_name, isGlobal) {
 
 transform_cm.add_variable = function(sprite, variable_name, isGlobal){
     if (isGlobal) {
-        var stage = snap.stage;
+        var ide = snap.world.children[0];
+        var stage = ide.stage;
         stage.addVariable(variable_name, true);
     } else {
         sprite.addVariable(variable_name, false);
@@ -90,7 +93,8 @@ transform_cm.add_variable = function(sprite, variable_name, isGlobal){
 
 
 transform_cm.delete_block = function (sprite, block, isGlobal) {
-    var stage = snap.stage;
+    var ide = snap.world.children[0];
+    var stage = ide.stage;
     if (isGlobal) {
         idx = stage.globalBlocks.indexOf(block);
         if (idx !== -1) {
@@ -109,7 +113,7 @@ transform_cm.delete_block = function (sprite, block, isGlobal) {
 // this block need to be preexisting
 transform_cm.show_block = function(sprite, block, isGlobal){
     var ide = snap.world.children[0];
-    var stage = snap.stage;
+    var stage = ide.stage;
     if(isGlobal)
         stage.globalBlocks.push(block);
     else
