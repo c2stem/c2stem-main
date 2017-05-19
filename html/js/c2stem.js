@@ -419,18 +419,10 @@ C2Stem.prototype.addSnap1Tab = function (id, name, template) {
             }
         };
 
-        var world = new WorldMorph(snapWindow.document.getElementById('world'));
-        world.worldCanvas.focus();
-
-        var ide = new IDE_Morph();
-        ide.openIn(world);
-        c2stem.loadPublicProject(snapWindow, ide, template)
-
-        function loop() {
-            requestAnimationFrame(loop);
-            world.doOneCycle();
+        // this is really a hack, but how to get hold of the IDE?
+        snapWindow.loadMyProject = function (ide) {
+            c2stem.loadPublicProject(snapWindow, ide, template)
         }
-        loop();
     });
 
     $(snapWindow).on('beforeunload', function () {
