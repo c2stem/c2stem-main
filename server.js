@@ -31,13 +31,16 @@ function start(options) {
                 mailer_smpt: undefined
             }));
 
+            app.use('/projects.html',
+                express.static(__dirname + '/snap-cloud/views/projects.html'));
+
             app.use('/SnapPhysics', express.static(__dirname + '/snap-physics/'));
             app.use(express.static(__dirname + '/html/'));
             app.use(bodyParser.json());
 
             // event logging endpoint
             var events = db.collection('event-logs');
-            app.post('/events/record', function(req, res) {
+            app.post('/events/record', function (req, res) {
                 const event = req.body;
                 console.log('received event:', event);
                 return events.save(event)
