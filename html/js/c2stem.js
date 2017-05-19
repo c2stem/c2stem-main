@@ -370,7 +370,8 @@ C2Stem.prototype.addSnap2Tab = function (id, name, markup) {
 };
 
 C2Stem.prototype.addConcpetualModelingTab = function (id, name, markup) {
-    $("#tabs").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`);
+    $("#tabs-div ul").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`);
+    // $("#tabs").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`);
     $("body").append(`
         <div class="c2stem-cm" id="tab${id}">
             <canvas></canvas>
