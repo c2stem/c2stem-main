@@ -3,13 +3,13 @@
     "Time": {
       "name": "Time",
       "elementID": "env_time",
-      "selected": true,
+      "selected": false,
       "isSprite": false,
       "properties": {
         "environment_DeltaTime": {
           "name": "DeltaTime",
           "elementID": "environment_DeltaTime",
-          "selected": true
+          "selected": false
         },
         "environment_TimeFromStart": {
           "name": "TimeFromStart",
@@ -36,19 +36,19 @@
     "Point Mass": {
       "name": "Point Mass",
       "elementID": "point_mass",
-      "selected": true,
+      "selected": false,
       "isSprite": true,
       "isBuiltIn": false,
       "properties": {
         "point_mass_mass": {
           "name": "Mass",
           "elementID": "point_mass_mass",
-          "selected": true
+          "selected": false
         },
         "point_mass_position_x": {
           "name": "Position X",
           "elementID": "point_mass_position_x",
-          "selected": true
+          "selected": false
         },
         "point_mass_position_y": {
           "name": "Position Y",
@@ -58,12 +58,12 @@
         "Vpoint_mass_velocity_x": {
           "name": "Velocity X",
           "elementID": "point_mass_velocity_x",
-          "selected": true
+          "selected": false
         },
         "point_mass_velocity_y": {
           "name": "Velocity Y",
           "elementID": "point_mass_velocity_y",
-          "selected": true
+          "selected": false
         },
         "point_mass_speed": {
           "name": "Speed",
@@ -115,12 +115,12 @@
         "point_mass_update_position": {
           "name": "Update Position",
           "elementID": "point_mass_update_position",
-          "selected": true
+          "selected": false
         },
         "point_mass_update_velocity": {
           "name": "Update Velocity",
           "elementID": "point_mass_update_velocity",
-          "selected": true
+          "selected": false
         },
         "point_mass_update_acceleration": {
           "name": "Update Acceleration",

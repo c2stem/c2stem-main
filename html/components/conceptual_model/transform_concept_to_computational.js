@@ -9,14 +9,14 @@ transform_cm.init = function(concepts) {
 
 transform_cm.preprocess = function (concepts) {
     var ide = snap.world.children[0];
-    console.log("Pre-existing sprites");
+    //console.log("Pre-existing sprites");
     for (var s in ide.sprites.contents){
         var sprite = ide.sprites.contents[s];
-        console.log(sprite.name);
+        //console.log(sprite.name);
         if(sprite.name in concepts.agents){
             c = concepts.agents[sprite.name];
             c.sprite = sprite;
-            console.log("hiding sprite: ", c.name);
+            //console.log("hiding sprite: ", c.name);
             this.hide_sprite(c);
 
             c.blocks = {};
@@ -31,9 +31,12 @@ transform_cm.preprocess = function (concepts) {
             }
 
             c.variables = {};
+            sv = sprite.variables.vars;
             for (var var_name in sprite.variables.allNames()){
-                var variable = sprite.variables.vars[var_name];
-                c.variables[var_name] = variable;
+                if(sprite.variables.vars.hasOwnProperty(var_name)) {
+                    var variable = sprite.variables.vars[var_name];
+                    c.variables[var_name] = variable;
+                }
             }
             for(var b in c.variables){
                 transform_cm.delete_variable(sprite, c.variables[b], false);
@@ -42,7 +45,7 @@ transform_cm.preprocess = function (concepts) {
     }
 
     var stage = ide.stage;
-    console.log("Pre-existing global blocks");
+    //console.log("Pre-existing global blocks");
     transform_cm.global_blocks = {};
     for (var block_id in stage.globalBlocks){
         var block = stage.globalBlocks[block_id];
@@ -53,7 +56,7 @@ transform_cm.preprocess = function (concepts) {
         transform_cm.delete_block(null, transform_cm.global_blocks[b], true);
     }
 
-    console.log("Pre-existing global variables");
+    //console.log("Pre-existing global variables");
     transform_cm.global_variables = {};
     var sgv = stage.globalVariables().vars;
     for (var var_id in sgv){
@@ -75,6 +78,7 @@ transform_cm.delete_variable = function (sprite, variable_name, isGlobal) {
         var stage = ide.stage;
         stage.deleteVariable(variable_name);
     } else {
+        //console.log("delete variable local: ", variable_name);
         sprite.deleteVariable(variable_name);
     }
 };
@@ -181,7 +185,7 @@ transform_cm.hide_sprite =function(concept){
 
 
 transform_cm.transform_concept_by_rules = function(concept, mode, rules, environment_concepts ) {
-    console.log("plugin_transform_by_rules, mode:", mode, " running for agent:", concept.name);
+    //console.log("plugin_transform_by_rules, mode:", mode, " running for agent:", concept.name);
     for (var r in rules) {
         var rule = rules[r];
         if(rule.map_generated_for == undefined )
@@ -191,9 +195,9 @@ transform_cm.transform_concept_by_rules = function(concept, mode, rules, environ
         if(rule.map_generated_for[concept.name] != undefined)
             isGenerated = rule.map_generated_for[concept.name];
 
-        console.log("rule:", rule, "isGenerated:", "mode:", mode);
+        //console.log("rule:", rule, "isGenerated:", "mode:", mode);
         if (mode === "delete_all") {
-            console.log("delete_all");
+            //console.log("delete_all");
             if (isGenerated) {
                 transform_constructs_of_rule(rule, "delete");
                 delete rule.map_generated_for[concept.name];
@@ -201,19 +205,19 @@ transform_cm.transform_concept_by_rules = function(concept, mode, rules, environ
         } else {
             if (!isGenerated) {
                 if (isRuleSatisfied(rule, concept, environment_concepts)) {
-                    console.log("rule satisfied for creation", rule);
+                    //console.log("rule satisfied for creation", rule);
                     transform_constructs_of_rule(rule, "create");
                     rule.map_generated_for[concept.name] = true;
                 }else{
-                    console.log("Rule not satisfied");
+                    //console.log("Rule not satisfied");
                 }
             } else {
                 if (!isRuleSatisfied(rule, concept, environment_concepts)) {
-                    console.log("rule not satisfied so would delete existing constructs", rule);
+                    //console.log("rule not satisfied so would delete existing constructs", rule);
                     transform_constructs_of_rule(rule, "delete");
                     delete rule.map_generated_for[concept.name];
                 }else{
-                    console.log("Rule satisfied");
+                    //console.log("Rule satisfied");
                 }
             }
         }
@@ -222,23 +226,53 @@ transform_cm.transform_concept_by_rules = function(concept, mode, rules, environ
 }
 
 function transform_constructs_of_rule(rule, mode) {
-    console.log("transform_constructs_of_rule: ", rule, "mode:", mode);
+    //console.log("transform_constructs_of_rule: ", rule, "mode:", mode);
     for (var cid in rule.GeneratedConstructs) {
         var c = rule.GeneratedConstructs[cid];
         switch (c.type) {
             case "built_in":
                 if (mode === "create") {
-                    console.log("show primitive:", c.name, " under category:", c.category);
+                    //console.log("show primitive:", c.name, " under category:", c.category);
                     transform_cm.show_primitive(c.category, c.name);
                 }
                 else if (mode === "delete")
                 {
-                    console.log("hide primitive:", c.name, " under category:", c.category);
+                    //console.log("hide primitive:", c.name, " under category:", c.category);
                     transform_cm.hide_primitive(c.category, c.name);
                 }
                 break;
+            case "built_in_custom_variable":
+                if (mode === "create") {
+                    if(c.isGlobal)
+                        transform_cm.add_variable(null, c.name, true);
+                    else
+                        transform_cm.add_variable(c.sprite, c.name, false);
+                }
+                else if (mode === "delete")
+                {
+                    if(c.isGlobal)
+                        transform_cm.delete_variable(null, c.name, true);
+                    else
+                        transform_cm.delete_variable(c.sprite, c.name, false);
+                }
+                break;
+            case "built_in_custom_block":
+                if (mode === "create") {
+                    if(c.isGlobal)
+                        transform_cm.show_block(null, c.name, true);
+                    else
+                        transform_cm.show_block(c.sprite, c.name, false);
+                }
+                else if (mode === "delete")
+                {
+                    if(c.isGlobal)
+                        transform_cm.delete_block(null, c.name, true);
+                    else
+                        transform_cm.delete_block(c.sprite, c.name, false);
+                }
+                break;
             default:
-                console.log("transform_constructs_of_rule: rule has unrecognized construct type", rule);
+                //console.log("transform_constructs_of_rule: rule has unrecognized construct type", rule);
         }
     }
 }

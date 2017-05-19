@@ -213,6 +213,12 @@ function OnViewLoaded() {
     $("#cm_create_concept").click(function () {
         check_then_create_concept();
     });
+
+    $("#cm_preprocess").click(function () {
+        transform_cm.preprocess(concepts);
+    });
+
+
 }
 
 function populate_view() {
