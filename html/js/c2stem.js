@@ -135,7 +135,7 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
     } else if (id === 'devmod') {
         res = {
             id: id,
-            name: 'RDevelopment',
+            name: 'Development',
             tasks: [{
                 id: 'snaptest',
                 name: 'How to embed SNAP'
@@ -270,7 +270,7 @@ C2Stem.prototype.addSnap1Tab = function (id, name, markup) {
     $("#tabs-div ul").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`)
     $("body").append(`
         <div class="c2stem-snap1" id="tab${id}">
-            <iframe src="c2snap.html"></iframe>
+            <iframe src="mysnap.html"></iframe>
         </div>`);
 
     var snapWindow = $(`#tab${id} > iframe`).get(0);
