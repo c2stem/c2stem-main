@@ -18,6 +18,28 @@ transform_cm.preprocess = function (concepts) {
             c.sprite = sprite;
             console.log("hiding sprite: ", c.name);
             this.hide_sprite(c);
+
+            c.blocks = {};
+            for (var block_id in sprite.customBlocks){
+                var block = sprite.customBlocks[block_id];
+                c.blocks[block.name] = block;
+            }
+
+            c.variables = {};
+            for (var var_name in sprite.variables.allNames()){
+                var variable = sprite.variables.vars[var_name];
+                c.variables[var_name] = variable;
+            }
+        }
+    }
+    console.log("Pre-existing blocks");
+    for (var s in ide.sprites.contents){
+        var sprite = ide.sprites.contents[s];
+        if(sprite.name in concepts.agents){
+            c = concepts.agents[sprite.name];
+            c.sprite = sprite;
+            console.log("hiding sprite: ", c.name);
+            this.hide_sprite(c);
         }
     }
 };

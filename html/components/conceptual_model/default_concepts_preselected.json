@@ -218,9 +218,16 @@
           "type": "built_in"
         },
         {
-          "name": "test",
+          "name": "testVar",
           "category":"variables",
-          "type": "built_in"
+          "type": "built_in_custom_variable",
+          "isGlobal": "false"
+        },
+        {
+          "name": "testBlock",
+          "category":"variables",
+          "type": "built_in_custom_block",
+          "isGlobal": "false"
         }
       ]
     }
