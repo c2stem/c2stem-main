@@ -18,6 +18,8 @@ c2stem.loadTaskData(c2stem.query.id, function (err, res) {
                 c2stem.addSnap1Tab(tab.id, tab.name);
             } else if (tab.type === 'snap2') {
                 c2stem.addSnap2Tab(tab.id, tab.name);
+            } else if (tab.type === 'cm') {
+                c2stem.addConcpetualModelingTab(tab.id, tab.name);
             }
         }
 

@@ -7,10 +7,10 @@ function dao_conceptual_model() {
     data_path = 'components/conceptual_model/default_concepts_preselected.json';
     // data_path = 'components/conceptual_model/default_concepts_no_environment.json';
     $.getJSON(data_path, function (data) {
-        //console.log("conceptual model data:")
-        //console.log(data);
-        concepts = data
-        //console.log("total agents: ", Object.keys(concepts.agents).length);
+        // console.log("conceptual model data:")
+        // console.log(data);
+        concepts = data;
+        // console.log("total agents: ", Object.keys(concepts.agents).length);
     });
 }
 

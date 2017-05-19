@@ -31,7 +31,7 @@ transform_cm.delete_block = function (sprite, block, isGlobal) {
             stage.globalBlocks.splice(idx, 1);
         }
     } else {
-        idx = sprite.customBlocks.indexOf(myself.definition);
+        idx = sprite.customBlocks.indexOf(block);
         if (idx !== -1) {
             sprite.customBlocks.splice(idx, 1);
         }
@@ -68,8 +68,8 @@ transform_cm.show_primitive = function(cat, prim){
 
 transform_cm.create_new_sprite = function(concept) {
     var ide = snap.world.children[0];
-    var sprite = new snap.SpriteMorph(ide.globalVariables),
-        rnd = snap.Process.prototype.reportRandom;
+    var sprite = new SpriteMorph(ide.globalVariables),
+        rnd = Process.prototype.reportRandom;
 
     sprite.name = concept.name;
     sprite.setCenter(ide.stage.center());

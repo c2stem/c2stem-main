@@ -130,6 +130,9 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
             }, {
                 id: 't2',
                 name: 'Challenge problem'
+            }, {
+                id: 't4',
+                name: 'Conceptual Modeling'
             }]
         };
     } else if (id === 'devmod') {
@@ -222,6 +225,33 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 name: 'Snap 2'
             }]
         };
+    } else if (id === 't4') {
+        res = {
+            parent: {
+                id: '1dmotion',
+                name: '1D motion'
+            },
+            id: id,
+            name: 'Conceptual Modeling Demo',
+            tabs: [{
+                id: 'b6',
+                type: 'desc',
+                name: 'Description',
+                markup: `
+                <p>
+                    Conceptual modeling task description goes here.
+                </p>
+                `
+            }, {
+                id: 'cm',
+                type: 'cm',
+                name: 'Conceptual'
+            }, {
+                id: 'b8',
+                type: 'snap2',
+                name: 'Computational'
+            }]
+        };
     } else {
         res = {
             parent: {
@@ -310,6 +340,8 @@ C2Stem.prototype.addSnap2Tab = function (id, name, markup) {
 
         var canvas = $(`#tab${id} > canvas`).get(0);
         var world = new WorldMorph(canvas, false);
+        window.snap = {};
+        snap.world = world;
 
         window.addEventListener(
             "resize",
@@ -338,4 +370,13 @@ C2Stem.prototype.addSnap2Tab = function (id, name, markup) {
         }
         loop();
     });
-}
+};
+
+C2Stem.prototype.addConcpetualModelingTab = function (id, name, markup) {
+    $("#tabs").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`);
+    $("body").append(`
+        <div class="c2stem-cm" id="tab${id}">
+            <canvas></canvas>
+        </div>`);
+    load_components();
+};
