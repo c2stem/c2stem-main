@@ -339,6 +339,8 @@ C2Stem.prototype.addSnap2Tab = function (id, name, markup) {
         var world = new WorldMorph(canvas, false);
         window.snap = {};
         snap.world = world;
+        snap.ide = snap.world.children[0];
+        snap.stage = snap.ide.stage;
 
         window.addEventListener(
             "resize",

@@ -21,8 +21,13 @@ transform_cm.preprocess = function (concepts) {
 
             c.blocks = {};
             for (var block_id in sprite.customBlocks){
-                var block = sprite.customBlocks[block_id];
-                c.blocks[block.name] = block;
+                if(sprite.customBlocks.hasOwnProperty(block_id)){
+                    var block = sprite.customBlocks[block_id];
+                    c.blocks[block.spec] = block;
+                }
+            }
+            for(var b in c.blocks){
+                transform_cm.delete_block(sprite, c.blocks[b], false);
             }
 
             c.variables = {};
@@ -30,22 +35,61 @@ transform_cm.preprocess = function (concepts) {
                 var variable = sprite.variables.vars[var_name];
                 c.variables[var_name] = variable;
             }
+            for(var b in c.variables){
+                transform_cm.delete_variable(sprite, c.variables[b], false);
+            }
         }
     }
-    console.log("Pre-existing blocks");
-    for (var s in ide.sprites.contents){
-        var sprite = ide.sprites.contents[s];
-        if(sprite.name in concepts.agents){
-            c = concepts.agents[sprite.name];
-            c.sprite = sprite;
-            console.log("hiding sprite: ", c.name);
-            this.hide_sprite(c);
+    var stage = snap.stage;
+    console.log("Pre-existing global blocks");
+    transform_cm.global_blocks = {};
+    for (var block_id in stage.globalBlocks){
+        var block = stage.globalBlocks[block_id];
+        var block_name = block.spec;
+        transform_cm.global_blocks[block_name] = block;
+    }
+    for(var b in transform_cm.global_blocks){
+        transform_cm.delete_block(null, transform_cm.global_blocks[b], true);
+    }
+
+    console.log("Pre-existing global variables");
+    transform_cm.global_variables = {};
+    var sgv = stage.globalVariables().vars;
+    for (var var_id in sgv){
+        if(sgv.hasOwnProperty(var_id)) {
+            var variable = sgv[var_id];
+            transform_cm.global_variables[var_id] = variable;
         }
+    }
+
+    for(var variable_name in transform_cm.global_variables){
+        transform_cm.delete_variable(null, variable_name, true);
     }
 };
 
+
+transform_cm.delete_variable = function (sprite, variable_name, isGlobal) {
+    if (isGlobal) {
+        var stage = snap.stage;
+        stage.deleteVariable(variable_name);
+    } else {
+        sprite.deleteVariable(variable_name);
+    }
+};
+
+transform_cm.add_variable = function(sprite, variable_name, isGlobal){
+    if (isGlobal) {
+        var stage = snap.stage;
+        stage.addVariable(variable_name, true);
+    } else {
+        sprite.addVariable(variable_name, false);
+    }
+    ide.flushPaletteCache();
+    ide.refreshPalette();
+};
+
+
 transform_cm.delete_block = function (sprite, block, isGlobal) {
-    var ide = snap.world.children[0];
     var stage = snap.stage;
     if (isGlobal) {
         idx = stage.globalBlocks.indexOf(block);
