@@ -24,21 +24,6 @@
 	<script type="text/javascript" src="/SnapPhysics/physics.js"></script>
 	<script type="text/javascript" src="/SnapPhysics/FileSaver.min.js"></script>
 	<script type="text/javascript" src="js/mysnap.js"></script>
-	<script type="text/javascript">
-		var world;
-		window.onload = function () {
-			world = new WorldMorph(document.getElementById('world'));
-			world.worldCanvas.focus();
-			new IDE_Morph().openIn(world);
-			loop();
-		};
-
-		function loop() {
-			requestAnimationFrame(loop);
-			world.doOneCycle();
-		}
-
-	</script>
 </head>
 
 <body style="margin: 0;">

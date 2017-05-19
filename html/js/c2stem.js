@@ -133,6 +133,9 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
             }, {
                 id: '1d-steps',
                 name: 'One, Two, Step'
+            }, {
+                id: '1d-simple',
+                name: 'Start and Stop'
             }]
         };
     } else if (id === 'devmod') {
@@ -306,6 +309,29 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 name: 'Part A'
             }]
         };
+    } else if (id === '1d-simple') {
+        res = {
+            parent: {
+                id: '1dmotion',
+                name: '1D motion'
+            },
+            id: id,
+            name: 'Start and Stop',
+            tabs: [{
+                id: 'desc',
+                type: 'desc',
+                name: 'Description',
+                markup: '<p>Speed up and stop at the stop sign.</p>'
+            }, {
+                id: 'parta',
+                type: 'snap1',
+                name: 'Part A',
+                template: {
+                    user: 'Miklos',
+                    proj: 'simple'
+                }
+            }]
+        };
     } else if (id === 'snaptest') {
         res = {
             parent: {
@@ -368,7 +394,9 @@ C2Stem.prototype.addDescriptionTab = function (id, name, markup) {
     $("body").append(`<div class="c2stem-desc" id="tab${id}">${markup}</div>`);
 }
 
-C2Stem.prototype.addSnap1Tab = function (id, name, markup) {
+C2Stem.prototype.addSnap1Tab = function (id, name, template) {
+    var c2stem = this;
+
     $("#tabs-div ul").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`)
     $("body").append(`
         <div class="c2stem-snap1" id="tab${id}">
@@ -390,6 +418,19 @@ C2Stem.prototype.addSnap1Tab = function (id, name, markup) {
                 return snapWindow.ActionManager.prototype.applyEvent.call(this, event);
             }
         };
+
+        var world = new WorldMorph(snapWindow.document.getElementById('world'));
+        world.worldCanvas.focus();
+
+        var ide = new IDE_Morph();
+        ide.openIn(world);
+        c2stem.loadPublicProject(snapWindow, ide, template)
+
+        function loop() {
+            requestAnimationFrame(loop);
+            world.doOneCycle();
+        }
+        loop();
     });
 
     $(snapWindow).on('beforeunload', function () {
@@ -397,7 +438,9 @@ C2Stem.prototype.addSnap1Tab = function (id, name, markup) {
     });
 }
 
-C2Stem.prototype.addSnap2Tab = function (id, name, markup) {
+C2Stem.prototype.addSnap2Tab = function (id, name, template) {
+    var c2stem = this;
+
     $("#tabs-div ul").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`)
     $("body").append(`
         <div class="c2stem-snap2" id="tab${id}">
@@ -419,9 +462,10 @@ C2Stem.prototype.addSnap2Tab = function (id, name, markup) {
         );
 
         world.worldCanvas.focus();
+
         var ide = new IDE_Morph();
         ide.openIn(world);
-        // world.updateSize();
+        c2stem.loadPublicProject(window, ide, template)
 
         // Resize on tab change ('display' attr set to 'none')
         var detectTabShown = new MutationObserver(function () {
@@ -436,5 +480,26 @@ C2Stem.prototype.addSnap2Tab = function (id, name, markup) {
             world.doOneCycle();
         }
         loop();
+    });
+}
+
+C2Stem.prototype.loadPublicProject = function (snapWin, snapIde, template) {
+    if (!template || !snapWin.SnapCloud) {
+        return;
+    }
+
+    console.log('loading template', template);
+    var cloud = snapWin.SnapCloud;
+    cloud.getPublicProject(cloud.encodeDict({
+        Username: template.user,
+        ProjectName: template.proj
+    }), function (projectData) {
+        if (projectData.indexOf('<snapdata') === 0) {
+            snapIde.rawOpenCloudDataString(projectData);
+        } else {
+            console.log('INVALID', projectData)
+        }
+    }, function (err) {
+        console.log('ERROR: ' + err);
     });
 }

@@ -17,9 +17,9 @@ c2stem.loadTaskData(c2stem.query.id, function (err, res) {
             if (tab.type === 'desc') {
                 c2stem.addDescriptionTab(tab.id, tab.name, tab.markup);
             } else if (tab.type === 'snap1') {
-                c2stem.addSnap1Tab(tab.id, tab.name);
+                c2stem.addSnap1Tab(tab.id, tab.name, tab.template);
             } else if (tab.type === 'snap2') {
-                c2stem.addSnap2Tab(tab.id, tab.name);
+                c2stem.addSnap2Tab(tab.id, tab.name, tab.template);
             }
         }
 

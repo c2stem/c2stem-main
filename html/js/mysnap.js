@@ -52,7 +52,7 @@ IDE_Morph.prototype.resourceURL = function () {
 
 // user name is not stored locally, server checks if connected
 Cloud.prototype.reconnect = function (callBack, errorCall) {
-    this.login(null, null, callBack, errorCall);
+    this.login('', '', callBack, errorCall);
 };
 
 // disconnect is disabled, called sometimes
