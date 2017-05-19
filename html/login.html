@@ -60,6 +60,9 @@
     var c2stem = new C2Stem();
 
     $(document).ready(function () {
+        // fields descriptors are sometimes not lifted
+        Materialize.updateTextFields();
+
         c2stem.login(null, null, null, function (err) {
             if (!err) {
                 window.location.href = "index.html";

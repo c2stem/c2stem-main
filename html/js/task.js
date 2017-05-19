@@ -12,31 +12,6 @@ c2stem.loadTaskData(c2stem.query.id, function (err, res) {
     }
 });
 
-// update the world size on tab open and resize
-WorldMorph.prototype.updateSize = function () {
-    var clientWidth = this.worldCanvas.clientWidth,
-        clientHeight = this.worldCanvas.clientHeight,
-        myself = this;
-
-    console.log('updating size to', clientWidth, 'x', clientHeight);
-    if (clientWidth && clientHeight && (
-            this.worldCanvas.width !== clientWidth ||
-            this.worldCanvas.height !== clientHeight)) {
-
-        this.worldCanvas.width = clientWidth;
-        this.worldCanvas.height = clientHeight;
-
-        this.setWidth(clientWidth);
-        this.setHeight(clientHeight);
-
-        this.children.forEach(function (child) {
-            if (child.reactToWorldResize) {
-                child.reactToWorldResize(myself.bounds.copy());
-            }
-        });
-    }
-};
-
 var ide = new IDE_Morph();
 
 $(document).ready(function () {
