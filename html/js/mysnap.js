@@ -25,7 +25,7 @@ WorldMorph.prototype.updateSize = function () {
 
 // Hide cloud button
 IDE_Morph.prototype.c2StemCreateControlBar = IDE_Morph.prototype.createControlBar;
-IDE_Morph.prototype.createControlBar = function () {
+IDE_Morph.prototype.xcreateControlBar = function () {
     this.c2StemCreateControlBar();
 
     this.controlBar.c2StemFixLayout = this.controlBar.fixLayout;
@@ -38,7 +38,7 @@ IDE_Morph.prototype.createControlBar = function () {
 
 // Hide cloud button
 IDE_Morph.prototype.c2StemToggleAppMode = IDE_Morph.prototype.toggleAppMode;
-IDE_Morph.prototype.toggleAppMode = function (appMode) {
+IDE_Morph.prototype.xtoggleAppMode = function (appMode) {
     this.c2StemToggleAppMode(appMode);
     this.controlBar.cloudButton.hide();
 }
