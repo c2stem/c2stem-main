@@ -14,7 +14,7 @@
         <div class="nav-wrapper c2stem-nav-wrapper">
             <a href="index.html" class="breadcrumb">Home</a>
             <a id="modulelink" href="module.html" class="breadcrumb">Module</a>
-            <ul class="right hide-on-med-and-down">
+            <ul class="right">
                 <li><a id="logout" href="login.html">Logout</a></li>
             </ul>
         </div>
@@ -30,8 +30,8 @@
 <script type="text/javascript" src="js/c2stem.js"></script>
 
 <script type="text/javascript">
-    var c2stem = new C2stem();
-    c2stem.fixupLogout();
+    var c2stem = new C2Stem();
+    c2stem.fixupLogoutLink();
 
     function getTaskItem(task) {
         return `
@@ -43,10 +43,12 @@
     }
 
     c2stem.loadModuleData(c2stem.query.id, function (err, res) {
-        if (err) {
-            Materialize.toast(err || 'Could not load tasks');
+        if (err === "ERROR: Not logged in") {
+            window.location.href = "login.html";
+        } else if (err) {
+            Materialize.toast(err || 'Could not load module');
         } else {
-            c2stem.fixupModule(res.id, res.name);
+            c2stem.fixupModuleLink(res.id, res.name);
 
             var div = $("#tasks");
             for (var i = 0; i < res.tasks.length; i++)

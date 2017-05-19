@@ -10,13 +10,13 @@
 
 <body>
     <h5 style="height:200px"></h5>
-    <h5 class="center">Please login to your C2STEM account</h5>
     <div class="container">
         <div class="row">
             <div class="col s12 m8 offset-m2 l6 offset-l3">
+                <h5 class="center">Please enter the following information to register or reset your password</h5>
                 <div class="card">
                     <div class="card-content">
-                        <form id="form" action="index.html">
+                        <form id="form" action="login.html">
                             <div class="row">
                                 <div class="input-field">
                                     <input id="username" type="text">
@@ -25,24 +25,16 @@
                             </div>
                             <div class="row">
                                 <div class="input-field">
-                                    <input id="password" type="password">
-                                    <label for="password">Password</label>
+                                    <input id="email" type="email">
+                                    <label for="email">Email</label>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col s6">
-                                    <p>
-                                        <input id="remember" type="checkbox">
-                                        <label for="remember">Remember me</label>
-                                    </p>
-                                </div>
-                                <div class="col s6">
-                                    <p style="float: right">
-                                        <a class="red-text" href="signup.html"><b>Register or reset password</b></a>
-                                    </p>
-                                </div>
+                                <p style="float: right">
+                                    <a class="red-text" href="login.html"><b>I remember my password</b></a>
+                                </p>
                             </div>
-                            <button id="login" class="btn waves-effect waves-light" type="submit" name="action">Login</button>
+                            <button id="register" class="btn waves-effect waves-light" type="submit">Register</button>
                         </form>
                     </div>
                 </div>
@@ -59,25 +51,14 @@
 <script type="text/javascript">
     var c2stem = new C2Stem();
 
-    $(document).ready(function () {
-        // fields descriptors are sometimes not lifted
-        Materialize.updateTextFields();
-
-        c2stem.login(null, null, null, function (err) {
-            if (!err) {
-                window.location.href = "index.html";
-            }
-        });
-    });
-
-    $("#login").click(function (event) {
+    $("#register").click(function (event) {
         event.preventDefault();
-        c2stem.login($("#username").val(), $("#password").val(), $("#remember").val(),
+        c2stem.signup($("#username").val(), $("#email").val(),
             function (err) {
                 if (err) {
                     Materialize.toast(err);
                 } else {
-                    window.location.href = "index.html";
+                    window.location.href = "login.html";
                 }
             });
     });

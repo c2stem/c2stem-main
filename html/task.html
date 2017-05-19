@@ -15,100 +15,39 @@
             <a href="index.html" class="breadcrumb">Home</a>
             <a id="modulelink" href="module.html" class="breadcrumb">Module</a>
             <a id="tasklink" href="task.html" class="breadcrumb">Task</a>
-            <ul class="right hide-on-med-and-down">
+            <ul class="right">
                 <li><a id="logout" href="login.html">Logout</a></li>
             </ul>
         </div>
         <div class="nav-content">
-            <ul class="tabs tabs-transparent">
-                <li class="tab"><a class="active" href="#description">Description</a></li>
-                <li class="tab"><a href="#concepts">Concepts</a></li>
-                <li class="tab"><a href="#computation">Computation</a></li>
-                <li class="tab"><a href="#assessment">Assessment</a></li>
+            <ul id="tabs" class="tabs tabs-transparent">
             </ul>
         </div>
     </nav>
-    <div id="description">
-        <p>Module description goes here</p>
-    </div>
-    <div id="concepts">
-        <p>Conceptual modeling goes here</p>
-    </div>
-    <div class="c2stem-snap" id="computation">
-        <iframe id="snapframe" src="/SnapPhysics/snap.html"></iframe>
-    </div>
-    <div id="assessment">
-        <p>Assessment goes here</p>
-    </div>
 </body>
 
-<script type="text/javascript " src="https://code.jquery.com/jquery-2.1.1.min.js "></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js "></script>
-<script type="text/javascript" src="lib/ejs_production.js"></script>
+<script type="text/javascript " src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<script type="text/javascript" src="/SnapPhysics/morphic.js"></script>
+<script type="text/javascript" src="/SnapPhysics/widgets.js"></script>
+<script type="text/javascript" src="/SnapPhysics/blocks.js"></script>
+<script type="text/javascript" src="/SnapPhysics/threads.js"></script>
+<script type="text/javascript" src="/SnapPhysics/objects.js"></script>
+<script type="text/javascript" src="/SnapPhysics/gui.js"></script>
+<script type="text/javascript" src="/SnapPhysics/paint.js"></script>
+<script type="text/javascript" src="/SnapPhysics/lists.js"></script>
+<script type="text/javascript" src="/SnapPhysics/byob.js"></script>
+<script type="text/javascript" src="/SnapPhysics/tables.js"></script>
+<script type="text/javascript" src="/SnapPhysics/xml.js"></script>
+<script type="text/javascript" src="/SnapPhysics/store.js"></script>
+<script type="text/javascript" src="/SnapPhysics/locale.js"></script>
+<script type="text/javascript" src="/SnapPhysics/cloud.js"></script>
+<script type="text/javascript" src="/SnapPhysics/sha512.js"></script>
+<script type="text/javascript" src="/SnapPhysics/p2.js"></script>
+<script type="text/javascript" src="/SnapPhysics/physics.js"></script>
+<script type="text/javascript" src="/SnapPhysics/FileSaver.min.js"></script>
 <script type="text/javascript" src="js/c2stem.js"></script>
-<script type="text/javascript " src="js/actions.js "></script>
-
-<!--Components-->
-
-<!--Conceptual Model-->
-<script type="text/javascript" src="components/conceptual_model/dao_conceptual_model.js"></script>
-<script type="text/javascript" src="components/conceptual_model/transform_concept_to_computational.js"></script>
-<script type="text/javascript" src="components/conceptual_model/controller_conceptual_model.js"></script>
-<!--End Conceptual Model-->
-
-<script type="text/javascript" src="components/component_root.js"></script>
-<!--End Components-->
-
-
-<script type="text/javascript">
-    var c2stem = new C2stem();
-    c2stem.fixupLogout();
-
-    c2stem.loadTaskData(c2stem.query.id, function (err, res) {
-        if (err) {
-            Materialize.toast(err || 'Could not load tasks');
-        } else {
-            c2stem.fixupModule(res.parent.id, res.parent.name);
-            c2stem.fixupTask(res.id, res.name);
-        }
-    });
-
-    var SNAP_ID = 'computation';
-    var snap = $("#computation > iframe").get(0);
-    snap = snap.contentWindow || snap.contentDocument.defaultView;
-    $(snap).on('load', function () {
-        load_components();
-        // set the database backend
-        snap.SnapCloud.url = location.origin + "/SnapCloud/";
-
-        // Register the computational action manager
-        C2StemActions.register(SNAP_ID, snap.SnapActions);
-
-        // Configure SnapActions to route everything through the global manager
-        C2StemActions.applyEvent = function (event) {
-            if (!event.namespace) { // route all internal events through C2StemActions
-                event.namespace = SNAP_ID;
-                return C2StemActions.applyEvent(event);
-            } else {
-                return snap.ActionManager.prototype.applyEvent.call(this, event);
-            }
-        };
-
-
-        snap.load_project_xml = function(xml) {
-            var ide = snap.world.children[0];
-            ide.droppedText(xml);
-        };
-        snap.export_project_to_xml_str = function() {
-            var ide = snap.world.children[0];
-            return ide.serializer.serialize(ide.stage);
-        };
-    });
-
-    $(snap).on('beforeunload', function () {
-        C2StemActions.unregister(SNAP_ID);
-    });
-
-</script>
-
+<script type="text/javascript" src="js/actions.js"></script>
+<script type="text/javascript" src="js/c2snap.js"></script>
+<script type="text/javascript" src="js/task.js"></script>
 </html>
