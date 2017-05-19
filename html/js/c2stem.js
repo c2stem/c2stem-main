@@ -262,12 +262,12 @@ C2Stem.prototype.fixupTaskLink = function (id, name) {
 }
 
 C2Stem.prototype.addDescriptionTab = function (id, name, markup) {
-    $("#tabs").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`)
+    $("#tabs-div ul").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`)
     $("body").append(`<div class="c2stem-desc" id="tab${id}">${markup}</div>`);
 }
 
 C2Stem.prototype.addSnap1Tab = function (id, name, markup) {
-    $("#tabs").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`)
+    $("#tabs-div ul").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`)
     $("body").append(`
         <div class="c2stem-snap1" id="tab${id}">
             <iframe src="c2snap.html"></iframe>
@@ -296,7 +296,7 @@ C2Stem.prototype.addSnap1Tab = function (id, name, markup) {
 }
 
 C2Stem.prototype.addSnap2Tab = function (id, name, markup) {
-    $("#tabs").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`)
+    $("#tabs-div ul").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`)
     $("body").append(`
         <div class="c2stem-snap2" id="tab${id}">
             <canvas></canvas>
