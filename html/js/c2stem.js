@@ -136,6 +136,9 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
             }, {
                 id: '1d-simple',
                 name: 'Start and Stop'
+            }, {
+                id: '1d-cm',
+                name: 'Conceptual Modeling Demo'
             }]
         };
     } else if (id === 'devmod') {
@@ -350,6 +353,31 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 name: 'Snap 2'
             }]
         };
+    }
+    else if (id === '1d-cm') {
+        res = {
+            parent: {
+                id: '1dmotion',
+                name: '1D motion'
+            },
+            id: id,
+            name: 'Conceptual Modeling Demo',
+            tabs: [{
+                id: 'desc',
+                type: 'desc',
+                name: 'Description',
+                markup: '<p>Conceptual modeling task description goes here.</p>'
+            }, {
+                id: 'cm',
+                type: 'cm',
+                name: 'Conceptual',
+                data: 'default_concepts_preselected'
+            }, {
+                id: 'compmodel',
+                type: 'snap2',
+                name: 'Computational'
+            }]
+        };
     } else {
         res = {
             parent: {
@@ -444,6 +472,8 @@ C2Stem.prototype.addSnap2Tab = function (id, name, template) {
 
         var canvas = $(`#tab${id} > canvas`).get(0);
         var world = new WorldMorph(canvas, false);
+        window.snap = {};
+        snap.world = world;
 
         window.addEventListener(
             "resize",
@@ -473,7 +503,16 @@ C2Stem.prototype.addSnap2Tab = function (id, name, template) {
         }
         loop();
     });
-}
+};
+
+C2Stem.prototype.addConcpetualModelingTab = function (id, name, data) {
+    $("#tabs-div ul").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`);
+    $("body").append(`
+        <div class="c2stem-cm" id="tab${id}">
+            <canvas></canvas>
+        </div>`);
+    load_conceptual_model(`tab${id}`, data);
+};
 
 C2Stem.prototype.loadPublicProject = function (snapWin, snapIde, template) {
     if (!template || !snapWin.SnapCloud) {
@@ -494,4 +533,4 @@ C2Stem.prototype.loadPublicProject = function (snapWin, snapIde, template) {
     }, function (err) {
         console.log('ERROR: ' + err);
     });
-}
+};
