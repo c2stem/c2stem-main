@@ -134,11 +134,11 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
                 id: '1d-steps',
                 name: 'One, Two, Step'
             }, {
-                id: 'cm',
-                name: 'Conceptual Modeling Demo'
-            }, {
                 id: '1d-simple',
                 name: 'Start and Stop'
+            }, {
+                id: '1d-cm',
+                name: 'Conceptual Modeling Demo'
             }]
         };
     } else if (id === 'devmod') {
@@ -353,7 +353,8 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 name: 'Snap 2'
             }]
         };
-    } else if (id === 't4') {
+    }
+    else if (id === '1d-cm') {
         res = {
             parent: {
                 id: '1dmotion',
@@ -362,20 +363,17 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
             id: id,
             name: 'Conceptual Modeling Demo',
             tabs: [{
-                id: 'b6',
+                id: 'desc',
                 type: 'desc',
                 name: 'Description',
-                markup: `
-                <p>
-                    Conceptual modeling task description goes here.
-                </p>
-                `
+                markup: '<p>Conceptual modeling task description goes here.</p>'
             }, {
                 id: 'cm',
                 type: 'cm',
-                name: 'Conceptual'
+                name: 'Conceptual',
+                data: 'default_concepts_preselected'
             }, {
-                id: 'b8',
+                id: 'compmodel',
                 type: 'snap2',
                 name: 'Computational'
             }]
@@ -507,14 +505,13 @@ C2Stem.prototype.addSnap2Tab = function (id, name, template) {
     });
 };
 
-C2Stem.prototype.addConcpetualModelingTab = function (id, name, markup) {
+C2Stem.prototype.addConcpetualModelingTab = function (id, name, data) {
     $("#tabs-div ul").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`);
-    // $("#tabs").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`);
     $("body").append(`
         <div class="c2stem-cm" id="tab${id}">
             <canvas></canvas>
         </div>`);
-    load_components();
+    load_conceptual_model(`tab${id}`, data);
 };
 
 C2Stem.prototype.loadPublicProject = function (snapWin, snapIde, template) {

@@ -1,8 +1,18 @@
 /**
  * Created by hasanm on 5/9/2017.
  */
-function conceptual_model_load_data(){
-    dao_conceptual_model();
+
+
+function load_conceptual_model(conceptual_html_element_id, data_path) {
+    // load data of all the modules
+    console.log("load_conceptual_model from", data_path, " into html elementID: ", conceptual_html_element_id);
+    conceptual_model_load_data(data_path, function () {
+        conceptual_model_load_views(conceptual_html_element_id);
+    });
+}
+
+function conceptual_model_load_data(data_path, callback){
+    dao_conceptual_model(data_path, callback);
 }
 
 
@@ -25,7 +35,7 @@ function handle_property_events(selected_concept, selected_prop_key) {
     var $container_prop_row = $("#row_prop_"+selected_concept.elementID);
 
     //console.log(selected_prop_key,"selected_property",selected_property);
-    var html = new EJS({url: 'components/conceptual_model/template_prop_row.ejs'}).render(selected_property);
+    var html = new EJS({url: 'components/conceptual_model/templates/template_prop_row.ejs'}).render(selected_property);
     $container_prop_row.append(html);
     selected_property.selected = true;
 
@@ -65,7 +75,7 @@ function handle_behavior_events(selected_concept, selected_behavior_key) {
     // check prop delete handler
     // upon delete make prop reappear in the list and delete prop row
     var $container_be_row = $("#row_be_"+selected_concept.elementID);
-    var html = new EJS({url: 'components/conceptual_model/template_prop_row.ejs'}).render(selected_behavior);
+    var html = new EJS({url: 'components/conceptual_model/templates/template_prop_row.ejs'}).render(selected_behavior);
     $container_be_row.append(html);
     selected_behavior.selected = true;
     //console.log("selected_behavior",selected_behavior);
@@ -104,7 +114,7 @@ function create_new_concept(selected_concept_key, selected_concept) {
     //console.log("creating new concept: " + selected_concept);
     data = {};
     data.concept = selected_concept;
-    var html = new EJS({url: 'components/conceptual_model/template_concept.ejs'}).render(data);
+    var html = new EJS({url: 'components/conceptual_model/templates/template_concept.ejs'}).render(data);
     var $concept_container = $('#concept_container');
     $concept_container.append(html);
 
