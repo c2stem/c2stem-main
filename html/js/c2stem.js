@@ -1,3 +1,6 @@
+window.snap = {}
+window.world = 'shit';
+
 function C2Stem(snapCloudUrl) {
     this.snapCloudUrl = snapCloudUrl || "";
     this.withCredentials = false;
@@ -353,8 +356,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 name: 'Snap 2'
             }]
         };
-    }
-    else if (id === '1d-cm') {
+    } else if (id === '1d-cm') {
         res = {
             parent: {
                 id: '1dmotion',
@@ -374,7 +376,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 data: 'default_concepts_preselected'
             }, {
                 id: 'compmodel',
-                type: 'snap2',
+                type: 'snap1',
                 name: 'Computational'
             }]
         };
@@ -448,15 +450,21 @@ C2Stem.prototype.addSnap1Tab = function (id, name, template) {
         };
 
         // this is really a hack, but how to get hold of the IDE?
-        snapWindow.loadMyProject = function (ide) {
-            c2stem.loadPublicProject(snapWindow, ide, template)
+        snapWindow.loadMyProject = function (ide, callback) {
+            window.snap.world = ide.parent;
+            c2stem.loadPublicProject(snapWindow, ide, template, function (err) {
+                if (window.snap.callme) {
+                    window.snap.callme();
+                }
+                callback(err);
+            });
         }
     });
 
     $(snapWindow).on('beforeunload', function () {
         C2StemActions.unregister('snap' + id);
     });
-}
+};
 
 C2Stem.prototype.addSnap2Tab = function (id, name, template) {
     var c2stem = this;
@@ -487,7 +495,17 @@ C2Stem.prototype.addSnap2Tab = function (id, name, template) {
 
         var ide = new IDE_Morph();
         ide.openIn(world);
-        c2stem.loadPublicProject(window, ide, template)
+        c2stem.loadPublicProject(window, ide, template, function (err) {
+            if (err) {
+                console.log(err);
+            } else {
+                function loop() {
+                    requestAnimationFrame(loop);
+                    world.doOneCycle();
+                }
+                loop();
+            }
+        });
 
         // Resize on tab change ('display' attr set to 'none')
         var detectTabShown = new MutationObserver(function () {
@@ -496,12 +514,6 @@ C2Stem.prototype.addSnap2Tab = function (id, name, template) {
         detectTabShown.observe($(`#tab${id}`).get(0), {
             attributes: true
         });
-
-        function loop() {
-            requestAnimationFrame(loop);
-            world.doOneCycle();
-        }
-        loop();
     });
 };
 
@@ -509,28 +521,33 @@ C2Stem.prototype.addConcpetualModelingTab = function (id, name, data) {
     $("#tabs-div ul").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`);
     $("body").append(`
         <div class="c2stem-cm" id="tab${id}">
-            <canvas></canvas>
         </div>`);
-    load_conceptual_model(`tab${id}`, data);
+
+    window.snap.callme = function () {
+        load_conceptual_model(`tab${id}`, data);
+    }
 };
 
-C2Stem.prototype.loadPublicProject = function (snapWin, snapIde, template) {
-    if (!template || !snapWin.SnapCloud) {
-        return;
+C2Stem.prototype.loadPublicProject = function (snapWin, snapIde, template, callback) {
+    if (!snapWin.SnapCloud) {
+        callback('snapcloud is not registered');
+    } else if (!template) {
+        callback('missing template');
+    } else {
+        console.log('loading template', template);
+        var cloud = snapWin.SnapCloud;
+        cloud.getPublicProject(cloud.encodeDict({
+            Username: template.user,
+            ProjectName: template.proj
+        }), function (projectData) {
+            if (projectData.indexOf('<snapdata') === 0) {
+                snapIde.rawOpenCloudDataString(projectData);
+                callback(null);
+            } else {
+                callback('Invalid project');
+            }
+        }, function (err) {
+            callback('ERROR: ' + err);
+        });
     }
-
-    console.log('loading template', template);
-    var cloud = snapWin.SnapCloud;
-    cloud.getPublicProject(cloud.encodeDict({
-        Username: template.user,
-        ProjectName: template.proj
-    }), function (projectData) {
-        if (projectData.indexOf('<snapdata') === 0) {
-            snapIde.rawOpenCloudDataString(projectData);
-        } else {
-            console.log('INVALID', projectData)
-        }
-    }, function (err) {
-        console.log('ERROR: ' + err);
-    });
 };

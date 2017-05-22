@@ -32,9 +32,15 @@
 			var ide = new IDE_Morph();
 			ide.openIn(world);
 			if (window.loadMyProject) {
-				window.loadMyProject(ide);
+				window.loadMyProject(ide, function (err) {
+					if (err) {
+						console.log(err);
+					}
+					loop();
+				});
+			} else {
+				loop();
 			}
-			loop();
 		};
 
 		function loop() {
