@@ -166,44 +166,48 @@ C2Stem.prototype.addSnap2Tab = function (id, name, template) {
         </div>`);
 
     $(document).ready(function () {
-        console.log('ready');
+        if (typeof WorldMorph === "undefined") {
+            console.log('Snap is not loaded');
+        } else {
+            console.log('ready');
 
-        var canvas = $(`#tab${id} > canvas`).get(0);
-        var world = new WorldMorph(canvas, false);
-        window.snap = {};
-        snap.world = world;
+            var canvas = $(`#tab${id} > canvas`).get(0);
+            var world = new WorldMorph(canvas, false);
+            window.snap = {};
+            snap.world = world;
 
-        window.addEventListener(
-            "resize",
-            function () {
-                world.updateSize();
-            },
-            false
-        );
+            window.addEventListener(
+                "resize",
+                function () {
+                    world.updateSize();
+                },
+                false
+            );
 
-        world.worldCanvas.focus();
+            world.worldCanvas.focus();
 
-        var ide = new IDE_Morph();
-        ide.openIn(world);
-        c2stem.loadPublicProject(window, ide, template, function (err) {
-            if (err) {
-                console.log(err);
-            } else {
-                function loop() {
-                    requestAnimationFrame(loop);
-                    world.doOneCycle();
+            var ide = new IDE_Morph();
+            ide.openIn(world);
+            c2stem.loadPublicProject(window, ide, template, function (err) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    function loop() {
+                        requestAnimationFrame(loop);
+                        world.doOneCycle();
+                    }
+                    loop();
                 }
-                loop();
-            }
-        });
+            });
 
-        // Resize on tab change ('display' attr set to 'none')
-        var detectTabShown = new MutationObserver(function () {
-            world.updateSize();
-        });
-        detectTabShown.observe($(`#tab${id}`).get(0), {
-            attributes: true
-        });
+            // Resize on tab change ('display' attr set to 'none')
+            var detectTabShown = new MutationObserver(function () {
+                world.updateSize();
+            });
+            detectTabShown.observe($(`#tab${id}`).get(0), {
+                attributes: true
+            });
+        }
     });
 };
 
