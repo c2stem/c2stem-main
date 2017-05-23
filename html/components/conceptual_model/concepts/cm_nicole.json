@@ -32,14 +32,9 @@
           "elementID": "VelocityX",
           "selected": false
         },
-        "Color": {
-          "name": "Color",
-          "elementID": "Color",
-          "selected": false
-        },
-        "Windows": {
-          "name": "Windows",
-          "elementID": "Windows",
+        "Mass": {
+          "name": "Mass",
+          "elementID": "Mass",
           "selected": false
         }
       },
@@ -136,6 +131,18 @@
           "category":"variables",
           "type": "custom_variable",
           "isGlobal": "true"
+        }
+      ]
+    },
+    {
+      "Required": [
+        "Mass"
+      ],
+      "GeneratedConstructs": [
+        {
+          "name": "mass",
+          "category":"physics",
+          "type": "built_in"
         }
       ]
     }
