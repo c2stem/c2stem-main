@@ -1,0 +1,140 @@
+{
+  "environment": {
+    "Global": {
+      "name": "Global",
+      "elementID": "global",
+      "selected": false,
+      "isSprite": false,
+      "properties": {
+        "speed_limit": {
+          "name": "speed limit",
+          "elementID": "speed_limit",
+          "selected": false
+        }
+      }
+    }
+  },
+  "agents": {
+    "Truck": {
+      "name": "Truck",
+      "elementID": "Truck",
+      "selected": false,
+      "isSprite": true,
+      "isBuiltIn": true,
+      "properties": {
+        "PositionX": {
+          "name": "PositionX",
+          "elementID": "PositionX",
+          "selected": false
+        },
+        "VelocityX": {
+          "name": "VelocityX",
+          "elementID": "VelocityX",
+          "selected": false
+        },
+        "Color": {
+          "name": "Color",
+          "elementID": "Color",
+          "selected": false
+        },
+        "Windows": {
+          "name": "Windows",
+          "elementID": "Windows",
+          "selected": false
+        }
+      },
+      "behaviors": {
+        "update_position": {
+          "name": "update position",
+          "elementID": "update_position",
+          "selected": false
+        },
+        "update_velocity": {
+          "name": "update velocity",
+          "elementID": "update_velocity",
+          "selected": false
+        },
+        "update_speed_limit": {
+          "name": "update speed limit",
+          "elementID": "update_speed_limit",
+          "selected": false
+        }
+      }
+    }
+  },
+  "rules": [
+    {
+      "Required": [
+        "PositionX"
+      ],
+      "GeneratedConstructs": [
+        {
+          "name": "physicsXPosition",
+          "category":"physics",
+          "type": "built_in"
+        }
+      ]
+    },
+    {
+      "Required": [
+        "PositionX",
+        "update_position"
+      ],
+      "GeneratedConstructs": [
+        {
+          "name": "setPhysicsXPosition",
+          "category":"physics",
+          "type": "built_in"
+        },
+        {
+          "name": "changePhysicsXPosition",
+          "category":"physics",
+          "type": "built_in"
+        }
+      ]
+    },
+    {
+      "Required": [
+        "VelocityX"
+      ],
+      "GeneratedConstructs": [
+        {
+          "name": "xVelocity",
+          "category":"physics",
+          "type": "built_in"
+        }
+      ]
+    },
+    {
+      "Required": [
+        "VelocityX",
+        "update_velocity"
+      ],
+      "GeneratedConstructs": [
+        {
+          "name": "setYVelocity",
+          "category":"physics",
+          "type": "built_in"
+        },
+        {
+          "name": "changeXVelocity",
+          "category":"physics",
+          "type": "built_in"
+        }
+      ]
+    },
+    {
+      "Required": [
+        "speed_limit"
+      ],
+      "GeneratedConstructs": [
+        {
+          "name": "speed limit",
+          "category":"variables",
+          "type": "built_in_custom_variable",
+          "isGlobal": "true"
+        }
+      ]
+    }
+  ]
+}
