@@ -34,6 +34,10 @@ function start(options) {
             // show public projects
             app.use('/projects.html',
                 express.static(__dirname + '/snap-cloud/views/projects.html'));
+            app.use('/js/projects.js',
+                express.static(__dirname + '/snap-cloud/views/js/projects.js'));
+            app.use('/css/projects.css',
+                express.static(__dirname + '/snap-cloud/views/css/projects.css'));
 
             app.use('/SnapPhysics', express.static(__dirname + '/snap-physics/'));
             app.use(express.static(__dirname + '/html/'));
