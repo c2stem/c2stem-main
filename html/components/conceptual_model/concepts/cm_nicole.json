@@ -47,17 +47,20 @@
         "update_position": {
           "name": "update position",
           "elementID": "update_position",
-          "selected": false
+          "selected": false,
+          "category": "physics"
         },
         "update_velocity": {
           "name": "update velocity",
           "elementID": "update_velocity",
-          "selected": false
+          "selected": false,
+          "category": "physics"
         },
         "update_speed_limit": {
           "name": "update speed limit",
           "elementID": "update_speed_limit",
-          "selected": false
+          "selected": false,
+          "category": "physics"
         }
       }
     }
@@ -131,7 +134,7 @@
         {
           "name": "speed limit",
           "category":"variables",
-          "type": "built_in_custom_variable",
+          "type": "custom_variable",
           "isGlobal": "true"
         }
       ]

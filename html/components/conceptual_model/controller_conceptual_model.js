@@ -86,6 +86,7 @@ function handle_behavior_events(selected_concept, selected_behavior_key) {
     n.selected_behavior = selected_behavior;
     n.selected_behavior_key = selected_behavior_key;
 
+    n.selected_behavior.block = transform_cm.create_block(n.selected_concept, n.selected_behavior.name, n.selected_behavior.category);
 
     $("#delete_"+selected_behavior.elementID).click(function () {
         var eid = event.currentTarget.id;
@@ -102,6 +103,7 @@ function handle_behavior_events(selected_concept, selected_behavior_key) {
         OnModelChanged();
 
         transform_cm.transform_concept_by_rules(selected_concept, "delete", concepts.rules, concepts.environment );
+        transform_cm.delete_block(n.selected_concept.sprite, n.selected_behavior.block, false);
     });
 
 

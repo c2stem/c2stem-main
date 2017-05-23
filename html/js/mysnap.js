@@ -123,7 +123,7 @@ IDE_Morph.prototype.show_block = function(sprite, block, isGlobal){
     if(isGlobal)
         stage.globalBlocks.push(block);
     else
-        sprite.customBlocks.push(definition);
+        sprite.customBlocks.push(block);
 
     ide.flushPaletteCache();
     ide.refreshPalette();

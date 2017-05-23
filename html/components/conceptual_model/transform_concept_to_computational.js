@@ -84,6 +84,7 @@ transform_cm.add_variable = function(sprite, variable_name, isGlobal){
 
 
 transform_cm.delete_block = function (sprite, block, isGlobal) {
+    console.log("delete block", block, "under sprite:", sprite);
     var ide = snap.world.children[0];
     ide.delete_block(sprite, block, isGlobal);
 };
@@ -93,6 +94,34 @@ transform_cm.show_block = function(sprite, block, isGlobal){
     var ide = snap.world.children[0];
     ide.show_block(sprite, block, isGlobal);
 };
+
+transform_cm.create_block = function(concept, name, category){
+    console.log("create_block", name, "under category:", category);
+    var ide = snap.world.children[0];
+    var block_text ='<blocks> <block-definition s="' + name + '" type="command" category="'+category+'"> <header></header> <code></code> <inputs></inputs> </block-definition> </blocks>';
+    console.log("block_text: ", block_text);
+    if(concept === null)
+        ide.droppedText(block_text);
+    else{
+        var model = ide.serializer.parse(block_text);
+        console.log("creatng custom block for ", concept.sprite, " with model:", model);
+        ide.serializer.loadCustomBlocks(concept.sprite, model, false);
+        ide.serializer.populateCustomBlocks(concept.sprite, model, false);
+        ide.flushPaletteCache();
+        ide.refreshPalette();
+
+        c.blocks = {};
+        for (var block_id in concept.sprite.customBlocks){
+            if(concept.sprite.customBlocks.hasOwnProperty(block_id)){
+                var block = concept.sprite.customBlocks[block_id];
+                if(block.spec == name){
+                    return block;
+                }
+            }
+        }
+    }
+};
+
 
 transform_cm.hide_primitive = function(cat, prim){
     var ide = snap.world.children[0];
@@ -115,16 +144,13 @@ transform_cm.remove_sprite = function(sprite) {
 };
 
 transform_cm.show_concept =function(concept){
-    console.log("show_concept", concept.name);
     var ide = snap.world.children[0];
     ide.rawOpenSpritesString(concept.sprite_bkup);
     for (var s in ide.sprites.contents) {
         if(ide.sprites.contents.hasOwnProperty(s)) {
             var sprite;
             sprite = ide.sprites.contents[s];
-            console.log("show_concept", concept.name, " candidate sprite: ", sprite.name);
             if (sprite.name === concept.name) {
-                console.log("show_concept after loading the sprite:", sprite);
                 return sprite;
             }
         }
@@ -135,7 +161,6 @@ transform_cm.hide_concept =function(concept){
     console.log("tcm hiding concept", concept.name);
     var ide = snap.world.children[0];
     concept.sprite_bkup = ide.exportSpriteStr(concept.sprite);
-    console.log("exported sprite xml:", concept.sprite_bkup);
     this.remove_sprite(concept.sprite);
 };
 
@@ -197,7 +222,7 @@ function transform_constructs_of_rule(rule, mode) {
                     transform_cm.hide_primitive(c.category, c.name);
                 }
                 break;
-            case "built_in_custom_variable":
+            case "custom_variable":
                 if (mode === "create") {
                     if(c.isGlobal)
                         transform_cm.add_variable(null, c.name, true);
@@ -210,21 +235,6 @@ function transform_constructs_of_rule(rule, mode) {
                         transform_cm.delete_variable(null, c.name, true);
                     else
                         transform_cm.delete_variable(c.sprite, c.name, false);
-                }
-                break;
-            case "built_in_custom_block":
-                if (mode === "create") {
-                    if(c.isGlobal)
-                        transform_cm.show_block(null, c.name, true);
-                    else
-                        transform_cm.show_block(c.sprite, c.name, false);
-                }
-                else if (mode === "delete")
-                {
-                    if(c.isGlobal)
-                        transform_cm.delete_block(null, c.name, true);
-                    else
-                        transform_cm.delete_block(c.sprite, c.name, false);
                 }
                 break;
             default:
