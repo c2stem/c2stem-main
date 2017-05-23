@@ -73,93 +73,40 @@ transform_cm.preprocess = function (concepts) {
 
 
 transform_cm.delete_variable = function (sprite, variable_name, isGlobal) {
-    if (isGlobal) {
-        var ide = snap.world.children[0];
-        var stage = ide.stage;
-        stage.deleteVariable(variable_name);
-    } else {
-        //console.log("delete variable local: ", variable_name);
-        sprite.deleteVariable(variable_name);
-    }
+    var ide = snap.world.children[0];
+    ide.delete_variable(sprite, variable_name, isGlobal);
 };
 
 transform_cm.add_variable = function(sprite, variable_name, isGlobal){
-    if (isGlobal) {
-        var ide = snap.world.children[0];
-        var stage = ide.stage;
-        stage.addVariable(variable_name, true);
-    } else {
-        sprite.addVariable(variable_name, false);
-    }
-    ide.flushPaletteCache();
-    ide.refreshPalette();
+    var ide = snap.world.children[0];
+    ide.add_variable(sprite, variable_name, isGlobal);
 };
 
 
 transform_cm.delete_block = function (sprite, block, isGlobal) {
     var ide = snap.world.children[0];
-    var stage = ide.stage;
-    if (isGlobal) {
-        idx = stage.globalBlocks.indexOf(block);
-        if (idx !== -1) {
-            stage.globalBlocks.splice(idx, 1);
-        }
-    } else {
-        idx = sprite.customBlocks.indexOf(block);
-        if (idx !== -1) {
-            sprite.customBlocks.splice(idx, 1);
-        }
-    }
-    ide.flushPaletteCache();
-    ide.refreshPalette();
+    ide.delete_block(sprite, block, isGlobal);
 };
 
 // this block need to be preexisting
 transform_cm.show_block = function(sprite, block, isGlobal){
     var ide = snap.world.children[0];
-    var stage = ide.stage;
-    if(isGlobal)
-        stage.globalBlocks.push(block);
-    else
-        sprite.customBlocks.push(definition);
-
-    ide.flushPaletteCache();
-    ide.refreshPalette();
+    ide.show_block(sprite, block, isGlobal);
 };
 
 transform_cm.hide_primitive = function(cat, prim){
     var ide = snap.world.children[0];
-    ide.stage.hiddenPrimitives[prim] = true;
-    ide.flushBlocksCache(cat);
-    ide.refreshPalette();
+    ide.hide_primitive(cat, prim);
 };
+
 transform_cm.show_primitive = function(cat, prim){
     var ide = snap.world.children[0];
-    ide.stage.hiddenPrimitives[prim] = false;
-    ide.flushBlocksCache(cat);
-    ide.refreshPalette();
+    ide.show_primitive(cat, prim);
 };
 
 transform_cm.create_new_sprite = function(concept) {
     var ide = snap.world.children[0];
-    var sprite = new SpriteMorph(ide.globalVariables),
-        rnd = Process.prototype.reportRandom;
-
-    sprite.name = concept.name;
-    sprite.setCenter(ide.stage.center());
-    ide.stage.add(sprite);
-
-    // randomize sprite properties
-    sprite.setHue(rnd.call(ide, 0, 100));
-    sprite.setBrightness(rnd.call(ide, 50, 100));
-    sprite.turn(rnd.call(ide, 1, 360));
-    sprite.setXPosition(rnd.call(ide, -220, 220));
-    sprite.setYPosition(rnd.call(ide, -160, 160));
-
-    ide.sprites.add(sprite);
-    ide.corral.addSprite(sprite);
-    ide.selectSprite(sprite);
-    return sprite;
+    return ide.create_new_sprite(concept.name);
 };
 
 transform_cm.remove_sprite = function(sprite) {
@@ -168,15 +115,8 @@ transform_cm.remove_sprite = function(sprite) {
 };
 
 transform_cm.show_sprite =function(concept){
-    if(concept.sprite != undefined && concept.sprite !== null ){
-        var ide = snap.world.children[0];
-        var sprite = concept.sprite;
-        ide.stage.add(sprite);
-        ide.sprites.add(sprite);
-        ide.corral.addSprite(sprite);
-        ide.selectSprite(sprite);
-        return sprite;
-    }
+    var ide = snap.world.children[0];
+    return ide.show_sprite(concept.sprite);
 };
 
 transform_cm.hide_sprite =function(concept){

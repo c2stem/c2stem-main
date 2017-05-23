@@ -17,7 +17,6 @@ function conceptual_model_load_data(data_path, callback){
 
 
 function conceptual_model_load_views(parent_id) {
-    console.log("Parent id:", parent_id, " dom:", $('#'+parent_id));
     $('#'+parent_id).load('components/conceptual_model/view_conceptual_model.html', function () {
         console.log("loading coneptual model into", parent_id);
 
@@ -223,18 +222,10 @@ function OnViewLoaded() {
     $("#cm_create_concept").click(function () {
         check_then_create_concept();
     });
-
-    $("#cm_preprocess").click(function () {
-        transform_cm.preprocess(concepts);
-    });
-
-
 }
 
 function populate_view() {
     var $combo_concepts = $('#cm_concepts');
-    console.log("conceptual_model_load_views loading options of concepts that can be created, total agents: ", Object.keys(concepts.environment).length);
-
     if (Object.keys(concepts.environment).length > 0) {
         $combo_concepts.append(function () {
             var output = '';
