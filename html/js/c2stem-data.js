@@ -282,7 +282,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 id: 'cm',
                 type: 'cm',
                 name: 'Conceptual',
-                data: 'default_concepts_preselected'
+                data: 'cm_nicole'
             }, {
                 id: 'compmodel',
                 type: 'snap1',

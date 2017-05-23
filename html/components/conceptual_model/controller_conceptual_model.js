@@ -226,7 +226,7 @@ function OnViewLoaded() {
 
 function populate_view() {
     var $combo_concepts = $('#cm_concepts');
-    if (Object.keys(concepts.environment).length > 0) {
+    if (concepts.environment != undefined && Object.keys(concepts.environment).length > 0) {
         $combo_concepts.append(function () {
             var output = '';
             output += '<optgroup label="Environment">';
@@ -238,7 +238,7 @@ function populate_view() {
             return output;
         });
     }
-    if (Object.keys(concepts.agents).length > 0) {
+    if (concepts.agents != undefined && Object.keys(concepts.agents).length > 0) {
         $combo_concepts.append(function () {
             var output = '';
             output += '<optgroup label="Agents">';
@@ -256,9 +256,4 @@ function is_ready_cm() {
     if (!is_ready_cm_dao())
         return false;
     return true;
-}
-
-
-function create_new_agent_view() {
-
 }
