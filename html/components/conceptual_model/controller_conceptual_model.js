@@ -119,7 +119,7 @@ function create_new_concept(selected_concept_key, selected_concept) {
 
     if(selected_concept.isSprite){
         if(selected_concept.isBuiltIn)
-            selected_concept.sprite = transform_cm.show_sprite(selected_concept);
+            selected_concept.sprite = transform_cm.show_concept(selected_concept);
         else
             selected_concept.sprite = transform_cm.create_new_sprite(selected_concept);
         transform_cm.transform_concept_by_rules(selected_concept, "create", concepts.rules, concepts.environment );
@@ -136,7 +136,7 @@ function create_new_concept(selected_concept_key, selected_concept) {
         OnModelChanged();
         if(selected_concept.isSprite) {
             transform_cm.transform_concept_by_rules(selected_concept, "delete_all", concepts.rules, concepts.environment );
-            transform_cm.remove_sprite(selected_concept.sprite);
+            transform_cm.hide_concept(selected_concept);
         }
     });
 

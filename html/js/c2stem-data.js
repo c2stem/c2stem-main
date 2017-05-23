@@ -289,7 +289,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 name: 'Computational',
                 template: {
                     user: 'asif',
-                    proj: 'cm_nicole_demo'
+                    proj: 'cm_nicole_demo_blank'
                 }
             }]
         };

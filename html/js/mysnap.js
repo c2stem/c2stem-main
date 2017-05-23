@@ -72,16 +72,16 @@ IDE_Morph.prototype.create_new_sprite = function(name) {
     return sprite;
 };
 
-IDE_Morph.prototype.show_sprite =function(sprite){
-    if(sprite != undefined && sprite !== null ){
-        console.log("show_sprite");
-        var ide = this;
-        ide.stage.add(sprite);
-        ide.sprites.add(sprite);
-        ide.corral.addSprite(sprite);
-        ide.selectSprite(sprite);
-        return sprite;
-    }
+IDE_Morph.prototype.exportSpriteStr = function (sprite) {
+    var str = this.serializer.serialize(sprite.allParts());
+    str = '<sprites app="'
+        + this.serializer.app
+        + '" version="'
+        + this.serializer.version
+        + '">'
+        + str
+        + '</sprites>';
+    return str;
 };
 
 IDE_Morph.prototype.hide_primitive = function(cat, prim){
