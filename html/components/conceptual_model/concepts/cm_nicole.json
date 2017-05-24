@@ -11,7 +11,22 @@
           "elementID": "speed_limit",
           "selected": false
         }
-      }
+      },
+      "rules": [
+        {
+          "Required": [
+            "speed_limit"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "speed limit",
+              "category":"variables",
+              "type": "custom_variable",
+              "isGlobal": "true"
+            }
+          ]
+        }
+      ]
     }
   },
   "agents": {
@@ -122,19 +137,6 @@
               "name": "changeXVelocity",
               "category":"physics",
               "type": "built_in"
-            }
-          ]
-        },
-        {
-          "Required": [
-            "speed_limit"
-          ],
-          "GeneratedConstructs": [
-            {
-              "name": "speed limit",
-              "category":"variables",
-              "type": "custom_variable",
-              "isGlobal": "true"
             }
           ]
         },

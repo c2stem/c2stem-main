@@ -115,7 +115,6 @@ transform_cm.create_block = function(concept, name, category){
         ide.flushPaletteCache();
         ide.refreshPalette();
 
-        c.blocks = {};
         for (var block_id in concept.sprite.customBlocks){
             if(concept.sprite.customBlocks.hasOwnProperty(block_id)){
                 var block = concept.sprite.customBlocks[block_id];
@@ -141,6 +140,7 @@ transform_cm.show_primitive = function(cat, prim){
 transform_cm.create_new_sprite = function(concept) {
     var ide = snap.world.children[0];
     var sprite = ide.create_new_sprite(concept.name);
+    return sprite;
 };
 
 transform_cm.remove_sprite = function(sprite) {
