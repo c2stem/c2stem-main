@@ -6,6 +6,7 @@
     <title>C2STEM</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="c2stem.css">
 </head>
 
 <body>
@@ -73,11 +74,14 @@
         // fields descriptors are sometimes not lifted
         Materialize.updateTextFields();
 
-        c2stem.login(null, null, null, function (err) {
-            if (!err) {
-                window.location.href = "index.html";
-            }
-        });
+        // Disable automatic redirect
+        if (false) {
+            c2stem.login(null, null, null, function (err) {
+                if (!err) {
+                    window.location.href = "index.html";
+                }
+            });
+        }
     });
 
     $("#login").click(function (event) {
