@@ -1,33 +1,5 @@
 {
   "environment": {
-    "Global": {
-      "name": "Global",
-      "elementID": "global",
-      "selected": false,
-      "isSprite": false,
-      "properties": {
-        "speed_limit": {
-          "name": "speed limit",
-          "elementID": "speed_limit",
-          "selected": false
-        }
-      },
-      "rules": [
-        {
-          "Required": [
-            "speed_limit"
-          ],
-          "GeneratedConstructs": [
-            {
-              "name": "speed limit",
-              "category":"variables",
-              "type": "custom_variable",
-              "isGlobal": "true"
-            }
-          ]
-        }
-      ]
-    }
   },
   "agents": {
     "Truck": {
@@ -46,6 +18,11 @@
         "VelocityX": {
           "name": "VelocityX",
           "elementID": "VelocityX",
+          "selected": false
+        },
+        "Acceleration": {
+          "name": "Acceleration",
+          "elementID": "Acceleration",
           "selected": false
         },
         "Mass": {
@@ -67,9 +44,9 @@
           "selected": false,
           "category": "physics"
         },
-        "update_speed_limit": {
-          "name": "update speed limit",
-          "elementID": "update_speed_limit",
+        "update_acceleration": {
+          "name": "update acceleration",
+          "elementID": "update_acceleration",
           "selected": false,
           "category": "physics"
         }
@@ -137,6 +114,19 @@
               "name": "changeXVelocity",
               "category":"physics",
               "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "Acceleration"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "Acceleration",
+              "category":"variables",
+              "type": "custom_variable",
+              "isGlobal": "false"
             }
           ]
         },
