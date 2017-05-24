@@ -21,6 +21,7 @@
       "selected": false,
       "isSprite": true,
       "isBuiltIn": true,
+      "costume": "c2stem med truck",
       "properties": {
         "PositionX": {
           "name": "PositionX",
@@ -57,94 +58,128 @@
           "selected": false,
           "category": "physics"
         }
-      }
-    }
-  },
-  "rules": [
-    {
-      "Required": [
-        "PositionX"
-      ],
-      "GeneratedConstructs": [
+      },
+      "rules": [
         {
-          "name": "physicsXPosition",
-          "category":"physics",
-          "type": "built_in"
-        }
-      ]
-    },
-    {
-      "Required": [
-        "PositionX",
-        "update_position"
-      ],
-      "GeneratedConstructs": [
-        {
-          "name": "setPhysicsXPosition",
-          "category":"physics",
-          "type": "built_in"
+          "Required": [
+            "PositionX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsXPosition",
+              "category":"physics",
+              "type": "built_in"
+            },
+            {
+              "name": "reportPhysicsAttrOf",
+              "category":"physics",
+              "type": "built_in"
+            }
+          ]
         },
         {
-          "name": "changePhysicsXPosition",
-          "category":"physics",
-          "type": "built_in"
-        }
-      ]
-    },
-    {
-      "Required": [
-        "VelocityX"
-      ],
-      "GeneratedConstructs": [
-        {
-          "name": "xVelocity",
-          "category":"physics",
-          "type": "built_in"
-        }
-      ]
-    },
-    {
-      "Required": [
-        "VelocityX",
-        "update_velocity"
-      ],
-      "GeneratedConstructs": [
-        {
-          "name": "setYVelocity",
-          "category":"physics",
-          "type": "built_in"
+          "Required": [
+            "PositionX",
+            "update_position"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "setPhysicsXPosition",
+              "category":"physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changePhysicsXPosition",
+              "category":"physics",
+              "type": "built_in"
+            }
+          ]
         },
         {
-          "name": "changeXVelocity",
-          "category":"physics",
-          "type": "built_in"
+          "Required": [
+            "VelocityX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "xVelocity",
+              "category":"physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "VelocityX",
+            "update_velocity"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "setYVelocity",
+              "category":"physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changeXVelocity",
+              "category":"physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "speed_limit"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "speed limit",
+              "category":"variables",
+              "type": "custom_variable",
+              "isGlobal": "true"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "Mass"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "mass",
+              "category":"physics",
+              "type": "built_in"
+            }
+          ]
         }
       ]
     },
-    {
-      "Required": [
-        "speed_limit"
-      ],
-      "GeneratedConstructs": [
-        {
-          "name": "speed limit",
-          "category":"variables",
-          "type": "custom_variable",
-          "isGlobal": "true"
+    "Stop": {
+      "name": "Stop",
+      "elementID": "Stop",
+      "selected": false,
+      "isSprite": true,
+      "isBuiltIn": true,
+      "costume": "stop-sign-png-1",
+      "properties": {
+        "PositionX": {
+          "name": "PositionX",
+          "elementID": "PositionX",
+          "selected": false
         }
-      ]
-    },
-    {
-      "Required": [
-        "Mass"
-      ],
-      "GeneratedConstructs": [
+      },
+      "rules": [
         {
-          "name": "mass",
-          "category":"physics",
-          "type": "built_in"
+          "Required": [
+            "PositionX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsXPosition",
+              "category":"physics",
+              "type": "built_in"
+            }
+          ]
         }
       ]
     }
-  ]
+  }
 }

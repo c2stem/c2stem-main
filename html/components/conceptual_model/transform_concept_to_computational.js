@@ -9,39 +9,44 @@ transform_cm.init = function(concepts) {
 
 transform_cm.preprocess = function (concepts) {
     var ide = snap.world.children[0];
-    //console.log("Pre-existing sprites");
+    var candidateSprites = [];
     for (var s in ide.sprites.contents){
+        if(!ide.sprites.contents.hasOwnProperty(s))
+            continue;
         var sprite = ide.sprites.contents[s];
-        //console.log(sprite.name);
         if(sprite.name in concepts.agents){
-            c = concepts.agents[sprite.name];
-            c.sprite = sprite;
-            //console.log("hiding sprite: ", c.name);
-            this.hide_concept(c);
-
-            // c.blocks = {};
-            // for (var block_id in sprite.customBlocks){
-            //     if(sprite.customBlocks.hasOwnProperty(block_id)){
-            //         var block = sprite.customBlocks[block_id];
-            //         c.blocks[block.spec] = block;
-            //     }
-            // }
-            // for(var b in c.blocks){
-            //     transform_cm.delete_block(sprite, c.blocks[b], false);
-            // }
-            //
-            // c.variables = {};
-            // sv = sprite.variables.vars;
-            // for (var var_name in sprite.variables.allNames()){
-            //     if(sprite.variables.vars.hasOwnProperty(var_name)) {
-            //         var variable = sprite.variables.vars[var_name];
-            //         c.variables[var_name] = variable;
-            //     }
-            // }
-            // for(var b in c.variables){
-            //     transform_cm.delete_variable(sprite, c.variables[b], false);
-            // }
+            candidateSprites.push(sprite);
         }
+    }
+    for (var s in candidateSprites){
+        var sprite = candidateSprites[s];
+        var c = concepts.agents[sprite.name];
+        c.sprite = sprite;
+        //console.log("hiding sprite: ", c.name);
+        this.hide_concept(c);
+
+        // c.blocks = {};
+        // for (var block_id in sprite.customBlocks){
+        //     if(sprite.customBlocks.hasOwnProperty(block_id)){
+        //         var block = sprite.customBlocks[block_id];
+        //         c.blocks[block.spec] = block;
+        //     }
+        // }
+        // for(var b in c.blocks){
+        //     transform_cm.delete_block(sprite, c.blocks[b], false);
+        // }
+        //
+        // c.variables = {};
+        // sv = sprite.variables.vars;
+        // for (var var_name in sprite.variables.allNames()){
+        //     if(sprite.variables.vars.hasOwnProperty(var_name)) {
+        //         var variable = sprite.variables.vars[var_name];
+        //         c.variables[var_name] = variable;
+        //     }
+        // }
+        // for(var b in c.variables){
+        //     transform_cm.delete_variable(sprite, c.variables[b], false);
+        // }
     }
 
     // var stage = ide.stage;
@@ -135,7 +140,7 @@ transform_cm.show_primitive = function(cat, prim){
 
 transform_cm.create_new_sprite = function(concept) {
     var ide = snap.world.children[0];
-    return ide.create_new_sprite(concept.name);
+    var sprite = ide.create_new_sprite(concept.name);
 };
 
 transform_cm.remove_sprite = function(sprite) {
@@ -160,7 +165,13 @@ transform_cm.show_concept =function(concept){
 transform_cm.hide_concept =function(concept){
     console.log("tcm hiding concept", concept.name);
     var ide = snap.world.children[0];
+
+    var costume_name = concept.costume;
+    if(costume_name != undefined && costume_name !== null)
+        ide.setCostume(concept.sprite, costume_name);
+
     concept.sprite_bkup = ide.exportSpriteStr(concept.sprite);
+
     this.remove_sprite(concept.sprite);
 };
 

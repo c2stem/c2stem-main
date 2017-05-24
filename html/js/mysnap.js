@@ -50,6 +50,16 @@ IDE_Morph.prototype.resourceURL = function () {
     return args.join('/');
 }
 
+IDE_Morph.prototype.setCostume = function(sprite, costume_name){
+    console.log(sprite.name, "setting costume:", costume_name);
+    for(var i in sprite.costumes.contents){
+        if(sprite.costumes.contents[i].name === costume_name){
+            sprite.wearCostume(sprite.costumes.contents[0]);
+            return;
+        }
+    }
+}
+
 IDE_Morph.prototype.create_new_sprite = function(name) {
     var ide = this;
     var sprite = new SpriteMorph(ide.globalVariables),

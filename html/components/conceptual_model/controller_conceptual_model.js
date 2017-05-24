@@ -59,11 +59,11 @@ function handle_property_events(selected_concept, selected_prop_key) {
         //console.log("delete selected_property",selected_property);
         OnModelChanged();
 
-        transform_cm.transform_concept_by_rules(selected_concept, "delete", concepts.rules, concepts.environment );
+        transform_cm.transform_concept_by_rules(selected_concept, "delete", selected_concept.rules, concepts.environment );
     });
 
 
-    transform_cm.transform_concept_by_rules(selected_concept, "create", concepts.rules, concepts.environment );
+    transform_cm.transform_concept_by_rules(selected_concept, "create", selected_concept.rules, concepts.environment );
 }
 
 function handle_behavior_events(selected_concept, selected_behavior_key) {
@@ -102,12 +102,12 @@ function handle_behavior_events(selected_concept, selected_behavior_key) {
         //console.log("delete selected_behavior",selected_behavior);
         OnModelChanged();
 
-        transform_cm.transform_concept_by_rules(selected_concept, "delete", concepts.rules, concepts.environment );
+        transform_cm.transform_concept_by_rules(selected_concept, "delete", selected_concept.rules, concepts.environment );
         transform_cm.delete_block(n.selected_concept.sprite, n.selected_behavior.block, false);
     });
 
 
-    transform_cm.transform_concept_by_rules(selected_concept, "create", concepts.rules, concepts.environment );
+    transform_cm.transform_concept_by_rules(selected_concept, "create", selected_concept.rules, concepts.environment );
 }
 
 function create_new_concept(selected_concept_key, selected_concept) {
@@ -124,7 +124,7 @@ function create_new_concept(selected_concept_key, selected_concept) {
             selected_concept.sprite = transform_cm.show_concept(selected_concept);
         else
             selected_concept.sprite = transform_cm.create_new_sprite(selected_concept);
-        transform_cm.transform_concept_by_rules(selected_concept, "create", concepts.rules, concepts.environment );
+        transform_cm.transform_concept_by_rules(selected_concept, "create", selected_concept.rules, concepts.environment );
     }
 
     $("#cm_concepts option[value='"+ selected_concept_key +"']").hide();
@@ -137,7 +137,7 @@ function create_new_concept(selected_concept_key, selected_concept) {
         //console.log("delete selected_concept",selected_concept);
         OnModelChanged();
         if(selected_concept.isSprite) {
-            transform_cm.transform_concept_by_rules(selected_concept, "delete_all", concepts.rules, concepts.environment );
+            transform_cm.transform_concept_by_rules(selected_concept, "delete_all", selected_concept.rules, concepts.environment );
             transform_cm.hide_concept(selected_concept);
         }
     });
