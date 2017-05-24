@@ -24,7 +24,11 @@
 	<script type="text/javascript" src="/SnapPhysics/physics.js"></script>
 	<script type="text/javascript" src="/SnapPhysics/FileSaver.min.js"></script>
 	<script type="text/javascript">
-		SnapCloud.url = "http://run.c2stem.org/SnapCloud/";
+		IDE_Morph.prototype.resourceURL = function () {
+			var args = Array.prototype.slice.call(arguments, 0);
+			args.splice(0, 0, 'SnapPhysics');
+			return args.join('/');
+		}
 
 		var world;
 		window.onload = function () {

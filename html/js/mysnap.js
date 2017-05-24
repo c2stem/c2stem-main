@@ -62,4 +62,4 @@ Cloud.prototype.disconnect = function () {};
 Cloud.prototype.setRoute = function (username) {};
 
 // set the backend database url
-SnapCloud.url = "http://run.c2stem.org/SnapCloud/";
+// SnapCloud.url = "http://run.c2stem.org/SnapCloud/";
