@@ -18,7 +18,7 @@ function conceptual_model_load_data(data_path, callback){
 
 function conceptual_model_load_views(parent_id) {
     $('#'+parent_id).load('components/conceptual_model/view_conceptual_model.html', function () {
-        console.log("loading coneptual model into", parent_id);
+        //console.log("loading coneptual model into", parent_id);
 
         transform_cm.init(concepts);
         OnViewLoaded();
