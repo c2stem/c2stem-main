@@ -17,7 +17,6 @@ function conceptual_model_load_data(data_path, callback){
 
 
 function conceptual_model_load_views(parent_id) {
-    console.log("Parent id:", parent_id, " dom:", $('#'+parent_id));
     $('#'+parent_id).load('components/conceptual_model/view_conceptual_model.html', function () {
         console.log("loading coneptual model into", parent_id);
 
@@ -87,6 +86,7 @@ function handle_behavior_events(selected_concept, selected_behavior_key) {
     n.selected_behavior = selected_behavior;
     n.selected_behavior_key = selected_behavior_key;
 
+    n.selected_behavior.block = transform_cm.create_block(n.selected_concept, n.selected_behavior.name, n.selected_behavior.category);
 
     $("#delete_"+selected_behavior.elementID).click(function () {
         var eid = event.currentTarget.id;
@@ -103,6 +103,7 @@ function handle_behavior_events(selected_concept, selected_behavior_key) {
         OnModelChanged();
 
         transform_cm.transform_concept_by_rules(selected_concept, "delete", concepts.rules, concepts.environment );
+        transform_cm.delete_block(n.selected_concept.sprite, n.selected_behavior.block, false);
     });
 
 
@@ -120,7 +121,7 @@ function create_new_concept(selected_concept_key, selected_concept) {
 
     if(selected_concept.isSprite){
         if(selected_concept.isBuiltIn)
-            selected_concept.sprite = transform_cm.show_sprite(selected_concept);
+            selected_concept.sprite = transform_cm.show_concept(selected_concept);
         else
             selected_concept.sprite = transform_cm.create_new_sprite(selected_concept);
         transform_cm.transform_concept_by_rules(selected_concept, "create", concepts.rules, concepts.environment );
@@ -137,7 +138,7 @@ function create_new_concept(selected_concept_key, selected_concept) {
         OnModelChanged();
         if(selected_concept.isSprite) {
             transform_cm.transform_concept_by_rules(selected_concept, "delete_all", concepts.rules, concepts.environment );
-            transform_cm.remove_sprite(selected_concept.sprite);
+            transform_cm.hide_concept(selected_concept);
         }
     });
 
@@ -223,19 +224,11 @@ function OnViewLoaded() {
     $("#cm_create_concept").click(function () {
         check_then_create_concept();
     });
-
-    $("#cm_preprocess").click(function () {
-        transform_cm.preprocess(concepts);
-    });
-
-
 }
 
 function populate_view() {
     var $combo_concepts = $('#cm_concepts');
-    console.log("conceptual_model_load_views loading options of concepts that can be created, total agents: ", Object.keys(concepts.environment).length);
-
-    if (Object.keys(concepts.environment).length > 0) {
+    if (concepts.environment != undefined && Object.keys(concepts.environment).length > 0) {
         $combo_concepts.append(function () {
             var output = '';
             output += '<optgroup label="Environment">';
@@ -247,7 +240,7 @@ function populate_view() {
             return output;
         });
     }
-    if (Object.keys(concepts.agents).length > 0) {
+    if (concepts.agents != undefined && Object.keys(concepts.agents).length > 0) {
         $combo_concepts.append(function () {
             var output = '';
             output += '<optgroup label="Agents">';
@@ -265,9 +258,4 @@ function is_ready_cm() {
     if (!is_ready_cm_dao())
         return false;
     return true;
-}
-
-
-function create_new_agent_view() {
-
 }

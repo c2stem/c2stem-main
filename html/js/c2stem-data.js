@@ -282,11 +282,15 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 id: 'cm',
                 type: 'cm',
                 name: 'Conceptual',
-                data: 'default_concepts_preselected'
+                data: 'cm_nicole'
             }, {
                 id: 'compmodel',
                 type: 'snap1',
-                name: 'Computational'
+                name: 'Computational',
+                template: {
+                    user: 'asif',
+                    proj: 'cm_nicole_demo_blank'
+                }
             }]
         };
     } else {
