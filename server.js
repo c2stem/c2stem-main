@@ -28,7 +28,8 @@ function start(options) {
                 cookie_secure: false,
                 mongodb: db,
                 mailer_from: 'no-reply@c2stem.org',
-                mailer_smpt: undefined
+                mailer_smpt: undefined,
+                default_origin: 'http://run.c2stem.org'
             }));
 
             // show public projects
