@@ -2,7 +2,9 @@
     <ul class="collection" >
         <li class="collection-item" style="text-align: center; ">
             <h5><%=concept.name%>
+                <%if(!isEnvironmental){%>
             <a id = "delete_<%=concept.elementID%>" class="waves-effect waves-light secondary-content " ><i class="material-icons">close</i></a>
+                <%}%>
             </h5>
         </li>
 

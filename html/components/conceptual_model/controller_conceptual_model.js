@@ -110,13 +110,16 @@ function handle_behavior_events(selected_concept, selected_behavior_key) {
     transform_cm.transform_concept_by_rules(selected_concept, "create", selected_concept.rules, concepts.environment );
 }
 
-function create_new_concept(selected_concept_key, selected_concept) {
+function create_new_concept(selected_concept_key, selected_concept, isEnvironmental) {
     selected_concept.selected = true;
     //console.log("creating new concept: " + selected_concept);
     data = {};
     data.concept = selected_concept;
+    data.isEnvironmental = isEnvironmental;
     var html = new EJS({url: 'components/conceptual_model/templates/template_concept.ejs'}).render(data);
     var $concept_container = $('#concept_container');
+    if(isEnvironmental)
+        $concept_container = $('#concept_container_environment');
     $concept_container.append(html);
 
     if(selected_concept.isSprite){
@@ -184,13 +187,16 @@ function create_new_concept(selected_concept_key, selected_concept) {
 function check_then_create_concept() {
     var selected_concept_key = $('#cm_concepts').val();
     var selected_concept = null;
+    var isEnvironmental = false;
     if( selected_concept_key in concepts.environment ){
         selected_concept = concepts.environment[selected_concept_key];
+        isEnvironmental = true;
     }else if( selected_concept_key in concepts.agents ){
         selected_concept = concepts.agents[selected_concept_key];
+        isEnvironmental = false;
     }
     if(selected_concept !== null){
-        create_new_concept(selected_concept_key, selected_concept);
+        create_new_concept(selected_concept_key, selected_concept, isEnvironmental);
         OnModelChanged();
     }
     return selected_concept;
@@ -206,13 +212,13 @@ function OnViewLoaded() {
     var preselected_models = false;
     for(var k in concepts.environment){
         if(concepts.environment[k].selected) {
-            create_new_concept(k, concepts.environment[k]);
+            create_new_concept(k, concepts.environment[k], true);
             preselected_models = true;
         }
     }
     for(var k in concepts.agents){
         if(concepts.agents[k].selected) {
-            create_new_concept(k, concepts.agents[k]);
+            create_new_concept(k, concepts.agents[k], false);
             preselected_models = true;
         }
     }
@@ -228,26 +234,26 @@ function OnViewLoaded() {
 
 function populate_view() {
     var $combo_concepts = $('#cm_concepts');
-    if (concepts.environment != undefined && Object.keys(concepts.environment).length > 0) {
-        $combo_concepts.append(function () {
-            var output = '';
-            output += '<optgroup label="Environment">';
-            $.each(concepts.environment, function (key, value) {
-                output += '<option value="' + key + '">' + value.name + '</option>';
-            });
-            output += '</optgroup>';
-            //console.log("output: " , output)
-            return output;
-        });
-    }
+    // if (concepts.environment != undefined && Object.keys(concepts.environment).length > 0) {
+    //     $combo_concepts.append(function () {
+    //         var output = '';
+    //         output += '<optgroup label="Environment">';
+    //         $.each(concepts.environment, function (key, value) {
+    //             output += '<option value="' + key + '">' + value.name + '</option>';
+    //         });
+    //         output += '</optgroup>';
+    //         //console.log("output: " , output)
+    //         return output;
+    //     });
+    // }
     if (concepts.agents != undefined && Object.keys(concepts.agents).length > 0) {
         $combo_concepts.append(function () {
             var output = '';
-            output += '<optgroup label="Agents">';
+            // output += '<optgroup label="Agents">';
             $.each(concepts.agents, function (key, value) {
                 output += '<option value="' + key + '">' + value.name + '</option>';
             });
-            output += '</optgroup>';
+            // output += '</optgroup>';
             //console.log("output: " , output)
             return output;
         });
