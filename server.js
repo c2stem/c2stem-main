@@ -29,16 +29,9 @@ function start(options) {
                 mongodb: db,
                 mailer_from: 'no-reply@c2stem.org',
                 mailer_smpt: undefined,
+                public_page_title: process.env.PROJECT_INDEX_NAME || 'Public C2Stem Projects',
                 default_origin: 'http://run.c2stem.org'
             }));
-
-            // show public projects
-            app.use('/projects.html',
-                express.static(__dirname + '/snap-cloud/views/projects.html'));
-            app.use('/js/projects.js',
-                express.static(__dirname + '/snap-cloud/views/js/projects.js'));
-            app.use('/css/projects.css',
-                express.static(__dirname + '/snap-cloud/views/css/projects.css'));
 
             app.use('/SnapPhysics', express.static(__dirname + '/snap-physics/'));
             app.use(express.static(__dirname + '/html/'));
