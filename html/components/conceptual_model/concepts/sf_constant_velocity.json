@@ -1,0 +1,211 @@
+{
+  "environment": {
+  },
+  "agents": {
+    "Truck": {
+      "name": "Truck",
+      "elementID": "Truck",
+      "selected": false,
+      "isSprite": true,
+      "isBuiltIn": true,
+      "costume": "c2stem med truck",
+      "properties": {
+        "PositionX": {
+          "name": "PositionX",
+          "elementID": "PositionX",
+          "selected": false
+        },
+        "VelocityX": {
+          "name": "VelocityX",
+          "elementID": "VelocityX",
+          "selected": false
+        },
+        "OldPositionX": {
+          "name": "OldPositionX",
+          "elementID": "OldPositionX",
+          "selected": false
+        },
+        "PassedTheCone": {
+          "name": "PassedTheCone",
+          "elementID": "PassedTheCone",
+          "selected": false
+        }
+      },
+      "behaviors": {
+        "update_position": {
+          "name": "update position",
+          "elementID": "update_position",
+          "selected": false,
+          "category": "physics"
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "PositionX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsXPosition",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "PositionX",
+            "update_position"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "setPhysicsXPosition",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changePhysicsXPosition",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "reportPhysicsAttrOf",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setPhysicsAttrOf",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "VelocityX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "xVelocity",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "OldPositionX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "OldPositionX",
+              "category": "variables",
+              "type": "custom_variable",
+              "isGlobal": "false"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "PassedTheCone"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "PassedTheCone",
+              "category": "variables",
+              "type": "custom_variable",
+              "isGlobal": "false"
+            }
+          ]
+        }
+      ]
+    },
+    "Cone1": {
+      "name": "Cone1",
+      "elementID": "Cone1",
+      "selected": false,
+      "isSprite": true,
+      "isBuiltIn": true,
+      "costume": "cone1",
+      "properties": {
+        "PositionX": {
+          "name": "PositionX",
+          "elementID": "PositionX",
+          "selected": false
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "PositionX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsXPosition",
+              "category":"physics",
+              "type": "built_in"
+            }
+          ]
+        }
+      ]
+    },
+    "Cone2": {
+      "name": "Cone2",
+      "elementID": "Cone2",
+      "selected": false,
+      "isSprite": true,
+      "isBuiltIn": true,
+      "costume": "cone2",
+      "properties": {
+        "PositionX": {
+          "name": "PositionX",
+          "elementID": "PositionX",
+          "selected": false
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "PositionX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsXPosition",
+              "category":"physics",
+              "type": "built_in"
+            }
+          ]
+        }
+      ]
+    },
+    "Cone3": {
+      "name": "Cone3",
+      "elementID": "Cone3",
+      "selected": false,
+      "isSprite": true,
+      "isBuiltIn": true,
+      "costume": "cone3",
+      "properties": {
+        "PositionX": {
+          "name": "PositionX",
+          "elementID": "PositionX",
+          "selected": false
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "PositionX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsXPosition",
+              "category":"physics",
+              "type": "built_in"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

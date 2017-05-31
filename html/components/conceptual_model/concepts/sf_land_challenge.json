@@ -1,0 +1,431 @@
+{
+  "environment": {
+  },
+  "agents": {
+    "Truck": {
+      "name": "Truck",
+      "elementID": "Truck",
+      "selected": false,
+      "isSprite": true,
+      "isBuiltIn": true,
+      "costume": "c2stem med truck",
+      "properties": {
+        "PositionX": {
+          "name": "PositionX",
+          "elementID": "PositionX",
+          "selected": false
+        },
+        "VelocityX": {
+          "name": "VelocityX",
+          "elementID": "VelocityX",
+          "selected": false
+        },
+        "TargetSpeed": {
+          "name": "TargetSpeed",
+          "elementID": "TargetSpeed",
+          "selected": false
+        },
+        "MaxAcceleration": {
+          "name": "MaxAcceleration",
+          "elementID": "MaxAcceleration",
+          "selected": false
+        },
+        "MinAcceleration": {
+          "name": "MinAcceleration",
+          "elementID": "MinAcceleration",
+          "selected": false
+        },
+        "SpeedLimit": {
+          "name": "SpeedLimit",
+          "elementID": "SpeedLimit",
+          "selected": false
+        },
+        "CoastingTime": {
+          "name": "CoastingTime",
+          "elementID": "CoastingTime",
+          "selected": false
+        },
+        "DecelerationTime": {
+          "name": "DecelerationTime",
+          "elementID": "DecelerationTime",
+          "selected": false
+        },
+        "AccelerationTime": {
+          "name": "AccelerationTime",
+          "elementID": "AccelerationTime",
+          "selected": false
+        },
+        "StartPosition": {
+          "name": "StartPosition",
+          "elementID": "StartPosition",
+          "selected": false
+        },
+        "XAcceleration": {
+          "name": "XAcceleration",
+          "elementID": "StartPosition",
+          "selected": false
+        }
+      },
+      "behaviors": {
+        "update_position": {
+          "name": "update position",
+          "elementID": "update_position",
+          "selected": false,
+          "category": "physics"
+        },
+        "update_velocity": {
+          "name": "update velocity",
+          "elementID": "update_velocity",
+          "selected": false,
+          "category": "physics"
+        },
+        "set_acceleration": {
+          "name": "set acceleration",
+          "elementID": "set_acceleration",
+          "selected": false,
+          "category": "physics"
+        },
+        "update_target_speed": {
+          "name": "update target speed",
+          "elementID": "update_target_speed",
+          "selected": false,
+          "category": "physics"
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "PositionX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsXPosition",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "PositionX",
+            "update_position"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "setPhysicsXPosition",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changePhysicsXPosition",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "reportPhysicsAttrOf",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setPhysicsAttrOf",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "VelocityX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "xVelocity",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "VelocityX",
+            "update_velocity"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "setPhysicsXVelocity",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changePhysicsXVelocity",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "TargetSpeed"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "TargetSpeed",
+              "category": "variables",
+              "type": "custom_variable",
+              "isGlobal": "false"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "MaxAcceleration"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "MaxAcceleration",
+              "category": "variables",
+              "type": "custom_variable",
+              "isGlobal": "false"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "MinAcceleration"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "MinAcceleration",
+              "category": "variables",
+              "type": "custom_variable",
+              "isGlobal": "false"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "SpeedLimit"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "SpeedLimit",
+              "category": "variables",
+              "type": "custom_variable",
+              "isGlobal": "false"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "CoastingTime"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "CoastingTime",
+              "category": "variables",
+              "type": "custom_variable",
+              "isGlobal": "false"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "DecelerationTime"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "DecelerationTime",
+              "category": "variables",
+              "type": "custom_variable",
+              "isGlobal": "false"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "AccelerationTime"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "DecelerationTime",
+              "category": "variables",
+              "type": "custom_variable",
+              "isGlobal": "false"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "StartPosition"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "StartPosition",
+              "category": "variables",
+              "type": "custom_variable",
+              "isGlobal": "false"
+            }
+          ]
+        }
+        {
+          "Required": [
+            "XAcceleration"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "XAcceleration",
+              "category": "variables",
+              "type": "custom_variable",
+              "isGlobal": "false"
+            }
+          ]
+        }
+      ]
+    },
+    "Stop": {
+      "name": "Stop",
+      "elementID": "Stop",
+      "selected": false,
+      "isSprite": true,
+      "isBuiltIn": true,
+      "costume": "stop-sign",
+      "properties": {
+        "PositionX": {
+          "name": "PositionX",
+          "elementID": "PositionX",
+          "selected": false
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "PositionX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsXPosition",
+              "category":"physics",
+              "type": "built_in"
+            }
+          ]
+        }
+      ]
+    },
+    "SpeedLimit1": {
+      "name": "SpeedLimit1",
+      "elementID": "SpeedLimit1",
+      "selected": false,
+      "isSprite": true,
+      "isBuiltIn": true,
+      "costume": "sl1",
+      "properties": {
+        "PositionX": {
+          "name": "PositionX",
+          "elementID": "PositionX",
+          "selected": false
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "PositionX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsXPosition",
+              "category":"physics",
+              "type": "built_in"
+            }
+          ]
+        }
+      ]
+    },
+    "SpeedLimit2": {
+      "name": "SpeedLimit2",
+      "elementID": "SpeedLimit2",
+      "selected": false,
+      "isSprite": true,
+      "isBuiltIn": true,
+      "costume": "sl2",
+      "properties": {
+        "PositionX": {
+          "name": "PositionX",
+          "elementID": "PositionX",
+          "selected": false
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "PositionX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsXPosition",
+              "category":"physics",
+              "type": "built_in"
+            }
+          ]
+        }
+      ]
+    },
+    "SpeedLimit3": {
+      "name": "SpeedLimit3",
+      "elementID": "SpeedLimit3",
+      "selected": false,
+      "isSprite": true,
+      "isBuiltIn": true,
+      "costume": "sl3",
+      "properties": {
+        "PositionX": {
+          "name": "PositionX",
+          "elementID": "PositionX",
+          "selected": false
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "PositionX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsXPosition",
+              "category":"physics",
+              "type": "built_in"
+            }
+          ]
+        }
+      ]
+    },
+    "SpeedLimit4": {
+      "name": "SpeedLimit4",
+      "elementID": "SpeedLimit4",
+      "selected": false,
+      "isSprite": true,
+      "isBuiltIn": true,
+      "costume": "sl4",
+      "properties": {
+        "PositionX": {
+          "name": "PositionX",
+          "elementID": "PositionX",
+          "selected": false
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "PositionX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsXPosition",
+              "category":"physics",
+              "type": "built_in"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
