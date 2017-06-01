@@ -20,6 +20,11 @@
           "elementID": "VelocityX",
           "selected": false
         },
+        "XAcceleration": {
+          "name": "XAcceleration",
+          "elementID": "StartPosition",
+          "selected": false
+        },
         "OldPositionX": {
           "name": "OldPositionX",
           "elementID": "OldPositionX",
@@ -49,6 +54,19 @@
               "name": "physicsXPosition",
               "category": "physics",
               "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "update_position"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "updateposition",
+              "category": "physics",
+              "type": "built_in_custom_block",
+              "isGlobal": "false"
             }
           ]
         },
@@ -89,6 +107,19 @@
               "name": "xVelocity",
               "category": "physics",
               "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "XAcceleration"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "XAcceleration",
+              "category": "variables",
+              "type": "custom_variable",
+              "isGlobal": "false"
             }
           ]
         },

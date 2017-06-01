@@ -107,6 +107,19 @@
         },
         {
           "Required": [
+            "update_position"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "updateposition",
+              "category": "physics",
+              "type": "built_in_custom_block",
+              "isGlobal": "false"
+            }
+          ]
+        },
+        {
+          "Required": [
             "PositionX",
             "update_position"
           ],
@@ -147,6 +160,19 @@
         },
         {
           "Required": [
+            "update_velocity"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "updatevelocity",
+              "category": "physics",
+              "type": "built_in_custom_block",
+              "isGlobal": "false"
+            }
+          ]
+        },
+        {
+          "Required": [
             "VelocityX",
             "update_velocity"
           ],
@@ -160,6 +186,32 @@
               "name": "changePhysicsXVelocity",
               "category": "physics",
               "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "set_acceleration"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "setacceleration",
+              "category": "physics",
+              "type": "built_in_custom_block",
+              "isGlobal": "false"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "update_target_speed"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "updatetargetspeed",
+              "category": "physics",
+              "type": "built_in_custom_block",
+              "isGlobal": "false"
             }
           ]
         },
@@ -266,7 +318,7 @@
               "isGlobal": "false"
             }
           ]
-        }
+        },
         {
           "Required": [
             "XAcceleration"
