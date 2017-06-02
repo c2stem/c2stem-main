@@ -1,7 +1,7 @@
 <span id="module_conceptual_model">
     <hr/>
     <select id="cm_concepts" class="form-control dropdown-select" style="width: 220px; position: relative; display: inline; margin-left: 30px">
-        <option value="">[-- Select Concept --]</option>
+        <option value="">[-- Select an agent --]</option>
         <!--<optgroup label="Environment">-->
             <!--<option value="Time">Time</option>-->
             <!--<option value="Physics">Physics</option>-->
@@ -11,12 +11,34 @@
             <!--<option value="Boat">Boat</option>-->
          <!--</optgroup>-->
     </select>
-    <button id="cm_create_concept" type="button" class="btn btn-primary" style="margin-left: 5px">Create Concept</button>
+    <button id="cm_create_concept" type="button" class="btn btn-primary" style="margin-left: 5px">Create</button>
     <!--<button id="cm_preprocess" type="button" class="btn btn-primary" style="margin-left: 5px">Preprocess</button>-->
     <hr/>
 
     <div class="container">
-        <div class="row" id="concept_container">
+        <div class="row">
+            <div class="col s9">
+                <div class="row" id="concept_container">
+                </div>
+            </div>
+            <div class="col s3">
+                <div class="row" id="concept_container_environment">
+                </div>
+            </div>
         </div>
     </div>
+
+
+
+    <!--<div class="container">-->
+        <!--<div class="row" id="concept_container_environment">-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="container">-->
+        <!--<div class="row" id="concept_container">-->
+        <!--</div>-->
+    <!--</div>-->
+
+
 </span>

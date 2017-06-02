@@ -87,7 +87,7 @@
               "type": "built_in"
             },
             {
-              "name": "reportPhysicsAttrOf",
+              "name": "getPhysicsAttrOf",
               "category": "physics",
               "type": "built_in"
             },
@@ -105,6 +105,11 @@
           "GeneratedConstructs": [
             {
               "name": "xVelocity",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setXVelocity",
               "category": "physics",
               "type": "built_in"
             }

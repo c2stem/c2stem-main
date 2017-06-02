@@ -102,6 +102,11 @@
               "name": "physicsXPosition",
               "category": "physics",
               "type": "built_in"
+            },
+            {
+              "name": "setPhysicsXPosition",
+              "category": "physics",
+              "type": "built_in"
             }
           ]
         },
@@ -125,17 +130,12 @@
           ],
           "GeneratedConstructs": [
             {
-              "name": "setPhysicsXPosition",
-              "category": "physics",
-              "type": "built_in"
-            },
-            {
               "name": "changePhysicsXPosition",
               "category": "physics",
               "type": "built_in"
             },
             {
-              "name": "reportPhysicsAttrOf",
+              "name": "getPhysicsAttrOf",
               "category": "physics",
               "type": "built_in"
             },
@@ -153,6 +153,11 @@
           "GeneratedConstructs": [
             {
               "name": "xVelocity",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setPhysicsXVelocity",
               "category": "physics",
               "type": "built_in"
             }
@@ -177,11 +182,6 @@
             "update_velocity"
           ],
           "GeneratedConstructs": [
-            {
-              "name": "setPhysicsXVelocity",
-              "category": "physics",
-              "type": "built_in"
-            },
             {
               "name": "changePhysicsXVelocity",
               "category": "physics",
