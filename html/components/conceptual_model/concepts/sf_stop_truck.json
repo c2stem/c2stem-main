@@ -152,7 +152,7 @@
               "type": "built_in"
             },
             {
-              "name": "setPhysicsXVelocity",
+              "name": "setXVelocity",
               "category": "physics",
               "type": "built_in"
             }
@@ -178,7 +178,7 @@
           ],
           "GeneratedConstructs": [
             {
-              "name": "changePhysicsXVelocity",
+              "name": "changeXVelocity",
               "category": "physics",
               "type": "built_in"
             }
