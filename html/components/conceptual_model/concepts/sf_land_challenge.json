@@ -107,6 +107,11 @@
               "name": "setPhysicsXPosition",
               "category": "physics",
               "type": "built_in"
+            },
+            {
+              "name": "changePhysicsXPosition",
+              "category": "physics",
+              "type": "built_in"
             }
           ]
         },
@@ -157,7 +162,12 @@
               "type": "built_in"
             },
             {
-              "name": "setPhysicsXVelocity",
+              "name": "setXVelocity",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changeXVelocity",
               "category": "physics",
               "type": "built_in"
             }
@@ -173,19 +183,6 @@
               "category": "physics",
               "type": "built_in_custom_block",
               "isGlobal": "false"
-            }
-          ]
-        },
-        {
-          "Required": [
-            "VelocityX",
-            "update_velocity"
-          ],
-          "GeneratedConstructs": [
-            {
-              "name": "changePhysicsXVelocity",
-              "category": "physics",
-              "type": "built_in"
             }
           ]
         },

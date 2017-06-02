@@ -54,6 +54,16 @@
               "name": "physicsXPosition",
               "category": "physics",
               "type": "built_in"
+            },
+            {
+              "name": "setPhysicsXPosition",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changePhysicsXPosition",
+              "category": "physics",
+              "type": "built_in"
             }
           ]
         },
@@ -76,16 +86,6 @@
             "update_position"
           ],
           "GeneratedConstructs": [
-            {
-              "name": "setPhysicsXPosition",
-              "category": "physics",
-              "type": "built_in"
-            },
-            {
-              "name": "changePhysicsXPosition",
-              "category": "physics",
-              "type": "built_in"
-            },
             {
               "name": "getPhysicsAttrOf",
               "category": "physics",
@@ -110,6 +110,11 @@
             },
             {
               "name": "setXVelocity",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changeXVelocity",
               "category": "physics",
               "type": "built_in"
             }
