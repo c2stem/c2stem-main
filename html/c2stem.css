@@ -118,7 +118,7 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 
-.collection li{
+/*.collection li{
      border: 5px solid lightpink;
  }
 .collection li:nth-of-type(4){
@@ -129,6 +129,21 @@ tr:nth-child(even) {
 }
 
 .collection li:nth-of-type(9){
+    border: 5px solid mediumpurple;
+}*/
+
+#tasks li{
+    border: 5px solid lightpink;
+}
+
+#tasks li:nth-of-type(4){
+    border: 5px solid yellowgreen;
+}
+#tasks li:nth-of-type(8){
+    border: 5px solid yellowgreen;
+}
+
+#tasks li:nth-of-type(9){
     border: 5px solid mediumpurple;
 }
 
@@ -268,4 +283,10 @@ tr:nth-child(even) {
 }
 .resourseiFrame{
     margin-left: 250px;
+}
+.descSubscript{
+    position: relative;
+    top: 0.3em;
+    color: black;
+    font-size: 0.8em;
 }
