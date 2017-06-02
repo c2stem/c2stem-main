@@ -52,19 +52,19 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
                 id: '1d-liftoff',
                 name: 'Instructional Task - 1D Acceleration:Introduction to Acceleration'
             }
-            // , {
-            //     id: '1d-PVT',
-            //     name: 'Instructional Task - 1D Acceleration: Position-Velocity-Time'
-            // },{
-            //     id: '1d-velocitychange',
-            //     name: 'Instructional Task - 1D Acceleration: “Velocity Change Rate'
-            // },{
-            //     id: '1d-stop',
-            //     name: 'Model Building -1D Acceleration: Make Your Truck Stop'
-            // },{
-            //     id: '1d-deliver',
-            //     name: 'Challenge Problem: Deliver the Medicine to the River! '
-            // }
+            , {
+                id: '1d-PVT',
+                name: 'Instructional Task - 1D Acceleration: Position-Velocity-Time'
+            },{
+                id: '1d-velocitychange',
+                name: 'Instructional Task - 1D Acceleration: “Velocity Change Rate'
+            },{
+                id: '1d-stop',
+                name: 'Model Building -1D Acceleration: Make Your Truck Stop'
+            },{
+                id: '1d-deliver',
+                name: 'Challenge Problem: Deliver the Medicine to the River! '
+            }
             ]
         };
     } else if (id === 'devmod') {
