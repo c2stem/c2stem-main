@@ -124,6 +124,7 @@ C2Stem.prototype.addSnap1Tab = function (id, name, template) {
         </div>`);
 
     var snapWindow = $(`#tab${id} > iframe`).get(0);
+    c2stem.snapWin = snapWindow;
     snapWindow = snapWindow.contentWindow || snapWindow.contentDocument.defaultView;
     $(snapWindow).on('load', function () {
         // Register the computational action manager
@@ -175,6 +176,8 @@ C2Stem.prototype.addSnap2Tab = function (id, name, template) {
             var world = new WorldMorph(canvas, false);
             window.snap = {};
             snap.world = world;
+
+            c2stem.snapWin = window;
 
             window.addEventListener(
                 "resize",
@@ -230,12 +233,18 @@ C2Stem.prototype.loadPublicProject = function (snapWin, snapIde, template, callb
     } else {
         console.log('loading template', template);
         var cloud = snapWin.SnapCloud;
-        cloud.getPublicProject(cloud.encodeDict({
+        cloud.loadUserProgress(cloud.encodeDict({
             Username: template.user,
             ProjectName: template.proj
         }), function (projectData) {
-            if (projectData.indexOf('<snapdata') === 0) {
-                snapIde.rawOpenCloudDataString(projectData);
+            projectData = JSON.parse(projectData);
+            var snapData =  projectData.snapdata;
+            var userTaskData = projectData.userTaskData;
+            if(userTaskData !== ""){
+                console.log('userTaskDataLoaded', userTaskData);
+            }
+            if (snapData.indexOf('<snapdata') === 0) {
+                snapIde.rawOpenCloudDataString(snapData);
                 callback(null);
             } else {
                 callback('Invalid project');
@@ -243,5 +252,31 @@ C2Stem.prototype.loadPublicProject = function (snapWin, snapIde, template, callb
         }, function (err) {
             callback('ERROR: ' + err);
         });
+    }
+};
+
+
+
+C2Stem.prototype.saveUserProgress = function(callback){
+    var snapWin = this.snapWin;
+    if (!snapWin.SnapCloud) {
+        if(callback)
+            callback('snapcloud is not registered');
+        else
+            console.log("snapcloud is not registered");
+    } else {
+        console.log('saving user progress', template);
+        var cloud = snapWin.SnapCloud;
+        var userTaskData = {};
+        userTaskData.conceptualModel = concepts;
+        SnapCloud.saveUserProgress(
+            this.ide,
+            userTaskData,
+            function () {
+                myself.ide.source = 'cloud';
+                myself.ide.showMessage('saved.', 2);
+            },
+            this.ide.cloudError()
+        );
     }
 };

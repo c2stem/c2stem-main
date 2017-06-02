@@ -230,6 +230,11 @@ function OnViewLoaded() {
     $("#cm_create_concept").click(function () {
         check_then_create_concept();
     });
+
+
+    $("#cm_test_button").click(function () {
+        c2stem.saveUserProgress();
+    });
 }
 
 function populate_view() {

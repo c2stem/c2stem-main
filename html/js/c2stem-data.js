@@ -288,7 +288,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 type: 'snap1',
                 name: 'Computational',
                 template: {
-                    user: 'asif',
+                    user: 'd.asif.hasan',
                     proj: 'cm_nicole_demo_blank'
                 }
             }]
