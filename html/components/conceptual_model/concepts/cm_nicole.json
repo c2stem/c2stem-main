@@ -1,5 +1,49 @@
 {
   "environment": {
+    "Environment": {
+      "name": "Environment",
+      "elementID": "Environment",
+      "selected": true,
+      "isSprite": false,
+      "properties": {
+        "DeltaTime": {
+          "name": "DeltaTime",
+          "elementID": "DeltaTime",
+          "selected": true
+        },
+        "TimeFromStart": {
+          "name": "TimeFromStart",
+          "elementID": "TimeFromStart",
+          "selected": true
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "DeltaTime"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "deltaTime",
+              "category":"physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "TimeFromStart"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "simulationTime",
+              "category":"physics",
+              "type": "built_in"
+            }
+          ]
+        }
+      ]
+    }
   },
   "agents": {
     "Truck": {
