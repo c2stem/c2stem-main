@@ -77,20 +77,29 @@ transform_cm.preprocess = function (concepts) {
 };
 
 
-transform_cm.delete_variable = function (sprite, variable_name, isGlobal) {
+transform_cm.delete_variable = function (concept, variable_name, isGlobal) {
     var ide = snap.world.children[0];
+    var sprite = null;
+    if(concept !== null)
+        sprite = this.getSpriteOfConcept(concept);
     ide.delete_variable(sprite, variable_name, isGlobal);
 };
 
-transform_cm.add_variable = function(sprite, variable_name, isGlobal){
+transform_cm.add_variable = function(concept, variable_name, isGlobal){
     var ide = snap.world.children[0];
+    var sprite = null;
+    if(concept !== null)
+        sprite = this.getSpriteOfConcept(concept);
     ide.add_variable(sprite, variable_name, isGlobal);
 };
 
 
-transform_cm.delete_block = function (sprite, block, isGlobal) {
+transform_cm.delete_block = function (concept, block, isGlobal) {
     //console.log("delete block", block, "under sprite:", sprite);
     var ide = snap.world.children[0];
+    var sprite = null;
+    if(concept !== null)
+        sprite = this.getSpriteOfConcept(concept);
     ide.delete_block(sprite, block, isGlobal);
 };
 
@@ -110,19 +119,11 @@ transform_cm.create_block = function(concept, name, category){
     else{
         var model = ide.serializer.parse(block_text);
         //console.log("creatng custom block for ", concept.sprite, " with model:", model);
-        ide.serializer.loadCustomBlocks(concept.sprite, model, false);
-        ide.serializer.populateCustomBlocks(concept.sprite, model, false);
+        var sprite = this.getSpriteOfConcept(concept);
+        ide.serializer.loadCustomBlocks(sprite, model, false);
+        ide.serializer.populateCustomBlocks(sprite, model, false);
         ide.flushPaletteCache();
         ide.refreshPalette();
-
-        for (var block_id in concept.sprite.customBlocks){
-            if(concept.sprite.customBlocks.hasOwnProperty(block_id)){
-                var block = concept.sprite.customBlocks[block_id];
-                if(block.spec == name){
-                    return block;
-                }
-            }
-        }
     }
 };
 
@@ -198,14 +199,14 @@ transform_cm.transform_concept_by_rules = function(concept, mode, rules, environ
         if (mode === "delete_all") {
             ////console.log("delete_all");
             if (isGenerated) {
-                transform_constructs_of_rule(rule, "delete");
+                transform_constructs_of_rule(rule, "delete", concept);
                 delete rule.map_generated_for[concept.name];
             }
         } else {
             if (!isGenerated) {
                 if (isRuleSatisfied(rule, concept, environment_concepts)) {
                     ////console.log("rule satisfied for creation", rule);
-                    transform_constructs_of_rule(rule, "create");
+                    transform_constructs_of_rule(rule, "create", concept);
                     rule.map_generated_for[concept.name] = true;
                 }else{
                     ////console.log("Rule not satisfied");
@@ -213,7 +214,7 @@ transform_cm.transform_concept_by_rules = function(concept, mode, rules, environ
             } else {
                 if (!isRuleSatisfied(rule, concept, environment_concepts)) {
                     ////console.log("rule not satisfied so would delete existing constructs", rule);
-                    transform_constructs_of_rule(rule, "delete");
+                    transform_constructs_of_rule(rule, "delete", concept);
                     delete rule.map_generated_for[concept.name];
                 }else{
                     ////console.log("Rule satisfied");
@@ -224,7 +225,7 @@ transform_cm.transform_concept_by_rules = function(concept, mode, rules, environ
     }
 }
 
-function transform_constructs_of_rule(rule, mode) {
+function transform_constructs_of_rule(rule, mode, concept) {
     ////console.log("transform_constructs_of_rule: ", rule, "mode:", mode);
     for (var cid in rule.GeneratedConstructs) {
         var c = rule.GeneratedConstructs[cid];
@@ -245,14 +246,14 @@ function transform_constructs_of_rule(rule, mode) {
                     if(c.isGlobal)
                         transform_cm.add_variable(null, c.name, true);
                     else
-                        transform_cm.add_variable(c.sprite, c.name, false);
+                        transform_cm.add_variable(concept, c.name, false);
                 }
                 else if (mode === "delete")
                 {
                     if(c.isGlobal)
                         transform_cm.delete_variable(null, c.name, true);
                     else
-                        transform_cm.delete_variable(c.sprite, c.name, false);
+                        transform_cm.delete_variable(concept, c.name, false);
                 }
                 break;
             default:

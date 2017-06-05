@@ -108,16 +108,20 @@ IDE_Morph.prototype.show_primitive = function(cat, prim){
 };
 
 
-IDE_Morph.prototype.delete_block = function (sprite, block, isGlobal) {
+IDE_Morph.prototype.delete_block = function (sprite, blockName, isGlobal) {
     var ide = this;
     var stage = ide.stage;
     if (isGlobal) {
-        idx = stage.globalBlocks.indexOf(block);
+        var b = stage.blocksMatching(blockName);
+        var block = b[0].definition;
+        var idx = stage.globalBlocks.indexOf(block);
         if (idx !== -1) {
             stage.globalBlocks.splice(idx, 1);
         }
     } else {
-        idx = sprite.customBlocks.indexOf(block);
+        var b = sprite.blocksMatching(blockName);
+        var block = b[0].definition;
+        var idx = sprite.customBlocks.indexOf(block);
         if (idx !== -1) {
             sprite.customBlocks.splice(idx, 1);
         }

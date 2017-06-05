@@ -12,7 +12,15 @@ function load_conceptual_model(conceptual_html_element_id, data_path) {
 }
 
 function conceptual_model_load_data(data_path, callback){
-    dao_conceptual_model(data_path, callback);
+    console.log("conceptual_model_load_data");
+    if(c2stem.userTaskData != undefined && c2stem.userTaskData !== null && c2stem.userTaskData.conceptualModel != undefined && c2stem.userTaskData.conceptualModel !== null){
+        console.log("conceptual_model_load_data, found userData");
+        concepts = c2stem.userTaskData.conceptualModel;
+        if(callback !== null)
+            callback(concepts);
+    }
+    else
+        dao_conceptual_model(data_path, callback);
 }
 
 
@@ -86,7 +94,7 @@ function handle_behavior_events(selected_concept, selected_behavior_key) {
     n.selected_behavior = selected_behavior;
     n.selected_behavior_key = selected_behavior_key;
 
-    n.selected_behavior.block = transform_cm.create_block(n.selected_concept, n.selected_behavior.name, n.selected_behavior.category);
+    transform_cm.create_block(n.selected_concept, n.selected_behavior.name, n.selected_behavior.category);
 
     $("#delete_"+selected_behavior.elementID).click(function () {
         var eid = event.currentTarget.id;
@@ -103,7 +111,7 @@ function handle_behavior_events(selected_concept, selected_behavior_key) {
         OnModelChanged();
 
         transform_cm.transform_concept_by_rules(selected_concept, "delete", selected_concept.rules, concepts.environment );
-        transform_cm.delete_block(n.selected_concept.sprite, n.selected_behavior.block, false);
+        transform_cm.delete_block(n.selected_concept, n.selected_behavior.name, false);
     });
 
 

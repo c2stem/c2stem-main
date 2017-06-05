@@ -239,12 +239,13 @@ C2Stem.prototype.loadPublicProject = function (snapWin, snapIde, template, callb
         }), function (projectData) {
             projectData = JSON.parse(projectData);
             var snapData =  projectData.snapdata;
-            var userTaskData = projectData.userTaskData;
-            // if(userTaskData !== ""){
-            //     console.log('userTaskDataLoaded', userTaskData);
-            // }
-            // else
-            //     console.log('no userTaskDataLoaded');
+            console.log("projectData.userTaskData", projectData.userTaskData);
+            if(projectData.userTaskData !== null){
+                console.log('userTaskDataLoaded');
+                c2stem.userTaskData = JSON.parse(projectData.userTaskData);
+            }
+            else
+                console.log('no userTaskDataLoaded');
 
             // console.log('snapData');
             // console.log(snapData);
