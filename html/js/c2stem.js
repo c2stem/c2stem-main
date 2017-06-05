@@ -240,11 +240,14 @@ C2Stem.prototype.loadPublicProject = function (snapWin, snapIde, template, callb
             projectData = JSON.parse(projectData);
             var snapData =  projectData.snapdata;
             var userTaskData = projectData.userTaskData;
-            if(userTaskData !== ""){
-                console.log('userTaskDataLoaded', userTaskData);
-            }
-            else
-                console.log('no userTaskDataLoaded');
+            // if(userTaskData !== ""){
+            //     console.log('userTaskDataLoaded', userTaskData);
+            // }
+            // else
+            //     console.log('no userTaskDataLoaded');
+
+            // console.log('snapData');
+            // console.log(snapData);
             if (snapData.indexOf('<snapdata') === 0) {
                 snapIde.rawOpenCloudDataString(snapData);
                 callback(null);

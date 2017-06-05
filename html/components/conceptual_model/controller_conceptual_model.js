@@ -124,9 +124,14 @@ function create_new_concept(selected_concept_key, selected_concept, isEnvironmen
 
     if(selected_concept.isSprite){
         if(selected_concept.isBuiltIn)
-            selected_concept.sprite = transform_cm.show_concept(selected_concept);
-        else
-            selected_concept.sprite = transform_cm.create_new_sprite(selected_concept);
+            transform_cm.show_concept(selected_concept);
+        else{
+            if(selected_concept.sprite_bkup_xml !== null)
+                transform_cm.show_concept(selected_concept);
+            else
+                transform_cm.create_new_sprite(selected_concept);
+        }
+
         transform_cm.transform_concept_by_rules(selected_concept, "create", selected_concept.rules, concepts.environment );
     }
 
