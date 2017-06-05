@@ -124,7 +124,6 @@ C2Stem.prototype.addSnap1Tab = function (id, name, template) {
         </div>`);
 
     var snapWindow = $(`#tab${id} > iframe`).get(0);
-    c2stem.snapWin = snapWindow;
     snapWindow = snapWindow.contentWindow || snapWindow.contentDocument.defaultView;
     $(snapWindow).on('load', function () {
         // Register the computational action manager
@@ -140,6 +139,7 @@ C2Stem.prototype.addSnap1Tab = function (id, name, template) {
             }
         };
 
+        c2stem.snapWin = snapWindow;
         // this is really a hack, but how to get hold of the IDE?
         snapWindow.loadMyProject = function (ide, callback) {
             window.snap.world = ide.parent;
@@ -243,6 +243,8 @@ C2Stem.prototype.loadPublicProject = function (snapWin, snapIde, template, callb
             if(userTaskData !== ""){
                 console.log('userTaskDataLoaded', userTaskData);
             }
+            else
+                console.log('no userTaskDataLoaded');
             if (snapData.indexOf('<snapdata') === 0) {
                 snapIde.rawOpenCloudDataString(snapData);
                 callback(null);
@@ -265,18 +267,21 @@ C2Stem.prototype.saveUserProgress = function(callback){
         else
             console.log("snapcloud is not registered");
     } else {
-        console.log('saving user progress', template);
+        console.log('saving user progress');
         var cloud = snapWin.SnapCloud;
         var userTaskData = {};
         userTaskData.conceptualModel = concepts;
-        SnapCloud.saveUserProgress(
-            this.ide,
+        console.log("Save user progress, userTaskData:", userTaskData);
+        var ide = snap.world.children[0];
+        cloud.saveUserProgress(
+            ide,
             userTaskData,
             function () {
-                myself.ide.source = 'cloud';
-                myself.ide.showMessage('saved.', 2);
+                var ide = snap.world.children[0];
+                ide.source = 'cloud';
+                ide.showMessage('saved.', 2);
             },
-            this.ide.cloudError()
+            ide.cloudError()
         );
     }
 };
