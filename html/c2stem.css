@@ -118,22 +118,9 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 
-/*.collection li{
-     border: 5px solid lightpink;
- }
-.collection li:nth-of-type(4){
-    border: 5px solid yellowgreen;
-}
-.collection li:nth-of-type(8){
-    border: 5px solid yellowgreen;
-}
-
-.collection li:nth-of-type(9){
-    border: 5px solid mediumpurple;
-}*/
-
 #tasks li{
     border: 5px solid lightpink;
+    overflow: hidden;
 }
 
 #tasks li:nth-of-type(4){
@@ -148,19 +135,15 @@ tr:nth-child(even) {
 }
 
 #sidebar{
-    background: #1c1e1f;
+    background: #e57373;
     width: 200px;
     height: 100%;
     display:block;
     position: absolute;
-    left: -200px;
-    top:64px;
-    transition: left 0.3s linear;
-}
+    left: 0px;/*-200px;*/
+    top:0px;
+    /*transition: left 0.3s linear;*/
 
-#sidebar.visible{
-    left:0px;
-    transition: left 0.3s linear;
 }
 
 #sidebar ul{
@@ -169,11 +152,14 @@ tr:nth-child(even) {
 }
 
 #sidebar ul li{
-    list-style: circle;
-    display: block;
+    list-style: disc;
+    /*display: block;*/
+    width: 100%;
     padding: 5px;
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
+    /*border-top: 1px solid white;
+    border-bottom: 1px solid white;*/
+    font-size: 18px;
+    text-align: center;
 }
 #sidebar ul li:hover{
     background: white;
@@ -181,9 +167,9 @@ tr:nth-child(even) {
     margin-left: 10px;
 }
 #sidebar ul li a{
-    background: #1c1e1f;
-    color: #ccc;
-    border-bottom: 1px solid #111;
+    background: #e57373 ;/*#d18a93;*/
+    color: White;/*
+    border-bottom: 1px solid #111;*/
     display: block;
     width: 100px;
     padding: 0px;
@@ -199,8 +185,7 @@ tr:nth-child(even) {
 #sidebar ul h3{
     color: White;
     text-align: center;
-    border-bottom: 2px solid white;
-    /*padding: 3px;*/
+    border: 2px solid #ef9a9a;
     font-size: 30px;
     left:0px;
 }
@@ -208,65 +193,20 @@ tr:nth-child(even) {
 #sidebar ul h4{
     color: White;
     text-align: left;
-    /*border-bottom: 2px solid white;*/
+    border: 2px solid #ef9a9a;
     /*padding: 3px;*/
-    font-size: 18px;
+    font-size: 20px;
     left:0px;
 }
 
 .tab-content {
-    padding:60px;
+    top: 64px;
     height: 2000px;
     overflow: hidden;
     text-align: justify;
     font-size: 20px;
-    /*background-color: #ccf;*/
-    transition: transform 0.4s ease;
-}
-
-.tab-content.active-nav{
-    transform: translate3d(200px,0,-900px);
-    width:85%;
-}
-
-.tab-content.deactive-nav{
-    transform: translate3d(0,0,0);
-}
-
-.active{
-    font-weight: bold;
-}
-
-.burger{
-    display: inline-block;
-    vertical-align: middle;
-    width:20px;
-    height: 15px;
-    cursor: pointer;
-    margin:10px;
-    position: absolute;
-    top: 64px;
-    left:0px;
-}
-
-.burger span{
-    height:1px;
-    background: #111;
-    margin-bottom: 5px;
-    display: block;
-
-}
-
-.burger span:nth-child(2){
-    width: 75%;
-}
-
-.burger span:nth-child(3){
-    width: 50%;
-}
-
-.tab-content span:nth-child(1){
-    color: darkblue;
+    position: fixed;
+    left:220px;
 }
 
 .tab-content span:nth-child(2){
@@ -289,4 +229,12 @@ tr:nth-child(even) {
     top: 0.3em;
     color: black;
     font-size: 0.8em;
+}
+
+#desc_resourceIframe{
+    height:   100%;
+    left:     0px;
+    position: absolute;
+    top:      64px;
+    width:    100%;
 }

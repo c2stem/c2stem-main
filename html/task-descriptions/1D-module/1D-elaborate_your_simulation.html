@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C2STEM</title>
+    <link rel="stylesheet" href="/c2stem.css">
+</head>
+<body>
+<div>
+    <img class="imgFloat" src="/img/sloth getting back in the loop.png"  width="20%" />
+    </br>
+    <p>Position is an important concept in kinematics. Other important concepts are acceleration, velocity, and speed. In the previous task, we wrote some code to position an object at a given x-coordinate. But, this does not seem to be an effective way to program the motion of a moving vehicle. In other words, we should have to write code explicitly for every meter by meter move - that would be very tedious, especially if our vehicle moved long distances! You may have learned how to write programs with loops in your previous work with Snap!, Scratch, and similar languages. In this task, we will be implementing loops in Snap! to simulate motion of an object in a more elegant way. </p>
+</div>
+</br></br></br>
+<div>
+    <p><em>Knowledge Goals for This Task Include:</em></p>
+    <table>
+        <tr>
+            <th>Physics</th>
+            <th>Computational</th>
+            <th>Practices</th>
+        </tr>
+        <tr>
+            <td>x<span class="descSubscript">k+1 </span>= x<span class="descSubscript">k</span> + Δx</td>
+            <td>Initializing Variables</td>
+            <td> </td>
+        </tr>
+        <tr>
+            <td> Δt (time step)</td>
+            <td>Iteration </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Change in position within a time step: Δx = vΔt </td>
+            <td>Conditionals</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td> </td>
+            <td>Input/Output</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td> </td>
+            <td>Debugging</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td> </td>
+            <td>Test Cases</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td> </td>
+            <td>Operators and Expressions</td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+<p><em>Using Loops:</em> Use the code from Task 1 and extend it using a loop structure (such as “repeat until”)  to simulate the motion of an object at 1 m/s to the right, starting at  x-coordinate position 0m and moving to x-coordinate position 10m. To do so, you will need to change the x position of the sloth each time the loop repeats. Keep in mind that you will need to use an operator to determine if the x position of your sloth has moved past 10m.</p>
+<p>Code from Task One:</p>
+<div>
+    <img class="imgFloat" src="/img/task 1 code.png"  width="20%" />
+    <iframe class="resourseiFrame" width="560" height="315" src="https://www.youtube.com/embed/k7sG87TTix0" frameborder="0" allowfullscreen></iframe>
+</div>
+<p><em>Adjusting Time Steps:</em> This time, use a smaller time step and allow the user of your program to specify the length of the time step in seconds. This process can be similar to how you requested information for position in Task 1 in that you will need to create a new variable (called delta t) and set the variable to be the answer the user gives.</p>
+<img class="ImageStyle" src="/img/change position equation.png"  width="20%" align="centre"/>
+<p><em>Which variables should be inserted into this equation in order to accurately change the position of the sloth? (Don’t forget your resources section!)</em></p>
+
+<p><em>Adding Variables:</em>Finally, let’s give the user more options. Allow user to specify additional motion variables such as velocity, starting point, and ending point of the simulation. Hint: based on the change position equation from the resources section, how would you change the “change x position by” equation using your new user requested variables to more accurately model the change of position? </p>
+<img class="ImageStyle" src="/img/set variables.png"  width="17%" align="centre"/>
+<p><em>You can use these physics blocks to set the answer to your variables user requests to the relevant physics construct! </em></p>
+</body>
+</html>
