@@ -239,7 +239,6 @@ C2Stem.prototype.loadPublicProject = function (snapWin, snapIde, template, callb
         }), function (projectData) {
             projectData = JSON.parse(projectData);
             var snapData =  projectData.snapdata;
-            console.log("projectData.userTaskData", projectData.userTaskData);
             if(projectData.userTaskData !== null){
                 console.log('userTaskDataLoaded');
                 c2stem.userTaskData = JSON.parse(projectData.userTaskData);

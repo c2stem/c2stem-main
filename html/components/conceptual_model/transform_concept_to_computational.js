@@ -94,36 +94,70 @@ transform_cm.add_variable = function(concept, variable_name, isGlobal){
 };
 
 
-transform_cm.delete_block = function (concept, block, isGlobal) {
-    //console.log("delete block", block, "under sprite:", sprite);
+transform_cm.delete_block = function (concepts, concept, blockName, isGlobal) {
+    // console.log("delete block", blockName, "under sprite:", sprite);
     var ide = snap.world.children[0];
     var sprite = null;
     if(concept !== null)
         sprite = this.getSpriteOfConcept(concept);
-    ide.delete_block(sprite, block, isGlobal);
+    var block_xml = ide.delete_block(sprite, blockName, isGlobal);
+    block_xml = '<blocks>'+block_xml +'</blocks>';
+    console.log("delete block", blockName, "block_xml:", block_xml);
+    if(concept !== null){
+        if(concept.block_xml == undefined)
+            concept.block_xml = {};
+        concept.block_xml[blockName] = block_xml;
+    }
+    else{
+        if(concepts.block_xml == undefined)
+            concepts.block_xml = {};
+        concepts.block_xml[blockName] = block_xml;
+    }
 };
 
 // this block need to be preexisting
-transform_cm.show_block = function(sprite, block, isGlobal){
+transform_cm.show_block = function(concepts, concept, blockName, isGlobal){
     var ide = snap.world.children[0];
-    ide.show_block(sprite, block, isGlobal);
+    if(concept!= undefined && concept.block_xml == undefined)
+        return false;
+    if(concept === null && concepts.block_xml[blockName] != undefined)
+    {
+        if(ide.is_block_exists(null, blockName, isGlobal))
+            return;
+        ide.import_block_xml(null, concepts.block_xml[blockName]);
+        return true;
+    }
+    else{
+        if(concept.block_xml[blockName] != undefined){
+            var sprite = this.getSpriteOfConcept(concept);
+            if(ide.is_block_exists(sprite, blockName, isGlobal))
+                return;
+            ide.import_block_xml(sprite, concept.block_xml[blockName]);
+            return true;
+        }
+    }
+    return false;
 };
 
-transform_cm.create_block = function(concept, name, category){
-    //console.log("create_block", name, "under category:", category);
+transform_cm.create_block = function(concepts, concept, blockName, category, isGlobal){
+    if(this.show_block(concepts, concept, blockName, isGlobal)){
+        return;
+    }
     var ide = snap.world.children[0];
-    var block_text ='<blocks> <block-definition s="' + name + '" type="command" category="'+category+'"> <header></header> <code></code> <inputs></inputs> </block-definition> </blocks>';
+    var sprite = null;
+    if(concept !== null)
+        sprite = this.getSpriteOfConcept(concept);
+    if(ide.is_block_exists(sprite, blockName, isGlobal))
+        return;
+    console.log("create_block", name, "under category:", category);
+    var ide = snap.world.children[0];
+    var block_text ='<blocks> <block-definition s="' + blockName + '" type="command" category="'+category+'"> <header></header> <code></code> <inputs></inputs> </block-definition> </blocks>';
     //console.log("block_text: ", block_text);
     if(concept === null)
-        ide.droppedText(block_text);
+        ide.import_block_xml(null, block_text);
     else{
-        var model = ide.serializer.parse(block_text);
-        //console.log("creatng custom block for ", concept.sprite, " with model:", model);
         var sprite = this.getSpriteOfConcept(concept);
-        ide.serializer.loadCustomBlocks(sprite, model, false);
-        ide.serializer.populateCustomBlocks(sprite, model, false);
-        ide.flushPaletteCache();
-        ide.refreshPalette();
+        ide.import_block_xml(sprite, block_text);
     }
 };
 
@@ -165,6 +199,7 @@ transform_cm.getSpriteOfConcept=function(concept){
             }
         }
     }
+    return null;
 };
 
 transform_cm.hide_concept =function(concept){
@@ -232,12 +267,12 @@ function transform_constructs_of_rule(rule, mode, concept) {
         switch (c.type) {
             case "built_in":
                 if (mode === "create") {
-                    ////console.log("show primitive:", c.name, " under category:", c.category);
+                    console.log("show primitive:", c.name, " under category:", c.category);
                     transform_cm.show_primitive(c.category, c.name);
                 }
                 else if (mode === "delete")
                 {
-                    ////console.log("hide primitive:", c.name, " under category:", c.category);
+                    console.log("hide primitive:", c.name, " under category:", c.category);
                     transform_cm.hide_primitive(c.category, c.name);
                 }
                 break;

@@ -108,19 +108,59 @@ IDE_Morph.prototype.show_primitive = function(cat, prim){
 };
 
 
-IDE_Morph.prototype.delete_block = function (sprite, blockName, isGlobal) {
+IDE_Morph.prototype.is_block_exists = function (sprite, blockName, isGlobal) {
     var ide = this;
     var stage = ide.stage;
     if (isGlobal) {
         var b = stage.blocksMatching(blockName);
+        if(b.length == 0)
+            return false;
+        else
+            return true;
+    } else {
+        var b = sprite.blocksMatching(blockName);
+        if(b.length == 0)
+            return false;
+        else
+            return true;
+    }
+};
+
+IDE_Morph.prototype.import_block_xml =function(sprite, block_xml){
+    console.log("importing block, sprite===null:",sprite===null);
+    var ide = this;
+    if(sprite === null)
+        ide.droppedText(block_xml);
+    else{
+        console.log("creating block under sprite:", sprite, "blockXML:",block_xml);
+        var model = ide.serializer.parse(block_xml);
+        ide.serializer.loadCustomBlocks(sprite, model, false);
+        ide.serializer.populateCustomBlocks(sprite, model, false);
+        ide.flushPaletteCache();
+        ide.refreshPalette();
+    }
+}
+
+IDE_Morph.prototype.delete_block = function (sprite, blockName, isGlobal) {
+    var ide = this;
+    var stage = ide.stage;
+    var exportedString = null;
+    if (isGlobal) {
+        var b = stage.blocksMatching(blockName);
+        if(b.length == 0)
+            return;
         var block = b[0].definition;
+        exportedString = ide.serializer.serialize(block);
         var idx = stage.globalBlocks.indexOf(block);
         if (idx !== -1) {
             stage.globalBlocks.splice(idx, 1);
         }
     } else {
         var b = sprite.blocksMatching(blockName);
+        if(b.length == 0)
+            return;
         var block = b[0].definition;
+        exportedString = ide.serializer.serialize(block);
         var idx = sprite.customBlocks.indexOf(block);
         if (idx !== -1) {
             sprite.customBlocks.splice(idx, 1);
@@ -128,6 +168,7 @@ IDE_Morph.prototype.delete_block = function (sprite, blockName, isGlobal) {
     }
     ide.flushPaletteCache();
     ide.refreshPalette();
+    return exportedString;
 };
 
 // this block need to be preexisting

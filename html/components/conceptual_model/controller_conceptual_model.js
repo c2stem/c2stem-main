@@ -94,7 +94,7 @@ function handle_behavior_events(selected_concept, selected_behavior_key) {
     n.selected_behavior = selected_behavior;
     n.selected_behavior_key = selected_behavior_key;
 
-    transform_cm.create_block(n.selected_concept, n.selected_behavior.name, n.selected_behavior.category);
+    transform_cm.create_block(concepts, n.selected_concept, n.selected_behavior.name, n.selected_behavior.category, false);
 
     $("#delete_"+selected_behavior.elementID).click(function () {
         var eid = event.currentTarget.id;
@@ -111,7 +111,7 @@ function handle_behavior_events(selected_concept, selected_behavior_key) {
         OnModelChanged();
 
         transform_cm.transform_concept_by_rules(selected_concept, "delete", selected_concept.rules, concepts.environment );
-        transform_cm.delete_block(n.selected_concept, n.selected_behavior.name, false);
+        transform_cm.delete_block(concepts, n.selected_concept, n.selected_behavior.name, false);
     });
 
 
@@ -163,6 +163,7 @@ function create_new_concept(selected_concept_key, selected_concept, isEnvironmen
     var p = null;
     for (p in selected_concept.properties){
         if(selected_concept.properties[p].selected){
+            console.log("preselected property",selected_concept.properties[p]);
             handle_property_events(selected_concept, p);
             pre_selected = true;
         }
