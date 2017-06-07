@@ -126,20 +126,64 @@ IDE_Morph.prototype.is_block_exists = function (sprite, blockName, isGlobal) {
     }
 };
 
+
+SnapSerializer.prototype.populateCustomBlocksFixed = function (
+    object,
+    element,
+    isGlobal
+) {
+    // private
+    var myself = this;
+    element.children.forEach(function (child, index) {
+        var b = object.blocksMatching(child.attributes.s);
+        var block = b[0].definition;
+        var idx = object.customBlocks.indexOf(block);
+        console.log("populateCustomBlocks",child, index, idx);
+        console.log("block def",block);
+        index = idx;
+        var definition, script, scripts;
+        if (child.tag !== 'block-definition') {
+            return;
+        }
+        definition = isGlobal ? object.globalBlocks[index]
+            : object.customBlocks[index];
+        console.log("definition",definition);
+        script = child.childNamed('script');
+        if (script) {
+            definition.body = new Context(
+                null,
+                script ? myself.loadScript(script) : null,
+                null,
+                object
+            );
+            definition.body.inputs = definition.names.slice(0);
+        }
+        scripts = child.childNamed('scripts');
+        if (scripts) {
+            definition.scripts = myself.loadScriptsArray(scripts);
+        }
+
+        delete definition.names;
+    });
+};
+
+
+
 IDE_Morph.prototype.import_block_xml =function(sprite, block_xml){
-    console.log("importing block, sprite===null:",sprite===null);
+    // console.log("importing block, sprite===null:",sprite===null);
     var ide = this;
     if(sprite === null)
         ide.droppedText(block_xml);
     else{
-        console.log("creating block under sprite:", sprite, "blockXML:",block_xml);
+        // console.log("creating block under sprite:", sprite, "blockXML:",block_xml);
         var model = ide.serializer.parse(block_xml);
         ide.serializer.loadCustomBlocks(sprite, model, false);
-        ide.serializer.populateCustomBlocks(sprite, model, false);
+        ide.serializer.populateCustomBlocksFixed(sprite, model, false);
         ide.flushPaletteCache();
         ide.refreshPalette();
     }
 }
+
 
 IDE_Morph.prototype.delete_block = function (sprite, blockName, isGlobal) {
     var ide = this;

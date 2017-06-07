@@ -67,11 +67,11 @@ function handle_property_events(selected_concept, selected_prop_key) {
         //console.log("delete selected_property",selected_property);
         OnModelChanged();
 
-        transform_cm.transform_concept_by_rules(selected_concept, "delete", selected_concept.rules, concepts.environment );
+        transform_cm.transform_concept_by_rules(concepts, selected_concept, "delete", selected_concept.rules, concepts.environment );
     });
 
 
-    transform_cm.transform_concept_by_rules(selected_concept, "create", selected_concept.rules, concepts.environment );
+    transform_cm.transform_concept_by_rules(concepts, selected_concept, "create", selected_concept.rules, concepts.environment );
 }
 
 function handle_behavior_events(selected_concept, selected_behavior_key) {
@@ -94,7 +94,7 @@ function handle_behavior_events(selected_concept, selected_behavior_key) {
     n.selected_behavior = selected_behavior;
     n.selected_behavior_key = selected_behavior_key;
 
-    transform_cm.create_block(concepts, n.selected_concept, n.selected_behavior.name, n.selected_behavior.category, false);
+
 
     $("#delete_"+selected_behavior.elementID).click(function () {
         var eid = event.currentTarget.id;
@@ -110,12 +110,14 @@ function handle_behavior_events(selected_concept, selected_behavior_key) {
         //console.log("delete selected_behavior",selected_behavior);
         OnModelChanged();
 
-        transform_cm.transform_concept_by_rules(selected_concept, "delete", selected_concept.rules, concepts.environment );
+        transform_cm.transform_concept_by_rules(concepts, selected_concept, "delete", selected_concept.rules, concepts.environment );
         transform_cm.delete_block(concepts, n.selected_concept, n.selected_behavior.name, false);
     });
 
 
-    transform_cm.transform_concept_by_rules(selected_concept, "create", selected_concept.rules, concepts.environment );
+    transform_cm.transform_concept_by_rules(concepts, selected_concept, "create", selected_concept.rules, concepts.environment );
+
+    transform_cm.create_block(concepts, n.selected_concept, n.selected_behavior.name, n.selected_behavior.category, false);
 }
 
 function create_new_concept(selected_concept_key, selected_concept, isEnvironmental) {
@@ -140,7 +142,7 @@ function create_new_concept(selected_concept_key, selected_concept, isEnvironmen
                 transform_cm.create_new_sprite(selected_concept);
         }
 
-        transform_cm.transform_concept_by_rules(selected_concept, "create", selected_concept.rules, concepts.environment );
+        transform_cm.transform_concept_by_rules(concepts, selected_concept, "create", selected_concept.rules, concepts.environment );
     }
 
     $("#cm_concepts option[value='"+ selected_concept_key +"']").hide();
@@ -153,7 +155,7 @@ function create_new_concept(selected_concept_key, selected_concept, isEnvironmen
         //console.log("delete selected_concept",selected_concept);
         OnModelChanged();
         if(selected_concept.isSprite) {
-            transform_cm.transform_concept_by_rules(selected_concept, "delete_all", selected_concept.rules, concepts.environment );
+            transform_cm.transform_concept_by_rules(concepts, selected_concept, "delete_all", selected_concept.rules, concepts.environment );
             transform_cm.hide_concept(selected_concept);
         }
     });

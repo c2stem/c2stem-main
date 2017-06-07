@@ -87,6 +87,7 @@
           "category": "physics"
         }
       },
+      "cache_blocks": ["physicsXPosition", "setPhysicsXPosition", "changePhysicsXPosition"],
       "rules": [
         {
           "Required": [
@@ -96,17 +97,17 @@
             {
               "name": "physicsXPosition",
               "category": "physics",
-              "type": "built_in"
+              "type": "custom_block"
             },
             {
               "name": "setPhysicsXPosition",
               "category": "physics",
-              "type": "built_in"
+              "type": "custom_block"
             },
             {
               "name": "changePhysicsXPosition",
               "category": "physics",
-              "type": "built_in"
+              "type": "custom_block"
             }
           ]
         },
