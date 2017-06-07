@@ -287,7 +287,7 @@
           ],
           "GeneratedConstructs": [
             {
-              "name": "DecelerationTime",
+              "name": "AccelerationTime",
               "category": "variables",
               "type": "custom_variable",
               "isGlobal": "false"

@@ -189,10 +189,12 @@ IDE_Morph.prototype.delete_variable = function (sprite, variable_name, isGlobal)
     if (isGlobal) {
         var ide = this;
         var stage = ide.stage;
-        stage.deleteVariable(variable_name);
+        if(stage.isVariableNameInUse(variable_name))
+            stage.deleteVariable(variable_name);
     } else {
         //console.log("delete variable local: ", variable_name);
-        sprite.deleteVariable(variable_name);
+        if(sprite.isVariableNameInUse(variable_name))
+            sprite.deleteVariable(variable_name);
     }
 };
 
@@ -200,9 +202,15 @@ IDE_Morph.prototype.add_variable = function(sprite, variable_name, isGlobal){
     if (isGlobal) {
         var ide = this;
         var stage = ide.stage;
-        stage.addVariable(variable_name, true);
+        if(stage.isVariableNameInUse(variable_name))
+            stage.addVariable(variable_name, true);
+        else
+            return;
     } else {
-        sprite.addVariable(variable_name, false);
+        if(!sprite.isVariableNameInUse(variable_name))
+            sprite.addVariable(variable_name, false);
+        else
+            return;
     }
     ide.flushPaletteCache();
     ide.refreshPalette();

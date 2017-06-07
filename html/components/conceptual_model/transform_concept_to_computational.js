@@ -230,6 +230,7 @@ transform_cm.transform_concept_by_rules = function(concept, mode, rules, environ
         if(rule.map_generated_for[concept.name] != undefined)
             isGenerated = rule.map_generated_for[concept.name];
 
+        isGenerated = false;
         ////console.log("rule:", rule, "isGenerated:", "mode:", mode);
         if (mode === "delete_all") {
             ////console.log("delete_all");
