@@ -22,7 +22,7 @@ transform_cm.preprocess = function (concepts) {
         var sprite = candidateSprites[s];
         var c = concepts.agents[sprite.name];
 
-        console.log("Processing cache_blocks")
+        //console.log("Processing cache_blocks")
         var blocks = {};
         for (var block_id in sprite.customBlocks){
             if(sprite.customBlocks.hasOwnProperty(block_id)){
@@ -49,14 +49,14 @@ transform_cm.preprocess = function (concepts) {
 
 
         // c.sprite = sprite;
-        ////console.log("hiding sprite: ", c.name);
+        //////console.log("hiding sprite: ", c.name);
         this.hide_concept(c);
 
 
     }
 
     // var stage = ide.stage;
-    // ////console.log("Pre-existing global blocks");
+    // //////console.log("Pre-existing global blocks");
     // transform_cm.global_blocks = {};
     // for (var block_id in stage.globalBlocks){
     //     var block = stage.globalBlocks[block_id];
@@ -67,7 +67,7 @@ transform_cm.preprocess = function (concepts) {
     //     transform_cm.delete_block(null, transform_cm.global_blocks[b], true);
     // }
     //
-    // ////console.log("Pre-existing global variables");
+    // //////console.log("Pre-existing global variables");
     // transform_cm.global_variables = {};
     // var sgv = stage.globalVariables().vars;
     // for (var var_id in sgv){
@@ -101,14 +101,14 @@ transform_cm.add_variable = function(concept, variable_name, isGlobal){
 
 
 transform_cm.delete_block = function (concepts, concept, blockName, isGlobal) {
-    // console.log("delete block", blockName, "under sprite:", sprite);
+    // //console.log("delete block", blockName, "under sprite:", sprite);
     var ide = snap.world.children[0];
     var sprite = null;
     if(concept !== null)
         sprite = this.getSpriteOfConcept(concept);
     var block_xml = ide.delete_block(sprite, blockName, isGlobal);
     block_xml = '<blocks>'+block_xml +'</blocks>';
-    console.log("delete block", blockName, "block_xml:", block_xml);
+    //console.log("delete block", blockName, "block_xml:", block_xml);
     if(concept !== null){
         if(concept.block_xml == undefined)
             concept.block_xml = {};
@@ -155,10 +155,10 @@ transform_cm.create_block = function(concepts, concept, blockName, category, isG
         sprite = this.getSpriteOfConcept(concept);
     if(ide.is_block_exists(sprite, blockName, isGlobal))
         return;
-    // console.log("create_block", name, "under category:", category);
+    // //console.log("create_block", name, "under category:", category);
     var ide = snap.world.children[0];
     var block_text ='<blocks> <block-definition s="' + blockName + '" type="command" category="'+category+'"> <header></header> <code></code> <inputs></inputs> </block-definition> </blocks>';
-    //console.log("block_text: ", block_text);
+    ////console.log("block_text: ", block_text);
     if(concept === null)
         ide.import_block_xml(null, block_text);
     else{
@@ -209,7 +209,7 @@ transform_cm.getSpriteOfConcept=function(concept){
 };
 
 transform_cm.hide_concept =function(concept){
-    //console.log("tcm hiding concept", concept.name);
+    ////console.log("tcm hiding concept", concept.name);
     var ide = snap.world.children[0];
     var sprite = this.getSpriteOfConcept(concept);
     if(sprite !== null){
@@ -220,13 +220,13 @@ transform_cm.hide_concept =function(concept){
         this.remove_sprite(sprite);
     }
     else{
-        console.log("hide_concept:","sprite related to concept not found!");
+        //console.log("hide_concept:","sprite related to concept not found!");
     }
 };
 
 
 transform_cm.transform_concept_by_rules = function(concepts, concept, mode, rules, environment_concepts ) {
-    ////console.log("plugin_transform_by_rules, mode:", mode, " running for agent:", concept.name);
+    //////console.log("plugin_transform_by_rules, mode:", mode, " running for agent:", concept.name);
     for (var r in rules) {
         var rule = rules[r];
         if(rule.map_generated_for == undefined )
@@ -237,9 +237,9 @@ transform_cm.transform_concept_by_rules = function(concepts, concept, mode, rule
             isGenerated = rule.map_generated_for[concept.name];
 
         // isGenerated = false;
-        ////console.log("rule:", rule, "isGenerated:", "mode:", mode);
+        //////console.log("rule:", rule, "isGenerated:", "mode:", mode);
         if (mode === "delete_all") {
-            ////console.log("delete_all");
+            //////console.log("delete_all");
             if (isGenerated) {
                 transform_constructs_of_rule(concepts, rule, "delete", concept);
                 delete rule.map_generated_for[concept.name];
@@ -247,20 +247,20 @@ transform_cm.transform_concept_by_rules = function(concepts, concept, mode, rule
         } else {
             // if (!isGenerated) {
                 if (isRuleSatisfied(rule, concept, environment_concepts)) {
-                    ////console.log("rule satisfied for creation", rule);
+                    //////console.log("rule satisfied for creation", rule);
                     transform_constructs_of_rule(concepts, rule, "create", concept);
                     rule.map_generated_for[concept.name] = true;
                 }else{
-                    ////console.log("Rule not satisfied");
+                    //////console.log("Rule not satisfied");
                 }
             // }
             if (isGenerated) {
                 if (!isRuleSatisfied(rule, concept, environment_concepts)) {
-                    ////console.log("rule not satisfied so would delete existing constructs", rule);
+                    //////console.log("rule not satisfied so would delete existing constructs", rule);
                     transform_constructs_of_rule(concepts, rule, "delete", concept);
                     delete rule.map_generated_for[concept.name];
                 }else{
-                    ////console.log("Rule satisfied");
+                    //////console.log("Rule satisfied");
                 }
             }
         }
@@ -269,18 +269,18 @@ transform_cm.transform_concept_by_rules = function(concepts, concept, mode, rule
 }
 
 function transform_constructs_of_rule(concepts, rule, mode, concept) {
-    ////console.log("transform_constructs_of_rule: ", rule, "mode:", mode);
+    //////console.log("transform_constructs_of_rule: ", rule, "mode:", mode);
     for (var cid in rule.GeneratedConstructs) {
         var c = rule.GeneratedConstructs[cid];
         switch (c.type) {
             case "built_in":
                 if (mode === "create") {
-                    console.log("show primitive:", c.name, " under category:", c.category);
+                    //console.log("show primitive:", c.name, " under category:", c.category);
                     transform_cm.show_primitive(c.category, c.name);
                 }
                 else if (mode === "delete")
                 {
-                    console.log("hide primitive:", c.name, " under category:", c.category);
+                    //console.log("hide primitive:", c.name, " under category:", c.category);
                     transform_cm.hide_primitive(c.category, c.name);
                 }
                 break;
@@ -311,7 +311,7 @@ function transform_constructs_of_rule(concepts, rule, mode, concept) {
                 }
                 break;
             default:
-                ////console.log("transform_constructs_of_rule: rule has unrecognized construct type", rule);
+                //////console.log("transform_constructs_of_rule: rule has unrecognized construct type", rule);
         }
     }
 }
@@ -321,7 +321,7 @@ function isRuleSatisfied(rule, concept, environment) {
     var found = false;
     for (var q in rule.Required) {
         var rq = rule.Required[q];
-        ////console.log("checking Required", rq, (rq in agent.properties));
+        //////console.log("checking Required", rq, (rq in agent.properties));
         if (concept.behaviors != undefined && rq in concept.behaviors) {
             found = true;
             if (!concept.behaviors[rq].selected) {
@@ -349,12 +349,12 @@ function isRuleSatisfied(rule, concept, environment) {
                     }
                 }
             }
-            ////console.log("rule reburies constructs which is not present in the agent or environment");
+            //////console.log("rule reburies constructs which is not present in the agent or environment");
         }
         if (!found)
             pass = false;
     }
-    ////console.log("checking rule", rule, "result:", pass);
+    //////console.log("checking rule", rule, "result:", pass);
 
     return pass;
 }

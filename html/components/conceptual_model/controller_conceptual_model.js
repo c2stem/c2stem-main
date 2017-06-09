@@ -3,12 +3,17 @@
  */
 
 
-function load_conceptual_model(conceptual_html_element_id, data_path) {
+function load_conceptual_model(instance_name, conceptual_html_element_id, data_path, register_save_data_fetcher) {
     // load data of all the modules
     console.log("load_conceptual_model from", data_path, " into html elementID: ", conceptual_html_element_id);
     conceptual_model_load_data(data_path, function () {
         conceptual_model_load_views(conceptual_html_element_id);
     });
+    register_save_data_fetcher(instance_name, getSavedData);
+}
+
+function getSavedData() {
+    return concepts;
 }
 
 function conceptual_model_load_data(data_path, callback){

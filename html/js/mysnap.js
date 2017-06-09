@@ -4,7 +4,7 @@ WorldMorph.prototype.updateSize = function () {
         clientHeight = this.worldCanvas.clientHeight,
         myself = this;
 
-    console.log('updating size to', clientWidth, 'x', clientHeight);
+    //console.log('updating size to', clientWidth, 'x', clientHeight);
     if (clientWidth && clientHeight && (
             this.worldCanvas.width !== clientWidth ||
             this.worldCanvas.height !== clientHeight)) {
@@ -51,7 +51,7 @@ IDE_Morph.prototype.resourceURL = function () {
 }
 
 IDE_Morph.prototype.setCostume = function(sprite, costume_name){
-    console.log(sprite.name, "setting costume:", costume_name);
+    //console.log(sprite.name, "setting costume:", costume_name);
     for(var i in sprite.costumes.contents){
         if(sprite.costumes.contents[i].name === costume_name){
             sprite.wearCostume(sprite.costumes.contents[0]);
@@ -138,8 +138,8 @@ SnapSerializer.prototype.populateCustomBlocksFixed = function (
         var b = object.blocksMatching(child.attributes.s);
         var block = b[0].definition;
         var idx = object.customBlocks.indexOf(block);
-        console.log("populateCustomBlocks",child, index, idx);
-        console.log("block def",block);
+        //console.log("populateCustomBlocks",child, index, idx);
+        //console.log("block def",block);
         index = idx;
         var definition, script, scripts;
         if (child.tag !== 'block-definition') {
@@ -147,7 +147,7 @@ SnapSerializer.prototype.populateCustomBlocksFixed = function (
         }
         definition = isGlobal ? object.globalBlocks[index]
             : object.customBlocks[index];
-        console.log("definition",definition);
+        //console.log("definition",definition);
         script = child.childNamed('script');
         if (script) {
             definition.body = new Context(
@@ -170,12 +170,12 @@ SnapSerializer.prototype.populateCustomBlocksFixed = function (
 
 
 IDE_Morph.prototype.import_block_xml =function(sprite, block_xml){
-    // console.log("importing block, sprite===null:",sprite===null);
+    // //console.log("importing block, sprite===null:",sprite===null);
     var ide = this;
     if(sprite === null)
         ide.droppedText(block_xml);
     else{
-        // console.log("creating block under sprite:", sprite, "blockXML:",block_xml);
+        // //console.log("creating block under sprite:", sprite, "blockXML:",block_xml);
         var model = ide.serializer.parse(block_xml);
         ide.serializer.loadCustomBlocks(sprite, model, false);
         ide.serializer.populateCustomBlocksFixed(sprite, model, false);
@@ -236,7 +236,7 @@ IDE_Morph.prototype.delete_variable = function (sprite, variable_name, isGlobal)
         if(stage.isVariableNameInUse(variable_name))
             stage.deleteVariable(variable_name);
     } else {
-        //console.log("delete variable local: ", variable_name);
+        ////console.log("delete variable local: ", variable_name);
         if(sprite.isVariableNameInUse(variable_name))
             sprite.deleteVariable(variable_name);
     }

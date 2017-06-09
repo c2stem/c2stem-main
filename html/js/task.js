@@ -1,7 +1,8 @@
 var c2stem = new C2Stem();
 c2stem.fixupLogoutLink();
-
 c2stem.loadTaskData(c2stem.query.id, function (err, res) {
+    console.log("loading task",res.id);
+    c2stem.task_id = res.id;
     if (err === "ERROR: Not logged in") {
         window.location.href = "login.html";
     } else if (err) {
