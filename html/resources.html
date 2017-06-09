@@ -65,7 +65,72 @@
     </div>
 </div>
 <div id="glossary" class="tab-content">
-    <p>This is third</p>
+    <table>
+        <tr>
+            <th>Block(s)</th>
+            <th>Definition</th>
+        </tr>
+        <tr>
+            <td><img src="/img/Resources/simulation-step.png" align="left"/></td>
+            <td>Similar to the green flag for the overall project, the simulation step block will run when called to.</td>
+        </tr>
+        <tr>
+            <td><img src="/img/Resources/start-simulation.png" align="left"/></td>
+            <td>This should be at the end of the steps you initiate at the green flag. Using this block calls your simulation step block.</td>
+        </tr>
+        <tr>
+            <td><img src="/img/Resources/stop-simulation.png" align="left"/></td>
+            <td>If you want your simulation to stop at a certain point, use this block!</td>
+        </tr>
+        <tr>
+            <td><img src="/img/Resources/time-in-s.png" align="left"/></td>
+            <td>A variable keeps track of the time (in seconds) that the simulation has been running. If you would like to see the value of the variable on the stage or graph its change during the simulation, make sure it is checked!</td>
+        </tr>
+        <tr>
+            <td><img src="/img/Resources/delta-t.png" align="left"/></td>
+            <td>A variable that keeps track of the change in time for your simulation. If you would like to see the value of the variable on the stage or graph its change during the simulation, make sure it is checked!</td>
+        </tr>
+        <tr>
+            <td><img src="/img/Resources/set-delta-t.png" align="left"/></td>
+            <td>As with any other variable, this block allows you to set the value of delta t.</td>
+        </tr>
+        <tr>
+            <td><img src="/img/Resources/position-variables.png" align="left"/></td>
+            <td>The variables that keeps track of the current x and y positions of the assigned object. If you would like to see the value of the variable on the stage or graph its change during the simulation, make sure it is checked!</td>
+        </tr>
+        <tr>
+            <td><img src="/img/Resources/set-position.png" align="left"/></td>
+            <td>To set the x or y position, use this block!</td>
+        </tr>
+        <tr>
+            <td><img src="/img/Resources/change-position.png" align="left"/></td>
+            <td>This block allows you to change the x or y position. When called, it changes the position based on the input once. Therefore, in a simulation step it is continuously called until the simulation ends.</td>
+        </tr>
+        <tr>
+            <td><img src="/img/Resources/velocity-variables.png" align="left"/></td>
+            <td>The variables that keep track of the x and y velocity of the assigned object. If you would like to see the value of the variable on the stage or graph its change during the simulation, make sure it is checked!</td>
+        </tr>
+        <tr>
+            <td><img src="/img/Resources/set-velocity.png" align="left"/></td>
+            <td>Allows you to set the velocity variable (either x or y or both) to a desired value.</td>
+        </tr>
+        <tr>
+            <td><img src="/img/Resources/change-velocity.png" align="left"/></td>
+            <td>This block allows you to change the x or y position. When called, it changes the position based on the input once. Therefore, in a simulation step it is continuously called until the simulation ends.</td>
+        </tr>
+        <tr>
+            <td><img src="/img/Resources/controlling-other-objects.png" align="left"/></td>
+            <td>If your program requires a reference to the position of another object, you can use these blocks to either keep track or set the position of the other object.</td>
+        </tr>
+        <tr>
+            <td><img src="/img/Resources/graphing.png" align="left"/></td>
+            <td>We've included the graphing blocks to use whenever you do not use a simulation step. If you use the simulation step blocks, the variables selected will automatically be graphed (click on the graphing icons under the stage to view!</td>
+        </tr>
+        <tr>
+            <td><img src="/img/Resources/update-position.png" align="left"/></td>
+            <td>This is an example of a behavior block. They will appear at the bottom of the physics category of blocks if selected in the conceptual model. To edit, right click on the block and select "edit."</td>
+        </tr>
+    </table>
 </div>
 <div id="simulation" class="tab-content">
     <div>
