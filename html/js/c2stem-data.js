@@ -2,15 +2,15 @@ C2Stem.prototype.loadHomeData = function (callback) {
     var res = {
         modules: [{
             id: '1dmotion',
-            name: "1D motion",
+            name: "1D: Land",
             icon: "img/school-bus.png"
         }, {
             id: 'm2',
-            name: "Relative motion",
+            name: "2D: Water",
             icon: "img/boat.png"
         }, {
             id: 'm3',
-            name: "Parabolic motion",
+            name: "2D: Air",
             icon: "img/plane.png"
         }, {
             id: 'm4',
@@ -31,7 +31,7 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
     if (id === '1dmotion') {
         res = {
             id: id,
-            name: '1D motion',
+            name: '1D: Land',
             tasks: [{
                 id: '1d-basics',
                 name: 'Instructional Task - Develop Simple Motion Simulation'
@@ -46,14 +46,8 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
                 name: 'Model Building - 1D Velocity: Simulate the Motion of a Truck'
             }, {
                 id: '1d-liftoff',
-                name: 'Instructional Task - 1D Acceleration:Introduction to Acceleration'
+                name: 'Instructional Task - 1D Acceleration: Changing Velocity'
             }, {
-                id: '1d-PVT',
-                name: 'Instructional Task - 1D Acceleration: Position-Velocity-Time'
-            },{
-                id: '1d-velocitychange',
-                name: 'Instructional Task - 1D Acceleration: Velocity Change Rate'
-            },{
                 id: '1d-stop',
                 name: 'Model Building -1D Acceleration: Make Your Truck Stop'
             },{
@@ -68,7 +62,7 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
     } else if (id === 'm2') {
         res = {
             id: id,
-            name: 'Relative motion',
+            name: '2D: Water',
             tasks: [{
                 id: '2d-basics',
                 name: 'Instructional Task: Motion of a Boat in a River'
@@ -89,7 +83,7 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
     } else if (id === 'm3') {
         res = {
             id: id,
-            name: 'Parabolic motion',
+            name: '2D: Air',
             tasks: [{
                 id: 'para-basics',
                 name: 'Instructional Task: Drop'
@@ -137,7 +131,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
         res = {
             parent: {
                 id: '1dmotion',
-                name: '1D motion'
+                name: '1D: Land'
             },
             id: id,
             name: 'Basics',
@@ -156,16 +150,64 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 type: 'snap1',
                 name: 'BUILD',
                 template: {
-                    user: 'Nicoletest',
+                    user: 'nicole',
                     proj: 'sf training 1a'
                 }
+            }]
+        };
+    } else if (id === '1d-elaborate') {
+        res = {
+            parent: {
+                id: '1dmotion',
+                name: '1D: Land'
+            },
+            id: id,
+            name: 'Instructional Task - 1D Velocity: Elaborate Your Simulation',
+            tabs: [{
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
+            }, {
+                id: 'desc',
+                type: 'desc',
+                name: 'Description',
+                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-elaborate_your_simulation.html" frameborder="0"></iframe>'
+            }, {
+                id: 'loops',
+                type: 'snap1',
+                name: 'BUILD',
+                template: {
+                    user: 'nicole',
+                    proj: 'sf training 2a'
+                }
+            }]
+        };
+    } else if (id === '1d-inst_conceptual') {
+        res = {
+            parent: {
+                id: '1dmotion',
+                name: '1D: Land'
+            },
+            id: id,
+            name: 'Instructional Task - 1D Velocity: Model Planning',
+            tabs: [{
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup:'<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
+            }, {
+                id: 'desc',
+                type: 'desc',
+                name: 'Description',
+                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-use_a_simulation_step.html" frameborder="0"></iframe>'
             }]
         };
     } else if (id === '1d-constant') {
         res = {
             parent: {
                 id: '1dmotion',
-                name: '1D motion'
+                name: '1D: Land'
             },
             id: id,
             name: 'Model Building - 1D Velocity: Constant Velocity',
@@ -189,81 +231,20 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 type: 'snap1',
                 name: 'BUILD',
                 template: {
-                    user: 'Nicoletest',
+                    user: 'nicole',
                     proj: 'sf_constant_velocity'
                 }
 
-            }]
-        };
-    } else if (id === '1d-elaborate') {
-        res = {
-            parent: {
-                id: '1dmotion',
-                name: '1D motion'
-            },
-            id: id,
-            name: 'Instructional Task - 1D Velocity: Elaborate Your Simulation',
-            tabs: [{
-                id: 'resource',
-                type: 'desc',
-                name: 'Resources',
-                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
-            }, {
-                id: 'desc',
-                type: 'desc',
-                name: 'Description',
-                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-elaborate_your_simulation.html" frameborder="0"></iframe>'
-            }, {
-                id: 'loops',
-                type: 'snap1',
-                name: 'BUILD',
-                template: {
-                    user: 'Nicoletest',
-                    proj: 'sf training 2a'
-                }
-            }]
-        };
-    } else if (id === '1d-inst_conceptual') {
-        res = {
-            parent: {
-                id: '1dmotion',
-                name: '1D motion'
-            },
-            id: id,
-            name: 'Instructional Task - 1D Velocity: Model Planning',
-            tabs: [{
-                id: 'resource',
-                type: 'desc',
-                name: 'Resources',
-                markup:'<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
-            }, {
-                id: 'desc',
-                type: 'desc',
-                name: 'Description',
-                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-use_a_simulation_step.html" frameborder="0"></iframe>'
-            }, {
-                id: 'onestep',
-                type: 'cm',
-                name: 'PLAN',
-                data: 'sf_constant_velocity'
-            }, {
-                id: 'step',
-                type: 'snap1',
-                name: 'BUILD',
-                template: {
-                    user: 'Nicoletest',
-                    proj: 'sf_inst_conceptual'
-                }
             }]
         };
     } else if (id === '1d-liftoff') {
         res = {
             parent: {
                 id: '1dmotion',
-                name: '1D motion'
+                name: '1D: Land'
             },
             id: id,
-            name: 'Introduction to Acceleration',
+            name: 'Changing Acceleration',
             tabs: [{
                 id: 'resource',
                 type: 'desc',
@@ -279,64 +260,8 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 type: 'snap1',
                 name: 'BUILD',
                 template: {
-                    user: 'Nicoletest',
+                    user: 'nicole',
                     proj: 'sf accel 1'
-                }
-            }]
-        };
-    } else if (id === '1d-PVT') {
-        res = {
-            parent: {
-                id: '1dmotion',
-                name: '1D motion'
-            },
-            id: id,
-            name: 'Position-Velocity-Time',
-            tabs: [{
-                id: 'resource',
-                type: 'desc',
-                name: 'Resources',
-                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
-            }, {
-                id: 'desc',
-                type: 'desc',
-                name: 'Description',
-                markup:'<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-PVT.html" frameborder="0"></iframe>'
-            }, {
-                id: 'AccelTime',
-                type: 'snap1',
-                name: 'BUILD',
-                template: {
-                    user: 'Nicoletest',
-                    proj: 'sf accel 2'
-                }
-            }]
-        };
-    } else if (id === '1d-velocitychange') {
-        res = {
-            parent: {
-                id: '1dmotion',
-                name: '1D motion'
-            },
-            id: id,
-            name: 'Velocity Change Rate',
-            tabs: [{
-                id: 'resource',
-                type: 'desc',
-                name: 'Resources',
-                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
-            }, {
-                id: 'desc',
-                type: 'desc',
-                name: 'Description',
-                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-velocity_change_rate.html" frameborder="0"></iframe>'
-            }, {
-                id: 'VelocityChange',
-                type: 'snap1',
-                name: 'BUILD',
-                template: {
-                    user: 'Nicoletest',
-                    proj: 'sf accel 3'
                 }
             }]
         };
@@ -344,7 +269,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
         res = {
             parent: {
                 id: '1dmotion',
-                name: '1D motion'
+                name: '1D: Land'
             },
             id: id,
             name: 'Model Building -1D Acceleration: Make Your Truck Stop',
@@ -368,7 +293,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 type: 'snap1',
                 name: 'BUILD',
                 template: {
-                    user: 'Nicoletest',
+                    user: 'nicole',
                     proj: 'sf_stop_truck'
                 }
             }, {
@@ -376,7 +301,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 type: 'snap1',
                 name: 'APPLY',
                 template: {
-                    user: 'Nicoletest',
+                    user: 'nicole',
                     proj: 'sf_stop_truck'
                 }
             }]
@@ -385,7 +310,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
         res = {
             parent: {
                 id: '1dmotion',
-                name: '1D motion'
+                name: '1D: Land'
             },
             id: id,
             name: 'Challenge Problem: Deliver the Medicine to the River!',
@@ -409,7 +334,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 type: 'snap1',
                 name: 'BUILD',
                 template: {
-                    user: 'Nicoletest',
+                    user: 'nicole',
                     proj: 'sf_stop_truck'
                 }
 
@@ -419,7 +344,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
         res = {
             parent: {
                 id: '1dmotion',
-                name: '1D motion'
+                name: '1D: Land'
             },
             id: id,
             name: 'Assessment Task',
@@ -434,7 +359,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
         res = {
             parent: {
                 id: 'm2',
-                name: 'Relative motion'
+                name: '2D: Water'
             },
             id: id,
             name: 'Instructional Task: Motion of Boat in a River',
@@ -453,7 +378,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 type: 'snap1',
                 name: 'BUILD',
                 template: {
-                    user: 'Nicoletest',
+                    user: 'nicole',
                     proj: 'sf2d-motion_of_boat'
                 }
             }]
@@ -462,7 +387,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
         res = {
             parent: {
                 id: 'm2',
-                name: 'Relative motion'
+                name: '2D: Water'
             },
             id: id,
             name: 'Instructional Task: Crossing the River',
@@ -486,7 +411,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 type: 'snap1',
                 name: 'BUILD',
                 template: {
-                    user: 'Nicoletest',
+                    user: 'nicole',
                     proj: 'sf2d-inst_cross'
                 }
             }]
@@ -495,7 +420,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
         res = {
             parent: {
                 id: 'm2',
-                name: 'Relative motion'
+                name: '2D: Water'
             },
             id: id,
             name: 'Model Building -1D Acceleration: Make Your Truck Stop',
@@ -519,7 +444,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 type: 'snap1',
                 name: 'BUILD',
                 template: {
-                    user: 'Nicoletest',
+                    user: 'nicole',
                     proj: 'sf2d-mb_cross'
                 }
             }]
@@ -528,7 +453,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
         res = {
             parent: {
                 id: 'm2',
-                name: 'Relative motion'
+                name: '2D: Water'
             },
             id: id,
             name: 'Challenge Problem: Deliver the Medicine to the River!',
@@ -552,7 +477,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 type: 'snap1',
                 name: 'BUILD',
                 template: {
-                    user: 'Nicoletest',
+                    user: 'nicole',
                     proj: 'sf2d-river_crossing'
                 }
 
@@ -562,7 +487,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
         res = {
             parent: {
                 id: 'm2',
-                name: 'Relative motion'
+                name: '2D: Water'
             },
             id: id,
             name: 'Assessment Task',

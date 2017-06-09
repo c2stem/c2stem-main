@@ -7,13 +7,69 @@
 </head>
 <body>
 <div>
-    <img class="imgFloat" src="/img/sloth getting back in the loop.png"  width="20%" />
-    </br>
-    <p>Position is an important concept in kinematics. Other important concepts are acceleration, velocity, and speed. In the previous task, we wrote some code to position an object at a given x-coordinate. But, this does not seem to be an effective way to program the motion of a moving vehicle. In other words, we should have to write code explicitly for every meter by meter move - that would be very tedious, especially if our vehicle moved long distances! You may have learned how to write programs with loops in your previous work with Snap!, Scratch, and similar languages. In this task, we will be implementing loops in Snap! to simulate motion of an object in a more elegant way. </p>
+    <p>In modeling motion, we found that changing the position in a predictive manner is easy, but in order for it to proceed smoothly instead of looking like a bad claymation movie, there must be considerations for time. Because physics has been around for some 500 years, we have computers, and computers are good at monitoring time and repeating tasks. Instructing a computer to repeat a particular task or series of tasks is called a loop by programmers. We as programmers can use a loop to tell the computer to change position during a particular time frame. We as physicists identify this property of motion as velocity, or change in position divided by the time it took that change to happen. You might recognize this from earlier, not-quite-physics science classes as the speed or rate equation (speed = distance / time). Speed and velocity are closely related but not quite the same thing.</p>
 </div>
+
+<div>
+    <h2>Activity 1.2.A - Use a loop:</h2>
+    <img src="/img/task 1 code.png"  width="20%" align="right"/>
+    <strong>Program description</strong>
+    <ul>
+        <li>Add a loop to the previous program to simulate the sloth’s motion to the right</li>
+        <li>The program should update the sloth’s position at 1 second intervals</li>
+        <li>Speed = 1 m/s</li>
+        <li>Initial position = 0 m</li>
+        <li>Final position = 10 m</li>
+    </ul>
+    <strong>Hints</strong>
+    <ul>
+        <li>Change the position of the sloth on each loop</li>
+        <li>Use the “Wait” block to slow down the execution of each loop</li>
+        <li>How will your program make the sloth stop moving after 10 m?</li>
+    </ul>
+<br><br>
+    <h2>Activity 1.2.B - Adjusting the Time Step:</h2>
+    <img src="/img/change position equation.png"  width="20%" align="right"/>
+    <strong>Program description:</strong>
+    <ul>
+        <li>Add a variable “delta t” to the previous program that allows the user to specify the length of the time step</li>
+        <li>The program must work for all “delta t” values greater than zero</li>
+    </ul>
+    <strong>Hints</strong>
+    <ul>
+        <li>How can you keep the sloths speed equal to 1 m/s?</li>
+    </ul>
+<br><br>
+    <h2>Activity 1.2.C - Adjusting speed and direction</h2>
+    <strong>Program description:</strong>
+    <ul>
+        <li>Add a variable “velocity” to the previous program that allows the user to specify the speed AND direction of the sloth’s movement</li>
+        <li>The program must work for all velocity values (positive and negative)</li>
+    </ul>
+    <strong>Hints</strong>
+    <ul>
+        <li>How does the position change of the sloth relate to its velocity and the delta t?</li>
+        <li>What does negative velocity mean?</li>
+    </ul>
+<br><br>
+    <h2>Activity 1.3 - Design Your Simulation Step</h2>
+    <strong>Program description:</strong>
+    <ul>
+        <li>Replace the loop structure in your previous code with the “simulation” blocks (pictured)</li>
+        <li>The program should otherwise work in the same way as the previous program</li>
+    </ul>
+    <strong>Hints</strong>
+    <li>Initialize your variables when the Green Flag is clicked</li>
+    <li>Use the simulation step as your looping structure</li>
+    <li>The simulation step runs only when called</li>
+    <li>Simulation blocks take care of delta t automatically</li>
+    <li>How does your program know when to stop the simulation?</li>
+</div>
+
+
 </br></br></br>
 <div>
-    <p><em>Knowledge Goals for This Task Include:</em></p>
+    <h3> Helpful Hints <em>(from Resources)</em>:</h3>
     <table>
         <tr>
             <th>Physics</th>
@@ -56,19 +112,6 @@
             <td></td>
         </tr>
     </table>
-</div>
-<p><em>Using Loops:</em> Use the code from Task 1 and extend it using a loop structure (such as “repeat until”)  to simulate the motion of an object at 1 m/s to the right, starting at  x-coordinate position 0m and moving to x-coordinate position 10m. To do so, you will need to change the x position of the sloth each time the loop repeats. Keep in mind that you will need to use an operator to determine if the x position of your sloth has moved past 10m.</p>
-<p>Code from Task One:</p>
-<div>
-    <img class="imgFloat" src="/img/task 1 code.png"  width="20%" />
-    <iframe class="resourseiFrame" width="560" height="315" src="https://www.youtube.com/embed/k7sG87TTix0" frameborder="0" allowfullscreen></iframe>
-</div>
-<p><em>Adjusting Time Steps:</em> This time, use a smaller time step and allow the user of your program to specify the length of the time step in seconds. This process can be similar to how you requested information for position in Task 1 in that you will need to create a new variable (called delta t) and set the variable to be the answer the user gives.</p>
-<img class="ImageStyle" src="/img/change position equation.png"  width="20%" align="centre"/>
-<p><em>Which variables should be inserted into this equation in order to accurately change the position of the sloth? (Don’t forget your resources section!)</em></p>
 
-<p><em>Adding Variables:</em>Finally, let’s give the user more options. Allow user to specify additional motion variables such as velocity, starting point, and ending point of the simulation. Hint: based on the change position equation from the resources section, how would you change the “change x position by” equation using your new user requested variables to more accurately model the change of position? </p>
-<img class="ImageStyle" src="/img/set variables.png"  width="17%" align="centre"/>
-<p><em>You can use these physics blocks to set the answer to your variables user requests to the relevant physics construct! </em></p>
 </body>
 </html>

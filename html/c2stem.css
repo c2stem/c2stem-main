@@ -104,7 +104,7 @@ blockquote cite:before {
 table {
     /*font-family: arial, sans-serif;*/
     border-collapse: collapse;
-    width: 50%;
+    width: 90%;
    margin: 0px auto;
 }
 
@@ -123,15 +123,24 @@ tr:nth-child(even) {
     overflow: hidden;
 }
 
-#tasks li:nth-of-type(4){
-    border: 5px solid yellowgreen;
-}
-#tasks li:nth-of-type(8){
-    border: 5px solid yellowgreen;
+#a1d-constant{
+    border: 5px solid yellowgreen!important;
 }
 
-#tasks li:nth-of-type(9){
-    border: 5px solid mediumpurple;
+#a1d-stop{
+    border: 5px solid yellowgreen!important;
+}
+
+#a2d-mb_cross{
+    border: 5px solid yellowgreen!important;
+}
+
+#a1d-deliver{
+    border: 5px solid mediumpurple!important;
+}
+
+#a2d-river_challenge{
+    border: 5px solid mediumpurple!important;
 }
 
 #sidebar{
@@ -205,7 +214,7 @@ tr:nth-child(even) {
     overflow: hidden;
     text-align: justify;
     font-size: 20px;
-    position: fixed;
+    position: absolute;
     left:220px;
 }
 
