@@ -10,16 +10,12 @@ C2Stem.prototype.loadHomeData = function (callback) {
             icon: "img/boat.png"
         }, {
             id: 'm3',
-            name: "Gravity",
+            name: "Parabolic motion",
             icon: "img/plane.png"
         }, {
             id: 'm4',
-            name: "Rocket landing",
+            name: "Gravity",
             icon: "img/falcon9.png"
-        }, {
-            id: 'devmod',
-            name: "Development",
-            icon: "img/work-in-prog.png"
         }]
     };
 
@@ -43,16 +39,15 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
                 id: '1d-elaborate',
                 name: 'Instructional Task - 1D Velocity: Elaborate Your Simulation'
             }, {
-                id: '1d-steps',
-                name: 'Instructional Task - 1D Velocity: Use a Simulation Step'
+                id: '1d-inst_conceptual',
+                name: 'Instructional Task - 1D Velocity: Model Planning'
             }, {
                 id: '1d-constant',
                 name: 'Model Building - 1D Velocity: Simulate the Motion of a Truck'
             }, {
                 id: '1d-liftoff',
                 name: 'Instructional Task - 1D Acceleration:Introduction to Acceleration'
-            }
-            , {
+            }, {
                 id: '1d-PVT',
                 name: 'Instructional Task - 1D Acceleration: Position-Velocity-Time'
             },{
@@ -70,10 +65,52 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
             }
             ]
         };
-    } else if (id === 'devmod') {
+    } else if (id === 'm2') {
         res = {
             id: id,
-            name: 'Development',
+            name: 'Relative motion',
+            tasks: [{
+                id: '2d-basics',
+                name: 'Instructional Task: Motion of a Boat in a River'
+            }, {
+                id: '2d-inst_cross',
+                name: 'Instructional Task: Crossing the River'
+            }, {
+                id: '2d-mb_cross',
+                name: 'Model Building - Crossing the River to Get to the Airstrip'
+            }, {
+                id: '2d-river_challenge',
+                name: 'Challenge: The Uncertain Amazon River'
+            }, {
+                id: '2d-assessment',
+                name: 'Assessment Task'
+            }]
+        };
+    } else if (id === 'm3') {
+        res = {
+            id: id,
+            name: 'Parabolic motion',
+            tasks: [{
+                id: 'para-basics',
+                name: 'Instructional Task: Drop'
+            }, {
+                id: 'para-inst_drop',
+                name: 'Instructional Task: Drop While Moving'
+            }, {
+                id: 'para-mb_drop',
+                name: 'Model Building - Drop Package on Target'
+            }, {
+                id: 'para-plane_challenge',
+                name: 'Challenge: Final Delivery of the Medicine!'
+            }, {
+                id: 'para-assessment',
+                name: 'Assessment Task'
+            }]
+        };
+    } else if (id === 'm4') {
+        res = {
+            id: id,
+            name: 'Gravity',
             tasks: [{
                 id: 'snaptest',
                 name: 'How to embed SNAP'
@@ -105,31 +142,22 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
             id: id,
             name: 'Basics',
             tabs: [{
-                id: 'desc',
-                type: 'desc',
-                name: 'Description',
-                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-develop_simple_motion_simulation.html" frameborder="0"></iframe>'
-            },  {
                 id: 'resource',
                 type: 'desc',
                 name: 'Resources',
                 markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
+            },  {
+                id: 'desc',
+                type: 'desc',
+                name: 'Description',
+                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-develop_simple_motion_simulation.html" frameborder="0"></iframe>'
             }, {
                 id: 'onestep',
                 type: 'snap1',
-                name: 'Move One Step',
+                name: 'BUILD',
                 template: {
-                    user: 'nicole',
+                    user: 'Nicoletest',
                     proj: 'sf training 1a'
-                }
-
-            }, {
-                id: 'twostep',
-                type: 'snap1',
-                name: 'Move Multiple Steps',
-                template: {
-                    user: 'nicole',
-                    proj: 'sf training 1b'
                 }
             }]
         };
@@ -142,27 +170,26 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
             id: id,
             name: 'Model Building - 1D Velocity: Constant Velocity',
             tabs: [{
-                id: 'desc',
-                type: 'desc',
-                name: 'Description',
-                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-simulate_the_motion_of_a_truck.html" frameborder="0"></iframe>'
-            },  {
                 id: 'resource',
                 type: 'desc',
                 name: 'Resources',
                 markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
+            },  {
+                id: 'desc',
+                type: 'desc',
+                name: 'Description',
+                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-simulate_the_motion_of_a_truck.html" frameborder="0"></iframe>'
             }, {
                 id: 'onestep',
                 type: 'cm',
-                name: 'Define Your Components',
+                name: 'PLAN',
                 data: 'sf_constant_velocity'
-
             }, {
                 id: 'twostep',
                 type: 'snap1',
-                name: 'Develop Your Model',
+                name: 'BUILD',
                 template: {
-                    user: 'nicole',
+                    user: 'Nicoletest',
                     proj: 'sf_constant_velocity'
                 }
 
@@ -175,70 +202,57 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 name: '1D motion'
             },
             id: id,
-            name: 'Elaborate',
+            name: 'Instructional Task - 1D Velocity: Elaborate Your Simulation',
             tabs: [{
-                id: 'desc',
-                type: 'desc',
-                name: 'Description',
-                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-elaborate_your_simulation.html" frameborder="0"></iframe>'
-            }, {
                 id: 'resource',
                 type: 'desc',
                 name: 'Resources',
                 markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }, {
+                id: 'desc',
+                type: 'desc',
+                name: 'Description',
+                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-elaborate_your_simulation.html" frameborder="0"></iframe>'
+            }, {
                 id: 'loops',
                 type: 'snap1',
-                name: 'Using Loops',
+                name: 'BUILD',
                 template: {
-                    user: 'nicole',
+                    user: 'Nicoletest',
                     proj: 'sf training 2a'
-                }
-
-
-            }, {
-                id: 'adjustingTime',
-                type: 'snap1',
-                name: 'Adjusting Time Steps',
-                template: {
-                    user: 'nicole',
-                    proj: 'sf training 2b'
-                }
-            }, {
-                id: 'addingVariables',
-                type: 'snap1',
-                name: 'Adding Variables',
-                template: {
-                    user: 'nicole',
-                    proj: 'sf training 2c'
                 }
             }]
         };
-    } else if (id === '1d-steps') {
+    } else if (id === '1d-inst_conceptual') {
         res = {
             parent: {
                 id: '1dmotion',
                 name: '1D motion'
             },
             id: id,
-            name: 'Steps',
+            name: 'Instructional Task - 1D Velocity: Model Planning',
             tabs: [{
-                id: 'desc',
-                type: 'desc',
-                name: 'Description',
-                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-use_a_simulation_step.html" frameborder="0"></iframe>'
-            },{
                 id: 'resource',
                 type: 'desc',
                 name: 'Resources',
                 markup:'<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }, {
+                id: 'desc',
+                type: 'desc',
+                name: 'Description',
+                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-use_a_simulation_step.html" frameborder="0"></iframe>'
+            }, {
+                id: 'onestep',
+                type: 'cm',
+                name: 'PLAN',
+                data: 'sf_constant_velocity'
+            }, {
                 id: 'step',
                 type: 'snap1',
-                name: 'Design Your Simulation Step',
+                name: 'BUILD',
                 template: {
-                    user: 'nicole',
-                    proj: 'sf training 3'
+                    user: 'Nicoletest',
+                    proj: 'sf_inst_conceptual'
                 }
             }]
         };
@@ -251,21 +265,21 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
             id: id,
             name: 'Introduction to Acceleration',
             tabs: [{
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
+            }, {
                 id: 'desc',
                 type: 'desc',
                 name: 'Description',
                 markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-introduction_to_acceleration.html" frameborder="0"></iframe>'
             }, {
-                id: 'resource',
-                type: 'desc',
-                name: 'Resources',
-                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
-            },{
                 id: 'Accel',
                 type: 'snap1',
-                name: 'Accelerate the Sloth',
+                name: 'BUILD',
                 template: {
-                    user: 'nicole',
+                    user: 'Nicoletest',
                     proj: 'sf accel 1'
                 }
             }]
@@ -279,21 +293,21 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
             id: id,
             name: 'Position-Velocity-Time',
             tabs: [{
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
+            }, {
                 id: 'desc',
                 type: 'desc',
                 name: 'Description',
                 markup:'<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-PVT.html" frameborder="0"></iframe>'
             }, {
-                id: 'resource',
-                type: 'desc',
-                name: 'Resources',
-                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
-            },{
                 id: 'AccelTime',
                 type: 'snap1',
-                name: 'Adjust Time Step',
+                name: 'BUILD',
                 template: {
-                    user: 'nicole',
+                    user: 'Nicoletest',
                     proj: 'sf accel 2'
                 }
             }]
@@ -307,30 +321,22 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
             id: id,
             name: 'Velocity Change Rate',
             tabs: [{
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
+            }, {
                 id: 'desc',
                 type: 'desc',
                 name: 'Description',
                 markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-velocity_change_rate.html" frameborder="0"></iframe>'
             }, {
-                id: 'resource',
-                type: 'desc',
-                name: 'Resources',
-                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
-            },{
                 id: 'VelocityChange',
                 type: 'snap1',
-                name: 'Include Velocity Change Rate',
+                name: 'BUILD',
                 template: {
-                    user: 'nicole',
+                    user: 'Nicoletest',
                     proj: 'sf accel 3'
-                }
-            },{
-                id: 'PlottingChange',
-                type: 'snap1',
-                name: 'Plotting the Change',
-                template: {
-                    user: 'nicole',
-                    proj: 'sf accel 3b'
                 }
             }]
         };
@@ -343,30 +349,36 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
             id: id,
             name: 'Model Building -1D Acceleration: Make Your Truck Stop',
             tabs: [{
-                id: 'desc',
-                type: 'desc',
-                name: 'Description',
-                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-truck_stop.html" frameborder="0"></iframe>'
-            },  {
                 id: 'resource',
                 type: 'desc',
                 name: 'Resources',
                 markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }, {
+                id: 'desc',
+                type: 'desc',
+                name: 'Description',
+                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-truck_stop.html" frameborder="0"></iframe>'
+            }, {
                 id: 'truckStop',
                 type: 'cm',
-                name: 'Define Your Components',
+                name: 'PLAN',
                 data: 'sf_stop_truck'
-
             }, {
                 id: 'stopAccel',
                 type: 'snap1',
-                name: 'Model 1D Acceleration',
+                name: 'BUILD',
                 template: {
-                    user: 'nicole',
+                    user: 'Nicoletest',
                     proj: 'sf_stop_truck'
                 }
-
+            }, {
+                id: 'applyAccel',
+                type: 'snap1',
+                name: 'APPLY',
+                template: {
+                    user: 'Nicoletest',
+                    proj: 'sf_stop_truck'
+                }
             }]
         };
     }else if (id === '1d-deliver') {
@@ -378,27 +390,26 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
             id: id,
             name: 'Challenge Problem: Deliver the Medicine to the River!',
             tabs: [{
-                id: 'desc',
-                type: 'desc',
-                name: 'Description',
-                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-deliver.html" frameborder="0"></iframe>'
-            },  {
                 id: 'resource',
                 type: 'desc',
                 name: 'Resources',
                 markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }, {
+                id: 'desc',
+                type: 'desc',
+                name: 'Description',
+                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-deliver.html" frameborder="0"></iframe>'
+            },   {
                 id: 'Challengecm',
                 type: 'cm',
-                name: 'Define Your Components',
+                name: 'PLAN',
                 data: 'sf_land_challenge'
-
             }, {
                 id: 'Challengecomp',
                 type: 'snap1',
-                name: 'Complete Challenge One',
+                name: 'BUILD',
                 template: {
-                    user: 'nicole',
+                    user: 'Nicoletest',
                     proj: 'sf_stop_truck'
                 }
 
@@ -409,6 +420,149 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
             parent: {
                 id: '1dmotion',
                 name: '1D motion'
+            },
+            id: id,
+            name: 'Assessment Task',
+            tabs: [{
+                id: 'assessment',
+                type: 'desc',
+                name: 'Assessment',
+                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
+            }]
+        };
+    } else if (id === '2d-basics') {
+        res = {
+            parent: {
+                id: 'm2',
+                name: 'Relative motion'
+            },
+            id: id,
+            name: 'Instructional Task: Motion of Boat in a River',
+            tabs: [{
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
+            }, {
+                id: 'desc',
+                type: 'desc',
+                name: 'Description',
+                markup:'<iframe id=desc_resourceIframe  src="task-descriptions/2D-module/2d-motion_of_boat.html" frameborder="0"></iframe>'
+            }, {
+                id: 'motionboat',
+                type: 'snap1',
+                name: 'BUILD',
+                template: {
+                    user: 'Nicoletest',
+                    proj: 'sf2d-motion_of_boat'
+                }
+            }]
+        };
+    } else if (id === '2d-inst_cross') {
+        res = {
+            parent: {
+                id: 'm2',
+                name: 'Relative motion'
+            },
+            id: id,
+            name: 'Instructional Task: Crossing the River',
+            tabs: [{
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
+            }, {
+                id: 'desc',
+                type: 'desc',
+                name: 'Description',
+                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/2D-module/2d-inst_crossing_river.html" frameborder="0"></iframe>'
+            }, {
+                id: 'relativeassess',
+                type: 'desc',
+                name: 'LEARN',
+                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
+            }, {
+                id: 'instcross',
+                type: 'snap1',
+                name: 'BUILD',
+                template: {
+                    user: 'Nicoletest',
+                    proj: 'sf2d-inst_cross'
+                }
+            }]
+        };
+    } else if (id === '2d-mb_cross') {
+        res = {
+            parent: {
+                id: 'm2',
+                name: 'Relative motion'
+            },
+            id: id,
+            name: 'Model Building -1D Acceleration: Make Your Truck Stop',
+            tabs: [{
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
+            }, {
+                id: 'desc',
+                type: 'desc',
+                name: 'Description',
+                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/2D-module/2d-mb_crossing_river.html" frameborder="0"></iframe>'
+            }, {
+                id: 'plancrossing',
+                type: 'cm',
+                name: 'PLAN',
+                data: '2d_cross_river'
+            }, {
+                id: 'buildcrossing',
+                type: 'snap1',
+                name: 'BUILD',
+                template: {
+                    user: 'Nicoletest',
+                    proj: 'sf2d-mb_cross'
+                }
+            }]
+        };
+    }else if (id === '2d-river_challenge') {
+        res = {
+            parent: {
+                id: 'm2',
+                name: 'Relative motion'
+            },
+            id: id,
+            name: 'Challenge Problem: Deliver the Medicine to the River!',
+            tabs: [{
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
+            }, {
+                id: 'desc',
+                type: 'desc',
+                name: 'Description',
+                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/2D-module/2d-challenge.html" frameborder="0"></iframe>'
+            },   {
+                id: 'planriverchallenge',
+                type: 'cm',
+                name: 'PLAN',
+                data: '2d_river_challenge'
+            }, {
+                id: 'buildriverchallenge',
+                type: 'snap1',
+                name: 'BUILD',
+                template: {
+                    user: 'Nicoletest',
+                    proj: 'sf2d-river_crossing'
+                }
+
+            }]
+        };
+    }else if (id === '2d-assessment') {
+        res = {
+            parent: {
+                id: 'm2',
+                name: 'Relative motion'
             },
             id: id,
             name: 'Assessment Task',

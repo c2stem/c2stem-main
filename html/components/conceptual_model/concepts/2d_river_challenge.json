@@ -2,17 +2,22 @@
   "environment": {
   },
   "agents": {
-    "Truck": {
-      "name": "Truck",
-      "elementID": "Truck",
+    "Boat": {
+      "name": "Boat",
+      "elementID": "Boat",
       "selected": false,
       "isSprite": true,
       "isBuiltIn": true,
-      "costume": "c2stem med truck",
+      "costume": "boat-small",
       "properties": {
         "PositionX": {
           "name": "x position in m",
           "elementID": "PositionX",
+          "selected": false
+        },
+        "PositionY": {
+          "name": "y position in m",
+          "elementID": "PositionY",
           "selected": false
         },
         "VelocityX": {
@@ -20,19 +25,29 @@
           "elementID": "VelocityX",
           "selected": false
         },
-        "XAcceleration": {
-          "name": "x acceleration in m/s^2",
-          "elementID": "StartPosition",
+        "VelocityY": {
+          "name": "y velocity in m/s",
+          "elementID": "VelocityY",
           "selected": false
         },
-        "OldPositionX": {
-          "name": "old x position in m",
-          "elementID": "OldPositionX",
+        "ResultantVelocity": {
+          "name": "resultant velocity in m/s",
+          "elementID": "ResultantVelocity",
           "selected": false
         },
-        "PassedTheCone": {
-          "name": "passed the cone",
-          "elementID": "PassedTheCone",
+        "Angle": {
+          "name": "angle in deg",
+          "elementID": "Angle",
+          "selected": false
+        },
+        "RiverSpeed": {
+          "name": "river speed in m/s",
+          "elementID": "RiverSpeed",
+          "selected": false
+        },
+        "BoatSpeed": {
+          "name": "boat speed in m/s",
+          "elementID": "BoatSpeed",
           "selected": false
         }
       },
@@ -40,6 +55,12 @@
         "update_position": {
           "name": "update position in m",
           "elementID": "update_position",
+          "selected": false,
+          "category": "physics"
+        },
+        "update_resultant_velocity": {
+          "name": "update resultant velocity in m/s",
+          "elementID": "update_resultant_velocity",
           "selected": false,
           "category": "physics"
         }
@@ -69,6 +90,28 @@
         },
         {
           "Required": [
+            "PositionY"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsYPosition",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setPhysicsYPosition",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changePhysicsYPosition",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
             "update_position"
           ],
           "GeneratedConstructs": [
@@ -77,15 +120,7 @@
               "category": "physics",
               "type": "built_in_custom_block",
               "isGlobal": "false"
-            }
-          ]
-        },
-        {
-          "Required": [
-            "PositionX",
-            "update_position"
-          ],
-          "GeneratedConstructs": [
+            },
             {
               "name": "getPhysicsAttrOf",
               "category": "physics",
@@ -122,23 +157,63 @@
         },
         {
           "Required": [
-            "XAcceleration"
+            "VelocityY"
           ],
           "GeneratedConstructs": [
             {
-              "name": "XAcceleration",
+              "name": "yVelocity",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setYVelocity",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changeYVelocity",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "VelocityX",
+            "VelocityY"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "setVelocity",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changeVelocity",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "ResultantVelocity"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "ResultantVelocity",
               "category": "physics",
               "type": "custom_variable",
               "isGlobal": "false"
             },
             {
-              "name": "set XAcceleration to ",
+              "name": "set ResultantVelocity to (m/s)",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
             },
             {
-              "name": "change XAcceleration by ",
+              "name": "change ResultantVelocity by (m/s)",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
@@ -147,23 +222,58 @@
         },
         {
           "Required": [
-            "OldPositionX"
+            "update_resultant_velocity"
           ],
           "GeneratedConstructs": [
             {
-              "name": "OldPositionX",
+              "name": "update resultant velocity in m/s",
+              "category": "physics",
+              "type": "built_in_custom_block",
+              "isGlobal": "false"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "Angle"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsAngle",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setPhysicsAngle",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changePhysicsAngle",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "RiverSpeed"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "river speed in m/s",
               "category": "physics",
               "type": "custom_variable",
               "isGlobal": "false"
             },
             {
-            "name": "set OldPositionX to (m)",
-            "category": "physics",
-            "type": "custom_block",
-            "isGlobal": "false"
+              "name": "set river speed (m/s)",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "false"
             },
             {
-              "name": "change OldPositionX by (m)",
+              "name": "change river speed (m/s)",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
@@ -172,30 +282,47 @@
         },
         {
           "Required": [
-            "PassedTheCone"
+            "BoatSpeed"
           ],
           "GeneratedConstructs": [
             {
-              "name": "PassedTheCone",
+              "name": "boat speed in m/s",
               "category": "physics",
               "type": "custom_variable",
+              "isGlobal": "false"
+            },
+            {
+              "name": "set boat speed to (m/s)",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "false"
+            },
+            {
+              "name": "change boat speed by (m/s)",
+              "category": "physics",
+              "type": "custom_block",
               "isGlobal": "false"
             }
           ]
         }
       ]
     },
-    "Cone1": {
-      "name": "Cone1",
-      "elementID": "Cone1",
+    "River": {
+      "name": "River",
+      "elementID": "River",
       "selected": false,
       "isSprite": true,
       "isBuiltIn": true,
-      "costume": "cone1",
+      "costume": "river-flow",
       "properties": {
         "PositionX": {
           "name": "x position in m",
           "elementID": "PositionX",
+          "selected": false
+        },
+        "VelocityX": {
+          "name": "x velocity in m/s",
+          "elementID": "VelocityX",
           "selected": false
         }
       },
@@ -221,41 +348,24 @@
               "type": "built_in"
             }
           ]
-        }
-      ]
-    },
-    "Cone2": {
-      "name": "Cone2",
-      "elementID": "Cone2",
-      "selected": false,
-      "isSprite": true,
-      "isBuiltIn": true,
-      "costume": "cone2",
-      "properties": {
-        "PositionX": {
-          "name": "x position in m",
-          "elementID": "PositionX",
-          "selected": false
-        }
-      },
-      "rules": [
+        },
         {
           "Required": [
-            "PositionX"
+            "VelocityX"
           ],
           "GeneratedConstructs": [
             {
-              "name": "physicsXPosition",
-              "category":"physics",
-              "type": "built_in"
-            },
-            {
-              "name": "setPhysicsXPosition",
+              "name": "xVelocity",
               "category": "physics",
               "type": "built_in"
             },
             {
-              "name": "changePhysicsXPosition",
+              "name": "setXVelocity",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changeXVelocity",
               "category": "physics",
               "type": "built_in"
             }
@@ -263,13 +373,13 @@
         }
       ]
     },
-    "Cone3": {
-      "name": "Cone3",
-      "elementID": "Cone3",
+    "Unloading-Dock1": {
+      "name": "Unloading Dock",
+      "elementID": "Unloading-Dock1",
       "selected": false,
       "isSprite": true,
       "isBuiltIn": true,
-      "costume": "cone3",
+      "costume": "dock",
       "properties": {
         "PositionX": {
           "name": "x position in m",
