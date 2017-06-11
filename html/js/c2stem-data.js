@@ -3,11 +3,11 @@ C2Stem.prototype.loadHomeData = function (callback) {
         modules: [{
             id: '1dmotion',
             name: "1D: Land",
-            icon: "img/school-bus.png"
+            icon: "img/truck.jpg"
         }, {
             id: 'm2',
             name: "2D: Water",
-            icon: "img/boat.png"
+            icon: "img/boat.jpg"
         }, {
             id: 'm3',
             name: "2D: Air",
@@ -134,13 +134,8 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 name: '1D: Land'
             },
             id: id,
-            name: 'Basics',
+            name: 'Instructional Task - Develop Simple Motion Simulation',
             tabs: [{
-                id: 'resource',
-                type: 'desc',
-                name: 'Resources',
-                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
-            },  {
                 id: 'desc',
                 type: 'desc',
                 name: 'Description',
@@ -153,6 +148,11 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                     user: 'nicole',
                     proj: 'sf training 1a'
                 }
+            }, {
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }]
         };
     } else if (id === '1d-elaborate') {
@@ -164,11 +164,6 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
             id: id,
             name: 'Instructional Task - 1D Velocity: Elaborate Your Simulation',
             tabs: [{
-                id: 'resource',
-                type: 'desc',
-                name: 'Resources',
-                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
-            }, {
                 id: 'desc',
                 type: 'desc',
                 name: 'Description',
@@ -181,6 +176,11 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                     user: 'nicole',
                     proj: 'sf training 2a'
                 }
+            }, {
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }]
         };
     } else if (id === '1d-inst_conceptual') {
@@ -192,15 +192,15 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
             id: id,
             name: 'Instructional Task - 1D Velocity: Model Planning',
             tabs: [{
-                id: 'resource',
-                type: 'desc',
-                name: 'Resources',
-                markup:'<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
-            }, {
                 id: 'desc',
                 type: 'desc',
                 name: 'Description',
                 markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-use_a_simulation_step.html" frameborder="0"></iframe>'
+            }, {
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }]
         };
     } else if (id === '1d-constant') {
@@ -212,11 +212,6 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
             id: id,
             name: 'Model Building - 1D Velocity: Constant Velocity',
             tabs: [{
-                id: 'resource',
-                type: 'desc',
-                name: 'Resources',
-                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
-            },  {
                 id: 'desc',
                 type: 'desc',
                 name: 'Description',
@@ -234,7 +229,11 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                     user: 'nicole',
                     proj: 'sf_constant_velocity'
                 }
-
+            }, {
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }]
         };
     } else if (id === '1d-liftoff') {
@@ -244,13 +243,8 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 name: '1D: Land'
             },
             id: id,
-            name: 'Changing Acceleration',
+            name: 'Instructional Task - 1D Acceleration: Changing Velocity',
             tabs: [{
-                id: 'resource',
-                type: 'desc',
-                name: 'Resources',
-                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
-            }, {
                 id: 'desc',
                 type: 'desc',
                 name: 'Description',
@@ -263,6 +257,11 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                     user: 'nicole',
                     proj: 'sf accel 1'
                 }
+            }, {
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }]
         };
     } else if (id === '1d-stop') {
@@ -274,11 +273,6 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
             id: id,
             name: 'Model Building -1D Acceleration: Make Your Truck Stop',
             tabs: [{
-                id: 'resource',
-                type: 'desc',
-                name: 'Resources',
-                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
-            }, {
                 id: 'desc',
                 type: 'desc',
                 name: 'Description',
@@ -297,13 +291,10 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                     proj: 'sf_stop_truck'
                 }
             }, {
-                id: 'applyAccel',
-                type: 'snap1',
-                name: 'APPLY',
-                template: {
-                    user: 'nicole',
-                    proj: 'sf_stop_truck'
-                }
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }]
         };
     }else if (id === '1d-deliver') {
@@ -315,11 +306,6 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
             id: id,
             name: 'Challenge Problem: Deliver the Medicine to the River!',
             tabs: [{
-                id: 'resource',
-                type: 'desc',
-                name: 'Resources',
-                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
-            }, {
                 id: 'desc',
                 type: 'desc',
                 name: 'Description',
@@ -335,9 +321,13 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 name: 'BUILD',
                 template: {
                     user: 'nicole',
-                    proj: 'sf_stop_truck'
+                    proj: 'sf_land_challenge'
                 }
-
+            }, {
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }]
         };
     }else if (id === '1d-assessment') {
@@ -364,11 +354,6 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
             id: id,
             name: 'Instructional Task: Motion of Boat in a River',
             tabs: [{
-                id: 'resource',
-                type: 'desc',
-                name: 'Resources',
-                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
-            }, {
                 id: 'desc',
                 type: 'desc',
                 name: 'Description',
@@ -381,6 +366,11 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                     user: 'nicole',
                     proj: 'sf2d-motion_of_boat'
                 }
+            }, {
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }]
         };
     } else if (id === '2d-inst_cross') {
@@ -392,11 +382,6 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
             id: id,
             name: 'Instructional Task: Crossing the River',
             tabs: [{
-                id: 'resource',
-                type: 'desc',
-                name: 'Resources',
-                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
-            }, {
                 id: 'desc',
                 type: 'desc',
                 name: 'Description',
@@ -414,6 +399,11 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                     user: 'nicole',
                     proj: 'sf2d-inst_cross'
                 }
+            }, {
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }]
         };
     } else if (id === '2d-mb_cross') {
@@ -423,13 +413,8 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 name: '2D: Water'
             },
             id: id,
-            name: 'Model Building -1D Acceleration: Make Your Truck Stop',
+            name: 'Model Building - Crossing the River to Get to the Airstrip',
             tabs: [{
-                id: 'resource',
-                type: 'desc',
-                name: 'Resources',
-                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
-            }, {
                 id: 'desc',
                 type: 'desc',
                 name: 'Description',
@@ -447,6 +432,11 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                     user: 'nicole',
                     proj: 'sf2d-mb_cross'
                 }
+            }, {
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }]
         };
     }else if (id === '2d-river_challenge') {
@@ -458,11 +448,6 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
             id: id,
             name: 'Challenge Problem: Deliver the Medicine to the River!',
             tabs: [{
-                id: 'resource',
-                type: 'desc',
-                name: 'Resources',
-                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
-            }, {
                 id: 'desc',
                 type: 'desc',
                 name: 'Description',
@@ -480,7 +465,11 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                     user: 'nicole',
                     proj: 'sf2d-river_crossing'
                 }
-
+            }, {
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }]
         };
     }else if (id === '2d-assessment') {

@@ -4,6 +4,30 @@
     <meta charset="UTF-8">
     <title>C2STEM</title>
     <link rel="stylesheet" href="/c2stem.css">
+    <style>
+        button.accordion {
+            background-color: #008080;
+            color: #FFF;
+            cursor: pointer;
+            padding: 3px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+        button.accordion.active, button.accordion:hover {
+            background-color: #20B2AA;
+        }
+
+        div.panel {
+            padding: 0 18px;
+            display: none;
+            background-color: white;
+        }
+    </style>
 </head>
 <body>
 <div>
@@ -11,74 +35,105 @@
 </div>
 
 <div>
-    <h2>Activity 1.2.A - Use a loop:</h2>
-    <img src="/img/task 1 code.png"  width="20%" align="right"/>
-    <strong>Program description</strong>
-    <ul>
-        <li>Add a loop to the previous program to simulate the sloth’s motion to the right</li>
-        <li>The program should update the sloth’s position at 1 second intervals</li>
-        <li>Speed = 1 m/s</li>
-        <li>Initial position = 0 m</li>
-        <li>Final position = 10 m</li>
-    </ul>
-    <strong>Hints</strong>
-    <ul>
-        <li>Change the position of the sloth on each loop</li>
-        <li>Use the “Wait” block to slow down the execution of each loop</li>
-        <li>How will your program make the sloth stop moving after 10 m?</li>
-    </ul>
-<br><br>
-    <h2>Activity 1.2.B - Adjusting the Time Step:</h2>
-    <img src="/img/change position equation.png"  width="20%" align="right"/>
-    <strong>Program description:</strong>
-    <ul>
-        <li>Add a variable “delta t” to the previous program that allows the user to specify the length of the time step</li>
-        <li>The program must work for all “delta t” values greater than zero</li>
-    </ul>
-    <strong>Hints</strong>
-    <ul>
-        <li>How can you keep the sloths speed equal to 1 m/s?</li>
-    </ul>
-<br><br>
-    <h2>Activity 1.2.C - Adjusting speed and direction</h2>
-    <strong>Program description:</strong>
-    <ul>
-        <li>Add a variable “velocity” to the previous program that allows the user to specify the speed AND direction of the sloth’s movement</li>
-        <li>The program must work for all velocity values (positive and negative)</li>
-    </ul>
-    <strong>Hints</strong>
-    <ul>
-        <li>How does the position change of the sloth relate to its velocity and the delta t?</li>
-        <li>What does negative velocity mean?</li>
-    </ul>
-<br><br>
-    <h2>Activity 1.3 - Design Your Simulation Step</h2>
-    <strong>Program description:</strong>
-    <ul>
-        <li>Replace the loop structure in your previous code with the “simulation” blocks (pictured)</li>
-        <li>The program should otherwise work in the same way as the previous program</li>
-    </ul>
-    <strong>Hints</strong>
-    <li>Initialize your variables when the Green Flag is clicked</li>
-    <li>Use the simulation step as your looping structure</li>
-    <li>The simulation step runs only when called</li>
-    <li>Simulation blocks take care of delta t automatically</li>
-    <li>How does your program know when to stop the simulation?</li>
+    <button class="accordion"><h3>Activity 1.2.A - Use a loop:</h3></button>
+    <div class="panel">
+        <img src="/img/task 1 code.png"  width="20%" align="right"/>
+        <br>
+        <strong>Program description - When Green Flag is clicked:</strong>
+        <ul>
+            <li>Add a loop to the previous program to simulate the sloth’s motion to the right</li>
+            <li>The program should update the sloth’s position at 1 second intervals</li>
+            <li>Speed = 1 m/s</li>
+            <li>Initial position = 0 m</li>
+            <li>Final position = 10 m</li>
+        </ul>
+        <strong>Hints</strong>
+        <ul>
+            <li>Change the position of the sloth on each loop</li>
+            <li>Use the “Wait” block to slow down the execution of each loop</li>
+            <li>How will your program make the sloth stop moving after 10 m?</li>
+        </ul>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+
+    <button class="accordion"><h3>Activity 1.2.B - Adjusting the Time Step:</h3></button>
+    <div class="panel">
+        <br>
+        <img src="/img/change position equation.png"  width="20%" align="right"/>
+        <strong>Program description:</strong>
+        <ul>
+            <li>Add a variable “delta t” to the previous program that allows the user to specify the length of the time step</li>
+            <li>The program must work for all “delta t” values greater than zero</li>
+        </ul>
+        <strong>Hints</strong>
+        <ul>
+            <li>How can you keep the sloths speed equal to 1 m/s?</li>
+        </ul>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+    <button class="accordion"><h3>Activity 1.2.C - Adjusting speed and direction</h3></button>
+    <div class="panel">
+        <br>
+        <strong>Program description:</strong>
+        <ul>
+            <li>Add a variable “velocity” to the previous program that allows the user to specify the speed AND direction of the sloth’s movement</li>
+            <li>The program must work for all velocity values (positive and negative)</li>
+        </ul>
+        <strong>Hints</strong>
+        <ul>
+            <li>How does the position change of the sloth relate to its velocity and the delta t?</li>
+            <li>What does negative velocity mean?</li>
+        </ul>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+
+    <button class="accordion"><h3>Activity 1.2.D - Design Your Simulation Step</h3></button>
+    <div class="panel">
+        <br>
+        <strong>Program description:</strong>
+        <ul>
+            <li>Replace the loop structure in your previous code with the “simulation” blocks (pictured)</li>
+            <li>The program should otherwise work in the same way as the previous program</li>
+        </ul>
+        <strong>Hints</strong>
+        <ul>
+            <li>Initialize your variables when the Green Flag is clicked</li>
+            <li>Use the simulation step as your looping structure</li>
+            <li>The simulation step runs only when called</li>
+            <li>Simulation blocks take care of delta t automatically</li>
+            <li>How does your program know when to stop the simulation?</li>
+        </ul>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
 </div>
-
-
-</br></br></br>
+<br>
 <div>
     <h3> Helpful Hints <em>(from Resources)</em>:</h3>
     <table>
         <tr>
-            <th>Physics</th>
-            <th>Computational</th>
-            <th>Practices</th>
+            <th>Physics Concepts</th>
+            <th>Computational Concepts</th>
+            <th>Computational Practices</th>
         </tr>
         <tr>
             <td>x<span class="descSubscript">k+1 </span>= x<span class="descSubscript">k</span> + Δx</td>
-            <td>Initializing Variables</td>
+            <td>Glossary of C2STEM Blocks</td>
             <td> </td>
         </tr>
         <tr>
@@ -91,27 +146,24 @@
             <td>Conditionals</td>
             <td></td>
         </tr>
-        <tr>
-            <td> </td>
-            <td>Input/Output</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td> </td>
-            <td>Debugging</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td> </td>
-            <td>Test Cases</td>
-            <td></td>
-        </tr>
-        <tr>
-            <td> </td>
-            <td>Operators and Expressions</td>
-            <td></td>
-        </tr>
     </table>
+</div>
+<br><br>
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
 
+        for (i = 0; i < acc.length; i++) {
+            acc[i].onclick = function(){
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            }
+        }
+    </script>
 </body>
 </html>

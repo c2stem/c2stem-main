@@ -4,88 +4,164 @@
     <meta charset="UTF-8">
     <title>C2STEM</title>
     <link rel="stylesheet" href="/c2stem.css">
+    <style>
+        button.accordion {
+            background-color: #008080;
+            color: #FFF;
+            cursor: pointer;
+            padding: 3px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+        button.accordion.active, button.accordion:hover {
+            background-color: #20B2AA;
+        }
+
+        div.panel {
+            padding: 0 18px;
+            display: none;
+            background-color: white;
+        }
+    </style>
 </head>
 <body>
-<h2>Activity 1.4 - Build a constant velocity model</h2>
-    <strong>Program description:</strong>
-    <ul>
-        <li>Using the model planning tool and the simulation blocks, make the sloth move with constant velocity to the right (as you did previously)</li>
-        <li>Start at position = 0 m; End at position = 10 m; Velocity  = 1 m/s</li>
-        <li>Use  to set your simulation step Δt = 1 second.</li>
-        <li>Run the program and use the “graphing view” and/or “table view” buttons to complete Table 1 and Plot 1 in your paper worksheet.</li>
-    </ul>
-    <br>
+<br>
+<div>
+    <button class="accordion"><h3>Activity 1.4.A - Build a constant velocity model</h3></button>
+    <div class="panel">
+        <br>
+        <strong>Program description:</strong>
+        <ul>
+            <li>Using the model planning tool and the simulation blocks, make the sloth move with constant velocity to the right (as you did previously)</li>
+            <li>Start at position = 0 m; End at position = 10 m; Velocity  = 1 m/s</li>
+            <li>Use  to set your simulation step Δt = 1 second.</li>
+            <li>Run the program and use the “graphing view” and/or “table view” buttons to complete Table 1 and Plot 1 in your paper worksheet.</li>
+        </ul>
+        <br>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
 
-<h2>Activity 1.5 - Increasing velocity: make a prediction</h2>
-    <strong>Prediction task:</strong>
-    <ul>
-        <li>Imagine the sloth will start at rest (velocity = 0), then increase its velocity by 1 m/s each second.</li>
-        <li>Predict the sloth’s motion by completing Table 2 and Plot 2 in your paper worksheet. The first couple rows are done as an example.</li>
-    </ul>
-    <strong>Hints</strong>
-    <ul>
-        <li>Remember Δt = 1 second.</li>
-        <li>Use the relation (position change) = (velocity change) * Δt to calculate the sloth’s new position each second.</li>
-    </ul>
-    <br>
+    <button class="accordion"><h3>Activity 1.4.B - Increasing velocity: make a prediction</h3></button>
+    <div class="panel">
+        <br>
+        <strong>Prediction task:</strong>
+        <ul>
+            <li>Imagine the sloth will start at rest (velocity = 0), then increase its velocity by 1 m/s each second.</li>
+            <li>Predict the sloth’s motion by completing Table 2 and Plot 2 in your paper worksheet. The first couple rows are done as an example.</li>
+        </ul>
+        <strong>Hints</strong>
+        <ul>
+            <li>Remember Δt = 1 second.</li>
+            <li>Use the relation (position change) = (velocity change) * Δt to calculate the sloth’s new position each second.</li>
+        </ul>
+        <br>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+    <button class="accordion"><h3>Activity 1.4.C - Build your model: increasing velocity over time</h3></button>
+    <div class="panel">
+        <br>
+        <strong>Program description:</strong>
+        <ul>
+            <li>Using your constant velocity model as a starting point, add some code to make the sloth move in the way you predicted in Table 2 and Plot 2</li>
+            <li>The sloth starts at rest (velocity = 0), and increases its velocity by 1 m/s each second.</li>
+            <li>The sloth starts at position = 0 m; Ends at position = 10 m</li>
+            <li>Use Δt = 1 second</li>
+            <li>Run the program and use the “graphing view” and/or “table view” buttons to compare your prediction with your model. Do the graphs and table confirm the motion you predicted?</li>
+        </ul>
+        <strong>Hint</strong>
+        <ul>
+            <li>Think about how you calculated the velocity in Table 2 and Plot 2. How will your program update the velocity in each simulation step?</li>
+        </ul>
+        <br>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
 
-<h2>Activity 1.6 - Build your model: increasing velocity over time</h2>
-    <strong>Program description:</strong>
-    <ul>
-        <li>Using your constant velocity model as a starting point, add some code to make the sloth move in the way you predicted in Table 2 and Plot 2</li>
-        <li>The sloth starts at rest (velocity = 0), and increases its velocity by 1 m/s each second.</li>
-        <li>The sloth starts at position = 0 m; Ends at position = 10 m</li>
-        <li>Use Δt = 1 second</li>
-        <li>Run the program and use the “graphing view” and/or “table view” buttons to compare your prediction with your model. Do the graphs and table confirm the motion you predicted?</li>
-    </ul>
-    <strong>Hint</strong>
-    <ul>
-        <li>Think about how you calculated the velocity in Table 2 and Plot 2. How will your program update the velocity in each simulation step?</li>
-    </ul>
-    <br>
+    <button class="accordion"><h3>Activity 1.4.D - Decreasing velocity: make a prediction</h3></button>
+    <div class="panel">
+        <br>
+        <strong>Prediction task:</strong>
+        <ul>
+            <li>Imagine the sloth will start at velocity = 4 m/s), then DECREASE its velocity by 1 m/s each second UNTIL IT STOPS.</li>
+            <li>Predict the sloth’s motion by completing Table 3 and Plot 3 in your paper worksheet. The first couple rows are done as an example.</li>
+        </ul>
+        <strong>Hints</strong>
+        <ul>
+            <li>Remember that Δt = 1 second.</li>
+            <li>Use the relation (position change) = (velocity change) * Δt to calculate the sloth’s new position each second.</li>
+            <li>How will you specify the condition for stopping the simulation?</li>
+        </ul>
+        <br>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+
+    <button class="accordion"><h3>Activity 1.4.E - Build your model: decreasing velocity over time</h3></button>
+    <div class="panel">
+        <br>
+        <strong>Program description:</strong>
+        <ul>
+            <li>Using your previous model as a starting point, modify it to make the sloth move in the way you predicted in Table 3 and Plot 3</li>
+            <li>The sloth starts with velocity 4 m/s, and decreases its velocity by 1 m/s each second.</li>
+            <li>The sloth starts at position = 0 m; Ends when the sloth reaches a velocity of 0 m/s.</li>
+            <li>Use Δt = 1 second</li>
+            <li>Run the program and use the “graphing view” and/or “table view” buttons to compare your prediction with your model. Do the graphs and table confirm the motion you predicted?</li>
+        </ul>
+        <br>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+
+    <button class="accordion"><h3>Activity 1.4.F - Exploration and Reflection</h3></button>
+    <div class="panel">
+        <br>
+        <h2></h2>
+        <strong>Exploration:</strong>
+        <ul>
+            <li>Explore your model by changing the code to make the sloth move in different ways. Explore different values of position, velocity, velocity change rate, and Δt. Be sure to try negative values.</li>
+            <li>Use the graph and table view buttons to confirm that your program works as designed.</li>
+            <li>Try reversing the order of your change position and change velocity blocks. What happens?</li>
+            <li>Answer the Reflection questions in your paper worksheet</li>
+        </ul>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+</div>
 
 
-<h2>Activity 1.7 - Decreasing velocity: make a prediction</h2>
-    <strong>Prediction task:</strong>
-    <ul>
-        <li>Imagine the sloth will start at velocity = 4 m/s), then DECREASE its velocity by 1 m/s each second UNTIL IT STOPS.</li>
-        <li>Predict the sloth’s motion by completing Table 3 and Plot 3 in your paper worksheet. The first couple rows are done as an example.</li>
-    </ul>
-    <strong>Hints</strong>
-    <ul>
-        <li>Remember that Δt = 1 second.</li>
-        <li>Use the relation (position change) = (velocity change) * Δt to calculate the sloth’s new position each second.</li>
-        <li>How will you specify the condition for stopping the simulation?</li>
-    </ul>
- <br>
-
-<h2>Activity 1.8 - Build your model: decreasing velocity over time</h2>
-    <strong>Program description:</strong>
-    <ul>
-        <li>Using your previous model as a starting point, modify it to make the sloth move in the way you predicted in Table 3 and Plot 3</li>
-        <li>The sloth starts with velocity 4 m/s, and decreases its velocity by 1 m/s each second.</li>
-        <li>The sloth starts at position = 0 m; Ends when the sloth reaches a velocity of 0 m/s.</li>
-        <li>Use Δt = 1 second</li>
-        <li>Run the program and use the “graphing view” and/or “table view” buttons to compare your prediction with your model. Do the graphs and table confirm the motion you predicted?</li>
-    </ul>
-    <br>
-
-<h2>Activity 1.9 - Exploration and Reflection</h2>
-    <strong>Exploration:</strong>
-    <ul>
-        <li>Explore your model by changing the code to make the sloth move in different ways. Explore different values of position, velocity, velocity change rate, and Δt. Be sure to try negative values.</li>
-        <li>Use the graph and table view buttons to confirm that your program works as designed.</li>
-        <li>Try reversing the order of your change position and change velocity blocks. What happens?</li>
-        <li>Answer the Reflection questions in your paper worksheet</li>
-    </ul>
 <br>
 <br>
 <h3> Helpful Hints <em>(from Resources)</em>:</h3>
 <table>
     <tr>
-        <th>Physics</th>
-        <th>Computational</th>
-        <th>Practices</th>
+        <th>Physics Concepts</th>
+        <th>Computational Concepts</th>
+        <th>Computational Practices</th>
     </tr>
     <tr>
         <td>base-change: x<span class="descSubscript">k+1</span>= x<span class="descSubscript">k</span> + Δx</td>
@@ -109,5 +185,21 @@
     </tr>
 </table>
 <br>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function(){
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        }
+    }
+</script>
 </body>
 </html>

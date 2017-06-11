@@ -4,19 +4,68 @@
     <meta charset="UTF-8">
     <title>C2STEM</title>
     <link rel="stylesheet" href="/c2stem.css">
+    <style>
+        button.accordion {
+            background-color: #008080;
+            color: #FFF;
+            cursor: pointer;
+            padding: 3px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+        button.accordion.active, button.accordion:hover {
+            background-color: #20B2AA;
+        }
+
+        div.panel {
+            padding: 0 18px;
+            display: none;
+            background-color: white;
+        }
+    </style>
 </head>
 <body>
 
-<h3> Plan and Build a model that helps Rosa drive her boat to the other side of the river and arrive at the landing strip.</h3>
+<h2> Plan and build a model that helps Rosa drive her boat to the other side of the river and arrive at the landing strip.</h2>
 <br>
+<div>
+    <button class="accordion"><h3>Plan Your Model:</h3></button>
+    <div class="panel">
+        <br>
+        <p><strong>Select the objects you will need to  program your boat to move across the river to a specific location as well as each object’s properties and behaviors. Keep in mind what is needed to complete the task based on your experience with the previous instructional tasks.</strong></p>
+        <br>
+    </div>
 
-<h2>Plan Your Model:</h2>
-<strong>Select the objects you will need to  program your boat to move across the river to a specific location as well as each object’s properties and behaviors. Keep in mind what is needed to complete the task based on your experience with the previous instructional tasks.</strong>
-<br>
+    <button class="accordion"><h3>Build Your Model:</h3></button>
+    <div class="panel">
+        <br>
+        <p><strong>In the instructional tasks, you programmed the medical supply boat to go downstream and upstream, and you developed an algorithm that will allow you to compute the boat’s heading and speed as it goes across the river.  For this exercise, build a model for the boat’s motion, so that it crosses the river and ends up at the airstrip in the shortest amount of time. Plot the x- and y- components of the velocity of the boat. Compare that to the river’s velocity.</strong></p>
+        <br>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
 
-<h2>Build Your Model:</h2>
-<strong>In the previous module, you programmed the medical supply boat to go downstream and upstream, and you developed an algorithm that will allow you to give the correct angle the boat needs to head in order to arrive at a particular location on the other side of a moving river. It is your turn to program your boat to do so! Build the computational model for the boat to cross the river and get to the airstrip on the other side. Be sure to keep track of the data available in the graph. Repeat the process for a different desired destination.</strong>
-<br>
+    <button class="accordion"><h3>Test Your Model:</h3></button>
+    <div class="panel">
+        <br>
+        <p><strong>It is always a good idea to develop models that apply in more than one situation.  Rosa thinks that if she uses a boat that can travel at 10 m/sec, she will get there in half the time.  Can you run a simulation with your model to check if her reasoning is correct.</strong></p>
+        <br>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+</div>
+
 <br>
 <h2> Helpful Hints <em>(from Resources)</em>:</h2>
 <table>
@@ -32,6 +81,21 @@
     </tr>
 </table>
 <br>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
 
+    for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function(){
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        }
+    }
+</script>
 </body>
 </html>

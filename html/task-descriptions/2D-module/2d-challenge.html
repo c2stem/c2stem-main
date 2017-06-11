@@ -4,19 +4,62 @@
     <meta charset="UTF-8">
     <title>C2STEM</title>
     <link rel="stylesheet" href="/c2stem.css">
+    <style>
+        button.accordion {
+            background-color: #008080;
+            color: #FFF;
+            cursor: pointer;
+            padding: 3px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+        button.accordion.active, button.accordion:hover {
+            background-color: #20B2AA;
+        }
+
+        div.panel {
+            padding: 0 18px;
+            display: none;
+            background-color: white;
+        }
+    </style>
 </head>
 <body>
-
-<h3>Rosa has been given additional tasks of picking up samples from two small islands on the river as she goes across. The figure below shows the location of the islands in the river. Can you build a model that shows the trajectory that Rosa’s boat should take in going from her starting position to island 1, then island 1 to island 2, and finally to the airstrip on the other side of the river?  The location of the islands are marked on the map below.</h3>
 <br>
-
-<h2>Plan Your Model:</h2>
-<strong>In the conceptual model, select the objects needed to complete the task as well as each objects properties and/or behaviors. Keep in mind what was needed to complete previous river tasks to support your conceptual planning.</strong>
+<div>
+<img src="/img/2d-challenge.png" alt="down" width="30%" align="right"/>
+    <h2>Rosa has been given additional tasks of picking up samples from two small islands on the river as she goes across. The figure to the right shows the location of the islands in the river.</h2>
+    <br>
+    <h2>Can you build a model that shows the trajectory that Rosa’s boat should take in going from her starting position to island 1, then island 1 to island 2, and finally to the airstrip on the other side of the river?</h2>
+</div>
 <br>
+<div>
+    <button class="accordion"><h3>Plan Your Model:</h3></button>
+    <div class="panel">
+        <br>
+        <p><strong>In the conceptual model, select the objects needed to complete the task as well as each objects properties and/or behaviors. Keep in mind what was needed to complete previous river tasks to support your conceptual planning.</strong></p>
+        <br>
+    </div>
 
-<h2>Build Your Model:</h2>
-<strong>In the previous module, you programmed the medical supply boat to go downstream and upstream, and you developed an algorithm that will allow you to give the correct angle the boat needs to head in order to arrive at a particular location on the other side of a moving river. It is your turn to program your boat to do so! Build the computational model for the boat to cross the river and get to the airstrip on the other side. Be sure to keep track of the data available in the graph. Repeat the process for a different desired destination.</strong>
-<br>
+    <button class="accordion"><h3>Build Your Model:</h3></button>
+    <div class="panel">
+        <br>
+        <p><strong>In the previous module, you programmed the medical supply boat to go downstream and upstream, and you developed an algorithm that will allow you to give the correct angle the boat needs to head in order to arrive at a particular location on the other side of a moving river. It is your turn to program your boat to do so! Build the computational model for the boat to cross the river and get to the airstrip on the other side. Be sure to keep track of the data available in the graph. Repeat the process for a different desired destination. </strong></p>        <br>
+        <br>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+</div>
+
+
 <br>
 <h3> Helpful Hints <em>(from Resources)</em>:</h3>
 <table>
@@ -31,6 +74,23 @@
         <td></td>
     </tr>
 </table>
+<br>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function(){
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        }
+    }
+</script>
 <br>
 </body>
 </html>

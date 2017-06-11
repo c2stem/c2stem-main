@@ -1,5 +1,45 @@
 {
   "environment": {
+    "River": {
+      "name": "River",
+      "elementID": "river_velocity",
+      "selected": false,
+      "isSprite": false,
+      "properties": {
+        "environment_RiverVelocity": {
+          "name": "river x velocity in m/s",
+          "elementID": "environment_RiverVelocity",
+          "selected": false
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "environment_RiverVelocity"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "river x velocity in m/s",
+              "category": "physics",
+              "type": "custom_variable",
+              "isGlobal": "true"
+            },
+            {
+              "name": "set river x velocity in (m/s)",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "true"
+            },
+            {
+              "name": "change river x velocity by (m/s)",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "true"
+            }
+          ]
+        }
+      ]
+    }
   },
   "agents": {
     "Boat": {
@@ -40,11 +80,11 @@
           "elementID": "Angle",
           "selected": false
         },
-        "RiverSpeed": {
+/*        "RiverSpeed": {
           "name": "river speed in m/s",
           "elementID": "RiverSpeed",
           "selected": false
-        },
+        },*/
         "BoatSpeed": {
           "name": "boat speed in m/s",
           "elementID": "BoatSpeed",
@@ -255,7 +295,7 @@
             }
           ]
         },
-        {
+/*        {
           "Required": [
             "RiverSpeed"
           ],
@@ -279,7 +319,7 @@
               "isGlobal": "false"
             }
           ]
-        },
+        },*/
         {
           "Required": [
             "BoatSpeed"
@@ -302,72 +342,6 @@
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
-            }
-          ]
-        }
-      ]
-    },
-    "River": {
-      "name": "River",
-      "elementID": "River",
-      "selected": false,
-      "isSprite": true,
-      "isBuiltIn": true,
-      "costume": "river-flow",
-      "properties": {
-        "PositionX": {
-          "name": "x position in m",
-          "elementID": "PositionX",
-          "selected": false
-        },
-        "VelocityX": {
-          "name": "x velocity in m/s",
-          "elementID": "VelocityX",
-          "selected": false
-        }
-      },
-      "rules": [
-        {
-          "Required": [
-            "PositionX"
-          ],
-          "GeneratedConstructs": [
-            {
-              "name": "physicsXPosition",
-              "category":"physics",
-              "type": "built_in"
-            },
-            {
-              "name": "setPhysicsXPosition",
-              "category": "physics",
-              "type": "built_in"
-            },
-            {
-              "name": "changePhysicsXPosition",
-              "category": "physics",
-              "type": "built_in"
-            }
-          ]
-        },
-        {
-          "Required": [
-            "VelocityX"
-          ],
-          "GeneratedConstructs": [
-            {
-              "name": "xVelocity",
-              "category": "physics",
-              "type": "built_in"
-            },
-            {
-              "name": "setXVelocity",
-              "category": "physics",
-              "type": "built_in"
-            },
-            {
-              "name": "changeXVelocity",
-              "category": "physics",
-              "type": "built_in"
             }
           ]
         }
