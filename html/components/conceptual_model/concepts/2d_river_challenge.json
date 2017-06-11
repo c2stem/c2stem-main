@@ -218,11 +218,6 @@
           "elementID": "Angle",
           "selected": false
         },
-/*        "RiverSpeed": {
-          "name": "river speed in m/s",
-          "elementID": "RiverSpeed",
-          "selected": false
-        },*/
         "BoatSpeed": {
           "name": "boat speed in m/s",
           "elementID": "BoatSpeed",
@@ -433,31 +428,6 @@
             }
           ]
         },
-/*        {
-          "Required": [
-            "RiverSpeed"
-          ],
-          "GeneratedConstructs": [
-            {
-              "name": "river speed in m/s",
-              "category": "physics",
-              "type": "custom_variable",
-              "isGlobal": "false"
-            },
-            {
-              "name": "set river speed (m/s)",
-              "category": "physics",
-              "type": "custom_block",
-              "isGlobal": "false"
-            },
-            {
-              "name": "change river speed (m/s)",
-              "category": "physics",
-              "type": "custom_block",
-              "isGlobal": "false"
-            }
-          ]
-        },*/
         {
           "Required": [
             "BoatSpeed"
