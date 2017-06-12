@@ -23,7 +23,7 @@ function start(options) {
             var app = express();
 
             // Handle snap cloud requests
-            app.use('/SnapCloud', snapCloud({
+            var snapRouter = snapCloud({
                 session_secret: 'SnapCloud',
                 cookie_secure: false,
                 mongodb: db,
@@ -31,7 +31,11 @@ function start(options) {
                 mailer_smpt: undefined,
                 public_page_title: process.env.PROJECT_INDEX_NAME || 'Public C2Stem Projects',
                 default_origin: 'http://run.c2stem.org'
-            }));
+            });
+            var projects = db.collection('projects');
+            init_c2stem_server(snapRouter, projects);
+
+            app.use('/SnapCloud', snapRouter);
 
             app.use('/SnapPhysics', express.static(__dirname + '/snap-physics/'));
             app.use(express.static(__dirname + '/html/'));
@@ -54,6 +58,107 @@ function start(options) {
         }
     });
 }
+
+function debug(text) {
+    console.log(text);
+}
+function init_c2stem_server(router, projects) {
+
+    router.addSnapApi('saveUserProgress', ['ProjectName', 'UserTaskData'], 'Post', function (req, res) {
+        var userName = req.session.user,
+            projectName = req.body.ProjectName,
+            userTaskData = req.body.UserTaskData;
+        debug('Save project', userName, projectName);
+
+        if (typeof userName !== 'string' ||
+            typeof projectName !== 'string' ||
+            typeof userTaskData !== 'string') {
+            sendSnapError(res, 'Invalid request');
+        } else {
+            var fields = {
+                updated: new Date(),
+                userTaskData: userTaskData,
+                origin: req.get('origin') || options.default_origin
+            };
+
+            projects.update({
+                user: userName,
+                name: projectName
+            }, {
+                $set: fields,
+                $setOnInsert: {
+                    public: false
+                }
+            }, {
+                upsert: true,
+                multi: false
+            }, function (err) {
+                if (err) {
+                    sendSnapError(res, 'Database error');
+                } else {
+                    res.sendStatus(200);
+                    debug('project saved', userName, projectName);
+                }
+            });
+        }
+    });
+
+    function sendSnapError(res, text) {
+        text = 'ERROR: ' + text;
+        debug(text);
+        res.status(400).send(text);
+    }
+    router.get('/getUserProgress', function rawPublic(req, res) {
+        var userName = req.query.Username,
+            projectName = req.query.ProjectName,
+            template = req.query.Template;
+
+        var sessionUserName = req.session.user;
+        debug('Load public', userName, projectName, template);
+        debug('sessionUserName', sessionUserName);
+
+        if (typeof userName !== 'string' ||
+            typeof projectName !== 'string') {
+            sendSnapError(res, 'Invalid request');
+        } else {
+            debug('Trying to load user version of the project');
+            projects.findOne({
+                user: { // HACK: username is sent in lowercase
+                    $regex: new RegExp('^' + sessionUserName + '$', 'i')
+                },
+                name: projectName
+            }, function (err, doc) {
+                if (err || !doc) {
+                    console.log(err, doc);
+                    debug('User project not found for user:', sessionUserName);
+                    debug('So loading template project');
+                    projects.findOne({
+                        user: { // HACK: username is sent in lowercase
+                            $regex: new RegExp('^' + userName + '$', 'i')
+                        },
+                        name: template,
+                        public: true
+                    }, function (err, doc) {
+                        if (err || !doc) {
+                            console.log(err, doc);
+                            sendSnapError(res, 'Project not found');
+                        } else {
+                            debug('Template Project found');
+                            var userProgress = {};
+                            userProgress.snapdata = doc.snapdata;
+                            userProgress = JSON.stringify(userProgress);
+                            res.send(userProgress);
+                        }
+                    });
+                } else {
+                    debug('user version of the project loaded');
+                    var userProgress = doc.userTaskData;
+                    res.send(userProgress);
+                }
+            });
+        }
+    });
+};
 
 program.version(version)
     .option('-m, --mongo <uri>', 'sets MongoDB URI [//localhost/c2stem-main]', '//localhost/c2stem-main')
