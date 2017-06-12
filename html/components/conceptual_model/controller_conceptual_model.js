@@ -3,16 +3,29 @@
  */
 
 
-function load_conceptual_model(conceptual_html_element_id, data_path) {
+function load_conceptual_model(instance_name, conceptual_html_element_id, data_path, register_save_data_fetcher) {
     // load data of all the modules
     console.log("load_conceptual_model from", data_path, " into html elementID: ", conceptual_html_element_id);
     conceptual_model_load_data(data_path, function () {
         conceptual_model_load_views(conceptual_html_element_id);
     });
+    register_save_data_fetcher(instance_name, getSavedData);
+}
+
+function getSavedData() {
+    return concepts;
 }
 
 function conceptual_model_load_data(data_path, callback){
-    dao_conceptual_model(data_path, callback);
+    console.log("conceptual_model_load_data");
+    if(c2stem.userTaskData != undefined && c2stem.userTaskData !== null && c2stem.userTaskData.conceptualModel != undefined && c2stem.userTaskData.conceptualModel !== null){
+        console.log("conceptual_model_load_data, found userData");
+        concepts = c2stem.userTaskData.conceptualModel;
+        if(callback !== null)
+            callback(concepts);
+    }
+    else
+        dao_conceptual_model(data_path, callback);
 }
 
 
@@ -59,11 +72,11 @@ function handle_property_events(selected_concept, selected_prop_key) {
         //console.log("delete selected_property",selected_property);
         OnModelChanged();
 
-        transform_cm.transform_concept_by_rules(selected_concept, "delete", selected_concept.rules, concepts.environment );
+        transform_cm.transform_concept_by_rules(concepts, selected_concept, "delete", selected_concept.rules, concepts.environment );
     });
 
 
-    transform_cm.transform_concept_by_rules(selected_concept, "create", selected_concept.rules, concepts.environment );
+    transform_cm.transform_concept_by_rules(concepts, selected_concept, "create", selected_concept.rules, concepts.environment );
 }
 
 function handle_behavior_events(selected_concept, selected_behavior_key) {
@@ -86,7 +99,7 @@ function handle_behavior_events(selected_concept, selected_behavior_key) {
     n.selected_behavior = selected_behavior;
     n.selected_behavior_key = selected_behavior_key;
 
-    n.selected_behavior.block = transform_cm.create_block(n.selected_concept, n.selected_behavior.name, n.selected_behavior.category);
+
 
     $("#delete_"+selected_behavior.elementID).click(function () {
         var eid = event.currentTarget.id;
@@ -102,12 +115,14 @@ function handle_behavior_events(selected_concept, selected_behavior_key) {
         //console.log("delete selected_behavior",selected_behavior);
         OnModelChanged();
 
-        transform_cm.transform_concept_by_rules(selected_concept, "delete", selected_concept.rules, concepts.environment );
-        transform_cm.delete_block(n.selected_concept.sprite, n.selected_behavior.block, false);
+        transform_cm.transform_concept_by_rules(concepts, selected_concept, "delete", selected_concept.rules, concepts.environment );
+        transform_cm.delete_block(concepts, n.selected_concept, n.selected_behavior.name, false);
     });
 
 
-    transform_cm.transform_concept_by_rules(selected_concept, "create", selected_concept.rules, concepts.environment );
+    transform_cm.transform_concept_by_rules(concepts, selected_concept, "create", selected_concept.rules, concepts.environment );
+
+    transform_cm.create_block(concepts, n.selected_concept, n.selected_behavior.name, n.selected_behavior.category, false);
 }
 
 function create_new_concept(selected_concept_key, selected_concept, isEnvironmental) {
@@ -124,10 +139,15 @@ function create_new_concept(selected_concept_key, selected_concept, isEnvironmen
 
     if(selected_concept.isSprite){
         if(selected_concept.isBuiltIn)
-            selected_concept.sprite = transform_cm.show_concept(selected_concept);
-        else
-            selected_concept.sprite = transform_cm.create_new_sprite(selected_concept);
-        transform_cm.transform_concept_by_rules(selected_concept, "create", selected_concept.rules, concepts.environment );
+            transform_cm.show_concept(selected_concept);
+        else{
+            if(selected_concept.sprite_bkup_xml !== null)
+                transform_cm.show_concept(selected_concept);
+            else
+                transform_cm.create_new_sprite(selected_concept);
+        }
+
+        transform_cm.transform_concept_by_rules(concepts, selected_concept, "create", selected_concept.rules, concepts.environment );
     }
 
     $("#cm_concepts option[value='"+ selected_concept_key +"']").hide();
@@ -140,7 +160,7 @@ function create_new_concept(selected_concept_key, selected_concept, isEnvironmen
         //console.log("delete selected_concept",selected_concept);
         OnModelChanged();
         if(selected_concept.isSprite) {
-            transform_cm.transform_concept_by_rules(selected_concept, "delete_all", selected_concept.rules, concepts.environment );
+            transform_cm.transform_concept_by_rules(concepts, selected_concept, "delete_all", selected_concept.rules, concepts.environment );
             transform_cm.hide_concept(selected_concept);
         }
     });
@@ -150,6 +170,7 @@ function create_new_concept(selected_concept_key, selected_concept, isEnvironmen
     var p = null;
     for (p in selected_concept.properties){
         if(selected_concept.properties[p].selected){
+            console.log("preselected property",selected_concept.properties[p]);
             handle_property_events(selected_concept, p);
             pre_selected = true;
         }
@@ -230,6 +251,11 @@ function OnViewLoaded() {
     $("#cm_create_concept").click(function () {
         check_then_create_concept();
     });
+
+    //
+    // $("#cm_test_button").click(function () {
+    //     c2stem.saveUserProgress();
+    // });
 }
 
 function populate_view() {

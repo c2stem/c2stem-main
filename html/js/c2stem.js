@@ -6,7 +6,37 @@ function C2Stem(snapCloudUrl) {
     this.query = this.parseQueryString();
 };
 
+
+
+C2Stem.prototype.parseAPI = function (src) {
+    var api = {},
+        services;
+    services = src.split(" ");
+    services.forEach(function (service) {
+        var entries = service.split("&"),
+            serviceDescription = {},
+            parms;
+        entries.forEach(function (entry) {
+            var pair = entry.split("="),
+                key = decodeURIComponent(pair[0]).toLowerCase(),
+                val = decodeURIComponent(pair[1]);
+            if (key === "service") {
+                api[val] = serviceDescription;
+            } else if (key === "parameters") {
+                parms = val.split(",");
+                if (!(parms.length === 1 && !parms[0])) {
+                    serviceDescription.parameters = parms;
+                }
+            } else {
+                serviceDescription[key] = val;
+            }
+        });
+    });
+    return api;
+};
+
 C2Stem.prototype.login = function (username, password, remember, callback) {
+    var myself = this;
     try {
         var req = new XMLHttpRequest();
         req.open('POST', this.snapCloudUrl + "/SnapCloud/", true);
@@ -15,6 +45,7 @@ C2Stem.prototype.login = function (username, password, remember, callback) {
         req.onreadystatechange = function () {
             if (req.readyState === 4) {
                 if (req.status === 200) {
+                    myself.api = myself.parseAPI(req.responseText);
                     callback(null);
                 } else {
                     callback(req.responseText || 'Connection refused');
@@ -109,12 +140,12 @@ C2Stem.prototype.fixupTaskLink = function (id, name) {
     })).text(name);
 }
 
-C2Stem.prototype.addDescriptionTab = function (id, name, markup) {
+C2Stem.prototype.addDescriptionTab = function (id, name, markup, callbackOnLoad) {
     $("#tabs-div ul").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`)
     $("body").append(`<div class="c2stem-desc" id="tab${id}">${markup}</div>`);
 }
 
-C2Stem.prototype.addSnap1Tab = function (id, name, template) {
+C2Stem.prototype.addSnap1Tab = function (id, name, template, callbackOnLoad) {
     var c2stem = this;
 
     $("#tabs-div ul").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`)
@@ -130,19 +161,41 @@ C2Stem.prototype.addSnap1Tab = function (id, name, template) {
         C2StemActions.register('snap' + id, snapWindow.SnapActions);
 
         // Configure SnapActions to route everything through the global manager
-        C2StemActions.applyEvent = function (event) {
-            if (!event.namespace) { // route all internal events through C2StemActions
-                event.namespace = SNAP_ID;
-                return C2StemActions.applyEvent(event);
-            } else {
-                return snapWindow.ActionManager.prototype.applyEvent.call(this, event);
-            }
-        };
+        // snapWindow.SnapActions.applyEvent = function (event) {
+        //     if (!event.namespace) { // route all internal events through C2StemActions
+        //         event.namespace = SNAP_ID;
+        //         return C2StemActions.applyEvent(event);
+        //     } else {
+        //         return snapWindow.ActionManager.prototype.applyEvent.call(this, event);
+        //     }
+        // };
+
+        c2stem.snapWin = snapWindow;
 
         // this is really a hack, but how to get hold of the IDE?
         snapWindow.loadMyProject = function (ide, callback) {
+            var fetchSaveData = function () {
+                var snapData = {};
+                var myself = this,
+                    pdata,
+                    media,
+                    size,
+                    mediaSize;
+
+                ide.serializer.isCollectingMedia = true;
+                pdata = ide.serializer.serialize(ide.stage);
+                media = ide.serializer.mediaXML(ide.projectName);
+                ide.serializer.isCollectingMedia = false;
+                ide.serializer.flushMedia();
+                // snapData.pdata = pdata;
+                // snapData.media = media;
+                // snapData.projectName = ide.projectName;
+                return '<snapdata>' + pdata + media + '</snapdata>';
+            };
+            c2stem.register_save_data_fetcher(template.proj, fetchSaveData);
+
             window.snap.world = ide.parent;
-            c2stem.loadPublicProject(snapWindow, ide, template, function (err) {
+            c2stem.loadPublicProject(ide, template, function (err) {
                 if (window.snap.callme) {
                     window.snap.callme();
                 }
@@ -156,7 +209,7 @@ C2Stem.prototype.addSnap1Tab = function (id, name, template) {
     });
 };
 
-C2Stem.prototype.addSnap2Tab = function (id, name, template) {
+C2Stem.prototype.addSnap2Tab = function (id, name, template, callbackOnLoad) {
     var c2stem = this;
 
     $("#tabs-div ul").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`)
@@ -176,6 +229,8 @@ C2Stem.prototype.addSnap2Tab = function (id, name, template) {
             window.snap = {};
             snap.world = world;
 
+            c2stem.snapWin = window;
+
             window.addEventListener(
                 "resize",
                 function () {
@@ -188,7 +243,7 @@ C2Stem.prototype.addSnap2Tab = function (id, name, template) {
 
             var ide = new IDE_Morph();
             ide.openIn(world);
-            c2stem.loadPublicProject(window, ide, template, function (err) {
+            c2stem.loadPublicProject(ide, template, function (err) {
                 if (err) {
                     console.log(err);
                 } else {
@@ -207,35 +262,55 @@ C2Stem.prototype.addSnap2Tab = function (id, name, template) {
             detectTabShown.observe($(`#tab${id}`).get(0), {
                 attributes: true
             });
+
         }
     });
 };
 
-C2Stem.prototype.addConcpetualModelingTab = function (id, name, data) {
+C2Stem.prototype.addConcpetualModelingTab = function (id, name, data, callbackOnLoad) {
+    var myself = this;
     $("#tabs-div ul").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`);
     $("body").append(`
         <div class="c2stem-cm" id="tab${id}">
         </div>`);
 
     window.snap.callme = function () {
-        load_conceptual_model(`tab${id}`, data);
+        load_conceptual_model("conceptualModel", `tab${id}`, data, myself.register_save_data_fetcher);
     }
 };
 
-C2Stem.prototype.loadPublicProject = function (snapWin, snapIde, template, callback) {
-    if (!snapWin.SnapCloud) {
-        callback('snapcloud is not registered');
-    } else if (!template) {
+
+
+C2Stem.prototype.register_save_data_fetcher = function (name, fetcher) {
+    if(c2stem.saveDataFetchers == undefined || c2stem.saveDataFetchers === null)
+        c2stem.saveDataFetchers = [];
+    // console.log("Registering fetcher",name,fetcher);
+    c2stem.saveDataFetchers.push({
+        name: name,
+        fetcher: fetcher
+    });
+    // console.log("this.saveDataFetchers",c2stem.saveDataFetchers);
+} ;
+
+C2Stem.prototype.loadPublicProject = function (snapIde, template, callback) {
+    if (!template) {
         callback('missing template');
     } else {
         console.log('loading template', template);
-        var cloud = snapWin.SnapCloud;
-        cloud.getPublicProject(cloud.encodeDict({
+        // var cloud = snapWin.SnapCloud;
+        var cloud = C2StemCloud;
+        cloud.loadUserProgress(cloud.encodeDict({
             Username: template.user,
-            ProjectName: template.proj
+            ProjectName: c2stem.task_id,
+            Template: template.proj
         }), function (projectData) {
-            if (projectData.indexOf('<snapdata') === 0) {
-                snapIde.rawOpenCloudDataString(projectData);
+            c2stem.userTaskData = JSON.parse(projectData);
+            console.log("loadPublicProject", c2stem.userTaskData);
+            var snapData =  c2stem.userTaskData[template.proj];
+            if(snapData == undefined)
+                snapData = c2stem.userTaskData.snapdata;
+            if (snapData != undefined && snapData.indexOf('<snapdata') === 0) {
+                snapIde.rawOpenCloudDataString(snapData);
                 callback(null);
             } else {
                 callback('Invalid project');
@@ -244,4 +319,32 @@ C2Stem.prototype.loadPublicProject = function (snapWin, snapIde, template, callb
             callback('ERROR: ' + err);
         });
     }
+};
+
+C2Stem.prototype.saveUserProgress = function(callback){
+    console.log('saving user progress');
+    var cloud = C2StemCloud;
+    var userTaskData = {};
+    var i = 0;
+    console.log(this.saveDataFetchers);
+    for(; i < this.saveDataFetchers.length; i++){
+        f = this.saveDataFetchers[i];
+        console.log(f, "Calling fetcher", f.name, f.fetcher);
+        var data = f.fetcher();
+        userTaskData[f.name] = data;
+    }
+    console.log("Save user progress, userTaskData:", userTaskData);
+    // userTaskData.conceptualModel = concepts;
+    // console.log("Save user progress, userTaskData:", userTaskData);
+    var ide = snap.world.children[0];
+    cloud.saveUserProgress(
+        c2stem.task_id,
+        userTaskData,
+        function () {
+            console.log("User data saved for task:",c2stem.task_id);
+        },
+        function (msg) {
+            console.log("User data could not be saved, error:",msg);
+        }
+    );
 };
