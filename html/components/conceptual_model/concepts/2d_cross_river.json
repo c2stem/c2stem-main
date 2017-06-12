@@ -23,18 +23,6 @@
               "category": "physics",
               "type": "custom_variable",
               "isGlobal": "true"
-            },
-            {
-              "name": "set river x velocity in (m/s)",
-              "category": "physics",
-              "type": "custom_block",
-              "isGlobal": "true"
-            },
-            {
-              "name": "change river x velocity by (m/s)",
-              "category": "physics",
-              "type": "custom_block",
-              "isGlobal": "true"
             }
           ]
         }
