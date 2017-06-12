@@ -60,7 +60,7 @@ function start(options) {
 }
 
 function debug(text) {
-    console.log(text);
+    // console.log(text);
 }
 function init_c2stem_server(router, projects) {
 
