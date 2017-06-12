@@ -130,7 +130,7 @@ C2Stem.prototype.addSnap1Tab = function (id, name, template) {
         C2StemActions.register('snap' + id, snapWindow.SnapActions);
 
         // Configure SnapActions to route everything through the global manager
-        C2StemActions.applyEvent = function (event) {
+        snapWindow.SnapActions.applyEvent = function (event) {
             if (!event.namespace) { // route all internal events through C2StemActions
                 event.namespace = SNAP_ID;
                 return C2StemActions.applyEvent(event);
