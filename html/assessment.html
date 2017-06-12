@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>C2STEM</title>
+    <link rel="stylesheet" type="text/css" href="c2stem.css">
+
+</head>
+<body>
+<form id="myform"></form>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.dform-1.1.0.min.js"></script>
+<!--<script type="text/javascript">
+    $(function() {
+        // Generate a form
+        $("#myform").dform({
+            "action" : "index.html",
+            "method" : "get",
+            "html" :
+                [
+                    {
+                        "type" : "p",
+                        "html" : "You must login"
+                    },
+                    {
+                        "name" : "username",
+                        "id" : "txt-username",
+                        "caption" : "Username",
+                        "type" : "text",
+                        "placeholder" : "E.g. user@example.com"
+                    },
+                    {
+                        "name" : "password",
+                        "caption" : "Password",
+                        "type" : "password"
+                    },
+                    {
+                        "type" : "submit",
+                        "value" : "Login"
+                    }
+                ]
+        });
+    });
+</script>-->
+<script type="text/javascript">
+    $(function() {
+        // Load the form object from path/to/form.json
+        $("#myform").dform('test.json', function(data) {
+            this //-> Generated $('#myform')
+            data //-> data from path/to/form.json
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C2STEM</title>
+    <link rel="stylesheet" href="/c2stem.css">
+    <style>
+        button.accordion {
+            background-color: #008080;
+            color: #FFF;
+            cursor: pointer;
+            padding: 3px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+        button.accordion.active, button.accordion:hover {
+            background-color: #20B2AA;
+        }
+
+        div.panel {
+            padding: 0 18px;
+            display: none;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+<br>
+<div>
+    <button class="accordion"><h3>Activity 2.1.A: Traveling Downstream</h3></button>
+    <div class="panel">
+        <br>
+        <img src="/img/downstream.jpg" alt="down" width="30%" align="left"/>
+        <p>Rosa’s boat is on a river, which is flowing at 2 m/sec (see figure on left). It is facing downstream and tied to a post on the side of the river. She unties the boat.  Will it start moving? If it does, with what speed does it move?</p>
+        <strong>Write a short code segment that models the movement of the boat, if at all?</strong>
+        <p>This time Rosa starts the boat’s engine just as Robbie finishes untying the boat. The engine moves the boat at a speed of 5 m/sec in still water. At what speed does the boat move away from Robbie?</p>
+
+        <strong>Extend the code segment you wrote earlier, to model the movement of the boat.</strong>
+        <strong>Graph the boat’s velocity and position over time up to a distance of a 100 meters.</strong>
+        <p>This example shows how two components of velocity may add to determining the resultant velocity of an object.</p>
+        <br>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+
+    <button class="accordion"><h3>Activity 2.1.B: Traveling Upstream</h3></button>
+    <div class="panel">
+        <br>
+        <img src="/img/upstream.jpg" alt="up" width="30%" align="left"/>
+        <p>In this scenario, Rosa’s boat is turned around because she wants to go upstream.</p>
+
+        <p>So, Rosa starts the boat’s engine just as Robbie finishes untying the boat. At what speed does the boat move away from Robbie?</p>
+
+        <h4>Change the code segment you wrote earlier, to model the movement of the boat.</h4>
+        <strong>Graph the boat’s velocity and position over time up to a distance of a 100 meters.</strong>
+         
+        <strong>What would happen if Rosa waited for 5 seconds before she started her boat’s engine?</strong>
+        <br>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+</div>
+<br>
+<h3> Helpful Hints <em>(from Resources)</em>:</h3>
+<table>
+    <tr>
+        <th>Physics Concepts</th>
+        <th>Computational Concepts</th>
+        <th>Computational Practices</th>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+<br>
+<br>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function(){
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        }
+    }
+</script>
+</body>
+</html>

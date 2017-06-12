@@ -36,7 +36,7 @@
 
     function getTaskItem(task) {
         return `
-            <li>
+            <li id="a${task.id}">
                 <a href="task.html?${$.param({id: task.id})}"
                     class="collection-item">${task.name}</a>
             </li>

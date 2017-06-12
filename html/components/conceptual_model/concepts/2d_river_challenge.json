@@ -1,0 +1,498 @@
+{
+  "environment": {
+    "River": {
+      "name": "River",
+      "elementID": "river_velocity",
+      "selected": true,
+      "isSprite": false,
+      "properties": {
+        "environment_RiverVelocity": {
+          "name": "river x velocity in m/s",
+          "elementID": "environment_RiverVelocity",
+          "selected": false
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "environment_RiverVelocity"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "river x velocity in m/s",
+              "category": "physics",
+              "type": "custom_variable",
+              "isGlobal": "true"
+            },
+            {
+              "name": "set river x velocity in (m/s)",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "true"
+            },
+            {
+              "name": "change river x velocity by (m/s)",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "true"
+            }
+          ]
+        }
+      ]
+    },
+    "Island1": {
+      "name": "Island1",
+      "elementID": "Island1",
+      "selected": true,
+      "isSprite": false,
+      "properties": {
+        "environment_IslandOneXPosition": {
+          "name": "island1 x position in m/s",
+          "elementID": "environment_IslandOneXPosition",
+          "selected": false
+        },
+        "environment_IslandOneYPosition": {
+          "name": "island2 y position in m/s",
+          "elementID": "environment_IslandOneYPosition",
+          "selected": false
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "environment_IslandOneXPosition"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "island1 x position in m",
+              "category": "physics",
+              "type": "custom_variable",
+              "isGlobal": "true"
+            },
+            {
+              "name": "set island1 x position in m",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "true"
+            },
+            {
+              "name": "change island1 x position by m",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "true"
+            }
+          ]
+        }, {
+          "Required": [
+            "environment_IslandOneYPosition"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "island1 y position in m",
+              "category": "physics",
+              "type": "custom_variable",
+              "isGlobal": "true"
+            },
+            {
+              "name": "set island1 y position in m",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "true"
+            },
+            {
+              "name": "change island1 y position by m",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "true"
+            }
+          ]
+        }
+      ]
+    },
+    "Island2": {
+      "name": "Island2",
+      "elementID": "Island2",
+      "selected": true,
+      "isSprite": false,
+      "properties": {
+        "environment_IslandTwoXPosition": {
+          "name": "island2 x position in m/s",
+          "elementID": "environment_IslandOneXPosition",
+          "selected": false
+        },
+        "environment_IslandTwoYPosition": {
+          "name": "island2 y position in m/s",
+          "elementID": "environment_IslandOneYPosition",
+          "selected": false
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "environment_IslandTwoXPosition"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "island2 x position in m",
+              "category": "physics",
+              "type": "custom_variable",
+              "isGlobal": "true"
+            },
+            {
+              "name": "set island2 x position in m",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "true"
+            },
+            {
+              "name": "change island2 x position by m",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "true"
+            }
+          ]
+        }, {
+          "Required": [
+            "environment_IslandTwoYPosition"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "island2 y position in m",
+              "category": "physics",
+              "type": "custom_variable",
+              "isGlobal": "true"
+            },
+            {
+              "name": "set island2 y position in m",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "true"
+            },
+            {
+              "name": "change island2 y position by m",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "true"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "agents": {
+    "Boat": {
+      "name": "Boat",
+      "elementID": "Boat",
+      "selected": false,
+      "isSprite": true,
+      "isBuiltIn": true,
+      "costume": "boat-small",
+      "properties": {
+        "PositionX": {
+          "name": "x position in m",
+          "elementID": "PositionX",
+          "selected": false
+        },
+        "PositionY": {
+          "name": "y position in m",
+          "elementID": "PositionY",
+          "selected": false
+        },
+        "VelocityX": {
+          "name": "x velocity in m/s",
+          "elementID": "VelocityX",
+          "selected": false
+        },
+        "VelocityY": {
+          "name": "y velocity in m/s",
+          "elementID": "VelocityY",
+          "selected": false
+        },
+        "ResultantVelocity": {
+          "name": "resultant velocity in m/s",
+          "elementID": "ResultantVelocity",
+          "selected": false
+        },
+        "Angle": {
+          "name": "angle in deg",
+          "elementID": "Angle",
+          "selected": false
+        },
+        "BoatSpeed": {
+          "name": "boat speed in m/s",
+          "elementID": "BoatSpeed",
+          "selected": false
+        }
+      },
+      "behaviors": {
+        "update_position": {
+          "name": "update position in m",
+          "elementID": "update_position",
+          "selected": false,
+          "category": "physics"
+        },
+        "update_resultant_velocity": {
+          "name": "update resultant velocity in m/s",
+          "elementID": "update_resultant_velocity",
+          "selected": false,
+          "category": "physics"
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "PositionX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsXPosition",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setPhysicsXPosition",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changePhysicsXPosition",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "PositionY"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsYPosition",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setPhysicsYPosition",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changePhysicsYPosition",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "update_position"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "update position in m",
+              "category": "physics",
+              "type": "built_in_custom_block",
+              "isGlobal": "false"
+            },
+            {
+              "name": "getPhysicsAttrOf",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setPhysicsAttrOf",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "VelocityX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "xVelocity",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setXVelocity",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changeXVelocity",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "VelocityY"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "yVelocity",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setYVelocity",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changeYVelocity",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "VelocityX",
+            "VelocityY"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "setVelocity",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changeVelocity",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "ResultantVelocity"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "ResultantVelocity",
+              "category": "physics",
+              "type": "custom_variable",
+              "isGlobal": "false"
+            },
+            {
+              "name": "set ResultantVelocity to (m/s)",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "false"
+            },
+            {
+              "name": "change ResultantVelocity by (m/s)",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "false"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "update_resultant_velocity"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "update resultant velocity in m/s",
+              "category": "physics",
+              "type": "built_in_custom_block",
+              "isGlobal": "false"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "Angle"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsAngle",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setPhysicsAngle",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changePhysicsAngle",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "BoatSpeed"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "boat speed in m/s",
+              "category": "physics",
+              "type": "custom_variable",
+              "isGlobal": "false"
+            },
+            {
+              "name": "set boat speed to (m/s)",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "false"
+            },
+            {
+              "name": "change boat speed by (m/s)",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "false"
+            }
+          ]
+        }
+      ]
+    },
+    "Unloading-Dock1": {
+      "name": "Unloading Dock",
+      "elementID": "Unloading-Dock1",
+      "selected": false,
+      "isSprite": true,
+      "isBuiltIn": true,
+      "costume": "dock",
+      "properties": {
+        "PositionX": {
+          "name": "x position in m",
+          "elementID": "PositionX",
+          "selected": false
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "PositionX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsXPosition",
+              "category":"physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setPhysicsXPosition",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changePhysicsXPosition",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

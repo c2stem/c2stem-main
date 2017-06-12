@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C2STEM</title>
+    <link rel="stylesheet" href="/c2stem.css">
+    <style>
+        button.accordion {
+            background-color: #008080;
+            color: #FFF;
+            cursor: pointer;
+            padding: 3px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
+
+        button.accordion.active, button.accordion:hover {
+            background-color: #20B2AA;
+        }
+
+        div.panel {
+            padding: 0 18px;
+            display: none;
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <img src="/img/task1a turtle.png" alt="turtle" width="20%" align="right"/>
+    <p>Motion describes how things change over time. Physics explores and quantifies these changes for pretty much everything in the universe--and possibly some things not in the universe. We as physicists begin with the motion of objects, or small isolated bodies or particles we assume have no internal structure. If that sounds like an oversimplification, that’s because it is, but it also makes for a good way to start modeling that motion.</p>
+
+    <p>When modeling motion, we as physicists want to silence that screaming feeling of loneliness from being a speck in an enormous universe, but we also want to describe and reliably reproduce changes in an object. Those changes depend on where the object is, or its position, and how that position changes. Flip books or animations both model motion. How do otherwise non-moving images model motion?</p>
+    <br>
+</div>
+<div>
+<button class="accordion"><h3>Activity 1.1.A: Position an object at a particular location.</h3></button>
+<div class="panel">
+    <br>
+    <strong>Program description - When Green Flag is clicked:</strong>
+    <ul>
+        <li>Program asks the user for an x-coordinate in meters</li>
+        <li>Program places the turtle at that position on the stage</li>
+    </ul>
+    <div class="panel-content">
+        <input type="checkbox">
+        <label><strong>SUBMIT SOLUTION</strong></label>
+    </div>
+    <br>
+</div>
+
+<button class="accordion"><h3>Activity 1.1.B: Simulate the motion of an object.</h3></button>
+<div class="panel">
+    <br>
+    <ul>
+        <li>Use your previous program (do NOT add new code) to manually move the turtle to the right with a speed of 1 m/s (1 meter every 1 second).</li>
+        <li>Hint: Run your program multiple times. How will you make the turtle appear to be moving?</li>
+    </ul>
+    <div class="panel-content">
+        <input type="checkbox">
+        <label><strong>SUBMIT SOLUTION</strong></label>
+    </div>
+    <br>
+</div>
+</div>
+
+<br>
+<h3> Helpful Hints <em>(from Resources)</em>:</h3>
+<table>
+    <tr>
+        <th>Physics Concepts</th>
+        <th>Computational Concepts</th>
+        <th>Computational Practices</th>
+    </tr>
+    <tr>
+        <td></td>
+        <td>Glossary of Physics Blocks</td>
+        <td> </td>
+    </tr>
+</table>
+<br>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function(){
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        }
+    }
+</script>
+</body>
+</html>
