@@ -3,7 +3,7 @@
     "River": {
       "name": "River",
       "elementID": "river_velocity",
-      "selected": false,
+      "selected": true,
       "isSprite": false,
       "properties": {
         "environment_RiverVelocity": {
@@ -43,7 +43,7 @@
     "Island1": {
       "name": "Island1",
       "elementID": "Island1",
-      "selected": false,
+      "selected": true,
       "isSprite": false,
       "properties": {
         "environment_IslandOneXPosition": {
@@ -112,7 +112,7 @@
     "Island2": {
       "name": "Island2",
       "elementID": "Island2",
-      "selected": false,
+      "selected": true,
       "isSprite": false,
       "properties": {
         "environment_IslandTwoXPosition": {

@@ -3,7 +3,7 @@
     "River": {
       "name": "River",
       "elementID": "river_velocity",
-      "selected": false,
+      "selected": true,
       "isSprite": false,
       "properties": {
         "environment_RiverVelocity": {
