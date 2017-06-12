@@ -161,7 +161,7 @@ C2Stem.prototype.addSnap1Tab = function (id, name, template, callbackOnLoad) {
         C2StemActions.register('snap' + id, snapWindow.SnapActions);
 
         // Configure SnapActions to route everything through the global manager
-        C2StemActions.applyEvent = function (event) {
+        snapWindow.SnapActions.applyEvent = function (event) {
             if (!event.namespace) { // route all internal events through C2StemActions
                 event.namespace = SNAP_ID;
                 return C2StemActions.applyEvent(event);
@@ -320,8 +320,6 @@ C2Stem.prototype.loadPublicProject = function (snapIde, template, callback) {
         });
     }
 };
-
-
 
 C2Stem.prototype.saveUserProgress = function(callback){
     console.log('saving user progress');
