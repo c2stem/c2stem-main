@@ -252,10 +252,10 @@ function OnViewLoaded() {
         check_then_create_concept();
     });
 
-
-    $("#cm_test_button").click(function () {
-        c2stem.saveUserProgress();
-    });
+    //
+    // $("#cm_test_button").click(function () {
+    //     c2stem.saveUserProgress();
+    // });
 }
 
 function populate_view() {

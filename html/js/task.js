@@ -26,6 +26,10 @@ c2stem.loadTaskData(c2stem.query.id, function (err, res) {
             }
         }
 
+        $("#saveProgress").click(function () {
+            c2stem.saveUserProgress();
+        });
+
         $('ul.tabs').tabs(); // visualize the tabs
     }
 });
