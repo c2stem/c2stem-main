@@ -84,6 +84,23 @@
 </table>
 <br>
 <script>
+
+    // registering function that returns data to be saved for this component
+    window.parent.c2stem.register_save_data_fetcher("name_of_data_record", function () {
+        var assessment_data = {
+            name: "demo data"
+        };
+        return assessment_data;
+    });
+
+
+    // loading presaved data
+    var assessmentData = window.parent.c2stem.userTaskData["name_of_assessment"];
+    console.log("is any data already saved? ", (assessmentData == undefined) ? "No" : "Yes");
+    if(assessmentData){
+        console.log("data record name:", assessmentData.name);
+    }
+
     var acc = document.getElementsByClassName("accordion");
     var i;
 

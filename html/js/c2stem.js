@@ -345,7 +345,6 @@ C2Stem.prototype.saveUserProgress = function(callback){
     console.log("Save user progress, userTaskData:", userTaskData);
     // userTaskData.conceptualModel = concepts;
     // console.log("Save user progress, userTaskData:", userTaskData);
-    var ide = snap.world.children[0];
     cloud.saveUserProgress(
         c2stem.task_id,
         userTaskData,
