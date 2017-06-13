@@ -174,40 +174,60 @@ C2Stem.prototype.addSnap1Tab = function (id, name, template, callbackOnLoad) {
 
         // this is really a hack, but how to get hold of the IDE?
         snapWindow.loadMyProject = function (ide, callback) {
-            var fetchSaveData = function () {
-                var snapData = {};
-                var myself = this,
-                    pdata,
-                    media,
-                    size,
-                    mediaSize;
-
-                ide.serializer.isCollectingMedia = true;
-                pdata = ide.serializer.serialize(ide.stage);
-                media = ide.serializer.mediaXML(ide.projectName);
-                ide.serializer.isCollectingMedia = false;
-                ide.serializer.flushMedia();
-                // snapData.pdata = pdata;
-                // snapData.media = media;
-                // snapData.projectName = ide.projectName;
-                return '<snapdata>' + pdata + media + '</snapdata>';
-            };
-            c2stem.register_save_data_fetcher(template.proj, fetchSaveData);
-
+            registerSaveDataFetcherForSnap(ide, template.proj);
             window.snap.world = ide.parent;
-            c2stem.loadPublicProject(ide, template, function (err) {
-                if (window.snap.callme) {
-                    window.snap.callme();
-                }
-                callback(err);
-            });
-        }
+            var snapData =  c2stem.userTaskData[template.proj];
+            if(snapData == undefined){
+                console.log("Loading snap project from template");
+                c2stem.loadPublicProject(c2stem.task_id, template, true, function (err) {
+                    snapData = c2stem.userTaskData[template.proj];
+                    on_snap_project_loading_done(ide, snapData, callback);
+                });
+            }
+            else{
+                on_snap_project_loading_done(ide, snapData, callback);
+            }
+        };
     });
 
     $(snapWindow).on('beforeunload', function () {
         C2StemActions.unregister('snap' + id);
     });
 };
+
+function on_snap_project_loading_done(ide, snapData, callback) {
+    if (snapData != undefined && snapData.indexOf('<snapdata') === 0) {
+        ide.rawOpenCloudDataString(snapData);
+        if (window.snap.callme) {
+            window.snap.callme();
+        }
+        callback(null);
+    } else {
+        callback('Invalid project');
+    }
+}
+
+function registerSaveDataFetcherForSnap(ide, projectName) {
+    var fetchSaveData = function () {
+        var snapData = {};
+        var myself = this,
+            pdata,
+            media,
+            size,
+            mediaSize;
+
+        ide.serializer.isCollectingMedia = true;
+        pdata = ide.serializer.serialize(ide.stage);
+        media = ide.serializer.mediaXML(ide.projectName);
+        ide.serializer.isCollectingMedia = false;
+        ide.serializer.flushMedia();
+        // snapData.pdata = pdata;
+        // snapData.media = media;
+        // snapData.projectName = ide.projectName;
+        return '<snapdata>' + pdata + media + '</snapdata>';
+    };
+    c2stem.register_save_data_fetcher(projectName, fetchSaveData);
+}
 
 C2Stem.prototype.addSnap2Tab = function (id, name, template, callbackOnLoad) {
     var c2stem = this;
@@ -292,33 +312,22 @@ C2Stem.prototype.register_save_data_fetcher = function (name, fetcher) {
     // console.log("this.saveDataFetchers",c2stem.saveDataFetchers);
 } ;
 
-C2Stem.prototype.loadPublicProject = function (snapIde, template, callback) {
-    if (!template) {
-        callback('missing template');
-    } else {
-        console.log('loading template', template);
-        // var cloud = snapWin.SnapCloud;
-        var cloud = C2StemCloud;
-        cloud.loadUserProgress(cloud.encodeDict({
-            Username: template.user,
-            ProjectName: c2stem.task_id,
-            Template: template.proj
-        }), function (projectData) {
-            c2stem.userTaskData = JSON.parse(projectData);
-            console.log("loadPublicProject", c2stem.userTaskData);
-            var snapData =  c2stem.userTaskData[template.proj];
-            if(snapData == undefined)
-                snapData = c2stem.userTaskData.snapdata;
-            if (snapData != undefined && snapData.indexOf('<snapdata') === 0) {
-                snapIde.rawOpenCloudDataString(snapData);
-                callback(null);
-            } else {
-                callback('Invalid project');
-            }
-        }, function (err) {
-            callback('ERROR: ' + err);
-        });
-    }
+C2Stem.prototype.loadPublicProject = function (task_id, template, shallAppend, callback) {
+    console.log('loading data for task', task_id, "with snap template", template);
+    // var cloud = snapWin.SnapCloud;
+    var cloud = C2StemCloud;
+    cloud.loadUserProgress(cloud.encodeDict({
+        Username: template !== null ? template.user : "",
+        ProjectName: task_id,
+        Template: template !== null ? template.proj : ""
+    }), function (projectData) {
+        c2stem.userTaskData = JSON.parse(projectData);
+        console.log("loadPublicProject", c2stem.userTaskData);
+        callback(null);
+    }, function (err) {
+        c2stem.userTaskData = {};
+        callback(err);
+    });
 };
 
 C2Stem.prototype.saveUserProgress = function(callback){
@@ -329,7 +338,7 @@ C2Stem.prototype.saveUserProgress = function(callback){
     console.log(this.saveDataFetchers);
     for(; i < this.saveDataFetchers.length; i++){
         f = this.saveDataFetchers[i];
-        console.log(f, "Calling fetcher", f.name, f.fetcher);
+        console.log(f, "Calling fetcher", f.name);
         var data = f.fetcher();
         userTaskData[f.name] = data;
     }

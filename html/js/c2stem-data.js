@@ -149,6 +149,14 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                     proj: 'sf training 1a'
                 }
             }, {
+                id: 'onestep1',
+                type: 'snap1',
+                name: 'BUILD',
+                template: {
+                    user: 'd.asif.hasan',
+                    proj: 'cm_nicole_demo_blank'
+                }
+            }, {
                 id: 'resource',
                 type: 'desc',
                 name: 'Resources',

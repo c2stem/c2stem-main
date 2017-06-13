@@ -144,8 +144,9 @@ function init_c2stem_server(router, projects) {
                             sendSnapError(res, 'Project not found');
                         } else {
                             debug('Template Project found');
+                            console.log("project name:", projectName);
                             var userProgress = {};
-                            userProgress.snapdata = doc.snapdata;
+                            userProgress[template] = doc.snapdata;
                             userProgress = JSON.stringify(userProgress);
                             res.send(userProgress);
                         }

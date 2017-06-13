@@ -1,11 +1,22 @@
 var c2stem = new C2Stem();
 c2stem.fixupLogoutLink();
+
+
 c2stem.loadTaskData(c2stem.query.id, function (err, res) {
     console.log("loading task",res.id);
     c2stem.task_id = res.id;
+
+    c2stem.loadPublicProject(c2stem.task_id, null, false, function (err) {
+        loadTask(err,res);
+    });
+
+});
+
+function loadTask(err, res) {
+
     if (err === "ERROR: Not logged in") {
         window.location.href = "login.html";
-    } else if (err) {
+    } else if (err && err !== "ERROR: Project not found" ) {
         Materialize.toast(err || 'Could not load tasks');
     } else {
         c2stem.fixupModuleLink(res.parent.id, res.parent.name);
@@ -32,4 +43,4 @@ c2stem.loadTaskData(c2stem.query.id, function (err, res) {
 
         $('ul.tabs').tabs(); // visualize the tabs
     }
-});
+}
