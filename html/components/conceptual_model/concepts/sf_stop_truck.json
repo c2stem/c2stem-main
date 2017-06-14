@@ -26,13 +26,13 @@
           "selected": false
         },
         "MaxAcceleration": {
-          "name": "max acceleration in m/s^2",
+          "name": "max engine acceleration in m/s^2",
           "elementID": "MaxAcceleration",
           "selected": false
         },
-        "MinAcceleration": {
-          "name": "min acceleration in m/s^2",
-          "elementID": "MinAcceleration",
+        "BrakingAcceleration": {
+          "name": "max braking acceleration in m/s^2",
+          "elementID": "BrakingAcceleration",
           "selected": false
         },
         "SpeedLimit": {
@@ -80,14 +80,32 @@
           "category": "physics"
         },
         "set_acceleration": {
-          "name": "set acceleration in m/s^2",
+          "name": "set acceleration to (m/s^2)",
           "elementID": "set_acceleration",
           "selected": false,
           "category": "physics"
         },
-        "update_target_speed": {
-          "name": "update target speed in m/s",
-          "elementID": "update_target_speed",
+        "speed_up": {
+          "name": "speed up",
+          "elementID": "speed_up",
+          "selected": false,
+          "category": "physics"
+        },
+        "slow_down": {
+          "name": "slow down",
+          "elementID": "slow_down",
+          "selected": false,
+          "category": "physics"
+        },
+        "come_to_stop": {
+          "name": "slow down to a stop",
+          "elementID": "come_to_stop",
+          "selected": false,
+          "category": "physics"
+        },
+        "drive_backward": {
+          "name": "drive backward",
+          "elementID": "drive_backward",
           "selected": false,
           "category": "physics"
         }
@@ -108,32 +126,6 @@
               "category": "physics",
               "type": "built_in"
             },
-            {
-              "name": "changePhysicsXPosition",
-              "category": "physics",
-              "type": "built_in"
-            }
-          ]
-        },
-        {
-          "Required": [
-            "update_position"
-          ],
-          "GeneratedConstructs": [
-            {
-              "name": "update position in m",
-              "category": "physics",
-              "type": "built_in_custom_block",
-              "isGlobal": "false"
-            }
-          ]
-        },
-        {
-          "Required": [
-            "PositionX",
-            "update_position"
-          ],
-          "GeneratedConstructs": [
             {
               "name": "changePhysicsXPosition",
               "category": "physics",
@@ -175,45 +167,6 @@
         },
         {
           "Required": [
-            "update_velocity"
-          ],
-          "GeneratedConstructs": [
-            {
-              "name": "update velocity in m/s",
-              "category": "physics",
-              "type": "built_in_custom_block",
-              "isGlobal": "false"
-            }
-          ]
-        },
-        {
-          "Required": [
-            "set_acceleration"
-          ],
-          "GeneratedConstructs": [
-            {
-              "name": "set acceleration in m/s^2",
-              "category": "physics",
-              "type": "built_in_custom_block",
-              "isGlobal": "false"
-            }
-          ]
-        },
-        {
-          "Required": [
-            "update_target_speed"
-          ],
-          "GeneratedConstructs": [
-            {
-              "name": "update target speed in m/s",
-              "category": "physics",
-              "type": "built_in_custom_block",
-              "isGlobal": "false"
-            }
-          ]
-        },
-        {
-          "Required": [
             "TargetSpeed"
           ],
           "GeneratedConstructs": [
@@ -243,19 +196,19 @@
           ],
           "GeneratedConstructs": [
             {
-              "name": "max acceleration in m/s^2",
+              "name": "max engine acceleration in m/s^2",
               "category": "physics",
               "type": "custom_variable",
               "isGlobal": "false"
             },
             {
-              "name": "set max acceleration to (m/s^2)",
+              "name": "set max engine acceleration to (m/s^2)",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
             },
             {
-              "name": "change max acceleration by (m/s^2)",
+              "name": "change max engine acceleration by (m/s^2)",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
@@ -264,23 +217,23 @@
         },
         {
           "Required": [
-            "MinAcceleration"
+            "BrakingAcceleration"
           ],
           "GeneratedConstructs": [
             {
-              "name": "min acceleration in m/s^2",
+              "name": "max braking acceleration in m/s^2",
               "category": "physics",
               "type": "custom_variable",
               "isGlobal": "false"
             },
             {
-              "name": "set min acceleration to (m/s^2)",
+              "name": "set max braking acceleration to (m/s^2)",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
             },
             {
-              "name": "change min acceleration by (m/s^2)",
+              "name": "change max braking acceleration by (m/s^2)",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"

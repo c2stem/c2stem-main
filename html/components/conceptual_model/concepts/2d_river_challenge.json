@@ -326,12 +326,12 @@
       "isBuiltIn": true,
       "properties": {
         "environment_IslandOneXPosition": {
-          "name": "island1 x position in m/s",
+          "name": "island1 x position in m",
           "elementID": "IslandOneXPosition",
           "selected": false
         },
         "environment_IslandOneYPosition": {
-          "name": "island2 y position in m/s",
+          "name": "island2 y position in m",
           "elementID": "IslandOneYPosition",
           "selected": false
         }
@@ -349,13 +349,13 @@
               "isGlobal": "true"
             },
             {
-              "name": "set island1 x position in m",
+              "name": "set island1 x position in (m)",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "true"
             },
             {
-              "name": "change island1 x position by m",
+              "name": "change island1 x position by (m)",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "true"
@@ -373,13 +373,13 @@
               "isGlobal": "true"
             },
             {
-              "name": "set island1 y position in m",
+              "name": "set island1 y position in (m)",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "true"
             },
             {
-              "name": "change island1 y position by m",
+              "name": "change island1 y position by (m)",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "true"
@@ -395,12 +395,12 @@
       "isSprite": false,
       "properties": {
         "environment_IslandTwoXPosition": {
-          "name": "island2 x position in m/s",
+          "name": "island2 x position in m",
           "elementID": "IslandOneXPosition",
           "selected": false
         },
         "environment_IslandTwoYPosition": {
-          "name": "island2 y position in m/s",
+          "name": "island2 y position in m",
           "elementID": "IslandOneYPosition",
           "selected": false
         }
@@ -418,13 +418,13 @@
               "isGlobal": "true"
             },
             {
-              "name": "set island2 x position in m",
+              "name": "set island2 x position in (m)",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "true"
             },
             {
-              "name": "change island2 x position by m",
+              "name": "change island2 x position by (m)",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "true"
@@ -442,13 +442,13 @@
               "isGlobal": "true"
             },
             {
-              "name": "set island2 y position in m",
+              "name": "set island2 y position in (m)",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "true"
             },
             {
-              "name": "change island2 y position by m",
+              "name": "change island2 y position by (m)",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "true"

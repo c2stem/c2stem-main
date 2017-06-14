@@ -34,7 +34,7 @@
           "category": "physics"
         },
         "update_velocity": {
-          "name": "update velocity in m",
+          "name": "update velocity in m/s",
           "elementID": "update_position",
           "selected": false,
           "category": "physics"
@@ -101,19 +101,19 @@
           ],
           "GeneratedConstructs": [
             {
-              "name": "x acceleration",
+              "name": "x acceleration in m/s^2",
               "category": "physics",
               "type": "custom_variable",
               "isGlobal": "false"
             },
             {
-              "name": "set x acceleration in m/s^2",
+              "name": "set x acceleration to (m/s^2)",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
             },
             {
-              "name": "change x acceleration by m/s^2",
+              "name": "change x acceleration by (m/s^2)",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
