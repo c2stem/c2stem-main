@@ -158,11 +158,23 @@ tr:nth-child(even) {
     border: 5px solid #2E8B57!important;
 }
 
+#aair-mb_drop{
+    border: 5px solid #2E8B57!important;
+}
+
 #a1d-deliver{
     border: 5px solid #4B0082!important;
 }
 
 #a2d-river_challenge{
+    border: 5px solid #4B0082!important;
+}
+
+#aair-challenge{
+    border: 5px solid #4B0082!important;
+}
+
+#apara-challenge{
     border: 5px solid #4B0082!important;
 }
 
@@ -189,6 +201,15 @@ tr:nth-child(even) {
 #a2d-checkin2{
     border: 5px solid #4169E1!important;
 }
+
+#aair-checkin1{
+    border: 5px solid #4169E1!important;
+}
+
+#aair-checkin2{
+    border: 5px solid #4169E1!important;
+}
+
 
 #sidebar{
     background: #e57373;

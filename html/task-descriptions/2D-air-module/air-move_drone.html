@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C2STEM</title>
+    <link rel="stylesheet" href="/c2stem.css">
+</head>
+<body>
+<br>
+<p>Your medical delivery drone may be carrying multiple packages for delivery to multiple tribes in the area. In the previous task, you dropped one package to a specified landing spot. Now you will program the drone to carry a package to a new x location.</p>
+<p>The drone accelerates and decelerates at 2m/s<sup>2</sup> in the x direction.</p>
+
+<br>
+<div>
+    <button class="accordion"><h3>Step One: Speed Up to New Target Location</h3></button>
+    <div class="panel">
+        <br>
+        <p><strong>Accelerate the drone and package towards new target.</strong></p>
+        <br>
+        <strong>Hints:</strong>
+        <ul>
+            <li>Your drone and package need to move at the same velocity, but remember - they are two separate objects</li>
+            <li>Keep in mind the conditional logic used to make the medical truck stop in the previous module.</li>
+        </ul>
+        <br>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+
+    <button class="accordion"><h3>Step Two: Slow Down to a Stop Over New Target</h3></button>
+    <div class="panel">
+        <br>
+        <p><strong>Decelerate the drone and package to stop over the new target.</strong></p>
+        <br>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+
+    <button class="accordion"><h3>Step Three: Drop the Package!</h3></button>
+    <div class="panel">
+        <br>
+        <p><strong>Now it is time to drop the package! Add code to your computational model that drops the package towards the new target and makes sure the package stops once it hits the new target. </strong></p>
+        <br>
+        <strong>Hints:</strong>
+        <ul>
+            <li>Keep in mind how you programmed your package to stop in the first instructional section of Module Three!</li>
+        </ul>
+        <br>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+</div>
+
+
+<br>
+<h3> Helpful Hints <em>(from Resources)</em>:</h3>
+<table>
+    <tr>
+        <th>Physics Concepts</th>
+        <th>Computational Concepts</th>
+        <th>Computational Practices</th>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+<br>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function(){
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        }
+    }
+</script>
+<br>
+</body>
+</html>

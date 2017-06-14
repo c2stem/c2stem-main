@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C2STEM</title>
+    <link rel="stylesheet" href="/c2stem.css">
+</head>
+<body>
+<br>
+
+<p>Fortunately, we have made the final delivery of our packages using a drone that was able to hover relatively low to the ground. That may not always be the case! In many areas of the rainforest, the trees can be a multiple stories high - affecting the safety of our drone. If we were to drop a package from that height, it is more than likely that the package will break apart and damage our medicine! To solve this, we will need to equip each package with a parachute</p>
+<br>
+<strong>Parachute Notes:</strong>
+<ul>
+    <li>The parachute does not need to be “launched” as they are already open when the packages are dropped.</li>
+</ul>
+<br>
+<div>
+    <button class="accordion"><h3>Plan Your Model</h3></button>
+    <div class="panel">
+        <br>
+        <p><strong>To help plan each step in this challenge task, use your conceptual model. If you need to add new objects and/or behaviors or properties, you can go back to the conceptual model and do so!</strong></p>
+        <br>
+    </div>
+
+    <button class="accordion"><h3>Step One: Program the Movement of the Drone</h3></button>
+    <div class="panel">
+        <br>
+        <p><strong>Accelerate and decelerate the drone and accompanying packages. Remember, the drones can accelerate and decelerate by 2m/s<sup>2</sup>. You do not need to drop the packages at this time. Simply program the speed up, cruise, slow down to a stop, and wait behaviors.</strong></p>
+        <br>
+        <strong>Hints:</strong>
+        <ul>
+            <li>You may want to review your program for the medical truck stopping project!</li>
+        </ul>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+
+    <button class="accordion"><h3>Step Two: Drop the Package</h3></button>
+    <div class="panel">
+        <br>
+        <p><strong>Now, add conditional logic to your program that tells Rey when to drop the package.</strong></p>
+        <br>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+
+    <button class="accordion"><h3>Step Three: Make Sure the Package Stops!</h3></button>
+    <div class="panel">
+        <br>
+        <p><strong>In this challenge, you will need to program the affect the parachute has on the descent! The parachutes are designed so that the y velocity of the package is close to zero by the time the package reaches the ground!</strong></p>
+        <br>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+</div>
+
+
+<br>
+<h3> Helpful Hints <em>(from Resources)</em>:</h3>
+<table>
+    <tr>
+        <th>Physics Concepts</th>
+        <th>Computational Concepts</th>
+        <th>Computational Practices</th>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+<br>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function(){
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        }
+    }
+</script>
+<br>
+</body>
+</html>
