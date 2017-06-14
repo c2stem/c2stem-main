@@ -27,144 +27,6 @@
           ]
         }
       ]
-    },
-    "Island1": {
-      "name": "Island1",
-      "elementID": "Island1",
-      "selected": true,
-      "isSprite": false,
-      "properties": {
-        "environment_IslandOneXPosition": {
-          "name": "island1 x position in m/s",
-          "elementID": "environment_IslandOneXPosition",
-          "selected": false
-        },
-        "environment_IslandOneYPosition": {
-          "name": "island2 y position in m/s",
-          "elementID": "environment_IslandOneYPosition",
-          "selected": false
-        }
-      },
-      "rules": [
-        {
-          "Required": [
-            "environment_IslandOneXPosition"
-          ],
-          "GeneratedConstructs": [
-            {
-              "name": "island1 x position in m",
-              "category": "physics",
-              "type": "custom_variable",
-              "isGlobal": "true"
-            },
-            {
-              "name": "set island1 x position in m",
-              "category": "physics",
-              "type": "custom_block",
-              "isGlobal": "true"
-            },
-            {
-              "name": "change island1 x position by m",
-              "category": "physics",
-              "type": "custom_block",
-              "isGlobal": "true"
-            }
-          ]
-        }, {
-          "Required": [
-            "environment_IslandOneYPosition"
-          ],
-          "GeneratedConstructs": [
-            {
-              "name": "island1 y position in m",
-              "category": "physics",
-              "type": "custom_variable",
-              "isGlobal": "true"
-            },
-            {
-              "name": "set island1 y position in m",
-              "category": "physics",
-              "type": "custom_block",
-              "isGlobal": "true"
-            },
-            {
-              "name": "change island1 y position by m",
-              "category": "physics",
-              "type": "custom_block",
-              "isGlobal": "true"
-            }
-          ]
-        }
-      ]
-    },
-    "Island2": {
-      "name": "Island2",
-      "elementID": "Island2",
-      "selected": true,
-      "isSprite": false,
-      "properties": {
-        "environment_IslandTwoXPosition": {
-          "name": "island2 x position in m/s",
-          "elementID": "environment_IslandOneXPosition",
-          "selected": false
-        },
-        "environment_IslandTwoYPosition": {
-          "name": "island2 y position in m/s",
-          "elementID": "environment_IslandOneYPosition",
-          "selected": false
-        }
-      },
-      "rules": [
-        {
-          "Required": [
-            "environment_IslandTwoXPosition"
-          ],
-          "GeneratedConstructs": [
-            {
-              "name": "island2 x position in m",
-              "category": "physics",
-              "type": "custom_variable",
-              "isGlobal": "true"
-            },
-            {
-              "name": "set island2 x position in m",
-              "category": "physics",
-              "type": "custom_block",
-              "isGlobal": "true"
-            },
-            {
-              "name": "change island2 x position by m",
-              "category": "physics",
-              "type": "custom_block",
-              "isGlobal": "true"
-            }
-          ]
-        }, {
-          "Required": [
-            "environment_IslandTwoYPosition"
-          ],
-          "GeneratedConstructs": [
-            {
-              "name": "island2 y position in m",
-              "category": "physics",
-              "type": "custom_variable",
-              "isGlobal": "true"
-            },
-            {
-              "name": "set island2 y position in m",
-              "category": "physics",
-              "type": "custom_block",
-              "isGlobal": "true"
-            },
-            {
-              "name": "change island2 y position by m",
-              "category": "physics",
-              "type": "custom_block",
-              "isGlobal": "true"
-            }
-          ]
-        }
-      ]
     }
   },
   "agents": {
@@ -268,19 +130,6 @@
               "name": "changePhysicsYPosition",
               "category": "physics",
               "type": "built_in"
-            }
-          ]
-        },
-        {
-          "Required": [
-            "update_position"
-          ],
-          "GeneratedConstructs": [
-            {
-              "name": "update position in m",
-              "category": "physics",
-              "type": "built_in_custom_block",
-              "isGlobal": "false"
             },
             {
               "name": "getPhysicsAttrOf",
@@ -383,19 +232,6 @@
         },
         {
           "Required": [
-            "update_resultant_velocity"
-          ],
-          "GeneratedConstructs": [
-            {
-              "name": "update resultant velocity in m/s",
-              "category": "physics",
-              "type": "built_in_custom_block",
-              "isGlobal": "false"
-            }
-          ]
-        },
-        {
-          "Required": [
             "Angle"
           ],
           "GeneratedConstructs": [
@@ -444,8 +280,8 @@
       ]
     },
     "Unloading-Dock1": {
-      "name": "Unloading Dock",
-      "elementID": "Unloading-Dock1",
+      "name": "Dock",
+      "elementID": "Dock",
       "selected": false,
       "isSprite": true,
       "isBuiltIn": true,
@@ -477,6 +313,145 @@
               "name": "changePhysicsXPosition",
               "category": "physics",
               "type": "built_in"
+            }
+          ]
+        }
+      ]
+    },
+    "Island1": {
+      "name": "Island1",
+      "elementID": "Island1",
+      "selected": false,
+      "isSprite": true,
+      "isBuiltIn": true,
+      "properties": {
+        "environment_IslandOneXPosition": {
+          "name": "island1 x position in m",
+          "elementID": "IslandOneXPosition",
+          "selected": false
+        },
+        "environment_IslandOneYPosition": {
+          "name": "island2 y position in m",
+          "elementID": "IslandOneYPosition",
+          "selected": false
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "IslandOneXPosition"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "island1 x position in m",
+              "category": "physics",
+              "type": "custom_variable",
+              "isGlobal": "true"
+            },
+            {
+              "name": "set island1 x position in (m)",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "true"
+            },
+            {
+              "name": "change island1 x position by (m)",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "true"
+            }
+          ]
+        }, {
+          "Required": [
+            "IslandOneYPosition"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "island1 y position in m",
+              "category": "physics",
+              "type": "custom_variable",
+              "isGlobal": "true"
+            },
+            {
+              "name": "set island1 y position in (m)",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "true"
+            },
+            {
+              "name": "change island1 y position by (m)",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "true"
+            }
+          ]
+        }
+      ]
+    },
+    "Island2": {
+      "name": "Island2",
+      "elementID": "Island2",
+      "selected": true,
+      "isSprite": false,
+      "properties": {
+        "environment_IslandTwoXPosition": {
+          "name": "island2 x position in m",
+          "elementID": "IslandOneXPosition",
+          "selected": false
+        },
+        "environment_IslandTwoYPosition": {
+          "name": "island2 y position in m",
+          "elementID": "IslandOneYPosition",
+          "selected": false
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "IslandTwoXPosition"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "island2 x position in m",
+              "category": "physics",
+              "type": "custom_variable",
+              "isGlobal": "true"
+            },
+            {
+              "name": "set island2 x position in (m)",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "true"
+            },
+            {
+              "name": "change island2 x position by (m)",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "true"
+            }
+          ]
+        }, {
+          "Required": [
+            "IslandTwoYPosition"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "island2 y position in m",
+              "category": "physics",
+              "type": "custom_variable",
+              "isGlobal": "true"
+            },
+            {
+              "name": "set island2 y position in (m)",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "true"
+            },
+            {
+              "name": "change island2 y position by (m)",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "true"
             }
           ]
         }

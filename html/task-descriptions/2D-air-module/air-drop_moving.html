@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C2STEM</title>
+    <link rel="stylesheet" href="/c2stem.css">
+</head>
+<body>
+<br>
+
+<p>Our drone is running out of battery! In order to ensure the package is delivered and the drone returns safely to home base, we cannot stop. Your task is to move the drone with a constant x velocity of 10m/s and drop the package at a specific distance away from the target to ensure it lands on the specified target location.</p>
+<br>
+<div>
+    <button class="accordion"><h3>Plan Your Model</h3></button>
+    <div class="panel">
+        <br>
+        <p><strong>To help plan each step in this model building task, use your conceptual model. If you need to add new objects and/or behaviors or properties, you can go back to the conceptual model and do so!</strong></p>
+        <br>
+    </div>
+
+    <button class="accordion"><h3>Step One: Move the Drone at a Constant Velocity</h3></button>
+    <div class="panel">
+        <br>
+        <p><strong>Move the drone to the right at a constant velocity (specified above).</strong></p>
+        <br>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+
+    <button class="accordion"><h3>Step Two: Drop the Package</h3></button>
+    <div class="panel">
+        <br>
+        <p><strong>Drop the package so that it lands on the target.</strong></p>
+        <strong>Hint:</strong>
+        <ul>
+            <li>The drone is not stopping which means the package will be released at a point in which it has the same x velocity as the drone.</li>
+            <li>You will need to release the package a certain distance before the drone is directly over the target to take into account the current x velocity of the package.</li>
+        </ul>
+        <br>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+
+    <button class="accordion"><h3>Step Three: Make Sure the Package Stops!</h3></button>
+    <div class="panel">
+        <br>
+        <p><strong>As with all tasks in this module, make sure the package stops once it hits the new target.</strong></p>
+        <br>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+
+    <button class="accordion"><h3>Simulation Video <em>(for Reference)</em></h3></button>
+    <div class="panel">
+        <br>
+        <iframe class="resourseiFrame" width="60%" height="400" src="" frameborder="0" allowfullscreen></iframe>
+        <br>
+    </div>
+</div>
+
+
+<br>
+<h3> Helpful Hints <em>(from Resources)</em>:</h3>
+<table>
+    <tr>
+        <th>Physics Concepts</th>
+        <th>Computational Concepts</th>
+        <th>Computational Practices</th>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+<br>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function(){
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        }
+    }
+</script>
+<br>
+</body>
+</html>

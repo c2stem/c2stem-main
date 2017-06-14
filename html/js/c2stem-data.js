@@ -14,7 +14,7 @@ C2Stem.prototype.loadHomeData = function (callback) {
             icon: "img/plane.png"
         }, {
             id: 'm4',
-            name: "Gravity",
+            name: "Challenge",
             icon: "img/falcon9.png"
         }]
     };
@@ -39,23 +39,32 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
                 id: '1d-elaborate',
                 name: 'Instructional Task - 1D Velocity: Elaborate Your Simulation'
             }, {
+                id: '1d-checkin1',
+                name: 'Check-In #1'
+            },{
                 id: '1d-inst_conceptual',
                 name: 'Instructional Task - 1D Velocity: Model Planning'
             }, {
                 id: '1d-constant',
                 name: 'Model Building - 1D Velocity: Simulate the Motion of a Truck'
             }, {
+                id: '1d-checkin2',
+                name: 'Check-In #2'
+            }, {
                 id: '1d-liftoff',
                 name: 'Instructional Task - 1D Acceleration: Changing Velocity'
             }, {
+                id: '1d-checkin3',
+                name: 'Check-In #3'
+            }, {
                 id: '1d-stop',
                 name: 'Model Building -1D Acceleration: Make Your Truck Stop'
-            },{
+            }, {
+                id: '1d-checkin4',
+                name: 'Check-In #4'
+            }, {
                 id: '1d-deliver',
                 name: 'Challenge Problem: Deliver the Medicine to the River! '
-            },{
-                id: '1d-assessment',
-                name: 'Assessment Task'
             }
             ]
         };
@@ -70,14 +79,17 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
                 id: '2d-inst_cross',
                 name: 'Instructional Task: Crossing the River'
             }, {
+                id: '2d-checkin1',
+                name: 'Check-In #1'
+            }, {
                 id: '2d-mb_cross',
                 name: 'Model Building - Crossing the River to Get to the Airstrip'
             }, {
+                id: '2d-checkin2',
+                name: 'Check-In #2'
+            }, {
                 id: '2d-river_challenge',
                 name: 'Challenge: The Uncertain Amazon River'
-            }, {
-                id: '2d-assessment',
-                name: 'Assessment Task'
             }]
         };
     } else if (id === 'm3') {
@@ -85,29 +97,32 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
             id: id,
             name: '2D: Air',
             tasks: [{
-                id: 'para-basics',
+                id: 'air-basics',
                 name: 'Instructional Task: Drop'
             }, {
-                id: 'para-inst_drop',
+                id: 'air-inst_drop',
                 name: 'Instructional Task: Drop While Moving'
             }, {
-                id: 'para-mb_drop',
+                id: 'air-checkin1',
+                name: 'Check-In #1'
+            }, {
+                id: 'air-mb_drop',
                 name: 'Model Building - Drop Package on Target'
             }, {
-                id: 'para-plane_challenge',
-                name: 'Challenge: Final Delivery of the Medicine!'
+                id: 'air-checkin2',
+                name: 'Check-In #1'
             }, {
-                id: 'para-assessment',
-                name: 'Assessment Task'
+                id: 'air-challenge',
+                name: 'Challenge: Final Delivery of the Medicine!'
             }]
         };
     } else if (id === 'm4') {
         res = {
             id: id,
-            name: 'Gravity',
+            name: 'Challenge',
             tasks: [{
-                id: 'snaptest',
-                name: 'How to embed SNAP'
+            id: 'para-challenge',
+            name: 'Challenge: Parachute Drop!'
             }]
         };
     } else {
@@ -183,6 +198,21 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }]
         };
+    }else if (id === '1d-checkin1') {
+        res = {
+            parent: {
+                id: '1dmotion',
+                name: '1D: Land'
+            },
+            id: id,
+            name: 'Check-In #1',
+            tabs: [{
+                id: 'assessment',
+                type: 'desc',
+                name: 'Assessment',
+                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
+            }]
+        };
     } else if (id === '1d-inst_conceptual') {
         res = {
             parent: {
@@ -236,6 +266,21 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }]
         };
+    }else if (id === '1d-checkin2') {
+        res = {
+            parent: {
+                id: '1dmotion',
+                name: '1D: Land'
+            },
+            id: id,
+            name: 'Check-In #2',
+            tabs: [{
+                id: 'assessment',
+                type: 'desc',
+                name: 'Assessment',
+                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
+            }]
+        };
     } else if (id === '1d-liftoff') {
         res = {
             parent: {
@@ -250,6 +295,11 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 name: 'Description',
                 markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-introduction_to_acceleration.html" frameborder="0"></iframe>'
             }, {
+                id: 'slothAccel',
+                type: 'cm',
+                name: 'PLAN',
+                data: 'sf_intro_acceleration'
+            }, {
                 id: 'Accel',
                 type: 'snap1',
                 name: 'BUILD',
@@ -262,6 +312,21 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 type: 'desc',
                 name: 'Resources',
                 markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
+            }]
+        };
+    }else if (id === '1d-checkin3') {
+        res = {
+            parent: {
+                id: '1dmotion',
+                name: '1D: Land'
+            },
+            id: id,
+            name: 'Check-In #3',
+            tabs: [{
+                id: 'assessment',
+                type: 'desc',
+                name: 'Assessment',
+                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
             }]
         };
     } else if (id === '1d-stop') {
@@ -297,6 +362,21 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }]
         };
+    }else if (id === '1d-checkin4') {
+        res = {
+            parent: {
+                id: '1dmotion',
+                name: '1D: Land'
+            },
+            id: id,
+            name: 'Check-In #4',
+            tabs: [{
+                id: 'assessment',
+                type: 'desc',
+                name: 'Assessment',
+                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
+            }]
+        };
     }else if (id === '1d-deliver') {
         res = {
             parent: {
@@ -328,21 +408,6 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 type: 'desc',
                 name: 'Resources',
                 markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
-            }]
-        };
-    }else if (id === '1d-assessment') {
-        res = {
-            parent: {
-                id: '1dmotion',
-                name: '1D: Land'
-            },
-            id: id,
-            name: 'Assessment Task',
-            tabs: [{
-                id: 'assessment',
-                type: 'desc',
-                name: 'Assessment',
-                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
             }]
         };
     } else if (id === '2d-basics') {
@@ -406,6 +471,21 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }]
         };
+    }else if (id === '2d-checkin1') {
+        res = {
+            parent: {
+                id: 'm2',
+                name: '2D: Water'
+            },
+            id: id,
+            name: 'Check-In #1',
+            tabs: [{
+                id: 'assessment',
+                type: 'desc',
+                name: 'Assessment',
+                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
+            }]
+        };
     } else if (id === '2d-mb_cross') {
         res = {
             parent: {
@@ -437,6 +517,21 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 type: 'desc',
                 name: 'Resources',
                 markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
+            }]
+        };
+    }else if (id === '2d-checkin2') {
+        res = {
+            parent: {
+                id: 'm2',
+                name: '2D: Water'
+            },
+            id: id,
+            name: 'Check-In #2',
+            tabs: [{
+                id: 'assessment',
+                type: 'desc',
+                name: 'Assessment',
+                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
             }]
         };
     }else if (id === '2d-river_challenge') {
@@ -472,19 +567,194 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }]
         };
-    }else if (id === '2d-assessment') {
+    } else if (id === 'air-basics') {
         res = {
             parent: {
-                id: 'm2',
-                name: '2D: Water'
+                id: 'm3',
+                name: '2D: Air'
             },
             id: id,
-            name: 'Assessment Task',
+            name: 'Instructional Task: Drop the Package',
+            tabs: [{
+                id: 'desc',
+                type: 'desc',
+                name: 'Description',
+                markup:'<iframe id=desc_resourceIframe  src="task-descriptions/2D-air-module/air-drop_package.html" frameborder="0"></iframe>'
+            }, {
+                id: 'airassess',
+                type: 'desc',
+                name: 'LEARN',
+                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
+            }, {
+                id: 'airbasic',
+                type: 'snap1',
+                name: 'BUILD',
+                template: {
+                    user: 'nicole',
+                    proj: 'sfair-drop_package'
+                }
+            }, {
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
+            }]
+        };
+    } else if (id === 'air-inst_drop') {
+        res = {
+            parent: {
+                id: 'm3',
+                name: '2D: Air'
+            },
+            id: id,
+            name: 'Instructional Task: Move the Package',
+            tabs: [{
+                id: 'desc',
+                type: 'desc',
+                name: 'Description',
+                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/2D-air-module/air-move_drone.html" frameborder="0"></iframe>'
+            }, {
+                id: 'instdrop',
+                type: 'snap1',
+                name: 'BUILD',
+                template: {
+                    user: 'nicole',
+                    proj: 'sfair-move_drone'
+                }
+            }, {
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
+            }]
+        };
+    }else if (id === 'air-checkin1') {
+        res = {
+            parent: {
+                id: 'm3',
+                name: '2D: Air'
+            },
+            id: id,
+            name: 'Check-In #1',
             tabs: [{
                 id: 'assessment',
                 type: 'desc',
                 name: 'Assessment',
                 markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
+            }]
+        };
+    } else if (id === 'air-mb_drop') {
+        res = {
+            parent: {
+                id: 'm3',
+                name: '2D: Air'
+            },
+            id: id,
+            name: 'Model Building - Drop While Moving!',
+            tabs: [{
+                id: 'desc',
+                type: 'desc',
+                name: 'Description',
+                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/2D-air-module/air-drop_moving.html" frameborder="0"></iframe>'
+            }, {
+                id: 'planairmb',
+                type: 'cm',
+                name: 'PLAN',
+                data: 'air_drop_moving'
+            }, {
+                id: 'buildairmb',
+                type: 'snap1',
+                name: 'BUILD',
+                template: {
+                    user: 'nicole',
+                    proj: 'air_drop_moving'
+                }
+            }, {
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
+            }]
+        };
+    }else if (id === 'air-checkin2') {
+        res = {
+            parent: {
+                id: 'm3',
+                name: '2D: Air'
+            },
+            id: id,
+            name: 'Check-In #2',
+            tabs: [{
+                id: 'assessment',
+                type: 'desc',
+                name: 'Assessment',
+                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
+            }]
+        };
+    }else if (id === 'air-challenge') {
+        res = {
+            parent: {
+                id: 'm3',
+                name: '2D: Air'
+            },
+            id: id,
+            name: 'Challenge Problem: Final Delivery of the Medicine!',
+            tabs: [{
+                id: 'desc',
+                type: 'desc',
+                name: 'Description',
+                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/2D-air-module/air-challenge.html" frameborder="0"></iframe>'
+            },   {
+                id: 'planairchallenge',
+                type: 'cm',
+                name: 'PLAN',
+                data: 'air_challenge'
+            }, {
+                id: 'buildairchallenge',
+                type: 'snap1',
+                name: 'BUILD',
+                template: {
+                    user: 'nicole',
+                    proj: 'sfair-challenge'
+                }
+            }, {
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
+            }]
+        };
+    }else if (id === 'para-challenge') {
+        res = {
+            parent: {
+                id: 'm4',
+                name: 'Challenge'
+            },
+            id: id,
+            name: 'Challenge Problem: Parachute Drop!',
+            tabs: [{
+                id: 'desc',
+                type: 'desc',
+                name: 'Description',
+                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/challenge/para-challenge.html" frameborder="0"></iframe>'
+            },   {
+                id: 'planfinalchallenge',
+                type: 'cm',
+                name: 'PLAN',
+                data: 'para_challenge'
+            }, {
+                id: 'buildfinalchallenge',
+                type: 'snap1',
+                name: 'BUILD',
+                template: {
+                    user: 'nicole',
+                    proj: 'sfpara-challenge'
+                }
+            }, {
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }]
         };
     }else {

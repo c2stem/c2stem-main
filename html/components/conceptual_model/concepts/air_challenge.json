@@ -1,14 +1,27 @@
 {
   "environment": {
+    "Physics": {
+      "name": "Physics",
+      "elementID": "env_physics",
+      "selected": true,
+      "isSprite": false,
+      "properties": {
+        "environment_GravityX": {
+          "name": "Gravity",
+          "elementID": "environment_GravityX",
+          "selected": false
+        }
+      }
+    }
   },
   "agents": {
-    "Truck": {
-      "name": "Truck",
-      "elementID": "Truck",
+    "Drone": {
+      "name": "Drone",
+      "elementID": "Drone",
       "selected": false,
       "isSprite": true,
       "isBuiltIn": true,
-      "costume": "c2stem med truck",
+      "costume": "drone",
       "properties": {
         "PositionX": {
           "name": "x position in m",
@@ -20,24 +33,14 @@
           "elementID": "VelocityX",
           "selected": false
         },
-        "TargetSpeed": {
-          "name": "target speed in m/s",
-          "elementID": "TargetSpeed",
-          "selected": false
-        },
         "MaxAcceleration": {
-          "name": "max engine acceleration in m/s^2",
+          "name": "max drone acceleration in m/s^2",
           "elementID": "MaxAcceleration",
           "selected": false
         },
-        "BrakingAcceleration": {
-          "name": "max braking acceleration in m/s^2",
+        "MaxDeceleration": {
+          "name": "max drone deceleration in m/s^2",
           "elementID": "BrakingAcceleration",
-          "selected": false
-        },
-        "SpeedLimit": {
-          "name": "speed limit in m/s",
-          "elementID": "SpeedLimit",
           "selected": false
         },
         "CoastingTime": {
@@ -392,13 +395,13 @@
         }
       ]
     },
-    "Stop": {
-      "name": "Stop",
-      "elementID": "Stop",
+    "Package": {
+      "name": "Package",
+      "elementID": "Package",
       "selected": false,
       "isSprite": true,
       "isBuiltIn": true,
-      "costume": "stop-sign",
+      "costume": "dock",
       "properties": {
         "PositionX": {
           "name": "x position in m",
@@ -415,6 +418,45 @@
             {
               "name": "physicsXPosition",
               "category":"physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setPhysicsXPosition",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changePhysicsXPosition",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        }
+      ]
+    },
+    "Target": {
+      "name": "Target",
+      "elementID": "Target",
+      "selected": false,
+      "isSprite": true,
+      "isBuiltIn": true,
+      "costume": "target",
+      "properties": {
+        "PositionX": {
+          "name": "x position in m",
+          "elementID": "PositionX",
+          "selected": false
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "PositionX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsXPosition",
+              "category": "physics",
               "type": "built_in"
             },
             {

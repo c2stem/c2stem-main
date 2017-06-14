@@ -101,6 +101,29 @@ blockquote cite:before {
     content: "\2014 \2009";
 }
 
+ button.accordion {
+     background-color: #008080;
+     color: #FFF;
+     cursor: pointer;
+     padding: 3px;
+     width: 100%;
+     border: none;
+     text-align: left;
+     outline: none;
+     font-size: 15px;
+     transition: 0.4s;
+ }
+
+button.accordion.active, button.accordion:hover {
+    background-color: #20B2AA;
+}
+
+div.panel {
+    padding: 0 18px;
+    display: none;
+    background-color: white;
+}
+
 table {
     /*font-family: arial, sans-serif;*/
     border-collapse: collapse;
@@ -119,29 +142,74 @@ tr:nth-child(even) {
 }
 
 #tasks li{
-    border: 5px solid lightpink;
+    border: 5px solid #F08080;
     overflow: hidden;
 }
 
 #a1d-constant{
-    border: 5px solid yellowgreen!important;
+    border: 5px solid #2E8B57!important;
 }
 
 #a1d-stop{
-    border: 5px solid yellowgreen!important;
+    border: 5px solid #2E8B57!important;
 }
 
 #a2d-mb_cross{
-    border: 5px solid yellowgreen!important;
+    border: 5px solid #2E8B57!important;
+}
+
+#aair-mb_drop{
+    border: 5px solid #2E8B57!important;
 }
 
 #a1d-deliver{
-    border: 5px solid mediumpurple!important;
+    border: 5px solid #4B0082!important;
 }
 
 #a2d-river_challenge{
-    border: 5px solid mediumpurple!important;
+    border: 5px solid #4B0082!important;
 }
+
+#aair-challenge{
+    border: 5px solid #4B0082!important;
+}
+
+#apara-challenge{
+    border: 5px solid #4B0082!important;
+}
+
+#a1d-checkin1{
+    border: 5px solid #4169E1!important;
+}
+
+#a1d-checkin2{
+    border: 5px solid #4169E1!important;
+}
+
+#a1d-checkin3{
+    border: 5px solid #4169E1!important;
+}
+
+#a1d-checkin4{
+    border: 5px solid #4169E1!important;
+}
+
+#a2d-checkin1{
+    border: 5px solid #4169E1!important;
+}
+
+#a2d-checkin2{
+    border: 5px solid #4169E1!important;
+}
+
+#aair-checkin1{
+    border: 5px solid #4169E1!important;
+}
+
+#aair-checkin2{
+    border: 5px solid #4169E1!important;
+}
+
 
 #sidebar{
     background: #e57373;

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C2STEM</title>
+    <link rel="stylesheet" href="/c2stem.css">
+</head>
+<body>
+<p>Spaces available for safe delivery of dropped packages are not very wide in the dense Amazon rainforest. As Rey has multiple medical packages to deliver, we have been given multiple target drop areas. As such, we must program Rey to drop multiple packages to assigned target areas. Your challenge will be to deliver two medical packages.</p>
+<br>
+<div>
+    <button class="accordion"><h3>Plan Your Model</h3></button>
+    <div class="panel">
+        <br>
+        <p><strong>To help plan each step in this challenge task, use your conceptual model. If you need to add new objects and/or behaviors or properties, you can go back to the conceptual model and do so!</strong></p>
+        <br>
+    </div>
+
+    <button class="accordion"><h3>Step One: Program the Movement of the Drone</h3></button>
+    <div class="panel">
+        <br>
+        <p><strong>Accelerate and decelerate the drone and accompanying packages. Remember, the drones can accelerate and decelerate by 2m/s<sup>2</sup>. You do not need to drop the packages at this time. Simply program the speed up, cruise, slow down to a stop, and wait behaviors. </strong></p>
+        <br>
+        <strong>Hints:</strong>
+        <ul>
+            <li>You may want to review your program for the medical truck stopping project!</li>
+        </ul>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+
+    <button class="accordion"><h3>Step Two: Drop Each Package</h3></button>
+    <div class="panel">
+        <br>
+        <p><strong>Now, add conditional logic to your program that tells Rey when to drop a certain package.</strong></p>
+        <br>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+
+    <button class="accordion"><h3>Step Three: Make Sure the Packages Stop!</h3></button>
+    <div class="panel">
+        <br>
+        <p><strong>As with all tasks in this module, make sure the package stops once it hits the new target!</strong></p>
+        <br>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+</div>
+
+
+<br>
+<h3> Helpful Hints <em>(from Resources)</em>:</h3>
+<table>
+    <tr>
+        <th>Physics Concepts</th>
+        <th>Computational Concepts</th>
+        <th>Computational Practices</th>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+</table>
+<br>
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++) {
+        acc[i].onclick = function(){
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block") {
+                panel.style.display = "none";
+            } else {
+                panel.style.display = "block";
+            }
+        }
+    }
+</script>
+<br>
+</body>
+</html>

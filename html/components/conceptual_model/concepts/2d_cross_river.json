@@ -306,8 +306,8 @@
       ]
     },
     "Unloading-Dock1": {
-      "name": "Unloading Dock Option 1",
-      "elementID": "Unloading-Dock1",
+      "name": "Dock 1",
+      "elementID": "Dock1",
       "selected": false,
       "isSprite": true,
       "isBuiltIn": true,
@@ -345,8 +345,8 @@
       ]
     },
     "Unloading-Dock2": {
-      "name": "Unloading Dock Option 2",
-      "elementID": "Unloading-Dock2",
+      "name": "Dock2",
+      "elementID": "Dock2",
       "selected": false,
       "isSprite": true,
       "isBuiltIn": true,
@@ -384,8 +384,8 @@
       ]
     },
     "Unloading-Dock3": {
-      "name": "Unloading Dock Option 3",
-      "elementID": "nloading-Dock3",
+      "name": "Dock 3",
+      "elementID": "Dock3",
       "selected": false,
       "isSprite": true,
       "isBuiltIn": true,

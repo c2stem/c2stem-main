@@ -64,28 +64,7 @@
               "name": "changePhysicsXPosition",
               "category": "physics",
               "type": "built_in"
-            }
-          ]
-        },
-        {
-          "Required": [
-            "update_position"
-          ],
-          "GeneratedConstructs": [
-            {
-              "name": "update position in m",
-              "category": "physics",
-              "type": "built_in_custom_block",
-              "isGlobal": "false"
-            }
-          ]
-        },
-        {
-          "Required": [
-            "PositionX",
-            "update_position"
-          ],
-          "GeneratedConstructs": [
+            },
             {
               "name": "getPhysicsAttrOf",
               "category": "physics",
@@ -126,19 +105,19 @@
           ],
           "GeneratedConstructs": [
             {
-              "name": "XAcceleration",
+              "name": "x acceleration in m/s^2",
               "category": "physics",
               "type": "custom_variable",
               "isGlobal": "false"
             },
             {
-              "name": "set XAcceleration to ",
+              "name": "set x acceleration to (m/s^2)",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
             },
             {
-              "name": "change XAcceleration by ",
+              "name": "change x acceleration by (m/s^2)",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
@@ -151,19 +130,19 @@
           ],
           "GeneratedConstructs": [
             {
-              "name": "OldPositionX",
+              "name": "old x position in m",
               "category": "physics",
               "type": "custom_variable",
               "isGlobal": "false"
             },
             {
-            "name": "set OldPositionX to (m)",
+            "name": "set old x position to (m)",
             "category": "physics",
             "type": "custom_block",
             "isGlobal": "false"
             },
             {
-              "name": "change OldPositionX by (m)",
+              "name": "change old x position by (m)",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
@@ -176,7 +155,7 @@
           ],
           "GeneratedConstructs": [
             {
-              "name": "PassedTheCone",
+              "name": "passed the cone",
               "category": "physics",
               "type": "custom_variable",
               "isGlobal": "false"
