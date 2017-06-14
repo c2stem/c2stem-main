@@ -39,23 +39,32 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
                 id: '1d-elaborate',
                 name: 'Instructional Task - 1D Velocity: Elaborate Your Simulation'
             }, {
+                id: '1d-checkin1',
+                name: 'Check-In #1'
+            },{
                 id: '1d-inst_conceptual',
                 name: 'Instructional Task - 1D Velocity: Model Planning'
             }, {
                 id: '1d-constant',
                 name: 'Model Building - 1D Velocity: Simulate the Motion of a Truck'
             }, {
+                id: '1d-checkin2',
+                name: 'Check-In #2'
+            }, {
                 id: '1d-liftoff',
                 name: 'Instructional Task - 1D Acceleration: Changing Velocity'
             }, {
+                id: '1d-checkin3',
+                name: 'Check-In #3'
+            }, {
                 id: '1d-stop',
                 name: 'Model Building -1D Acceleration: Make Your Truck Stop'
-            },{
+            }, {
+                id: '1d-checkin4',
+                name: 'Check-In #4'
+            }, {
                 id: '1d-deliver',
                 name: 'Challenge Problem: Deliver the Medicine to the River! '
-            },{
-                id: '1d-assessment',
-                name: 'Assessment Task'
             }
             ]
         };
@@ -70,14 +79,17 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
                 id: '2d-inst_cross',
                 name: 'Instructional Task: Crossing the River'
             }, {
+                id: '2d-checkin1',
+                name: 'Check-In #1'
+            }, {
                 id: '2d-mb_cross',
                 name: 'Model Building - Crossing the River to Get to the Airstrip'
             }, {
+                id: '2d-checkin2',
+                name: 'Check-In #2'
+            }, {
                 id: '2d-river_challenge',
                 name: 'Challenge: The Uncertain Amazon River'
-            }, {
-                id: '2d-assessment',
-                name: 'Assessment Task'
             }]
         };
     } else if (id === 'm3') {
@@ -183,6 +195,21 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }]
         };
+    }else if (id === '1d-checkin1') {
+        res = {
+            parent: {
+                id: '1dmotion',
+                name: '1D: Land'
+            },
+            id: id,
+            name: 'Check-In #1',
+            tabs: [{
+                id: 'assessment',
+                type: 'desc',
+                name: 'Assessment',
+                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
+            }]
+        };
     } else if (id === '1d-inst_conceptual') {
         res = {
             parent: {
@@ -236,6 +263,21 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }]
         };
+    }else if (id === '1d-checkin2') {
+        res = {
+            parent: {
+                id: '1dmotion',
+                name: '1D: Land'
+            },
+            id: id,
+            name: 'Check-In #2',
+            tabs: [{
+                id: 'assessment',
+                type: 'desc',
+                name: 'Assessment',
+                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
+            }]
+        };
     } else if (id === '1d-liftoff') {
         res = {
             parent: {
@@ -250,6 +292,11 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 name: 'Description',
                 markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-introduction_to_acceleration.html" frameborder="0"></iframe>'
             }, {
+                id: 'slothAccel',
+                type: 'cm',
+                name: 'PLAN',
+                data: 'sf_intro_acceleration'
+            }, {
                 id: 'Accel',
                 type: 'snap1',
                 name: 'BUILD',
@@ -262,6 +309,21 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 type: 'desc',
                 name: 'Resources',
                 markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
+            }]
+        };
+    }else if (id === '1d-checkin3') {
+        res = {
+            parent: {
+                id: '1dmotion',
+                name: '1D: Land'
+            },
+            id: id,
+            name: 'Check-In #3',
+            tabs: [{
+                id: 'assessment',
+                type: 'desc',
+                name: 'Assessment',
+                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
             }]
         };
     } else if (id === '1d-stop') {
@@ -297,6 +359,21 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }]
         };
+    }else if (id === '1d-checkin4') {
+        res = {
+            parent: {
+                id: '1dmotion',
+                name: '1D: Land'
+            },
+            id: id,
+            name: 'Check-In #4',
+            tabs: [{
+                id: 'assessment',
+                type: 'desc',
+                name: 'Assessment',
+                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
+            }]
+        };
     }else if (id === '1d-deliver') {
         res = {
             parent: {
@@ -328,21 +405,6 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 type: 'desc',
                 name: 'Resources',
                 markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
-            }]
-        };
-    }else if (id === '1d-assessment') {
-        res = {
-            parent: {
-                id: '1dmotion',
-                name: '1D: Land'
-            },
-            id: id,
-            name: 'Assessment Task',
-            tabs: [{
-                id: 'assessment',
-                type: 'desc',
-                name: 'Assessment',
-                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
             }]
         };
     } else if (id === '2d-basics') {
@@ -406,6 +468,21 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }]
         };
+    }else if (id === '2d-checkin1') {
+        res = {
+            parent: {
+                id: 'm2',
+                name: '2D: Water'
+            },
+            id: id,
+            name: 'Check-In #1',
+            tabs: [{
+                id: 'assessment',
+                type: 'desc',
+                name: 'Assessment',
+                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
+            }]
+        };
     } else if (id === '2d-mb_cross') {
         res = {
             parent: {
@@ -437,6 +514,21 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 type: 'desc',
                 name: 'Resources',
                 markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
+            }]
+        };
+    }else if (id === '2d-checkin2') {
+        res = {
+            parent: {
+                id: 'm2',
+                name: '2D: Water'
+            },
+            id: id,
+            name: 'Check-In #2',
+            tabs: [{
+                id: 'assessment',
+                type: 'desc',
+                name: 'Assessment',
+                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
             }]
         };
     }else if (id === '2d-river_challenge') {

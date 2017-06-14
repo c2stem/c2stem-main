@@ -1,0 +1,126 @@
+{
+  "environment": {
+  },
+  "agents": {
+    "Truck": {
+      "name": "Sloth",
+      "elementID": "Sloth",
+      "selected": false,
+      "isSprite": true,
+      "isBuiltIn": true,
+      "costume": "sloth",
+      "properties": {
+        "PositionX": {
+          "name": "x position in m",
+          "elementID": "PositionX",
+          "selected": false
+        },
+        "VelocityX": {
+          "name": "x velocity in m/s",
+          "elementID": "VelocityX",
+          "selected": false
+        },
+        "XAcceleration": {
+          "name": "x acceleration in m/s^2",
+          "elementID": "StartPosition",
+          "selected": false
+        }
+      },
+      "behaviors": {
+        "update_position": {
+          "name": "update position in m",
+          "elementID": "update_position",
+          "selected": false,
+          "category": "physics"
+        },
+        "update_velocity": {
+          "name": "update velocity in m",
+          "elementID": "update_position",
+          "selected": false,
+          "category": "physics"
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "PositionX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsXPosition",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setPhysicsXPosition",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changePhysicsXPosition",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "getPhysicsAttrOf",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setPhysicsAttrOf",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "VelocityX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "xVelocity",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setXVelocity",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changeXVelocity",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "XAcceleration"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "x acceleration",
+              "category": "physics",
+              "type": "custom_variable",
+              "isGlobal": "false"
+            },
+            {
+              "name": "set x acceleration in m/s^2",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "false"
+            },
+            {
+              "name": "change x acceleration by m/s^2",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "false"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
