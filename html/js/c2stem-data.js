@@ -486,7 +486,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
             }]
         };
-    } else if (id === '2d-mb_drop') {
+    } else if (id === '2d-mb_cross') {
         res = {
             parent: {
                 id: 'm2',
