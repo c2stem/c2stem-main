@@ -8,49 +8,49 @@
 <body>
 <br>
 
-<p>Our drone is running out of battery! In order to ensure the package is delivered and the drone returns safely to home base, we cannot stop. Your task is to move the drone with a constant x velocity of 10m/s and drop the package at a specific distance away from the target to ensure it lands on the specified target location.</p>
+<p>The drone must drop 2 packages, but the trees of the rainforest force the drone to move to different altitudes to avoid crashing! </p>
 <br>
 <div>
-    <button class="accordion"><h3>Plan Your Model</h3></button>
+    <button class="accordion"><h3>Step One: Make a Prediction</h3></button>
     <div class="panel">
         <br>
-        <p><strong>To help plan each step in this model building task, use your conceptual model. If you need to add new objects and/or behaviors or properties, you can go back to the conceptual model and do so!</strong></p>
+        <img src="/img/m3s3question.png"  width="20%" align="right"/>
+        <p><strong>Imagine the drone is twice is high over target 1 as target 2.  How does the horizontal drop distance for target 2 compare with target 1 drop distance?</strong></p>
+        <form action="">
+            <input type="radio" name="landing" value="a">Double the distance<br>
+            <input type="radio" name="landing" value="b">Same<br>
+            <input type="radio" name="landing" value="b">Half the distance<br>
+            <input type="radio" name="landing" value="c">Less than half the distance
+        </form>
         <br>
-    </div>
-
-    <button class="accordion"><h3>Step One: Move the Drone at a Constant Velocity</h3></button>
-    <div class="panel">
-        <br>
-        <p><strong>Move the drone to the right at a constant velocity (specified above).</strong></p>
+        <strong>Explain your answer:</strong><br>
+        <textarea name="explanding" rows="3" cols="100">
+        </textarea>
         <br>
         <div class="panel-content">
             <input type="checkbox">
             <label><strong>SUBMIT SOLUTION</strong></label>
         </div>
+    </div>
+
+    <button class="accordion"><h3>Step Two: Plan Your Model</h3></button>
+    <div class="panel">
+        <br>
+        <p><strong>To help plan each step in this challenge task, use your conceptual model. If you need to add new objects and/or behaviors or properties, you can go back to the conceptual model and do so!</strong></p>
         <br>
     </div>
 
     <button class="accordion"><h3>Step Two: Drop the Package</h3></button>
     <div class="panel">
         <br>
-        <p><strong>Drop the package so that it lands on the target.</strong></p>
-        <strong>Hint:</strong>
+        <strong>Program Description</strong>
         <ul>
-            <li>The drone is not stopping which means the package will be released at a point in which it has the same x velocity as the drone.</li>
-            <li>You will need to release the package a certain distance before the drone is directly over the target to take into account the current x velocity of the package.</li>
+            <li>Position the drone to the left of the target and height of 24 m</li>
+            <li>Target 1 has a height of 0m, target 2 has a height of 12m</li>
+            <li>Drone + packages travel to the right with constant velocity</li>
+            <li>Program your drone to hit each target with 1 package</li>
+            <li>Determine the horizontal release distance from each target</li>
         </ul>
-        <br>
-        <div class="panel-content">
-            <input type="checkbox">
-            <label><strong>SUBMIT SOLUTION</strong></label>
-        </div>
-        <br>
-    </div>
-
-    <button class="accordion"><h3>Step Three: Make Sure the Package Stops!</h3></button>
-    <div class="panel">
-        <br>
-        <p><strong>As with all tasks in this module, make sure the package stops once it hits the new target.</strong></p>
         <br>
         <div class="panel-content">
             <input type="checkbox">

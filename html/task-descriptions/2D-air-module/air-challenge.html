@@ -6,48 +6,31 @@
     <link rel="stylesheet" href="/c2stem.css">
 </head>
 <body>
-<p>Spaces available for safe delivery of dropped packages are not very wide in the dense Amazon rainforest. As Rey has multiple medical packages to deliver, we have been given multiple target drop areas. As such, we must program Rey to drop multiple packages to assigned target areas. Your challenge will be to deliver two medical packages.</p>
+<p>After the package drop, the drone has to return to base, avoiding obstacles (tall trees).</p>
+<p>To preserve fuel, the drone will make a sudden burst of positive y velocity to launch over the obstacle.</p>
 <br>
 <div>
-    <button class="accordion"><h3>Plan Your Model</h3></button>
+    <button class="accordion"><h3>Step One: Plan Your Model</h3></button>
     <div class="panel">
         <br>
         <p><strong>To help plan each step in this challenge task, use your conceptual model. If you need to add new objects and/or behaviors or properties, you can go back to the conceptual model and do so!</strong></p>
         <br>
     </div>
 
-    <button class="accordion"><h3>Step One: Program the Movement of the Drone</h3></button>
+    <button class="accordion"><h3>Step Two: Program the Movement of the Drone</h3></button>
     <div class="panel">
         <br>
-        <p><strong>Accelerate and decelerate the drone and accompanying packages. Remember, the drones can accelerate and decelerate by 2m/s<sup>2</sup>. You do not need to drop the packages at this time. Simply program the speed up, cruise, slow down to a stop, and wait behaviors. </strong></p>
-        <br>
-        <strong>Hints:</strong>
+        <strong>Program Description</strong>
         <ul>
-            <li>You may want to review your program for the medical truck stopping project!</li>
+            <li>Position the drone left of the obstacle and at a height of 20m</li>
+            <li>The obstacle has a height of 26m</li>
+            <li>Drone travels to the right with a constant velocity of 8 m/s</li>
+            <li>Determine:</li>
+            <ul>
+                <li>What is the minimum velocity burst needed to clear the obstacle?</li>
+                <li>How far away (horizontal distance) should the drone use the burst?</li>
+            </ul>
         </ul>
-        <div class="panel-content">
-            <input type="checkbox">
-            <label><strong>SUBMIT SOLUTION</strong></label>
-        </div>
-        <br>
-    </div>
-
-    <button class="accordion"><h3>Step Two: Drop Each Package</h3></button>
-    <div class="panel">
-        <br>
-        <p><strong>Now, add conditional logic to your program that tells Rey when to drop a certain package.</strong></p>
-        <br>
-        <div class="panel-content">
-            <input type="checkbox">
-            <label><strong>SUBMIT SOLUTION</strong></label>
-        </div>
-        <br>
-    </div>
-
-    <button class="accordion"><h3>Step Three: Make Sure the Packages Stop!</h3></button>
-    <div class="panel">
-        <br>
-        <p><strong>As with all tasks in this module, make sure the package stops once it hits the new target!</strong></p>
         <br>
         <div class="panel-content">
             <input type="checkbox">

@@ -130,6 +130,24 @@
               "name": "changePhysicsYPosition",
               "category": "physics",
               "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "PositionX",
+            "PositionY"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "setPhysicsPosition",
+              "category": "physics",
+              "type": "built_in_custom_block"
+            },
+            {
+              "name": "changePhysicsPosition",
+              "category": "physics",
+              "type": "built_in_custom_block"
             },
             {
               "name": "getPhysicsAttrOf",
@@ -279,8 +297,8 @@
         }
       ]
     },
-    "Unloading-Dock1": {
-      "name": "Dock",
+    "Dock": {
+      "name": "Dock ",
       "elementID": "Dock",
       "selected": false,
       "isSprite": true,
@@ -290,6 +308,11 @@
         "PositionX": {
           "name": "x position in m",
           "elementID": "PositionX",
+          "selected": false
+        },
+        "PositionY": {
+          "name": "y position in m",
+          "elementID": "PositionY",
           "selected": false
         }
       },
@@ -301,7 +324,7 @@
           "GeneratedConstructs": [
             {
               "name": "physicsXPosition",
-              "category":"physics",
+              "category": "physics",
               "type": "built_in"
             },
             {
@@ -311,6 +334,56 @@
             },
             {
               "name": "changePhysicsXPosition",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "PositionY"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsYPosition",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setPhysicsYPosition",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changePhysicsYPosition",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "PositionX",
+            "PositionY"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "setPhysicsPosition",
+              "category": "physics",
+              "type": "built_in_custom_block"
+            },
+            {
+              "name": "changePhysicsPosition",
+              "category": "physics",
+              "type": "built_in_custom_block"
+            },
+            {
+              "name": "getPhysicsAttrOf",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setPhysicsAttrOf",
               "category": "physics",
               "type": "built_in"
             }

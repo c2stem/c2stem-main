@@ -7,55 +7,57 @@
 </head>
 <body>
 <br>
-<p>Your medical delivery drone may be carrying multiple packages for delivery to multiple tribes in the area. In the previous task, you dropped one package to a specified landing spot. Now you will program the drone to carry a package to a new x location.</p>
-<p>The drone accelerates and decelerates at 2m/s<sup>2</sup> in the x direction.</p>
-
+<p>The drone does not have enough fuel to stop above each target, so you will program it to drop the aid package onto a target while “on the move” at a <em>constant speed v<sub>x</sub></em>.</p>
 <br>
 <div>
-    <button class="accordion"><h3>Step One: Speed Up to New Target Location</h3></button>
+    <button class="accordion"><h3>Step One: Make a Prediction</h3></button>
     <div class="panel">
         <br>
-        <p><strong>Accelerate the drone and package towards new target.</strong></p>
+        <img src="/img/m3s1question.png"  width="20%" align="right"/>
+        <p><strong>If the drone is moving to the right with constant speed, where should the drone drop the package so it hits the target?</strong></p>
+        <form action="">
+            <input type="radio" name="landing" value="a">A. Left of the target<br>
+            <input type="radio" name="landing" value="b">B. Directly above target<br>
+            <input type="radio" name="landing" value="c">C. To the right of the target
+        </form>
         <br>
-        <strong>Hints:</strong>
+        <strong>Explain your answer:</strong><br>
+        <textarea name="explanding" rows="3" cols="100">
+        </textarea>
+        <br>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+
+    <button class="accordion"><h3>Step Two: Make a Drop</h3></button>
+    <div class="panel">
+        <br>
+        <strong>Program Description:</strong>
         <ul>
-            <li>Your drone and package need to move at the same velocity, but remember - they are two separate objects</li>
+            <li>Position the drone + package to the left of target at a height of 17m</li>
+            <li>Move the drone + package to the right at a constant velocity of 9m/s</li>
+            <li>Release the package so that it hits the target</li>
+            <li>Determine the horizontal release distance from target and impact velocity</li>
+        </ul>
+        <div class="panel-content">
+            <input type="checkbox">
+            <label><strong>SUBMIT SOLUTION</strong></label>
+        </div>
+        <br>
+    </div>
+
+    <button class="accordion"><h3>Hints</h3></button>
+    <div class="panel">
+        <br>
+        <ul>
+            <li>Your drone and package need to move at the same velocity, but remember - they are two separate objects!</li>
             <li>Keep in mind the conditional logic used to make the medical truck stop in the previous module.</li>
+            <li>Think about how you modeled 2 dimensional motion in the river crossing problems. How will you update both horizontal and vertical position?</li>
+            <li>What is the relationship between the overall impact velocity of the package and its horizontal and vertical components?</li>
         </ul>
-        <br>
-        <div class="panel-content">
-            <input type="checkbox">
-            <label><strong>SUBMIT SOLUTION</strong></label>
-        </div>
-        <br>
-    </div>
-
-    <button class="accordion"><h3>Step Two: Slow Down to a Stop Over New Target</h3></button>
-    <div class="panel">
-        <br>
-        <p><strong>Decelerate the drone and package to stop over the new target.</strong></p>
-        <br>
-        <div class="panel-content">
-            <input type="checkbox">
-            <label><strong>SUBMIT SOLUTION</strong></label>
-        </div>
-        <br>
-    </div>
-
-    <button class="accordion"><h3>Step Three: Drop the Package!</h3></button>
-    <div class="panel">
-        <br>
-        <p><strong>Now it is time to drop the package! Add code to your computational model that drops the package towards the new target and makes sure the package stops once it hits the new target. </strong></p>
-        <br>
-        <strong>Hints:</strong>
-        <ul>
-            <li>Keep in mind how you programmed your package to stop in the first instructional section of Module Three!</li>
-        </ul>
-        <br>
-        <div class="panel-content">
-            <input type="checkbox">
-            <label><strong>SUBMIT SOLUTION</strong></label>
-        </div>
         <br>
     </div>
 </div>

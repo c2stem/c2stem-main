@@ -11,11 +11,11 @@ C2Stem.prototype.loadHomeData = function (callback) {
         }, {
             id: 'm3',
             name: "2D: Air",
-            icon: "img/plane.png"
+            icon: "img/drone.jpg"
         }, {
             id: 'm4',
             name: "Challenge",
-            icon: "img/falcon9.png"
+            icon: "img/para.jpg"
         }]
     };
 
@@ -98,7 +98,7 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
             name: '2D: Air',
             tasks: [{
                 id: 'air-basics',
-                name: 'Instructional Task: Drop'
+                name: 'Instructional Task: Ready, Aim → Drop'
             }, {
                 id: 'air-inst_drop',
                 name: 'Instructional Task: Drop While Moving'
@@ -107,13 +107,13 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
                 name: 'Check-In #1'
             }, {
                 id: 'air-mb_drop',
-                name: 'Model Building - Drop Package on Target'
+                name: 'Model Building - Two Moving Drops at Different Altitudes'
             }, {
                 id: 'air-checkin2',
-                name: 'Check-In #1'
+                name: 'Check-In #2'
             }, {
                 id: 'air-challenge',
-                name: 'Challenge: Final Delivery of the Medicine!'
+                name: 'Challenge: Moving on Up!'
             }]
         };
     } else if (id === 'm4') {
@@ -574,17 +574,12 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 name: '2D: Air'
             },
             id: id,
-            name: 'Instructional Task: Drop the Package',
+            name: 'Instructional Task: Ready, Aim → Drop',
             tabs: [{
                 id: 'desc',
                 type: 'desc',
                 name: 'Description',
                 markup:'<iframe id=desc_resourceIframe  src="task-descriptions/2D-air-module/air-drop_package.html" frameborder="0"></iframe>'
-            }, {
-                id: 'airassess',
-                type: 'desc',
-                name: 'LEARN',
-                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
             }, {
                 id: 'airbasic',
                 type: 'snap1',
@@ -607,7 +602,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 name: '2D: Air'
             },
             id: id,
-            name: 'Instructional Task: Move the Package',
+            name: 'Instructional Task: Drop While Moving!',
             tabs: [{
                 id: 'desc',
                 type: 'desc',
@@ -650,7 +645,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 name: '2D: Air'
             },
             id: id,
-            name: 'Model Building - Drop While Moving!',
+            name: 'Model Building - Two Moving Drops at Different Altitudes!',
             tabs: [{
                 id: 'desc',
                 type: 'desc',
@@ -698,7 +693,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 name: '2D: Air'
             },
             id: id,
-            name: 'Challenge Problem: Final Delivery of the Medicine!',
+            name: 'Challenge Problem: Moving on Up!',
             tabs: [{
                 id: 'desc',
                 type: 'desc',

@@ -28,9 +28,19 @@
           "elementID": "PositionX",
           "selected": false
         },
+        "PositionY": {
+          "name": "y position in m",
+          "elementID": "PositionY",
+          "selected": false
+        },
         "VelocityX": {
           "name": "x velocity in m/s",
           "elementID": "VelocityX",
+          "selected": false
+        },
+        "VelocityY": {
+          "name": "y velocity in m/s",
+          "elementID": "VelocityY",
           "selected": false
         },
         "MaxAcceleration": {
@@ -65,6 +75,11 @@
         },
         "XAcceleration": {
           "name": "x acceleration in m/s^2",
+          "elementID": "XAcceleration",
+          "selected": false
+        },
+        "YAcceleration": {
+          "name": "y acceleration in m/s^2",
           "elementID": "XAcceleration",
           "selected": false
         }
@@ -106,9 +121,9 @@
           "selected": false,
           "category": "physics"
         },
-        "drive_backward": {
-          "name": "drive backward",
-          "elementID": "drive_backward",
+        "fly_backward": {
+          "name": "fly backward",
+          "elementID": "fly_backward",
           "selected": false,
           "category": "physics"
         }
@@ -133,6 +148,46 @@
               "name": "changePhysicsXPosition",
               "category": "physics",
               "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "PositionY"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsYPosition",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setPhysicsYPosition",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changePhysicsYPosition",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "PositionX",
+            "PositionY"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "setPhysicsPosition",
+              "category": "physics",
+              "type": "built_in_custom_block"
+            },
+            {
+              "name": "changePhysicsPosition",
+              "category": "physics",
+              "type": "built_in_custom_block"
             },
             {
               "name": "getPhysicsAttrOf",
@@ -163,6 +218,46 @@
             },
             {
               "name": "changeXVelocity",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "VelocityY"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "yVelocity",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setYVelocity",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changeYVelocity",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "VelocityX",
+            "VelocityY"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "setVelocity",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changeVelocity",
               "category": "physics",
               "type": "built_in"
             }
@@ -392,82 +487,29 @@
               "isGlobal": "false"
             }
           ]
-        }
-      ]
-    },
-    "Package": {
-      "name": "Package",
-      "elementID": "Package",
-      "selected": false,
-      "isSprite": true,
-      "isBuiltIn": true,
-      "costume": "dock",
-      "properties": {
-        "PositionX": {
-          "name": "x position in m",
-          "elementID": "PositionX",
-          "selected": false
-        }
-      },
-      "rules": [
+        },
         {
           "Required": [
-            "PositionX"
+            "YAcceleration"
           ],
           "GeneratedConstructs": [
             {
-              "name": "physicsXPosition",
-              "category":"physics",
-              "type": "built_in"
+              "name": "y acceleration in m/s^2",
+              "category": "physics",
+              "type": "custom_variable",
+              "isGlobal": "false"
             },
             {
-              "name": "setPhysicsXPosition",
+              "name": "set y acceleration to (m/s^2)",
               "category": "physics",
-              "type": "built_in"
+              "type": "custom_block",
+              "isGlobal": "false"
             },
             {
-              "name": "changePhysicsXPosition",
+              "name": "change y acceleration by (m/s^2)",
               "category": "physics",
-              "type": "built_in"
-            }
-          ]
-        }
-      ]
-    },
-    "Target": {
-      "name": "Target",
-      "elementID": "Target",
-      "selected": false,
-      "isSprite": true,
-      "isBuiltIn": true,
-      "costume": "target",
-      "properties": {
-        "PositionX": {
-          "name": "x position in m",
-          "elementID": "PositionX",
-          "selected": false
-        }
-      },
-      "rules": [
-        {
-          "Required": [
-            "PositionX"
-          ],
-          "GeneratedConstructs": [
-            {
-              "name": "physicsXPosition",
-              "category": "physics",
-              "type": "built_in"
-            },
-            {
-              "name": "setPhysicsXPosition",
-              "category": "physics",
-              "type": "built_in"
-            },
-            {
-              "name": "changePhysicsXPosition",
-              "category": "physics",
-              "type": "built_in"
+              "type": "custom_block",
+              "isGlobal": "false"
             }
           ]
         }
