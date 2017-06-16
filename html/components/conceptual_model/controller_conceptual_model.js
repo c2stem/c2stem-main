@@ -158,11 +158,13 @@ function create_new_concept(selected_concept_key, selected_concept, isEnvironmen
         $("#cm_concepts option[value='"+ selected_concept_key +"']").show();
         selected_concept.selected = false;
         //console.log("delete selected_concept",selected_concept);
-        OnModelChanged();
         if(selected_concept.isSprite) {
             transform_cm.transform_concept_by_rules(concepts, selected_concept, "delete_all", selected_concept.rules, concepts.environment );
             transform_cm.hide_concept(selected_concept);
+            ConceptualActionManager.deleteConcept(selected_concept);
         }
+
+        OnModelChanged();
     });
 
     // taking care of those which are preselected
