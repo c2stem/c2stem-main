@@ -662,7 +662,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 name: 'BUILD',
                 template: {
                     user: 'nicole',
-                    proj: 'air_drop_moving'
+                    proj: 'sfair-drop_moving'
                 }
             }, {
                 id: 'resource',
