@@ -6,20 +6,20 @@
 //   - applyEvent(event)
 
 (function(global) {
-    var ActionManager = function() {
+    var GlobalActionManager = function() {
         this.submanagers = {};
     };
 
-    ActionManager.URL = '/events/record'
-    ActionManager.prototype.register = function(id, manager) {
+    GlobalActionManager.URL = '/events/record'
+    GlobalActionManager.prototype.register = function(id, manager) {
         this.submanagers[id] = manager;
     };
 
-    ActionManager.prototype.unregister = function(id) {
+    GlobalActionManager.prototype.unregister = function(id) {
         delete this.submanagers[id];
     };
 
-    ActionManager.prototype.applyEvent = function(event) {
+    GlobalActionManager.prototype.applyEvent = function(event) {
         var id = event.namespace;
         if (!id) {
             throw Error('event is missing "namespace" value:', event);
@@ -40,7 +40,7 @@
         this.submanagers[id].applyEvent(event);
     };
 
-    global.C2StemActions = new ActionManager();
+    global.C2StemActions = new GlobalActionManager();
 
     // Base Class for Action Managers
     function ActionManager() {
@@ -70,7 +70,7 @@
 
                 event = {
                     type: method,
-                    namespace: this.id,
+                    // namespace: this.id,
                     args: args
                 };
 
