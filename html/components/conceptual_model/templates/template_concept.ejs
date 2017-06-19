@@ -9,9 +9,9 @@
         </li>
 
         <%if("properties" in concept){%>
-        <li class="collection-item" style="border-bottom: 1px #9d9d9d dotted;border-top: 1px #9d9d9d dotted;">
-            <span style="font-weight: bold;">Properties</span>
-        </li>
+        <!--<li class="collection-item" style="border-bottom: 1px #9d9d9d dotted;border-top: 1px #9d9d9d dotted;">-->
+            <!--<span style="font-weight: bold;">Properties</span>-->
+        <!--</li>-->
         <select id = "sel_prop_<%=concept.elementID%>" class="form-control dropdown-select" style="position: relative; display: inline;">
             <option value="">[-- Create new property --]</option>
             <% for(var p in concept.properties) { %>
@@ -21,9 +21,9 @@
         <div  id = "row_prop_<%=concept.elementID%>" class="collection"></div>
         <%}%>
         <%if("behaviors" in concept){%>
-        <li class="collection-item" style="border-bottom: 1px #9d9d9d dotted; border-top: 1px #9d9d9d dotted;">
-            <span  style="font-weight: bold;">Behaviors</span>
-        </li>
+        <!--<li class="collection-item" style="border-bottom: 1px #9d9d9d dotted; border-top: 1px #9d9d9d dotted;">-->
+            <!--<span  style="font-weight: bold;">Behaviors</span>-->
+        <!--</li>-->
         <select id = "sel_be_<%=concept.elementID%>" class="form-control dropdown-select" style="position: relative; display: inline;">
             <option value="">[-- Create new behavior --]</option>
             <% for(var p in concept.behaviors) {%>
