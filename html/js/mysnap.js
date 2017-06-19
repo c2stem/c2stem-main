@@ -119,6 +119,7 @@ IDE_Morph.prototype.is_block_exists = function (sprite, blockName, isGlobal) {
             return true;
     } else {
         var b = sprite.blocksMatching(blockName);
+        // console.log("IDE_Morph.prototype.is_block_exists", blockName, b);
         if(b.length == 0)
             return false;
         else
@@ -201,6 +202,7 @@ IDE_Morph.prototype.delete_block = function (sprite, blockName, isGlobal) {
         }
     } else {
         var b = sprite.blocksMatching(blockName);
+        // console.log("IDE_Morph.prototype.delete_block", b);
         if(b.length == 0)
             return;
         var block = b[0].definition;
@@ -243,8 +245,8 @@ IDE_Morph.prototype.delete_variable = function (sprite, variable_name, isGlobal)
 };
 
 IDE_Morph.prototype.add_variable = function(sprite, variable_name, isGlobal){
+    var ide = this;
     if (isGlobal) {
-        var ide = this;
         var stage = ide.stage;
         if(stage.isVariableNameInUse(variable_name))
             stage.addVariable(variable_name, true);

@@ -110,6 +110,7 @@
           "category": "physics"
         }
       },
+      "cache_blocks":["set target speed to (m/s)", "change target speed by (m/s)"],
       "rules": [
         {
           "Required": [
