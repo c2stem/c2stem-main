@@ -16,7 +16,7 @@ ConceptualActionManager._deleteConcept = function(concept) {
 ConceptualActionManager.onDeleteConcept = function(conceptID) {
     // apply the event given the arguments returned from _deleteConcept
     // TODO
-    console.log("Delete concept", conceptID);
+    // console.log("Delete concept", conceptID);
 };
 
 ///////////////// using the action manager /////////////////
