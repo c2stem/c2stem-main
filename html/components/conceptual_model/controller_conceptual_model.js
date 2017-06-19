@@ -127,7 +127,7 @@ function handle_behavior_events(selected_concept, selected_behavior_key) {
 
 function create_new_concept(selected_concept_key, selected_concept, isEnvironmental) {
     selected_concept.selected = true;
-    //console.log("creating new concept: " + selected_concept);
+    console.log("creating new concept: " + selected_concept);
     data = {};
     data.concept = selected_concept;
     data.isEnvironmental = isEnvironmental;

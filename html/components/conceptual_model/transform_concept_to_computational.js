@@ -50,9 +50,14 @@ transform_cm.preprocess = function (concepts) {
 
         // c.sprite = sprite;
         //////console.log("hiding sprite: ", c.name);
-        this.hide_concept(c);
-
-
+        if(!c.selected)
+            this.hide_concept(c);
+        else{
+            var ide = snap.world.children[0];
+            var sprite = this.getSpriteOfConcept(c);
+            if(sprite !== null)
+                c.sprite_bkup_xml = ide.exportSpriteStr(sprite);
+        }
     }
 
     // var stage = ide.stage;
@@ -179,8 +184,13 @@ transform_cm.show_primitive = function(cat, prim){
 };
 
 transform_cm.create_new_sprite = function(concept) {
+    console.log("transform_cm.create_new_sprite", concept.name);
     var ide = snap.world.children[0];
-    ide.create_new_sprite(concept.name);
+    var sprite = this.getSpriteOfConcept(concept);
+    if(sprite !== null)
+        return sprite;
+
+    sprite = ide.create_new_sprite(concept.name);
     return sprite;
 };
 
@@ -190,8 +200,11 @@ transform_cm.remove_sprite = function(sprite) {
 };
 
 transform_cm.show_concept =function(concept){
+    console.log("transform_cm.show_concept", concept.name);
     var ide = snap.world.children[0];
-    ide.rawOpenSpritesString(concept.sprite_bkup_xml);
+    var sprite = this.getSpriteOfConcept(concept);
+    if(sprite === null)
+        ide.rawOpenSpritesString(concept.sprite_bkup_xml);
 };
 
 transform_cm.getSpriteOfConcept=function(concept){
@@ -209,7 +222,7 @@ transform_cm.getSpriteOfConcept=function(concept){
 };
 
 transform_cm.hide_concept =function(concept){
-    ////console.log("tcm hiding concept", concept.name);
+    console.log("tcm hiding concept", concept.name);
     var ide = snap.world.children[0];
     var sprite = this.getSpriteOfConcept(concept);
     if(sprite !== null){
