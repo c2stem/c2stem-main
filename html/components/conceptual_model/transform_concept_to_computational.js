@@ -146,7 +146,7 @@ transform_cm.show_block = function(concepts, concept, blockName, isGlobal){
             var sprite = this.getSpriteOfConcept(concept);
             if(ide.is_block_exists(sprite, blockName, isGlobal))
                 return true;
-            // console.log("transform_cm.create_block, importing block", blockName);
+            // console.log("transform_cm.create_block, importing block", blockName, concept.block_xml[blockName]);
             ide.import_block_xml(sprite, concept.block_xml[blockName]);
             return true;
         }
