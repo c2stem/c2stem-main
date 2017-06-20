@@ -5,19 +5,21 @@ var TaskViewActionManger = new ActionManager();
 
 TaskViewActionManger.addActions(
     'switchTab',
-    'loadView'
+    'pageLoaded'
 );
 
 TaskViewActionManger._switchTab = function(tab_name, tab_type) {
-    // Convert the arguments to a serializable format. The returned array
-    // will be passed to the `onDeleteConcept` method as arguments
     return [tab_name, tab_type];
 };
 
 TaskViewActionManger.onSwitchTab = function(tab_name, tab_type) {
-    // apply the event given the arguments returned from _deleteConcept
-    // TODO
-    // console.log("Delete concept", conceptID);
+};
+
+TaskViewActionManger._pageLoaded = function(task_id, module_id) {
+    return [task_id, module_id];
+};
+
+TaskViewActionManger.onPageLoaded = function(task_id, module_id) {
 };
 
 ///////////////// using the action manager /////////////////

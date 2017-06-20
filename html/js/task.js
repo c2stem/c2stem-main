@@ -6,6 +6,9 @@ c2stem.loadTaskData(c2stem.query.id, function (err, res) {
     console.log("loading task",res.id);
     c2stem.task_id = res.id;
     c2stem.module_id = res.parent.id;
+
+    TaskViewActionManger.pageLoaded(c2stem.task_id, c2stem.module_id);
+
     c2stem.loadPublicProject(c2stem.task_id, null, false, function (err) {
         loadTask(err,res);
     });
