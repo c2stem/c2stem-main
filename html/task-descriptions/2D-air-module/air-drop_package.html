@@ -3,88 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <title>C2STEM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="/c2stem.css">
 </head>
 <body>
 <br>
 <p>The medicine is now ready for the final air transport to the location of the Amazonian tribe. As we prepare to program Rey to make the final delivery, let’s take a look at a few physics concepts Rey needs to take into account in order to accurately delivery the package! </p>
 <p>First, the drone does not have enough fuel to land for each delivery, so you will program it to drop the aid package onto a target in the rainforest.</p>
-
 <br>
-<div>
-    <button class="accordion"><h3>Step One: Drop the Package</h3></button>
-    <div class="panel">
-        <br>
-        <p><strong>Assume the drone is flying with the package above the dense forest at a height of 50 m above the ground. It arrives at an opening near the tribe’s village. The drone releases the package so that it falls freely under gravity till it hits the target (and stops)</strong></p>
-        <ul>
-            <li>Determine the package’s impact velocity</li>
-        </ul>
-        <br>
-        <div class="panel-content">
-            <input type="checkbox">
-            <label><strong>SUBMIT SOLUTION</strong></label>
+
+<ul class="collapsible popout" data-collapsible="accordion">
+    <li>
+        <div class="collapsible-header"><strong>Step One: Drop the Package</strong></div>
+        <div class="collapsible-body"><span><p><strong>Assume the drone is flying with the package above the dense forest at a height of 50 m above the ground. It arrives at an opening near the tribe’s village. The drone releases the package so that it falls freely under gravity till it hits the target (and stops)</strong></p>
+            <ul>
+                <li>Determine the package’s impact velocity</li>
+            </ul>
+            <br>
+            <div class="panel-content">
+                <input type="checkbox">
+                <label><strong>SUBMIT SOLUTION</strong></label>
+            </div>
+        </span>
         </div>
-        <br>
-    </div>
-
-    <button class="accordion"><h3>Step Two: STOP - in the Name of Health!</h3></button>
-    <div class="panel">
-        <br>
-        <p>Some medicine packages cannot survive an impact velocity of more than 20 m/s.</p>
-        <p><strong><em>Your task:</em> Use your previous program to determine the maximum height that such a package can be dropped from.</strong></p>
-        <br>
-        <div class="panel-content">
-            <input type="checkbox">
-            <label><strong>SUBMIT SOLUTION</strong></label>
+    </li>
+    <li>
+        <div class="collapsible-header"><strong>Step Two: STOP - in the Name of Health!</strong></div>
+        <div class="collapsible-body"><span><p>Some medicine packages cannot survive an impact velocity of more than 20 m/s.</p>
+            <p><strong><em>Your task:</em> Use your previous program to determine the maximum height that such a package can be dropped from.</strong></p>
+            <br>
+            <div class="panel-content">
+                <input type="checkbox">
+                <label><strong>SUBMIT SOLUTION</strong></label>
+            </div>
+        </span>
         </div>
-        <br>
-    </div>
-
-    <button class="accordion"><h3>Hints</h3></button>
-    <div class="panel">
-        <br>
-        <strong>Hints:</strong>
-        <ul>
-            <li>The drone and the package are two separate objects. While the package may depend on the drone for transport, it will complete a separate behavior at a certain point.</li>
-            <li>Freefall motion is just like horizontally accelerated motion turned on its side--the same relationships apply</li>
-            <li>What condition stops the motion of the package?</li>
-        </ul>
-        <br>
-    </div>
-</div>
-
-
-<br>
-<h3> Helpful Hints <em>(from Resources)</em>:</h3>
-<table>
-    <tr>
-        <th>Physics Concepts</th>
-        <th>Computational Concepts</th>
-        <th>Computational Practices</th>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-</table>
-<br>
-<script>
-    var acc = document.getElementsByClassName("accordion");
-    var i;
-
-    for (i = 0; i < acc.length; i++) {
-        acc[i].onclick = function(){
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-            } else {
-                panel.style.display = "block";
-            }
-        }
-    }
-</script>
+    </li>
+    <li>
+        <div class="collapsible-header"><strong>Hints</strong></div>
+        <div class="collapsible-body"><span>
+            <ul>
+                <li>The drone and the package are two separate objects. While the package may depend on the drone for transport, it will complete a separate behavior at a certain point.</li>
+                <li>Freefall motion is just like horizontally accelerated motion turned on its side--the same relationships apply</li>
+                <li>What condition stops the motion of the package?</li>
+            </ul>
+        </span>
+        </div>
+    </li>
+</ul>
 <br>
 </body>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
 </html>

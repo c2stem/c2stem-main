@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>C2STEM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="/c2stem.css">
 </head>
 <body>
@@ -10,97 +12,104 @@
     <p>In modeling motion, we found that changing the position in a predictive manner is easy, but in order for it to proceed smoothly instead of looking like a bad claymation movie, there must be considerations for time. Because physics has been around for some 500 years, we have computers, and computers are good at monitoring time and repeating tasks. Instructing a computer to repeat a particular task or series of tasks is called a loop by programmers. We as programmers can use a loop to tell the computer to change position during a particular time frame. We as physicists identify this property of motion as velocity, or change in position divided by the time it took that change to happen. You might recognize this from earlier, not-quite-physics science classes as the speed or rate equation (speed = distance / time). Speed and velocity are closely related but not quite the same thing.</p>
 </div>
 
-<div>
-    <button class="accordion"><h3>Activity 1.2.A - Use a loop:</h3></button>
-    <div class="panel">
-        <img src="/img/task 1 code.png"  width="20%" align="right"/>
-        <br>
-        <strong>Program description - When Green Flag is clicked:</strong>
-        <ul>
-            <li>Add a loop to the previous program to simulate the sloth’s motion to the right</li>
-            <li>The program should update the sloth’s position at 1 second intervals</li>
-            <li>Speed = 1 m/s</li>
-            <li>Initial position = 0 m</li>
-            <li>Final position = 10 m</li>
-        </ul>
-        <strong>Hints</strong>
-        <ul>
-            <li>Change the position of the sloth on each loop</li>
-            <li>Use the “Wait” block to slow down the execution of each loop</li>
-            <li>How will your program make the sloth stop moving after 10 m?</li>
-        </ul>
-        <div class="panel-content">
-            <input type="checkbox">
-            <label><strong>SUBMIT SOLUTION</strong></label>
-        </div>
-        <br>
-    </div>
 
-    <button class="accordion"><h3>Activity 1.2.B - Adjusting the Time Step:</h3></button>
-    <div class="panel">
-        <br>
-        <img src="/img/change position equation.png"  width="20%" align="right"/>
-        <strong>Program description:</strong>
-        <ul>
-            <li>Add a variable “delta t” to the previous program that allows the user to specify the length of the time step</li>
-            <li>The program must work for all “delta t” values greater than zero</li>
-        </ul>
-        <strong>Hints</strong>
-        <ul>
-            <li>How can you keep the sloths speed equal to 1 m/s?</li>
-        </ul>
-        <div class="panel-content">
-            <input type="checkbox">
-            <label><strong>SUBMIT SOLUTION</strong></label>
+<ul class="collapsible popout" data-collapsible="accordion">
+    <li>
+        <div class="collapsible-header"><strong>Activity 1.2.A - Use a loop:</strong></div>
+        <div class="collapsible-body"><span><img src="/img/task 1 code.png"  width="20%" align="right"/>
+            <strong>Program description - When Green Flag is clicked:</strong>
+            <ul>
+                <li>Add a loop to the previous program to simulate the sloth’s motion to the right</li>
+                <li>The program should update the sloth’s position at 1 second intervals</li>
+                <li>Speed = 1 m/s</li>
+                <li>Initial position = 0 m</li>
+                <li>Final position = 10 m</li>
+            </ul>
+            <br>
+            <strong>Hints</strong>
+            <ul>
+                <li>Change the position of the sloth on each loop</li>
+                <li>Use the “Wait” block to slow down the execution of each loop</li>
+                <li>How will your program make the sloth stop moving after 10 m?</li>
+            </ul>
+            <br>
+            <div class="panel-content">
+                <input type="checkbox">
+                <label><strong>SUBMIT SOLUTION</strong></label>
+            </div>
+        </span>
         </div>
-        <br>
-    </div>
-    <button class="accordion"><h3>Activity 1.2.C - Adjusting speed and direction</h3></button>
-    <div class="panel">
-        <br>
-        <strong>Program description:</strong>
-        <ul>
-            <li>Add a variable “velocity” to the previous program that allows the user to specify the speed AND direction of the sloth’s movement</li>
-            <li>The program must work for all velocity values (positive and negative)</li>
-        </ul>
-        <strong>Hints</strong>
-        <ul>
-            <li>How does the position change of the sloth relate to its velocity and the delta t?</li>
-            <li>What does negative velocity mean?</li>
-        </ul>
-        <div class="panel-content">
-            <input type="checkbox">
-            <label><strong>SUBMIT SOLUTION</strong></label>
+    </li>
+    <li>
+        <div class="collapsible-header"><strong>Activity 1.2.B - Adjusting the Time Step:</strong></div>
+        <div class="collapsible-body"><span><img src="/img/change position equation.png"  width="20%" align="right"/>
+            <strong>Program description:</strong>
+            <ul>
+                <li>Add a variable “delta t” to the previous program that allows the user to specify the length of the time step</li>
+                <li>The program must work for all “delta t” values greater than zero</li>
+            </ul>
+            <br>
+            <strong>Hints</strong>
+            <ul>
+                <li>How can you keep the sloths speed equal to 1 m/s?</li>
+            </ul>
+            <br>
+            <div class="panel-content">
+                <input type="checkbox">
+                <label><strong>SUBMIT SOLUTION</strong></label>
+            </div>
+        </span>
         </div>
-        <br>
-    </div>
+    </li>
+    <li>
+        <div class="collapsible-header"><strong>Activity 1.2.C - Adjusting speed and direction</strong></div>
+        <div class="collapsible-body"><span><strong>Program description:</strong>
+            <ul>
+                <li>Add a variable “velocity” to the previous program that allows the user to specify the speed AND direction of the sloth’s movement</li>
+                <li>The program must work for all velocity values (positive and negative)</li>
+            </ul>
+            <br>
+            <strong>Hints</strong>
+            <ul>
+                <li>How does the position change of the sloth relate to its velocity and the delta t?</li>
+                <li>What does negative velocity mean?</li>
+            </ul>
+            <br>
+            <div class="panel-content">
+                <input type="checkbox">
+                <label><strong>SUBMIT SOLUTION</strong></label>
+            </div>
+        </span>
+        </div>
+    </li>
+    <li>
+        <div class="collapsible-header"><strong>Activity 1.2.D - Design Your Simulation Step</strong></div>
+        <div class="collapsible-body"><span><strong>Program description:</strong>
+            <ul>
+                <li>Replace the loop structure in your previous code with the “simulation” blocks (pictured)</li>
+                <li>The program should otherwise work in the same way as the previous program</li>
+            </ul>
+            <br>
+            <strong>Hints</strong>
+            <ul>
+                <li>Initialize your variables when the Green Flag is clicked</li>
+                <li>Use the simulation step as your looping structure</li>
+                <li>The simulation step runs only when called</li>
+                <li>Simulation blocks take care of delta t automatically</li>
+                <li>How does your program know when to stop the simulation?</li>
+            </ul>
+            <div class="panel-content">
+                <input type="checkbox">
+                <label><strong>SUBMIT SOLUTION</strong></label>
+            </div>
+        </span>
+        </div>
+    </li>
+</ul>
 
-    <button class="accordion"><h3>Activity 1.2.D - Design Your Simulation Step</h3></button>
-    <div class="panel">
-        <br>
-        <strong>Program description:</strong>
-        <ul>
-            <li>Replace the loop structure in your previous code with the “simulation” blocks (pictured)</li>
-            <li>The program should otherwise work in the same way as the previous program</li>
-        </ul>
-        <strong>Hints</strong>
-        <ul>
-            <li>Initialize your variables when the Green Flag is clicked</li>
-            <li>Use the simulation step as your looping structure</li>
-            <li>The simulation step runs only when called</li>
-            <li>Simulation blocks take care of delta t automatically</li>
-            <li>How does your program know when to stop the simulation?</li>
-        </ul>
-        <div class="panel-content">
-            <input type="checkbox">
-            <label><strong>SUBMIT SOLUTION</strong></label>
-        </div>
-        <br>
-    </div>
-</div>
 <br>
-<div>
-    <h3> Helpful Hints <em>(from Resources)</em>:</h3>
+<div class="container">
+    <h5> Helpful Hints <em>(from Resources)</em>:</h5>
     <table>
         <tr>
             <th>Physics Concepts</th>
@@ -124,22 +133,9 @@
         </tr>
     </table>
 </div>
-<br><br>
-    <script>
-        var acc = document.getElementsByClassName("accordion");
-        var i;
-
-        for (i = 0; i < acc.length; i++) {
-            acc[i].onclick = function(){
-                this.classList.toggle("active");
-                var panel = this.nextElementSibling;
-                if (panel.style.display === "block") {
-                    panel.style.display = "none";
-                } else {
-                    panel.style.display = "block";
-                }
-            }
-        }
-    </script>
 </body>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
 </html>

@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>C2STEM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="/c2stem.css">
 </head>
 <body>
@@ -11,38 +13,40 @@
 <p>In this first step, your truck will be pacing a farm. Due to hazards such as animal crossings, you must maintain a velocity of 0.6m/s as you pass through that area. Unfortunately, this may cause a delay in your trip. To analyze this, use the cone sprite to support you in analyzing how much time it takes to travel the distance of the farm (to the intersecting dirt road) at a constant velocity of 0.6 m/s.</p>
 <br>
 
-<div>
-    <button class="accordion"><h3>Step One - Plan Your Model:</h3></button>
-    <div class="panel">
-        <br>
-        <p>To do so, select your object and its properties and behaviors in the Planning window. Then, initialize the necessary variables for the simulation and define the simulation step using the behavior(s) selected. Assume your truck has already slowed down to 0.6 m/s at the first cone.  Use your simulation model to determine the time it would require to cross cone 2 and cone 3. Cone 3, at the end of the farm is 1 km away from cone 1.</p>
-        <br>
-    </div>
-    <button class="accordion"><h3>Step Two - Build Your Model:</h3></button>
-    <div class="panel">
-        <br>
-        <p>Now run an experiment noting the distance traveled at different points in time starting from cone 1. Use the values you generate from your simulation model to draw a distance versus time graph.  What is the nature of this plot?  What corresponds to the velocity of the vehicle in this plot?  Why is generating a graph useful?</p>
-        <div class="panel-content">
-            <input type="checkbox">
-            <label><strong>SUBMIT SOLUTION</strong></label>
+<ul class="collapsible popout" data-collapsible="accordion">
+    <li>
+        <div class="collapsible-header"><strong>Step One - Plan Your Model:</strong></div>
+        <div class="collapsible-body"><span><p>To do so, select your object and its properties and behaviors in the Planning window. Then, initialize the necessary variables for the simulation and define the simulation step using the behavior(s) selected. Assume your truck has already slowed down to 0.6 m/s at the first cone.  Use your simulation model to determine the time it would require to cross cone 2 and cone 3. Cone 3, at the end of the farm is 1 km away from cone 1.</p>
+        </span>
         </div>
-        <br>
-    </div>
-    <button class="accordion"><h3>Step Three - Expand on Your Model:</h3></button>
-    <div class="panel">
-        <br>
-        <p>Let’s  assume that the farmer has not specified a speed limit, and the driver wants to cover the 1 km span of the road in 8 minutes. What speed should he set for his truck from cone 1 to cone 3, so he can cover the distance in 8 minutes?</p>        <br>
-        <br>
-        <div class="panel-content">
-            <input type="checkbox">
-            <label><strong>SUBMIT SOLUTION</strong></label>
+    </li>
+    <li>
+        <div class="collapsible-header"><strong>Step Two - Build Your Model:</strong></div>
+        <div class="collapsible-body"><span><p>Now run an experiment noting the distance traveled at different points in time starting from cone 1. Use the values you generate from your simulation model to draw a distance versus time graph.  What is the nature of this plot?  What corresponds to the velocity of the vehicle in this plot?  Why is generating a graph useful?</p>
+            <br>
+            <div class="panel-content">
+                <input type="checkbox">
+                <label><strong>SUBMIT SOLUTION</strong></label>
+            </div>
+        </span>
         </div>
-        <br>
-    </div>
-</div>
+    </li>
+    <li>
+        <div class="collapsible-header"><strong>Step Three - Expand on Your Model:</strong></div>
+        <div class="collapsible-body"><span><p>Let’s  assume that the farmer has not specified a speed limit, and the driver wants to cover the 1 km span of the road in 8 minutes. What speed should he set for his truck from cone 1 to cone 3, so he can cover the distance in 8 minutes?</p>        <br>
+            <br>
+            <div class="panel-content">
+                <input type="checkbox">
+                <label><strong>SUBMIT SOLUTION</strong></label>
+            </div>
+        </span>
+        </div>
+    </li>
+</ul>
 
-<br><br>
-<h3> Helpful Hints <em>(from Resources)</em>:</h3>
+<br>
+<div class="container">
+<h5> Helpful Hints <em>(from Resources)</em>:</h5>
 <table>
     <tr>
         <th>Physics Concepts</th>
@@ -65,22 +69,11 @@
         <td></td>
     </tr>
 </table>
-<br><br>
-<script>
-    var acc = document.getElementsByClassName("accordion");
-    var i;
+</div>
 
-    for (i = 0; i < acc.length; i++) {
-        acc[i].onclick = function(){
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-            } else {
-                panel.style.display = "block";
-            }
-        }
-    }
-</script>
 </body>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
 </html>

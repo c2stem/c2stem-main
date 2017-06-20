@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>C2STEM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="/c2stem.css">
 </head>
 <body>
@@ -11,95 +13,67 @@
 <p>A fellow non-profit in the region has asked us to include a package in our drone delivery that will bring equipment to repair
     a receiving tower near the tribe. The drone must drop 2 packages, but the trees of the rainforest force the drone to move to different altitudes to avoid crashing! </p>
 <br>
-<div>
-    <button class="accordion"><h3>Step One: Make a Prediction</h3></button>
-    <div class="panel">
-        <br>
-        <img src="/img/m3s3question.png"  width="20%" align="right"/>
+
+<ul class="collapsible popout" data-collapsible="accordion">
+    <li>
+        <div class="collapsible-header"><strong>Step One: Make a Prediction</strong></div>
+        <div class="collapsible-body"><span><img src="/img/m3s3question.png"  width="20%" align="right"/>
         <p><strong>Imagine the drone is twice is high over target 1 as target 2.  How does the horizontal drop distance for target 2 compare with target 1 drop distance?</strong></p>
-        <form action="">
-            <input type="radio" name="landing" value="a">Double the distance<br>
-            <input type="radio" name="landing" value="b">Same<br>
-            <input type="radio" name="landing" value="b">Half the distance<br>
-            <input type="radio" name="landing" value="c">Less than half the distance
-        </form>
-        <br>
-        <strong>Explain your answer:</strong><br>
-        <textarea name="explanding" rows="3" cols="100">
-        </textarea>
-        <br>
-        <div class="panel-content">
-            <input type="checkbox">
-            <label><strong>SUBMIT SOLUTION</strong></label>
+            <form action="">
+                <input type="radio" name="landing" value="a">Double the distance<br>
+                <input type="radio" name="landing" value="b">Same<br>
+                <input type="radio" name="landing" value="b">Half the distance<br>
+                <input type="radio" name="landing" value="c">Less than half the distance
+            </form>
+            <br>
+            <strong>Explain your answer:</strong><br>
+            <textarea name="explanding" rows="3" cols="100">
+            </textarea>
+            <br>
+            <div class="panel-content">
+                <input type="checkbox">
+                <label><strong>SUBMIT SOLUTION</strong></label>
+            </div>
+        </span>
         </div>
-    </div>
-
-    <button class="accordion"><h3>Step Two: Plan Your Model</h3></button>
-    <div class="panel">
-        <br>
-        <p><strong>To help plan each step in this challenge task, use your conceptual model. If you need to add new objects and/or behaviors or properties, you can go back to the conceptual model and do so!</strong></p>
-        <br>
-    </div>
-
-    <button class="accordion"><h3>Step Two: Drop the Package</h3></button>
-    <div class="panel">
-        <br>
-        <strong>Program Description</strong>
-        <ul>
-            <li>Position the drone to the left of the target and height of 24 m</li>
-            <li>Target 1 has a height of 0m, target 2 has a height of 12m</li>
-            <li>Drone + packages travel to the right with constant velocity</li>
-            <li>Program your drone to hit each target with 1 package</li>
-            <li>Determine the horizontal release distance from each target</li>
-        </ul>
-        <br>
-        <div class="panel-content">
-            <input type="checkbox">
-            <label><strong>SUBMIT SOLUTION</strong></label>
+    </li>
+    <li>
+        <div class="collapsible-header"><strong>Step Two: Plan Your Model</strong></div>
+        <div class="collapsible-body"><span><p><strong>To help plan each step in this challenge task, use your conceptual model. If you need to add new objects and/or behaviors or properties, you can go back to the conceptual model and do so!</strong></p>
+        </span>
         </div>
-        <br>
-    </div>
-
-    <button class="accordion"><h3>Simulation Video <em>(for Reference)</em></h3></button>
-    <div class="panel">
-        <br>
-        <iframe class="resourseiFrame" width="60%" height="400" src="" frameborder="0" allowfullscreen></iframe>
-        <br>
-    </div>
-</div>
-
-
-<br>
-<h3> Helpful Hints <em>(from Resources)</em>:</h3>
-<table>
-    <tr>
-        <th>Physics Concepts</th>
-        <th>Computational Concepts</th>
-        <th>Computational Practices</th>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-</table>
-<br>
-<script>
-    var acc = document.getElementsByClassName("accordion");
-    var i;
-
-    for (i = 0; i < acc.length; i++) {
-        acc[i].onclick = function(){
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-            } else {
-                panel.style.display = "block";
-            }
-        }
-    }
-</script>
+    </li>
+    <li>
+        <div class="collapsible-header"><strong>Step Two: Drop the Package</strong></div>
+        <div class="collapsible-body"><span><strong>Program Description</strong>
+            <ul>
+                <li>Position the drone to the left of the target and height of 24 m</li>
+                <li>Target 1 has a height of 0m, target 2 has a height of 12m</li>
+                <li>Drone + packages travel to the right with constant velocity</li>
+                <li>Program your drone to hit each target with 1 package</li>
+                <li>Determine the horizontal release distance from each target</li>
+            </ul>
+            <br>
+            <div class="panel-content">
+                <input type="checkbox">
+                <label><strong>SUBMIT SOLUTION</strong></label>
+            </div>
+        </span>
+        </div>
+    </li>
+    <li>
+        <div class="collapsible-header"><strong>Simulation Video <em>(for Reference)</em></strong></div>
+        <div class="collapsible-body"><span><br>
+            <iframe class="resourseiFrame" width="60%" height="400" src="" frameborder="0" allowfullscreen></iframe>
+            <br>
+        </span>
+        </div>
+    </li>
+</ul>
 <br>
 </body>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
 </html>

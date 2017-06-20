@@ -3,75 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <title>C2STEM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="/c2stem.css">
 </head>
 <body>
 <p>After the package drop, the drone has to return to base, avoiding obstacles (tall trees).</p>
 <p>To preserve fuel, the drone will make a sudden burst of positive y velocity to launch over the obstacle.</p>
 <br>
-<div>
-    <button class="accordion"><h3>Step One: Plan Your Model</h3></button>
-    <div class="panel">
-        <br>
-        <p><strong>To help plan each step in this challenge task, use your conceptual model. If you need to add new objects and/or behaviors or properties, you can go back to the conceptual model and do so!</strong></p>
-        <br>
-    </div>
 
-    <button class="accordion"><h3>Step Two: Program the Movement of the Drone</h3></button>
-    <div class="panel">
-        <br>
-        <strong>Program Description</strong>
-        <ul>
-            <li>Position the drone left of the obstacle and at a height of 20m</li>
-            <li>The obstacle has a height of 26m</li>
-            <li>Drone travels to the right with a constant velocity of 8 m/s</li>
-            <li>Determine:</li>
-            <ul>
-                <li>What is the minimum velocity burst needed to clear the obstacle?</li>
-                <li>How far away (horizontal distance) should the drone use the burst?</li>
-            </ul>
-        </ul>
-        <br>
-        <div class="panel-content">
-            <input type="checkbox">
-            <label><strong>SUBMIT SOLUTION</strong></label>
+<ul class="collapsible popout" data-collapsible="accordion">
+    <li>
+        <div class="collapsible-header"><strong>Step One: Plan Your Model</strong></div>
+        <div class="collapsible-body"><span><p><strong>To help plan each step in this challenge task, use your conceptual model. If you need to add new objects and/or behaviors or properties, you can go back to the conceptual model and do so!</strong></p>
+        </span>
         </div>
-        <br>
-    </div>
-</div>
-
-
-<br>
-<h3> Helpful Hints <em>(from Resources)</em>:</h3>
-<table>
-    <tr>
-        <th>Physics Concepts</th>
-        <th>Computational Concepts</th>
-        <th>Computational Practices</th>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-</table>
-<br>
-<script>
-    var acc = document.getElementsByClassName("accordion");
-    var i;
-
-    for (i = 0; i < acc.length; i++) {
-        acc[i].onclick = function(){
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-            } else {
-                panel.style.display = "block";
-            }
-        }
-    }
-</script>
-<br>
+    </li>
+    <li>
+        <div class="collapsible-header"><strong>Step Two: Program the Movement of the Drone</strong></div>
+        <div class="collapsible-body"><span><strong>Program Description</strong>
+            <ul>
+                <li>Position the drone left of the obstacle and at a height of 20m</li>
+                <li>The obstacle has a height of 26m</li>
+                <li>Drone travels to the right with a constant velocity of 8 m/s</li>
+                <li>Determine:</li>
+                <ul>
+                    <li>What is the minimum velocity burst needed to clear the obstacle?</li>
+                    <li>How far away (horizontal distance) should the drone use the burst?</li>
+                </ul>
+            </ul>
+            <br>
+            <div class="panel-content">
+                <input type="checkbox">
+                <label><strong>SUBMIT SOLUTION</strong></label>
+            </div>
+        </span>
+        </div>
+    </li>
+</ul>
 </body>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
 </html>

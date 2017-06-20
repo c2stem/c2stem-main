@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>C2STEM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="/c2stem.css">
 
 </head>
@@ -14,39 +16,44 @@
     <p>When modeling motion, we as physicists want to silence that screaming feeling of loneliness from being a speck in an enormous universe, but we also want to describe and reliably reproduce changes in an object. Those changes depend on where the object is, or its position, and how that position changes. Flip books or animations both model motion. How do otherwise non-moving images model motion?</p>
     <br>
 </div>
-<div>
-<button class="accordion"><h3>Activity 1.1.A: Position an object at a particular location.</h3></button>
-<div class="panel">
-    <br>
-    <strong>Program description - When Green Flag is clicked:</strong>
-    <ul>
-        <li>Program asks the user for an x-coordinate in meters</li>
-        <li>Program places the turtle at that position on the stage</li>
-    </ul>
-    <div class="panel-content">
-        <input type="checkbox">
-        <label><strong>SUBMIT SOLUTION</strong></label>
-    </div>
-    <br>
-</div>
 
-<button class="accordion"><h3>Activity 1.1.B: Simulate the motion of an object.</h3></button>
-<div class="panel">
-    <br>
-    <ul>
-        <li>Use your previous program (do NOT add new code) to manually move the turtle to the right with a speed of 1 m/s (1 meter every 1 second).</li>
-        <li>Hint: Run your program multiple times. How will you make the turtle appear to be moving?</li>
-    </ul>
-    <div class="panel-content">
-        <input type="checkbox">
-        <label><strong>SUBMIT SOLUTION</strong></label>
-    </div>
-    <br>
-</div>
-</div>
+<ul class="collapsible popout" data-collapsible="accordion">
+    <li>
+        <div class="collapsible-header"><strong>Activity 1.1.A: Position an object at a particular location.</strong></div>
+        <div class="collapsible-body"><span><strong>Program description - When Green Flag is clicked:</strong>
+            <ul>
+                <li>Program asks the user for an x-coordinate in meters</li>
+                <li>Program places the turtle at that position on the stage</li>
+            </ul>
+            <br>
+            <div class="panel-content">
+                <input type="checkbox">
+                <label><strong>SUBMIT SOLUTION</strong></label>
+            </div>
+        </span>
+        </div>
+    </li>
+    <li>
+        <div class="collapsible-header"><strong>Activity 1.1.B: Simulate the motion of an object.</strong></div>
+        <div class="collapsible-body"><span>
+            <ul>
+                <li>Use your previous program (do NOT add new code) to manually move the turtle to the right with a speed of 1 m/s (1 meter every 1 second).</li>
+                <li>Hint: Run your program multiple times. How will you make the turtle appear to be moving?</li>
+            </ul>
+            <br>
+            <div class="panel-content">
+                <input type="checkbox">
+                <label><strong>SUBMIT SOLUTION</strong></label>
+            </div>
+        </span>
+        </div>
+    </li>
+</ul>
 
 <br>
-<h3> Helpful Hints <em>(from Resources)</em>:</h3>
+
+<div class="container">
+<h6> Helpful Hints <em>(from Resources)</em>:</h6>
 <table>
     <tr>
         <th>Physics Concepts</th>
@@ -59,9 +66,14 @@
         <td> </td>
     </tr>
 </table>
-<br>
-<script>
+</div>>
 
+</body>
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<script>
     // registering function that returns data to be saved for this component
     window.parent.c2stem.register_save_data_fetcher("name_of_data_record", function () {
         var assessment_data = {
@@ -78,20 +90,5 @@
         console.log("data record name:", assessmentData.name);
     }
 
-    var acc = document.getElementsByClassName("accordion");
-    var i;
-
-    for (i = 0; i < acc.length; i++) {
-        acc[i].onclick = function(){
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-            } else {
-                panel.style.display = "block";
-            }
-        }
-    }
 </script>
-</body>
 </html>

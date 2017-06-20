@@ -3,81 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <title>C2STEM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="/c2stem.css">
 </head>
 <body>
 <br>
-<div>
-    <button class="accordion"><h3>Activity 2.1.A: Traveling Downstream</h3></button>
-    <div class="panel">
-        <br>
-        <img src="/img/downstream.jpg" alt="down" width="30%" align="left"/>
-        <p>Rosa’s boat is on a river, which is flowing at 2 m/sec (see figure on left). It is facing downstream and tied to a post on the side of the river. She unties the boat.  Will it start moving? If it does, with what speed does it move?</p>
-        <strong>Write a short code segment that models the movement of the boat, if at all?</strong>
-        <p>This time Rosa starts the boat’s engine just as Robbie finishes untying the boat. The engine moves the boat at a speed of 5 m/sec in still water. At what speed does the boat move away from Robbie?</p>
 
-        <strong>Extend the code segment you wrote earlier, to model the movement of the boat.</strong>
-        <strong>Graph the boat’s velocity and position over time up to a distance of a 100 meters.</strong>
-        <p>This example shows how two components of velocity may add to determining the resultant velocity of an object.</p>
-        <br>
-        <div class="panel-content">
-            <input type="checkbox">
-            <label><strong>SUBMIT SOLUTION</strong></label>
+<ul class="collapsible popout" data-collapsible="accordion">
+    <li>
+        <div class="collapsible-header"><strong>Activity 2.1.A: Traveling Downstream</strong></div>
+        <div class="collapsible-body"><span><img src="/img/downstream.jpg" alt="down" width="30%" align="left"/>
+            <p>Rosa’s boat is on a river, which is flowing at 2 m/sec (see figure on left). It is facing downstream and tied to a post on the side of the river. She unties the boat.  Will it start moving? If it does, with what speed does it move?</p>
+            <strong>Write a short code segment that models the movement of the boat, if at all?</strong>
+            <p>This time Rosa starts the boat’s engine just as Robbie finishes untying the boat. The engine moves the boat at a speed of 5 m/sec in still water. At what speed does the boat move away from Robbie?</p>
+
+            <strong>Extend the code segment you wrote earlier, to model the movement of the boat.</strong>
+            <strong>Graph the boat’s velocity and position over time up to a distance of a 100 meters.</strong>
+            <p>This example shows how two components of velocity may add to determining the resultant velocity of an object.</p>
+            <br>
+            <div class="panel-content">
+                <input type="checkbox">
+                <label><strong>SUBMIT SOLUTION</strong></label>
+            </div>
+        </span>
         </div>
-        <br>
-    </div>
+    </li>
+    <li>
+        <div class="collapsible-header"><strong>Activity 2.1.B: Traveling Upstream</strong></div>
+        <div class="collapsible-body"><span>
+            <img src="/img/upstream.jpg" alt="up" width="30%" align="left"/>
+            <p>In this scenario, Rosa’s boat is turned around because she wants to go upstream.</p>
 
-    <button class="accordion"><h3>Activity 2.1.B: Traveling Upstream</h3></button>
-    <div class="panel">
-        <br>
-        <img src="/img/upstream.jpg" alt="up" width="30%" align="left"/>
-        <p>In this scenario, Rosa’s boat is turned around because she wants to go upstream.</p>
+            <p>So, Rosa starts the boat’s engine just as Robbie finishes untying the boat. At what speed does the boat move away from Robbie?</p>
 
-        <p>So, Rosa starts the boat’s engine just as Robbie finishes untying the boat. At what speed does the boat move away from Robbie?</p>
+            <p><strong>Change the code segment you wrote earlier, to model the movement of the boat.</strong></p>
 
-        <h4>Change the code segment you wrote earlier, to model the movement of the boat.</h4>
-        <strong>Graph the boat’s velocity and position over time up to a distance of a 100 meters.</strong>
-         
-        <strong>What would happen if Rosa waited for 5 seconds before she started her boat’s engine?</strong>
-        <br>
-        <div class="panel-content">
-            <input type="checkbox">
-            <label><strong>SUBMIT SOLUTION</strong></label>
+            <p><strong>Graph the boat’s velocity and position over time up to a distance of a 100 meters.</strong></p>
+
+            <p><em>What would happen if Rosa waited for 5 seconds before she started her boat’s engine?</em></p>
+            <br>
+            <div class="panel-content">
+                <input type="checkbox">
+                <label><strong>SUBMIT SOLUTION</strong></label>
+            </div>
+        </span>
         </div>
-        <br>
-    </div>
+    </li>
+</ul>
+<br>
+<br>
+<div class="container">
+    <h5> Helpful Hints <em>(from Resources)</em>:</h5>
+    <table>
+        <tr>
+            <th>Physics Concepts</th>
+            <th>Computational Concepts</th>
+            <th>Computational Practices</th>
+        </tr>
+        <tr>
+            <td>base-change: x<span class="descSubscript">k+1</span>= x<span class="descSubscript">k</span> + Δx</td>
+            <td>iteration</td>
+            <td> </td>
+        </tr>
+        <tr>
+            <td> position-velocity-time: Δx = vΔt</td>
+            <td>initializing variables</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>base-change: v<span class="descSubscript">k+1</span> = v<span class="descSubscript">k</span> + Δv </td>
+            <td>conditionals</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td> velocity-acceleration-time: Δv = aΔt</td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
 </div>
 <br>
-<h3> Helpful Hints <em>(from Resources)</em>:</h3>
-<table>
-    <tr>
-        <th>Physics Concepts</th>
-        <th>Computational Concepts</th>
-        <th>Computational Practices</th>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-</table>
-<br>
-<br>
-<script>
-    var acc = document.getElementsByClassName("accordion");
-    var i;
-
-    for (i = 0; i < acc.length; i++) {
-        acc[i].onclick = function(){
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-            } else {
-                panel.style.display = "block";
-            }
-        }
-    }
-</script>
 </body>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
 </html>

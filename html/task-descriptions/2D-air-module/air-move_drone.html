@@ -3,97 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <title>C2STEM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="/c2stem.css">
 </head>
 <body>
 <br>
 <p>The drone does not have enough fuel to hover above each target, and then speed up again for the next drop. So you have to help Rey program the drone to drop the aid package onto a target while it is “on the move” at a <em>constant speed v<sub>x</sub></em>.</p>
 <br>
-<div>
-    <button class="accordion"><h3>Step One: Make a Prediction</h3></button>
-    <div class="panel">
-        <br>
-        <img src="/img/m3s1question.png"  width="20%" align="right"/>
+
+<ul class="collapsible popout" data-collapsible="accordion">
+    <li>
+        <div class="collapsible-header"><strong>Step One: Make a Prediction</strong></div>
+        <div class="collapsible-body"><span><img src="/img/m3s1question.png"  width="20%" align="right"/>
         <p><strong>If the drone is moving to the right with constant speed, where should the drone drop the package so it hits the target?</strong></p>
-        <form action="">
-            <input type="radio" name="landing" value="a">A. Left of the target<br>
-            <input type="radio" name="landing" value="b">B. Directly above target<br>
-            <input type="radio" name="landing" value="c">C. To the right of the target
-        </form>
-        <br>
-        <strong>Explain your answer:</strong><br>
-        <textarea name="explanding" rows="3" cols="100">
-        </textarea>
-        <br>
-        <div class="panel-content">
-            <input type="checkbox">
-            <label><strong>SUBMIT SOLUTION</strong></label>
+            <form action="">
+                <input type="radio" name="landing" value="a">A. Left of the target<br>
+                <input type="radio" name="landing" value="b">B. Directly above target<br>
+                <input type="radio" name="landing" value="c">C. To the right of the target
+            </form>
+            <br>
+            <strong>Explain your answer:</strong><br>
+            <textarea name="explanding" rows="3" cols="100">
+            </textarea>
+            <br>
+            <div class="panel-content">
+                <input type="checkbox">
+                <label><strong>SUBMIT SOLUTION</strong></label>
+            </div>
+        </span>
         </div>
-        <br>
-    </div>
-
-    <button class="accordion"><h3>Step Two: Make a Drop</h3></button>
-    <div class="panel">
-        <br>
-        <strong>Program Description:</strong>
-        <ul>
-            <li>Position the drone + package to the left of target at a height of 20m</li>
-            <li>Move the drone + package to the right at a constant velocity of 9m/s</li>
-            <li>Release the package so that it hits the target</li>
-            <li>Determine the horizontal release distance from target and impact velocity</li>
-        </ul>
-        <div class="panel-content">
-            <input type="checkbox">
-            <label><strong>SUBMIT SOLUTION</strong></label>
+    </li>
+    <li>
+        <div class="collapsible-header"><strong>Step Two: Make a Drop</strong></div>
+        <div class="collapsible-body"><span><strong>Program Description:</strong>
+            <ul>
+                <li>Position the drone + package to the left of target at a height of 20m</li>
+                <li>Move the drone + package to the right at a constant velocity of 9m/s</li>
+                <li>Release the package so that it hits the target</li>
+                <li>Determine the horizontal release distance from target and impact velocity</li>
+            </ul>
+            <div class="panel-content">
+                <input type="checkbox">
+                <label><strong>SUBMIT SOLUTION</strong></label>
+            </div>
+        </span>
         </div>
-        <br>
-    </div>
+    </li>
+    <li>
+        <div class="collapsible-header"><strong>Hints</strong></div>
+        <div class="collapsible-body"><span>
+            <ul>
+                <li>Your drone and package need to move at the same velocity, but remember - they are two separate objects!</li>
+                <li>Keep in mind the conditional logic used to make the medical truck stop in the previous module.</li>
+                <li>Think about how you modeled 2 dimensional motion in the river crossing problems. How will you update both horizontal and vertical position?</li>
+                <li>What is the relationship between the overall impact velocity of the package and its horizontal and vertical components?</li>
+            </ul>
+        </span>
+        </div>
+    </li>
+</ul>
 
-    <button class="accordion"><h3>Hints</h3></button>
-    <div class="panel">
-        <br>
-        <ul>
-            <li>Your drone and package need to move at the same velocity, but remember - they are two separate objects!</li>
-            <li>Keep in mind the conditional logic used to make the medical truck stop in the previous module.</li>
-            <li>Think about how you modeled 2 dimensional motion in the river crossing problems. How will you update both horizontal and vertical position?</li>
-            <li>What is the relationship between the overall impact velocity of the package and its horizontal and vertical components?</li>
-        </ul>
-        <br>
-    </div>
-</div>
-
-
-<br>
-<h3> Helpful Hints <em>(from Resources)</em>:</h3>
-<table>
-    <tr>
-        <th>Physics Concepts</th>
-        <th>Computational Concepts</th>
-        <th>Computational Practices</th>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>
-</table>
-<br>
-<script>
-    var acc = document.getElementsByClassName("accordion");
-    var i;
-
-    for (i = 0; i < acc.length; i++) {
-        acc[i].onclick = function(){
-            this.classList.toggle("active");
-            var panel = this.nextElementSibling;
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-            } else {
-                panel.style.display = "block";
-            }
-        }
-    }
-</script>
 <br>
 </body>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
 </html>
