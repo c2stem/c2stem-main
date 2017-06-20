@@ -4,17 +4,17 @@
 var TaskViewActionManger = new ActionManager();
 
 TaskViewActionManger.addActions(
-    'tabSwitch',
+    'switchTab',
     'loadView'
 );
 
-TaskViewActionManger._deleteConcept = function(concept) {
+TaskViewActionManger._switchTab = function(tab_name, tab_type) {
     // Convert the arguments to a serializable format. The returned array
     // will be passed to the `onDeleteConcept` method as arguments
-    return [concept.elementID];
+    return [tab_name, tab_type];
 };
 
-TaskViewActionManger.onDeleteConcept = function(conceptID) {
+TaskViewActionManger.onSwitchTab = function(tab_name, tab_type) {
     // apply the event given the arguments returned from _deleteConcept
     // TODO
     // console.log("Delete concept", conceptID);

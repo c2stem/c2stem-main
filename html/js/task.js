@@ -24,8 +24,10 @@ function loadTask(err, res) {
 
         $('#tabs-div').append('<ul class="tabs tabs-transparent"></ul>');
 
+        var tab = null;
         for (var i = 0; i < res.tabs.length; i++) {
-            var tab = res.tabs[i];
+            tab = res.tabs[i];
+            $("#tabs-div ul").append(`<li class="tab"><a href="#tab${tab.id}" id="tab_${tab.id}">${tab.name}</a></li>`)
             if (tab.type === 'desc') {
                 c2stem.addDescriptionTab(tab.id, tab.name, tab.markup);
             } else if (tab.type === 'snap1') {
@@ -35,6 +37,17 @@ function loadTask(err, res) {
             } else if (tab.type === 'cm') {
                 c2stem.addConcpetualModelingTab(tab.id, tab.name, tab.data);
             }
+
+            var n = document.getElementById("tab_"+tab.id);
+            n.tab_name = tab.name;
+            n.tab_type = tab.type;
+            $("#tab_"+tab.id).click(function (event) {
+                var eid = event.currentTarget.id;
+                var n = document.getElementById(eid);
+                // console.log("tab clicked:", n.tab_name, n.tab_type);
+                TaskViewActionManger.switchTab(n.tab_name, n.tab_type);
+                // ConceptualActionManager.deleteProperty(selected_concept, selected_property);
+            });
         }
 
         $("#saveProgress").click(function () {
