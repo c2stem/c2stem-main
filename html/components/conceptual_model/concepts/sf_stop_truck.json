@@ -110,6 +110,7 @@
           "category": "physics"
         }
       },
+      "cache_blocks":["set target speed to (m/s)", "change target speed by (m/s)", "x position in m", "set x position to %'value' m", "change x position by %'value' m", "x velocity in m/s", "set x velocity to %'value' m/s", "change x velocity by %'value' m/s"],
       "rules": [
         {
           "Required": [
@@ -117,19 +118,22 @@
           ],
           "GeneratedConstructs": [
             {
-              "name": "physicsXPosition",
+              "name": "x position in m",
               "category": "physics",
-              "type": "built_in"
+              "type": "custom_block",
+              "isGlobal": "false"
             },
             {
-              "name": "setPhysicsXPosition",
+              "name": "set x position to %'value' m",
               "category": "physics",
-              "type": "built_in"
+              "type": "custom_block",
+              "isGlobal": "false"
             },
             {
-              "name": "changePhysicsXPosition",
+              "name": "change x position by %'value' m",
               "category": "physics",
-              "type": "built_in"
+              "type": "custom_block",
+              "isGlobal": "false"
             },
             {
               "name": "getPhysicsAttrOf",
@@ -149,19 +153,22 @@
           ],
           "GeneratedConstructs": [
             {
-              "name": "xVelocity",
+              "name": "x velocity in m/s",
               "category": "physics",
-              "type": "built_in"
+              "type": "custom_block",
+              "isGlobal": "false"
             },
             {
-              "name": "setXVelocity",
+              "name": "set x velocity to %'value' m/s",
               "category": "physics",
-              "type": "built_in"
+              "type": "custom_block",
+              "isGlobal": "false"
             },
             {
-              "name": "changeXVelocity",
+              "name": "change x velocity by %'value' m/s",
               "category": "physics",
-              "type": "built_in"
+              "type": "custom_block",
+              "isGlobal": "false"
             }
           ]
         },
@@ -406,6 +413,7 @@
           "selected": false
         }
       },
+      "cache_blocks":["x position in m", "set x position to %'value' m", "change x position by %'value' m"],
       "rules": [
         {
           "Required": [
@@ -413,19 +421,22 @@
           ],
           "GeneratedConstructs": [
             {
-              "name": "physicsXPosition",
-              "category":"physics",
-              "type": "built_in"
+              "name": "x position in m",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "false"
             },
             {
-              "name": "setPhysicsXPosition",
+              "name": "set x position to %'value' m",
               "category": "physics",
-              "type": "built_in"
+              "type": "custom_block",
+              "isGlobal": "false"
             },
             {
-              "name": "changePhysicsXPosition",
+              "name": "change x position by %'value' m",
               "category": "physics",
-              "type": "built_in"
+              "type": "custom_block",
+              "isGlobal": "false"
             }
           ]
         }

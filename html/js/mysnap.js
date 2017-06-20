@@ -112,14 +112,15 @@ IDE_Morph.prototype.is_block_exists = function (sprite, blockName, isGlobal) {
     var ide = this;
     var stage = ide.stage;
     if (isGlobal) {
-        var b = stage.blocksMatching(blockName);
-        if(b.length == 0)
+        var b = this.blocksMatching(sprite, blockName, isGlobal);
+        if(b === null)
             return false;
         else
             return true;
     } else {
-        var b = sprite.blocksMatching(blockName);
-        if(b.length == 0)
+        var b = this.blocksMatching(sprite, blockName, isGlobal);
+        // console.log("IDE_Morph.prototype.is_block_exists", blockName, b);
+        if(b === null)
             return false;
         else
             return true;
@@ -130,16 +131,21 @@ IDE_Morph.prototype.is_block_exists = function (sprite, blockName, isGlobal) {
 SnapSerializer.prototype.populateCustomBlocksFixed = function (
     object,
     element,
-    isGlobal
+    isGlobal,
+    fnBlockMatching
 ) {
     // private
     var myself = this;
     element.children.forEach(function (child, index) {
         var b = object.blocksMatching(child.attributes.s);
-        var block = b[0].definition;
+        var block = null;
+        if( b !== null && b.length > 0)
+            block = b[0].definition;
+        else
+            block = fnBlockMatching(object, child.attributes.s, isGlobal);
         var idx = object.customBlocks.indexOf(block);
-        //console.log("populateCustomBlocks",child, index, idx);
-        //console.log("block def",block);
+        // console.log("populateCustomBlocks",child, index, idx);
+        // console.log("block def",block);
         index = idx;
         var definition, script, scripts;
         if (child.tag !== 'block-definition') {
@@ -147,7 +153,7 @@ SnapSerializer.prototype.populateCustomBlocksFixed = function (
         }
         definition = isGlobal ? object.globalBlocks[index]
             : object.customBlocks[index];
-        //console.log("definition",definition);
+        // console.log("definition",definition);
         script = child.childNamed('script');
         if (script) {
             definition.body = new Context(
@@ -156,7 +162,8 @@ SnapSerializer.prototype.populateCustomBlocksFixed = function (
                 null,
                 object
             );
-            definition.body.inputs = definition.names.slice(0);
+            if(definition.names)
+                definition.body.inputs = definition.names.slice(0);
         }
         scripts = child.childNamed('scripts');
         if (scripts) {
@@ -175,35 +182,66 @@ IDE_Morph.prototype.import_block_xml =function(sprite, block_xml){
     if(sprite === null)
         ide.droppedText(block_xml);
     else{
-        // //console.log("creating block under sprite:", sprite, "blockXML:",block_xml);
+        // console.log("creating block under sprite:", sprite, "blockXML:",block_xml);
         var model = ide.serializer.parse(block_xml);
         ide.serializer.loadCustomBlocks(sprite, model, false);
-        ide.serializer.populateCustomBlocksFixed(sprite, model, false);
+        ide.serializer.populateCustomBlocksFixed(sprite, model, false, this.blocksMatching);
         ide.flushPaletteCache();
         ide.refreshPalette();
     }
 }
 
 
+IDE_Morph.prototype.blocksMatching = function (sprite, blockName, isGlobal) {
+    var ide = this;
+    var stage = ide.stage;
+    var customBlocks = null;
+    if (isGlobal) {
+        customBlocks = stage.globalBlocks;
+    } else {
+        customBlocks = sprite.customBlocks;
+    }
+
+    if(customBlocks == null)
+        return null;
+
+    if(customBlocks.length == 0)
+        return null;
+
+    var block = null;
+
+    for(var b in customBlocks){
+        if(customBlocks.hasOwnProperty(b)){
+            if(customBlocks[b].spec === blockName)
+                return customBlocks[b];
+        }
+    }
+
+    return block;
+}
+
 IDE_Morph.prototype.delete_block = function (sprite, blockName, isGlobal) {
     var ide = this;
     var stage = ide.stage;
     var exportedString = null;
     if (isGlobal) {
-        var b = stage.blocksMatching(blockName);
-        if(b.length == 0)
-            return;
-        var block = b[0].definition;
+        // var b = stage.blocksMatching(blockName);
+        // if(b.length == 0)
+        //     return;
+        // var block = b[0].definition;
+        var block = this.blocksMatching(sprite, blockName, isGlobal);
         exportedString = ide.serializer.serialize(block);
         var idx = stage.globalBlocks.indexOf(block);
         if (idx !== -1) {
             stage.globalBlocks.splice(idx, 1);
         }
     } else {
-        var b = sprite.blocksMatching(blockName);
-        if(b.length == 0)
-            return;
-        var block = b[0].definition;
+        // var b = sprite.blocksMatching(blockName);
+        // // console.log("IDE_Morph.prototype.delete_block", b);
+        // if(b.length == 0)
+        //     return;
+        // var block = b[0].definition;
+        var block = this.blocksMatching(sprite, blockName, isGlobal);
         exportedString = ide.serializer.serialize(block);
         var idx = sprite.customBlocks.indexOf(block);
         if (idx !== -1) {
@@ -243,8 +281,8 @@ IDE_Morph.prototype.delete_variable = function (sprite, variable_name, isGlobal)
 };
 
 IDE_Morph.prototype.add_variable = function(sprite, variable_name, isGlobal){
+    var ide = this;
     if (isGlobal) {
-        var ide = this;
         var stage = ide.stage;
         if(stage.isVariableNameInUse(variable_name))
             stage.addVariable(variable_name, true);

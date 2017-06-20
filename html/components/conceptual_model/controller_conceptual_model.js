@@ -17,9 +17,9 @@ function getSavedData() {
 }
 
 function conceptual_model_load_data(data_path, callback){
-    console.log("conceptual_model_load_data");
+    // console.log("conceptual_model_load_data");
     if(c2stem.userTaskData != undefined && c2stem.userTaskData !== null && c2stem.userTaskData.conceptualModel != undefined && c2stem.userTaskData.conceptualModel !== null){
-        console.log("conceptual_model_load_data, found userData");
+        // console.log("conceptual_model_load_data, found userData");
         concepts = c2stem.userTaskData.conceptualModel;
         if(callback !== null)
             callback(concepts);
@@ -127,7 +127,7 @@ function handle_behavior_events(selected_concept, selected_behavior_key) {
 
 function create_new_concept(selected_concept_key, selected_concept, isEnvironmental) {
     selected_concept.selected = true;
-    //console.log("creating new concept: " + selected_concept);
+    // console.log("creating new concept: " + selected_concept);
     data = {};
     data.concept = selected_concept;
     data.isEnvironmental = isEnvironmental;
@@ -172,7 +172,7 @@ function create_new_concept(selected_concept_key, selected_concept, isEnvironmen
     var p = null;
     for (p in selected_concept.properties){
         if(selected_concept.properties[p].selected){
-            console.log("preselected property",selected_concept.properties[p]);
+            // console.log("preselected property",selected_concept.properties[p]);
             handle_property_events(selected_concept, p);
             pre_selected = true;
         }

@@ -27,7 +27,7 @@
 
         event.time = event.time || Date.now();
 
-        console.log("Recording event to server, event:", event);
+        // console.log("Recording event to server, event:", event);
         // record the event on the server
         $.ajax({
             type: 'post',
@@ -36,7 +36,7 @@
             contentType: 'application/json'
         });
 
-        console.log("this:",this);
+        // console.log("this:",this);
         this.submanagers[id].applyEvent(event);
     };
 
@@ -85,12 +85,12 @@
 
     ActionManager.prototype.applyEvent = function(event) {
         var method = 'on' + capitalize(event.type);
-        console.log("Calling apply event", event, "of this:", this, " method:", method);
+        // console.log("Calling apply event", event, "of this:", this, " method:", method);
         if (!event.namespace) { // route all internal events through C2StemActions
             event.namespace = this.id;
             return C2StemActions.applyEvent(event);
         } else {
-            console.log("calling method", method, "of this:", this, " with arguments:", event.args);
+            // console.log("calling method", method, "of this:", this, " with arguments:", event.args);
             return this[method].apply(this, event.args);
         }
     };
