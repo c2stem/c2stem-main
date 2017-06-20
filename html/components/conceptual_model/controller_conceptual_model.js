@@ -73,6 +73,7 @@ function handle_property_events(selected_concept, selected_prop_key) {
         OnModelChanged();
 
         transform_cm.transform_concept_by_rules(concepts, selected_concept, "delete", selected_concept.rules, concepts.environment );
+        ConceptualActionManager.deleteProperty(selected_concept, selected_property);
     });
 
 
@@ -117,6 +118,7 @@ function handle_behavior_events(selected_concept, selected_behavior_key) {
 
         transform_cm.transform_concept_by_rules(concepts, selected_concept, "delete", selected_concept.rules, concepts.environment );
         transform_cm.delete_block(concepts, n.selected_concept, n.selected_behavior.name, false);
+        ConceptualActionManager.deleteBehavior(selected_concept, selected_behavior);
     });
 
 
@@ -183,6 +185,7 @@ function create_new_concept(selected_concept_key, selected_concept, isEnvironmen
     $("#sel_prop_"+selected_concept.elementID).change(function () {
         var selected_prop_key = $("#sel_prop_"+selected_concept.elementID).val();
         handle_property_events(selected_concept, selected_prop_key);
+        ConceptualActionManager.createProperty(selected_concept, selected_concept.properties[selected_prop_key]);
         OnModelChanged();
     });
 
@@ -191,6 +194,7 @@ function create_new_concept(selected_concept_key, selected_concept, isEnvironmen
     $("#sel_be_"+selected_concept.elementID).change(function () {
         var selected_behavior_key = $("#sel_be_"+selected_concept.elementID).val();
         handle_behavior_events(selected_concept, selected_behavior_key);
+        ConceptualActionManager.createBehavior(selected_concept, selected_concept.behaviors[selected_behavior_key]);
         OnModelChanged();
     });
 
@@ -219,6 +223,7 @@ function check_then_create_concept() {
         isEnvironmental = false;
     }
     if(selected_concept !== null){
+        ConceptualActionManager.createConcept(selected_concept);
         create_new_concept(selected_concept_key, selected_concept, isEnvironmental);
         OnModelChanged();
     }
