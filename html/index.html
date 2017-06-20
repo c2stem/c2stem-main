@@ -49,6 +49,10 @@
 <script type="text/javascript" src="js/c2stem.js"></script>
 <script type="text/javascript" src="js/c2stem-data.js"></script>
 
+
+<script type="text/javascript" src="js/actions.js"></script>
+<script type="text/javascript" src="js/action%20managers/ModuleListActionManager.js"></script>
+
 <script type="text/javascript">
     var c2stem = new C2Stem();
     c2stem.fixupLogoutLink();
@@ -82,6 +86,7 @@
             for (var i = 0; i < res.modules.length; i++)
                 div.append(getModuleCard(res.modules[i]));
         }
+        ModuleListActionManger.pageLoaded();
     });
 
 </script>

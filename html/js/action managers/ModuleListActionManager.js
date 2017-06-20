@@ -1,29 +1,21 @@
 /**
  * Created by hasanm on 6/16/2017.
  */
-var TaskViewActionManger = new ActionManager();
+var ModuleListActionManger = new ActionManager();
 
-TaskViewActionManger.addActions(
-    'switchTab',
+ModuleListActionManger.addActions(
     'pageLoaded'
 );
 
-TaskViewActionManger._switchTab = function(tab_name, tab_type) {
-    return [tab_name, tab_type];
+ModuleListActionManger._pageLoaded = function() {
+    return [];
 };
 
-TaskViewActionManger.onSwitchTab = function(tab_name, tab_type) {
-};
-
-TaskViewActionManger._pageLoaded = function(task_id, module_id) {
-    return [task_id, module_id];
-};
-
-TaskViewActionManger.onPageLoaded = function(task_id, module_id) {
+ModuleListActionManger.onPageLoaded = function() {
 };
 
 ///////////////// using the action manager /////////////////
-TaskViewActionManger.assignId('task-view');  // this will also register the action manager
+ModuleListActionManger.assignId('module-list');  // this will also register the action manager
 
 
 // USAGE - To log an event
