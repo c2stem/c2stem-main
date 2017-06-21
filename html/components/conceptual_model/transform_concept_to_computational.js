@@ -22,17 +22,19 @@ transform_cm.preprocess = function (concepts) {
         var sprite = candidateSprites[s];
         var c = concepts.agents[sprite.name];
 
-        //console.log("Processing cache_blocks")
-        var blocks = {};
-        for (var block_id in sprite.customBlocks){
-            if(sprite.customBlocks.hasOwnProperty(block_id)){
-                var block = sprite.customBlocks[block_id];
-                if(c.cache_blocks.indexOf(block.spec) != -1)
-                    blocks[block.spec] = block;
+        // console.log("Processing cache_blocks:", c.cache_blocks);
+        if(c.cache_blocks != undefined && c.cache_blocks !== null){
+            var blocks = {};
+            for (var block_id in sprite.customBlocks){
+                if(sprite.customBlocks.hasOwnProperty(block_id)){
+                    var block = sprite.customBlocks[block_id];
+                    if(c.cache_blocks.indexOf(block.spec) != -1)
+                        blocks[block.spec] = block;
+                }
             }
-        }
-        for(var b in blocks){
-            transform_cm.delete_block(concepts, c, b, false);
+            for(var b in blocks){
+                transform_cm.delete_block(concepts, c, b, false);
+            }
         }
         //
         // c.variables = {};
@@ -50,9 +52,14 @@ transform_cm.preprocess = function (concepts) {
 
         // c.sprite = sprite;
         //////console.log("hiding sprite: ", c.name);
-        this.hide_concept(c);
-
-
+        if(!c.selected)
+            this.hide_concept(c);
+        else{
+            var ide = snap.world.children[0];
+            var sprite = this.getSpriteOfConcept(c);
+            if(sprite !== null)
+                c.sprite_bkup_xml = ide.exportSpriteStr(sprite);
+        }
     }
 
     // var stage = ide.stage;
@@ -106,6 +113,7 @@ transform_cm.delete_block = function (concepts, concept, blockName, isGlobal) {
     var sprite = null;
     if(concept !== null)
         sprite = this.getSpriteOfConcept(concept);
+    // console.log( "transform_cm.delete_block", blockName, "from concept:", concept.name );
     var block_xml = ide.delete_block(sprite, blockName, isGlobal);
     block_xml = '<blocks>'+block_xml +'</blocks>';
     //console.log("delete block", blockName, "block_xml:", block_xml);
@@ -129,7 +137,7 @@ transform_cm.show_block = function(concepts, concept, blockName, isGlobal){
     if(concept === null && concepts.block_xml[blockName] != undefined)
     {
         if(ide.is_block_exists(null, blockName, isGlobal))
-            return;
+            return true;
         ide.import_block_xml(null, concepts.block_xml[blockName]);
         return true;
     }
@@ -137,7 +145,8 @@ transform_cm.show_block = function(concepts, concept, blockName, isGlobal){
         if(concept.block_xml[blockName] != undefined){
             var sprite = this.getSpriteOfConcept(concept);
             if(ide.is_block_exists(sprite, blockName, isGlobal))
-                return;
+                return true;
+            // console.log("transform_cm.create_block, importing block", blockName, concept.block_xml[blockName]);
             ide.import_block_xml(sprite, concept.block_xml[blockName]);
             return true;
         }
@@ -147,6 +156,7 @@ transform_cm.show_block = function(concepts, concept, blockName, isGlobal){
 
 transform_cm.create_block = function(concepts, concept, blockName, category, isGlobal){
     if(this.show_block(concepts, concept, blockName, isGlobal)){
+        // console.log("transform_cm.create_block, show pre-existing block", blockName);
         return;
     }
     var ide = snap.world.children[0];
@@ -158,7 +168,8 @@ transform_cm.create_block = function(concepts, concept, blockName, category, isG
     // //console.log("create_block", name, "under category:", category);
     var ide = snap.world.children[0];
     var block_text ='<blocks> <block-definition s="' + blockName + '" type="command" category="'+category+'"> <header></header> <code></code> <inputs></inputs> </block-definition> </blocks>';
-    ////console.log("block_text: ", block_text);
+    //console.log("block_text: ", block_text);
+    // console.log("transform_cm.create_block, creating new block", blockName);
     if(concept === null)
         ide.import_block_xml(null, block_text);
     else{
@@ -179,8 +190,13 @@ transform_cm.show_primitive = function(cat, prim){
 };
 
 transform_cm.create_new_sprite = function(concept) {
+    // console.log("transform_cm.create_new_sprite", concept.name);
     var ide = snap.world.children[0];
-    ide.create_new_sprite(concept.name);
+    var sprite = this.getSpriteOfConcept(concept);
+    if(sprite !== null)
+        return sprite;
+
+    sprite = ide.create_new_sprite(concept.name);
     return sprite;
 };
 
@@ -190,8 +206,11 @@ transform_cm.remove_sprite = function(sprite) {
 };
 
 transform_cm.show_concept =function(concept){
+    // console.log("transform_cm.show_concept", concept.name);
     var ide = snap.world.children[0];
-    ide.rawOpenSpritesString(concept.sprite_bkup_xml);
+    var sprite = this.getSpriteOfConcept(concept);
+    if(sprite === null)
+        ide.rawOpenSpritesString(concept.sprite_bkup_xml);
 };
 
 transform_cm.getSpriteOfConcept=function(concept){
@@ -209,7 +228,7 @@ transform_cm.getSpriteOfConcept=function(concept){
 };
 
 transform_cm.hide_concept =function(concept){
-    ////console.log("tcm hiding concept", concept.name);
+    // console.log("tcm hiding concept", concept.name);
     var ide = snap.world.children[0];
     var sprite = this.getSpriteOfConcept(concept);
     if(sprite !== null){
@@ -286,14 +305,14 @@ function transform_constructs_of_rule(concepts, rule, mode, concept) {
                 break;
             case "custom_variable":
                 if (mode === "create") {
-                    if(c.isGlobal)
+                    if(c.isGlobal == true )
                         transform_cm.add_variable(null, c.name, true);
                     else
                         transform_cm.add_variable(concept, c.name, false);
                 }
                 else if (mode === "delete")
                 {
-                    if(c.isGlobal)
+                    if(c.isGlobal == true )
                         transform_cm.delete_variable(null, c.name, true);
                     else
                         transform_cm.delete_variable(concept, c.name, false);
@@ -302,12 +321,12 @@ function transform_constructs_of_rule(concepts, rule, mode, concept) {
             case "custom_block":
                 if (mode === "create") {
                     // concepts, concept, blockName, category, isGlobal
-                    transform_cm.create_block(concepts, concept, c.name, c.category, c.isGlobal != undefined ? c.isGlobal: false);
+                    transform_cm.create_block(concepts, concept, c.name, c.category, c.isGlobal != undefined ? c.isGlobal == true : false);
                 }
                 else if (mode === "delete")
                 {
                     // concepts, concept, blockName, isGlobal
-                    transform_cm.delete_block(concepts, concept, c.name, c.isGlobal != undefined ? c.isGlobal: false);
+                    transform_cm.delete_block(concepts, concept, c.name, c.isGlobal != undefined ? c.isGlobal == true : false);
                 }
                 break;
             default:
