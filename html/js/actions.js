@@ -27,11 +27,11 @@
 
         event.time = event.time || Date.now();
 
-        // console.log("Recording event to server, event:", event);
+         console.log("Recording event to server, event:", event);
         // record the event on the server
         $.ajax({
             type: 'post',
-            url: ActionManager.URL,
+            url: GlobalActionManager.URL,
             data: JSON.stringify(event),
             contentType: 'application/json'
         });
@@ -70,7 +70,6 @@
 
                 event = {
                     type: method,
-                    // namespace: this.id,
                     args: args
                 };
 

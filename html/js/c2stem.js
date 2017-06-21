@@ -141,14 +141,11 @@ C2Stem.prototype.fixupTaskLink = function (id, name) {
 }
 
 C2Stem.prototype.addDescriptionTab = function (id, name, markup, callbackOnLoad) {
-    $("#tabs-div ul").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`)
     $("body").append(`<div class="c2stem-desc" id="tab${id}">${markup}</div>`);
 }
 
 C2Stem.prototype.addSnap1Tab = function (id, name, template, callbackOnLoad) {
     var c2stem = this;
-
-    $("#tabs-div ul").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`)
     $("body").append(`
         <div class="c2stem-snap1" id="tab${id}">
             <iframe src="mysnap.html"></iframe>
@@ -231,8 +228,6 @@ function registerSaveDataFetcherForSnap(ide, projectName) {
 
 C2Stem.prototype.addSnap2Tab = function (id, name, template, callbackOnLoad) {
     var c2stem = this;
-
-    $("#tabs-div ul").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`)
     $("body").append(`
         <div class="c2stem-snap2" id="tab${id}">
             <canvas></canvas>
@@ -289,7 +284,6 @@ C2Stem.prototype.addSnap2Tab = function (id, name, template, callbackOnLoad) {
 
 C2Stem.prototype.addConcpetualModelingTab = function (id, name, data, callbackOnLoad) {
     var myself = this;
-    $("#tabs-div ul").append(`<li class="tab"><a href="#tab${id}">${name}</a></li>`);
     $("body").append(`
         <div class="c2stem-cm" id="tab${id}">
         </div>`);
