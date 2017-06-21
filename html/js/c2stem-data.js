@@ -478,7 +478,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
             }, {
                 id: 'relativeassess',
                 type: 'desc',
-                name: 'LEARN',
+                name: 'PREDICT',
                 markup: '<iframe id=desc_resourceIframe  src="assessment1.1.html" frameborder="0"></iframe>'
             }, {
                 id: 'instcross',
