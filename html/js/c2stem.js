@@ -205,23 +205,23 @@ function on_snap_project_loading_done(ide, snapData, callback) {
 }
 
 function registerSaveDataFetcherForSnap(ide, projectName) {
-    var fetchSaveData = function () {
-        var snapData = {};
-        var myself = this,
-            pdata,
-            media,
-            size,
-            mediaSize;
-
+    var fetchSaveData = function (saveMedia) {
+        var pdata,
+            media;
+        console.log("Save Data Fetcher for Snap, saveMedia:",saveMedia);
         ide.serializer.isCollectingMedia = true;
         pdata = ide.serializer.serialize(ide.stage);
-        media = ide.serializer.mediaXML(ide.projectName);
+        if(saveMedia)
+            media = ide.serializer.mediaXML(ide.projectName);
         ide.serializer.isCollectingMedia = false;
         ide.serializer.flushMedia();
         // snapData.pdata = pdata;
         // snapData.media = media;
         // snapData.projectName = ide.projectName;
-        return '<snapdata>' + pdata + media + '</snapdata>';
+        if(saveMedia)
+            return '<snapdata>' + pdata + media + '</snapdata>';
+        else
+            return pdata;
     };
     c2stem.register_save_data_fetcher(projectName, fetchSaveData);
 }
@@ -323,19 +323,24 @@ C2Stem.prototype.loadPublicProject = function (task_id, template, shallAppend, c
         callback(err);
     });
 };
-
-C2Stem.prototype.saveUserProgress = function(callback){
-    console.log('saving user progress');
-    var cloud = C2StemCloud;
+C2Stem.prototype.collectUserProgressData = function (saveMedia) {
+    console.log("collectUserProgressData, saveMedia:",saveMedia);
+    saveMedia = saveMedia == undefined ? true : saveMedia;
     var userTaskData = {};
     var i = 0;
     console.log(this.saveDataFetchers);
     for(; i < this.saveDataFetchers.length; i++){
         f = this.saveDataFetchers[i];
         console.log(f, "Calling fetcher", f.name);
-        var data = f.fetcher();
+        var data = f.fetcher(saveMedia);
         userTaskData[f.name] = data;
     }
+    return userTaskData;
+}
+C2Stem.prototype.saveUserProgress = function(callback){
+    console.log('saving user progress');
+    var cloud = C2StemCloud;
+    var userTaskData = this.collectUserProgressData();
     console.log("Save user progress, userTaskData:", userTaskData);
     // userTaskData.conceptualModel = concepts;
     // console.log("Save user progress, userTaskData:", userTaskData);
