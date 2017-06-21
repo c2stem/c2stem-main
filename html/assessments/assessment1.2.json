@@ -1,0 +1,9 @@
+{
+  "item1": {
+    "title": "Question 2.1",
+    "firstLine": "The following program moves the sprite to the right when the right arrow is held, and to the left when the left arrow is held. The space bar stops the simulation.",
+    "firstImage": "/img/Assessment/1d-Land/item1.2.1a.jpg",
+    "secondImage": "/img/Assessment/1d-Land/item1.2.1b.jpg",
+    "secondLine": "Add code to the program to <strong>update the total distance traveled</strong> by the sprite in addition to its position. For instance, if the sprite moved 2 meters to the right, then 1 meter to the left, the total distance traveled would be 3 meters."
+  }
+}

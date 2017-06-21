@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C2STEM</title>
+    <script src="handlebars-v4.0.10.js"></script>
+    <link rel="stylesheet" type="text/css" href="/c2stem.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+</head>
+<body class="assessBody">
+<div id="anchor"><h4>Assessment</h4></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<script id="tpl" type="text/template">
+    {{#item1}}
+        <p><strong>{{title}}</strong></p>
+        <div class="shift">
+            <p>{{firstLine}}</p>
+            <img class="responsive-img" src="{{firstImage}}" width="60%">
+            <div>
+                <p>{{secondLine}}</p>
+                <form action="#">
+                    <p>
+                        <input class="with-gap" name="group1" type="radio" id="a" />
+                        <label for="a"><img for="a" src="{{firstOption}}" width="70%"></label>
+                    </p>
+                    <p>
+                        <input class="with-gap" name="group1" type="radio" id="b" />
+                        <label for="b"><img src="{{secondOption}}" width="70%"></label>
+                    </p>
+                    <p>
+                        <input class="with-gap" name="group1" type="radio" id="c"  />
+                        <label for="c"><img src="{{thirdOption}}" width="70%"></label>
+                    </p>
+                    <p>
+                        <input class="with-gap" name="group1" type="radio" id="d"/>
+                        <label for="d"><img src="{{fourthOption}}" width="70%"></label>
+                    </p>
+                    <p>
+                        <input class="with-gap" name="group1" type="radio" id="e"/>
+                        <label for="e"><img src="{{fifthOption}}" width="70%"></label>
+                    </p>
+                </form>
+            </div>
+        </div>
+    {{/item1}}
+    <hr class="style-two">
+</script>
+<script>
+    var url='assessment2.2.json';
+    //4a.function creation
+    var slingshot = function (url, tplId, anchor) {
+        $.getJSON(url, function(data) {
+            var template = $(tplId).html();
+            var stone = Handlebars.compile(template)(data);
+            $(anchor).append(stone);
+        });
+    }
+    //4b.function firing
+    slingshot('assessment2.2.json', '#tpl', '#anchor'); // since url = 'data.json' , we can use both notations.
+</script>
+</body>
+</html>

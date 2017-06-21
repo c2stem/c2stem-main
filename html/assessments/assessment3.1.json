@@ -1,0 +1,32 @@
+{
+  "item1": {
+    "title": "Question 1.1",
+    "firstLine": "Maya, Liam and Stan each wrote their own code to model the motion of a ball as it is dropped vertically from the top of a 100m tower. To show the motion of the ball, their programs include a colored trail that alternates between red and light blue at every simulation step. Their programs result in different outputs as shown below:",
+    "secondLine": "Which of the above is a correct representation of a ball being dropped vertically from the top of a tower?",
+    "thirdLine": "The output created by Maya’s program",
+    "fourthLine": "The output created by Liam’s program",
+    "fifthLine": "The output created by Stan’s program",
+    "sixthLine": "None of the outputs shown above",
+    "seventhLine": "Explain your answer:",
+    "firstImage": "/img/Assessment/2d-Air/item3.1.1a.jpg"
+  },
+  "item2": {
+    "title": "Question 1.2",
+    "firstLine": "The program shown below from “Module 3_1.2” is meant to model the motion of a ball that is initially at rest, then dropped vertically from a height of 20 m above ground level. Revise or debug the program so that it correctly models the motion of the ball until it reaches ground level (0 m).",
+    "firstImage": "/img/Assessment/2d-Air/item3.1.2a.jpg",
+    "secondImage": "/img/Assessment/2d-Air/item3.1.2b.jpg"
+  },
+  "item3": {
+    "title": "Question 1.3",
+    "firstLine": "A ball is thrown horizontally at a speed of 10m/s from a height of 20m above ground level.",
+    "secondLine": "What are the things that must be modified in the given program to correctly simulate the motion of the ball? Select ALL that apply.",
+    "thirdLine": "Modify the initial y position of the ball",
+    "fourthLine": "Modify the initial x velocity of the ball",
+    "fifthLine": "Modify the initial y velocity of the ball",
+    "sixthLine": "Make y velocity constant instead of changing it at every simulation step",
+    "seventhLine": "Make x velocity constant instead of changing it at every simulation step",
+    "eighthLine": "Modify the expression for changing the y position",
+    "ninthLine": "Modify the expression for changing the x position",
+    "firstImage": "/img/Assessment/2d-Air/item3.1.3.jpg"
+  }
+}

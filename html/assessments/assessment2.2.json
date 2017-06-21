@@ -1,0 +1,13 @@
+{
+  "item1": {
+    "title": "Question 2.1",
+    "firstLine": "An airplane points at an angle of 75 degrees as shown in the figure and takes off at a speed of 250m/s. The wind blows in the x direction at a speed of 10m/s, changing the resultant velocity of the airplane.",
+    "secondLine": "In a simulation of the airplane’s motion, which of the following sets of blocks should be used to set the x and y components of the airplane’s resultant velocity?",
+    "firstImage": "/img/Assessment/2d-Water/item2.2.1.jpg",
+    "firstOption": "/img/Assessment/2d-Water/item2.2.2a.jpg",
+    "secondOption": "/img/Assessment/2d-Water/item2.2.2b.jpg",
+    "thirdOption": "/img/Assessment/2d-Water/item2.2.2c.jpg",
+    "fourthOption": "/img/Assessment/2d-Water/item2.2.2d.jpg",
+    "fifthOption": "/img/Assessment/2d-Water/item2.2.2e.jpg"
+  }
+}

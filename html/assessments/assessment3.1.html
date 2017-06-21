@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C2STEM</title>
+    <script src="handlebars-v4.0.10.js"></script>
+    <link rel="stylesheet" type="text/css" href="/c2stem.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+</head>
+<body class="assessBody">
+<div id="anchor"><h4>Assessment</h4></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<script id="tpl" type="text/template">
+    {{#item1}}
+    <p><strong>{{title}}</strong></p>
+    <div class="shift">
+        <p>{{firstLine}}</p>
+        <img class="responsive-img" src="{{firstImage}}" width="60%">
+        <div>
+            <p>{{secondLine}}</p>
+            <form action="#">
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="a" />
+                    <label for="a">{{thirdLine}}</label>
+                </p>
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="b" />
+                    <label for="b">{{fourthLine}}</label>
+                </p>
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="c"  />
+                    <label for="c">{{fifthLine}}</label>
+                </p>
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="c"  />
+                    <label for="c">{{sixthLine}}</label>
+                </p>
+            </form>
+        </div>
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="textb" class="materialize-textarea textarea1"></textarea>
+                        <label for="textb">{{seventhLine}}</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    {{/item1}}
+    <hr class="style-two">
+    {{#item2}}
+        <p><strong>{{title}}</strong></p>
+        <div class="shift">
+            <p>{{firstLine}}</p>
+            <div>
+            <img class="responsive-img" src="{{firstImage}}" width="25%">
+            <img class="responsive-img" src="{{secondImage}}" width="50%">
+            </div>
+        </div>
+    {{/item2}}
+    <hr class="style-two">
+    {{#item3}}
+        <p><strong>{{title}}</strong></p>
+        <div class="shift">
+            <p>{{firstLine}}</p>
+            <img class="responsive-img" src="{{firstImage}}" width="60%">
+            <div>
+                <p>{{secondLine}}</p>
+                <form action="#">
+                    <p>
+                        <input class="with-gap"  type="radio" id="a1" />
+                        <label for="a1">{{thirdLine}}</label>
+                    </p>
+                    <p>
+                        <input class="with-gap" type="radio" id="b1" />
+                        <label for="b1">{{fourthLine}}</label>
+                    </p>
+                    <p>
+                        <input class="with-gap" type="radio" id="c1"  />
+                        <label for="c1">{{fifthLine}}</label>
+                    </p>
+                    <p>
+                        <input class="with-gap" type="radio" id="d1"  />
+                        <label for="d1">{{sixthLine}}</label>
+                    </p>
+                    <p>
+                        <input class="with-gap" type="radio" id="e1"  />
+                        <label for="e1">{{seventhLine}}</label>
+                    </p>
+                    <p>
+                        <input class="with-gap" type="radio" id="f1"  />
+                        <label for="f1">{{eighthLine}}</label>
+                    </p>
+                    <p>
+                        <input class="with-gap" type="radio" id="g1"  />
+                        <label for="g1">{{ninthLine}}</label>
+                    </p>
+                </form>
+            </div>
+        </div>
+    {{/item3}}
+    <hr class="style-two">
+</script>
+<script>
+    var url='assessment3.1.json';
+    //4a.function creation
+    var slingshot = function (url, tplId, anchor) {
+        $.getJSON(url, function(data) {
+            var template = $(tplId).html();
+            var stone = Handlebars.compile(template)(data);
+            $(anchor).append(stone);
+        });
+    }
+    //4b.function firing
+    slingshot('assessment3.1.json', '#tpl', '#anchor'); // since url = 'data.json' , we can use both notations.
+    $('.textarea1').trigger('autoresize');
+
+</script>
+</body>
+</html>

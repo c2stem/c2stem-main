@@ -59,10 +59,10 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
             }, {
                 id: '1d-stop',
                 name: 'Model Building -1D Acceleration: Make Your Truck Stop'
-            }, {
+            }, /*{
                 id: '1d-checkin4',
                 name: 'Check-In #4'
-            }, {
+            },*/ {
                 id: '1d-deliver',
                 name: 'Challenge Problem: Deliver the Medicine to the River! '
             }
@@ -210,7 +210,15 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 id: 'assessment',
                 type: 'desc',
                 name: 'Assessment',
-                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
+                markup: '<iframe id=desc_resourceIframe  src="assessments/assessment1.1.html" frameborder="0"></iframe>'
+            }, {
+                id: 'assess',
+                type: 'snap1',
+                name: 'Task_1.1',
+                template: {
+                    user: 'Naveed',
+                    proj: 'Module1_1.1'
+                }
             }]
         };
     } else if (id === '1d-inst_conceptual') {
@@ -278,7 +286,15 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 id: 'assessment',
                 type: 'desc',
                 name: 'Assessment',
-                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
+                markup: '<iframe id=desc_resourceIframe  src="assessments/assessment1.2.html" frameborder="0"></iframe>'
+            }, {
+                id: 'assess',
+                type: 'snap1',
+                name: 'Task_1.2',
+                template: {
+                    user: 'Naveed',
+                    proj: 'Module1_2.1'
+                }
             }]
         };
     } else if (id === '1d-liftoff') {
@@ -326,7 +342,15 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 id: 'assessment',
                 type: 'desc',
                 name: 'Assessment',
-                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
+                markup: '<iframe id=desc_resourceIframe  src="assessments/assessment1.3.html" frameborder="0"></iframe>'
+            }, {
+                id: 'assess',
+                type: 'snap1',
+                name: 'Task_1.3',
+                template: {
+                    user: 'Naveed',
+                    proj: 'Module1_3.2'
+                }
             }]
         };
     } else if (id === '1d-stop') {
@@ -362,7 +386,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }]
         };
-    }else if (id === '1d-checkin4') {
+    }/*else if (id === '1d-checkin4') {
         res = {
             parent: {
                 id: '1dmotion',
@@ -374,10 +398,10 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 id: 'assessment',
                 type: 'desc',
                 name: 'Assessment',
-                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
+                markup: '<iframe id=desc_resourceIframe  src="assessment1.1.html" frameborder="0"></iframe>'
             }]
         };
-    }else if (id === '1d-deliver') {
+    }*/else if (id === '1d-deliver') {
         res = {
             parent: {
                 id: '1dmotion',
@@ -455,7 +479,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 id: 'relativeassess',
                 type: 'desc',
                 name: 'LEARN',
-                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
+                markup: '<iframe id=desc_resourceIframe  src="assessment1.1.html" frameborder="0"></iframe>'
             }, {
                 id: 'instcross',
                 type: 'snap1',
@@ -483,7 +507,15 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 id: 'assessment',
                 type: 'desc',
                 name: 'Assessment',
-                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
+                markup: '<iframe id=desc_resourceIframe  src="assessments/assessment2.1.html" frameborder="0"></iframe>'
+            }, {
+                id: 'assess',
+                type: 'snap1',
+                name: 'Task_2.1',
+                template: {
+                    user: 'satabdi27',
+                    proj: 'AirportTask'
+                }
             }]
         };
     } else if (id === '2d-mb_cross') {
@@ -531,7 +563,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 id: 'assessment',
                 type: 'desc',
                 name: 'Assessment',
-                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
+                markup: '<iframe id=desc_resourceIframe  src="assessments/assessment2.2.html" frameborder="0"></iframe>'
             }]
         };
     }else if (id === '2d-river_challenge') {
@@ -635,7 +667,15 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 id: 'assessment',
                 type: 'desc',
                 name: 'Assessment',
-                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
+                markup: '<iframe id=desc_resourceIframe  src="assessments/assessment3.1.html" frameborder="0"></iframe>'
+            },{
+                id: 'assess',
+                type: 'snap1',
+                name: 'Task_3.1',
+                template: {
+                    user: 'satabdi27',
+                    proj: 'Module3_1.2'
+                }
             }]
         };
     } else if (id === 'air-mb_drop') {
@@ -683,7 +723,15 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 id: 'assessment',
                 type: 'desc',
                 name: 'Assessment',
-                markup: '<iframe id=desc_resourceIframe  src="assessment.html" frameborder="0"></iframe>'
+                markup: '<iframe id=desc_resourceIframe  src="assessments/assessment3.2.html" frameborder="0"></iframe>'
+            },{
+                id: 'assess',
+                type: 'snap1',
+                name: 'Task_3.2',
+                template: {
+                    user: 'satabdi27',
+                    proj: 'Module3_2.1'
+                }
             }]
         };
     }else if (id === 'air-challenge') {

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C2STEM</title>
+    <script src="handlebars-v4.0.10.js"></script>
+    <link rel="stylesheet" type="text/css" href="/c2stem.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+</head>
+<body class="assessBody">
+<div id="anchor"><h4>Assessment</h4></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<script id="tpl" type="text/template">
+    {{#item1}}
+    <p><strong>{{title}}.</strong> {{firstLine}}</p>
+    <div class="shift">
+        <!--<a href ="/task.html#assesstab">{{secondLine}}</a>-->
+        <p>{{secondLine}}</p>
+        <div class="floatHandle">
+            <p>{{thirdLine}}</p>
+            <img src="{{firstImage}}">
+            <p>{{fourthLine}}</p>
+            <img src="{{secondImage}}">
+            <p>{{fifthLine}}</p>
+        </div>
+    </div>
+    {{/item1}}
+    <br><br>
+    <hr class="style-two">
+    {{#item2}}
+    <div>
+        <p><strong>{{title}}.</strong> {{firstLine}}</p>
+        <iframe class="resourseiFrame" width="60%" height="400" src="https://www.youtube.com/embed/jbNHoTl-MLo" frameborder="0" allowfullscreen></iframe>
+        <div class="shift">
+            <p>{{secondLine}}</p>
+            <p>{{thirdLine}}</p>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="textarea1" class="materialize-textarea"></textarea>
+                            <label for="textarea1">Objects</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <p>{{fourthLine}}</p>
+            <table id="POITable">
+                <tr>
+                    <td>{{{firstColoumn}}}</td>
+                    <td>{{{secondColoumn}}}</td>
+                    <td>{{{thirdColoumn}}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td> <input type="text" name="object" value="" class="txt" autocomplete='off' /></td>
+                    <td> <input type="text" name="property" value="" class="txt" autocomplete='off' /></td>
+                    <td> <input type="text" name="behaviour" value="" class="txt" autocomplete='off' /></td>
+                    <td><input type="button" id="delPOIbutton" value="Delete Object" onclick="deleteRow(this)"/></td>
+                    <td><input type="button" id="addmorePOIbutton" value="Add Object" onclick="insRow()"/></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    {{/item2}}
+    <hr class="style-two">
+    {{#item3}}
+        <p><strong>{{title}}.</strong> {{firstLine}}</p>
+        <div class="shift">
+            <div>
+                <img class="responsive-img" src="{{firstImage}}" width="15%">
+                <img class="responsive-img" src="{{secondImage}}" width="20%">
+            </div>
+            <div>
+            <p>{{secondLine}}</p>
+            <form action="#">
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="a" />
+                    <label for="a"><img for="a" src="{{firstOption}}" width="60%"></label>
+                </p>
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="b" />
+                    <label for="b"><img src="{{secondOption}}" width="60%"></label>
+                </p>
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="c"  />
+                    <label for="c"><img src="{{thirdOption}}" width="60%"></label>
+                </p>
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="d"/>
+                    <label for="d"><img src="{{fourthOption}}" width="60%"></label>
+                </p>
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="e"/>
+                    <label for="e"><img src="{{fifthOption}}" width="60%"></label>
+                </p>
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="f" />
+                    <label for="f"><img src="{{sixthOption}}" width="60%"></label>
+                </p>
+            </form>
+            </div>
+        </div>
+    {{/item3}}
+    <hr class="style-two">
+    {{#item4}}
+        <p><strong>{{title}}.</strong> {{firstLine}}</p>
+        <div class="shift">
+            <div>
+                <img class="responsive-img" src="{{firstImage}}" width="17%">
+                <img class="responsive-img" src="{{secondImage}}" width="40%">
+            </div>
+            <div>
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea id="texta" class="materialize-textarea textarea1"></textarea>
+                                <label for="texta">a. What is the total distance traveled by the sprite?</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <textarea id="textb" class="materialize-textarea textarea1"></textarea>
+                                <label for="textb">b. What direction does it travel? (left, right, up, down)</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <textarea id="textc" class="materialize-textarea textarea1"></textarea>
+                                <label for="textc">c. For how much time does it travel?</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <textarea id="textd" class="materialize-textarea textarea1"></textarea>
+                                <label for="textd">d. What is the sprite’s speed?</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {{/item4}}
+    <hr class="style-two">
+</script>
+<script>
+    var url='assessment1.1.json';
+    //4a.function creation
+    var slingshot = function (url, tplId, anchor) {
+        $.getJSON(url, function(data) {
+            var template = $(tplId).html();
+            var stone = Handlebars.compile(template)(data);
+            $(anchor).append(stone);
+        });
+    }
+    //4b.function firing
+    slingshot('assessment1.1.json', '#tpl', '#anchor'); // since url = 'data.json' , we can use both notations.
+    //autosize textArea
+    $('.textarea1').trigger('autoresize');
+    //deleteTableRow
+    function deleteRow(row)
+    {
+        var i=row.parentNode.parentNode.rowIndex;
+        if(i>1) {
+            document.getElementById('POITable').deleteRow(i);
+        }
+    }
+    //add tableRow
+    function insRow()
+    {
+        var x=document.getElementById('POITable');
+        var new_row = x.rows[1].cloneNode(true);
+        var len = x.rows.length;
+        /*new_row.cells[0].innerHTML = len;*/
+        var inp1 = new_row.cells[0].getElementsByTagName('input')[0];
+        inp1.id += len;
+        inp1.value = '';
+        var inp1 = new_row.cells[1].getElementsByTagName('input')[0];
+        inp1.id += len;
+        inp1.value = '';
+        var inp2 = new_row.cells[2].getElementsByTagName('input')[0];
+        inp2.id += len;
+        inp2.value = '';
+        x.appendChild( new_row );
+    }
+
+
+</script>
+</body>
+</html>

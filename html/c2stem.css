@@ -315,3 +315,57 @@ tr:nth-child(even) {
     top:      64px;
     width:    100%;
 }
+
+.shift{
+    padding-left: 30px;
+}
+.floatHandle p{
+    float: left;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.floatHandle img{
+    float: left;
+    padding: 0;
+    margin: 0;
+}
+.row{
+    margin: 10px;
+    /*width:80%;*/
+}
+
+.materialize-textarea{
+    padding: 0!important;
+}
+
+#POITable{
+    border: solid black 3px;
+    width: 80%;
+}
+hr.style-two {
+    border: 0;
+    height: 3px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    margin:30px;
+}
+.responsive-img{
+    margin-left: 100px;
+}
+form p{
+    margin: 2px;
+}
+
+.assessBody{
+    padding: 5px;
+    width:80%;
+    margin: 0 auto;
+}
+
+.assessBody p{
+    margin-bottom:0px;
+}
+
+.assessBody ul li{
+    list-style-type: disc!important;
+}
