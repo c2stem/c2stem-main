@@ -377,7 +377,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 name: 'BUILD',
                 template: {
                     user: 'nicole',
-                    proj: 'sf_stop_truck'
+                    proj: 'sf_stop_truck_local_physics'
                 }
             }, {
                 id: 'resource',
