@@ -3,10 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>Resources</title>
-    <link rel="stylesheet" href="c2stem.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <style>
+        header, main, footer {
+            padding-left: 300px!important;
+            height: 200%!important;
+        }
+
+        @media only screen and (max-width : 992px) {
+            header, main, footer {
+                padding-left: 0!important;
+            }
+        }
+    </style>
 </head>
 <body>
-<div id="sidebar">
+
+<ul id="slide-out" class="side-nav fixed">
+    <li><a class="subheader">Physics Concepts</a></li>
+    <li><a href="#Speed">Speed</a></li>
+    <li><a href="#Velocity">Velocity</a></li>
+    <li><a href="#Accelaration">Accelaration</a></li>
+    <li><a href="#TwoDVelocity">2D Velocity</a></li>
+    <li><a href="#Math">Math Components</a></li>
+    <li><a href="#gravity">Gravity</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Computational Concepts</a></li>
+    <li><a href="#glossary">Glossary of Physics Blocks</a></li>
+    <li><div class="divider"></div></li>
+    <li><a class="subheader">Computational Practices</a></li>
+    <li><a href="#simulation">Simulation Model</a></li>
+    <li><a href="#conceptual">Conceptual Model</a></li>
+    <li><a href="#ctconstructs">CT Constructs</a></li>
+</ul>
+<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+
+<!--<div id="sidebar">
     <ul>
         <h3><strong>Resources</strong></h3>
         <h4><strong>Physics Concepts</strong></h4>
@@ -14,178 +48,252 @@
         <li><a href="#Velocity">Velocity</a></li>
         <li><a href="#Accelaration">Accelaration</a></li>
         <li><a href="#TwoDVelocity">2D Velocity</a></li>
+        <li><a href="#Math">Pythagorean Theorem and Trigonometry</a></li>
+        <li><a href="#gravity">Gravity</a></li>
         <h4><strong>Computational Concepts</strong></h4>
-        <li><a href="#glossary">Glossary of Blocks</a></li>
+        <li><a href="#glossary">Glossary of Physics Blocks</a></li>
         <h4><strong>Computational Practices</strong></h4>
         <li><a href="#simulation">Simulation Model</a></li>
         <li><a href="#conceptual">Conceptual Model</a></li>
-
+        <li><a href="#ctconstructs">CT Constructs</a></li>
     </ul>
-    
+     class="tab-content"
+</div>-->
+<div class="container" align="left">
+        <div id="resources">
+
+            <h3>Welcome to the C2STEM Resources</h3>
+            <img src="img/the-challenges.jpg"  width="80%" align="centre"/>
+        </div>
+        <br><br>
+        <div id="Speed">
+            <h4>Speed</h4>
+            <p>Your interpretation of velocity is likely very similar to the scientific definition.
+                We have all seen speed limit signs denoting a certain miles per hour rate that you cannot and should not drive above.
+                <span><b>Speed</b></span> is a <span>scalar</span> quantity that refers to "how fast an object is moving." Speed can be thought of as the rate at which an object covers distance.
+                A fast-moving object has a high speed and covers a relatively large distance in a short amount of time.
+                Contrast this to a slow-moving object that has a low speed;
+                it covers a relatively small amount of distance in the same amount of time. An object with no movement at all has a zero speed.
+            </p>
+        </div>
+        <br><br>
+        <div id="Velocity">
+            <h4>Velocity</h4>
+            <p>Velocity in contrast is a vector quantity, therefore, it includes both magnitude (speed) and direction.
+                <b>Velocity</b> is defined as "the rate at which an object changes its position."
+                Therefore, if a person takes 3 steps to the right along the x-axis, and 1 to the left on the x-axis in one second,
+                we compute the person’s velocity to be 2 steps/second in the x-direction. In general, velocity is defined as the change in position
+                divided by the time of that change. Mathematically, this can be written as: </p>
+            <img class="ImageStyle" src="img/equation.png"  width="10%" align="centre"/>
+            <p>In the above equation &Delta;x represents the change in position of the object in one time step,
+                and &Delta;t is the length of the time step. &Delta;t is a special variable and an important component of a simulation step.
+                You may not see this right away, but as you get to more complex simulations, you will see that making &Delta;t small will generate more accurate behaviors.
+                However, there is a tradeoff. Suppose you want to generate the behavior of your system for t seconds from the start of the simulation.
+                t is called the simulation time. If we reduce &Delta;t, we may make our simulation results more accurate, but our simulation will take longer to run.
+                Therefore, there is a tradeoff between how fast you want your simulation to complete, versus how accurate you want the simulated behaviors to be.
+                In most situations, small changes in &Delta;t will not make noticeable differences in the execution time of a simulation,
+                because computers nowadays are  quite powerful.
+            </p>
+            <p>Now, in order to accurately model the movement of our medical truck in our simulation we will need to change the position of our object (the truck) based on the set velocity.
+                Keep this velocity equation in mind when you design your algorithm!</p>
+        </div>
+        <br><br>
+
+        <div id="Accelaration">
+            <h4>Acceleration</h4>
+            <iframe class="resourseiFrame" width="60%" height="300" src="https://www.youtube.com/embed/FOkQszg1-j8?ecver=1" frameborder="0" allowfullscreen></iframe>
+            <p>As you may have seen in the video, acceleration is defined as the rate at which velocity changes.
+                Mathematically, this can be wriiten as:</p>
+            <img class="ImageStyle" src="img/second_equation.png"  width="10%" align="centre"/>
+            <p> where  Δv is the change in velocity over a simulation time step, and Δt is the length of the simulation time step in seconds.</p>
+            <p>To understand acceleration, study this table. In this example, the  velocity of the object changes by a constant amount every time step (second).
+                    Note how the velocity itself changes as time advances.
+                    What about the change in position over time? Think on the equation(s) used in your final velocity module as you prepare the next few tasks!</p>
+            <img src="img/position-velocity-time.png"  width="30%" />
+        </div>
+        <br><br>
+        <div id="TwoDVelocity">
+            <h4>Key Concepts for 2D Velocity</h4>
+            <p><strong>Resultant Velocity:</strong> the vector sum of all it's other velocities in other directions.</p>
+            <p><strong>Vector Resolution:</strong> the method of taking a single vector at an angle and separating it into two perpendicular parts.</p>
+            <p><strong>Vector Components:</strong> the x and y parts of a vector that describe the influence of that vector in a single direction (either horizontally or vertically).</p>
+            <p><em>For additional information, check out: <a href="http://www.physicsclassroom.com/class/vectors/Lesson-2/Initial-Velocity-Components">Physics Classroom</a></em></p>
+            <br>
+            <div>
+                <img src="/img/pl1.gif" width="30%" align="centre"/><br>
+                <img src="img/plane-resultant-velocity.gif"  width="30%" align="centre"/>
+            </div>
+        </div>
+        <br><br>
+        <div id="Math">
+            <h4>Pythagorean Theorem and Trigonometry</h4>
+            <div>
+                <img src="/img/boatacross.jpg" alt="down" width="30%" align="right"/>
+                <p><strong>So how do we understand the movement of the boat?</strong></p>
+                <p>There are two velocities that are acting on the  boat:</p>
+
+                <ol>
+                    <li>Velocity, V<span class="descSubscript">x</span>-- due to the flow of the river</li>
+                    <li>Velocity, V<span class="descSubscript">y</span>-- due to the engine on the boat</li>
+                </ol>
+
+                <p>In terms of Physics, the x and y components of the boat’s velocity are independent.</p>
+                <p>So, <em>how do we compute the velocity of the boat</em>. Given the two velocity components are perpendicular to each other, we can use the Pythagorean theorem to compute the resultant velocity of the boat:</p>
+                <img src="/img/2d-velocity-equation.png" alt="down" width="10%" align=left"/>
+
+                <p><em>And how do we compute the direction in which the boat moves</em>. To do that, we have to apply trigonometry.</p>
+
+                <img src="/img/tan-theta.png" alt="down" width="5%" align="left"/>, where is the angle at which the boat moves with respect to the x-axis, which is parallel to the river bank. Therefore, , the heading of the the boat can be calculated as
+                <br>
+                <div>
+                    <p><strong>SOHCAHTOA</strong>- <em><a href="http://mathworld.wolfram.com/SOHCAHTOA.html" target="_blank">Wolfram Mathworld</a></em></p>
+                    <img src="/img/SOHCAHTOA.gif" width="50%"/><br>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+        <br><br>
+        <div id="gravity">
+            <h4>Gravity</h4>
+            <p><a href="https://www.britannica.com/science/gravity-physics" target="_blank"><strong>Gravity:</strong></a> Gravity is measured by the acceleration that it gives to freely falling objects. At Earth’s surface the acceleration of gravity is about 9.8 metres (32 feet) per second per second. Thus, for every second an object is in free fall, its speed increases by about 9.8 metres per second.</p>
+            <br>
+            <img src="/img/gravity2.png" width="30%" align="centre"/><br>
+        </div>
+        <br><br>
+        <div id="glossary">
+            <h4>Glossary of Physics Blocks</h4>
+            <table>
+                <tr>
+                    <th>Block(s)</th>
+                    <th>Definition</th>
+                </tr>
+                <tr>
+                    <td><img src="/img/Resources/simulation-step.png" align="left"/></td>
+                    <td>Similar to the green flag for the overall project, the simulation step block will run when called to.</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/Resources/start-simulation.png" align="left"/></td>
+                    <td>This should be at the end of the steps you initiate at the green flag. Using this block calls your simulation step block.</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/Resources/stop-simulation.png" align="left"/></td>
+                    <td>If you want your simulation to stop at a certain point, use this block!</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/Resources/time-in-s.png" align="left"/></td>
+                    <td>A variable keeps track of the time (in seconds) that the simulation has been running. If you would like to see the value of the variable on the stage or graph its change during the simulation, make sure it is checked!</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/Resources/delta-t.png" align="left"/></td>
+                    <td>A variable that keeps track of the change in time for your simulation. If you would like to see the value of the variable on the stage or graph its change during the simulation, make sure it is checked!</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/Resources/set-delta-t.png" align="left"/></td>
+                    <td>As with any other variable, this block allows you to set the value of delta t.</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/Resources/position-variables.png" align="left"/></td>
+                    <td>The variables that keeps track of the current x and y positions of the assigned object. If you would like to see the value of the variable on the stage or graph its change during the simulation, make sure it is checked!</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/Resources/set-position.png" align="left"/></td>
+                    <td>To set the x or y position, use this block!</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/Resources/change-position.png" align="left"/></td>
+                    <td>This block allows you to change the x or y position. When called, it changes the position based on the input once. Therefore, in a simulation step it is continuously called until the simulation ends.</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/Resources/velocity-variables.png" align="left"/></td>
+                    <td>The variables that keep track of the x and y velocity of the assigned object. If you would like to see the value of the variable on the stage or graph its change during the simulation, make sure it is checked!</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/Resources/set-velocity.png" align="left"/></td>
+                    <td>Allows you to set the velocity variable (either x or y or both) to a desired value.</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/Resources/change-velocity.png" align="left"/></td>
+                    <td>This block allows you to change the x or y position. When called, it changes the position based on the input once. Therefore, in a simulation step it is continuously called until the simulation ends.</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/Resources/controlling-other-object.png" align="left"/></td>
+                    <td>If your program requires a reference to the position of another object, you can use these blocks to either keep track or set the position of the other object.</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/Resources/graphing.png" align="left"/></td>
+                    <td>We've included the graphing blocks to use whenever you do not use a simulation step. If you use the simulation step blocks, the variables selected will automatically be graphed (click on the graphing icons under the stage to view!</td>
+                </tr>
+                <tr>
+                    <td><img src="/img/Resources/update-position.png" align="left"/></td>
+                    <td>This is an example of a behavior block. They will appear at the bottom of the physics category of blocks if selected in the conceptual model. To edit, right click on the block and select "edit."</td>
+                </tr>
+            </table>
+        </div>
+        <br><br>
+        <div id="simulation">
+            <h4>Simulation Model</h4>
+            <div>
+                <p>Our goal in this project is to learn physics by building computational models.
+                    Here we will build a particular form of a computational model called a simulation model.
+                    Let us explore what we mean by a simulation model. What are its essential components?</p>
+                <p><b>Computational modeling</b> is the use of computers to simulate and study the behaviors of systems.
+                    A computational model contains variables that characterize the system being studied and the relations between those variables, expressed in a mathematical form.
+                    Computational models come in various form. One type of a computational model  is a  <b>simulation model</b>, where we model the behaviors of a system in a mathematical and logical form that can be executed as a computer program.
+                    In the current study, we will build simulation models in kinematics,
+                    which is a branch of physics where we model the motion of physical objects without considering the forces that cause the motion. </p>
+                <img class="imgFloat" src="img/simulation.png"  width="20%" />
+                <p>Since we are interested in the motion of objects, our simulation models will capture the behaviors of objects over time.
+                    There are many ways in which we can model the behavior of an object over time.
+                    One useful way is to define how the behavior of objects evolve over one time step.
+                    One can then simulate or execute this model for multiple time steps to study how the behavior of the objects evolve over time.
+                    In other words, we define the model of the system for one  simulation step, and  repeat the execution for a fixed number of steps.
+                    Sometimes, we can execute the simulation in an infinite loop, until a specific termination command ends the simulation.</p>
+                <p>SImulation helps us solve problems digitally on a computer, which saves us a lot of time and money, especially when we design and build complex systems like cars, aircraft, spacecraft, and power plants. Simulations also help us understand the natural and physical world, and how we may interact with the world in an effective and safe manner. To do this, we run experiments with our simulation models.</p>
+                <p> To run experiments with the model,  one can vary some of the variables of the system model, to understand how the behaviors are affected by the variable values, and also to determine what variables achieve specific outcomes. </p>
+                <p><em>Why do we care?</em>  When you are driving  a car and see a sharp bend ahead, you know you have to slow down to negotiate the bend; but how  often do you think of the deceleration needed to slow down the car to a safe speed? You may not, but the engineers who design the car do. Very often, these engineers create simulation models to study and design how to provide safe braking functions. </p>
+                <p>So far, all of our actions happen as soon as the green flag is clicked. As a means of adding more structure to the program, let’s create a model for a simulation step. To do so, initial variable creation will still happen at the green flag (such as asking the user for input and setting the respective variable to the submitted answer), but the simulation actions will take place in a simulation step that is called once all variables are initialized. </p>
+            </div>
+        </div>
+        <br><br>
+        <div id="conceptual">
+            <h4>Conceptual Model</h4>
+            <p><b>Introduction to the Conceptual Modeling:</b>  We talked about building computational models earlier to describe motion of physical objects. We also saw that computational modeling on a computer involved creating programs that represent computational models of the physical system or phenomenon that contain one or more objects. Initially, this entails identifying (or exploring) the parameters (variables) that play a role in the system being modeled and the mechanisms or rules that govern the phenomenon (these then constitute the “algorithm” in the computational model). </p>
+            <p>Very often, especially as the phenomenon being modeled becomes complex, it is useful to generate a structure for the model that we are trying to construct. Scientists and engineers often call this an abstract representation of a problem. Why do we want to create an abstract representation of a problem before we build its computational model and study its behaviors?</p>
+            <p>The principle of abstraction is very important in programming. Through the process of abstraction, a programmer hides all but the relevant details about an object in order to reduce the complexity in its description, and also making it easier to write programs that define its behaviors.  You can see that the same issues apply when we think of modeling a science phenomena.  For example, if we are modeling the motion of an object in kinematics, the position, velocity, and acceleration of the object at any time, are important parameters or variables to describe the object’s motion. On the other hand, the shape and size of the object, its color, whether the body of the object has stripes painted on it, and who the object belongs to is irrelevant. By choosing only the relevant properties of  objects, and none of the extraneous ones makes it easier for us define the behaviors and then build computational models corresponding to these behaviors.  In C2STEM, we will adopt this practice of combining conceptual and computational modeling, to help us structure the modeling task, and make it easier for us to generate correct model behaviors. You can see that this idea is simultaneously supported as a good programming practice. So, let us adopt it as we move forward.</p>
+            <p>In C2STEM we will be utilizing a conceptual model in order to organize the variables and behaviors that define each physics simulation model. Think of conceptual modeling or creating an abstract representation also as big picture planning when constructing a model. What components of the model do we need to build simulation models for using physics concepts and principles (laws)? We do not want to overload our computational model (and we definitely don’t want to overthink/create confusion with too many possibilities!).</p>
+            <p>In the Conceptual Model tab, you will need to add an objects that are relevant to the scenario you are building the model for, and add the necessary properties and behaviors that agent will need to have in the computational model to correctly model the system behavior. </p>
+        </div>
+        <br><br>
+
+        <div id="ctconstructs">
+            <h4>Computational Thinking Constructs</h4>
+            <p><em><strong>Abstraction:</strong></em> reduces information and detail to facilitate focus on relevant concepts.</p>
+            <p><em><strong>Algorithms:</strong></em> a process or set of rules to be followed in calculations or other problem-solving operations.</p>
+            <p><em><strong>Encapsulation:</strong></em> this construct can have a twofold meaning where either you restrict
+                direct access to an objects components (e.g. behaviors and properties) and/or bundling data with the functions that operate on that data.</p>
+                <ul>
+                    <li>-- In Module Two, we want to restrict access to the behaviors and properties of the boat, but what about the properties
+                    behaviors of the river? Are those components strictly related to the properties and behaviors of the boat?</li>
+                    <li>-- In Module Two, what role does gravity play in the overall environment?</li>
+                </ul>
+        </div>
 </div>
 
-<div id="Speed" class="tab-content">
-    <p>Your interpretation of velocity is likely very similar to the scientific definition.
-        We have all seen speed limit signs denoting a certain miles per hour rate that you cannot and should not drive above.
-        <span><b>Speed</b></span> is a <span>scalar</span> quantity that refers to "how fast an object is moving." Speed can be thought of as the rate at which an object covers distance.
-        A fast-moving object has a high speed and covers a relatively large distance in a short amount of time.
-        Contrast this to a slow-moving object that has a low speed;
-        it covers a relatively small amount of distance in the same amount of time. An object with no movement at all has a zero speed.
-    </p>
-</div>
-<div id="Velocity" class="tab-content">
-    <p>Velocity in contrast is a vector quantity, therefore, it includes both magnitude (speed) and direction.
-        <b>Velocity</b> is defined as "the rate at which an object changes its position."
-        Therefore, if a person takes 3 steps to the right along the x-axis, and 1 to the left on the x-axis in one second,
-        we compute the person’s velocity to be 2 steps/second in the x-direction. In general, velocity is defined as the change in position</p>
-    <p>divided by the time of that change. Mathematically, this can be written as: </p>
-    <p>In the above equation ▲x represents the change in position of the object in one time step,
-        and ▲t is the length of the time step. ▲t is a special variable and an important component of a simulation step.
-        You may not see this right away, but as you get to more complex simulations, you will see that making ▲t small will generate more accurate behaviors.
-        However, there is a tradeoff. Suppose you want to generate the behavior of your system for t seconds from the start of the simulation.
-        t is called the simulation time. If we reduce ▲t, we may make our simulation results more accurate, but our simulation will take longer to run.
-        Therefore, there is a tradeoff between how fast you want your simulation to complete, versus how accurate you want the simulated behaviors to be.
-        In most situations, small changes in ▲t will not make noticeable differences in the execution time of a simulation,
-        because computers nowadays are  quite powerful.
-    </p>
-    <img class="ImageStyle" src="img/equation.png"  width="10%" align="centre"/>
-    <p>Now, in order to accurately model the movement of our medical truck in our simulation we will need to change the position of our object (the truck) based on the set velocity.
-        Keep this velocity equation in mind when you design your algorithm!</p>
-</div>
-<div id="Accelaration" class="tab-content">
-    <iframe class="resourseiFrame" width="60%" height="300" src="https://www.youtube.com/embed/FOkQszg1-j8?ecver=1" frameborder="0" allowfullscreen></iframe>
-    <p>As you may have seen in the video, acceleration is defined as the rate at which velocity changes.
-        Mathematically, this can be wriiten as:</p>
-    <img class="ImageStyle" src="img/second_equation.png"  width="10%" align="centre"/>
-    <div>
-        <img class="imgFloat" src="img/position-velocity-time.png"  width="30%" />
-        <p> where  Δv is the change in velocity over a simulation time step, and Δt is the length of the simulation time step in seconds.</p>
-        <p>To understand acceleration, study this table. In this example, the  velocity of the object changes by a constant amount every time step (second).
-            Note how the velocity itself changes as time advances.
-            What about the change in position over time? Think on the equation(s) used in your final velocity module as you prepare the next few tasks!</p>
-    </div>
-</div>
-<div id="TwoDVelocity" class="tab-content">
-    <div>
-    <img src="/img/boatacross.jpg" alt="down" width="30%" align="right"/>
-    <h5>So how do we understand the movement of the boat?</h5>
-    <p>There are two velocities that are acting on the  boat:</p>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
 
-    <ol>
-        <li>Velocity, V<span class="descSubscript">x</span>-- due to the flow of the river</li>
-        <li>Velocity, V<span class="descSubscript">y</span>-- due to the engine on the boat</li>
-    </ol>
+<script>
+    $(".button-collapse").sideNav();
+    $('.button-collapse').sideNav({
+        menuWidth: 300, // Default is 300
+        edge: 'right', // Choose the horizontal origin
+        closeOnClick: true
+     }
+     );
+</script>
 
-    <p>In terms of Physics, the x and y components of the boat’s velocity are independent.</p>
-    <p>So, <em>how do we compute the velocity of the boat</em>. Given the two velocity components are perpendicular to each other, we can use the Pythagorean theorem to compute the resultant velocity of the boat:</p>
-    <img src="/img/2d-velocity-equation.png" alt="down" width="10%" align=left"/>
 
-    <p><em>And how do we compute the direction in which the boat moves</em>. To do that, we have to apply trigonometry.</p>
-
-    <img src="/img/tan-theta.png" alt="down" width="5%" align="left"/>, where is the angle at which the boat moves with respect to the x-axis, which is parallel to the river bank. Therefore, , the heading of the the boat can be calculated as
-    </div>
-</div>
-<div id="glossary" class="tab-content">
-    <table>
-        <tr>
-            <th>Block(s)</th>
-            <th>Definition</th>
-        </tr>
-        <tr>
-            <td><img src="/img/Resources/simulation-step.png" align="left"/></td>
-            <td>Similar to the green flag for the overall project, the simulation step block will run when called to.</td>
-        </tr>
-        <tr>
-            <td><img src="/img/Resources/start-simulation.png" align="left"/></td>
-            <td>This should be at the end of the steps you initiate at the green flag. Using this block calls your simulation step block.</td>
-        </tr>
-        <tr>
-            <td><img src="/img/Resources/stop-simulation.png" align="left"/></td>
-            <td>If you want your simulation to stop at a certain point, use this block!</td>
-        </tr>
-        <tr>
-            <td><img src="/img/Resources/time-in-s.png" align="left"/></td>
-            <td>A variable keeps track of the time (in seconds) that the simulation has been running. If you would like to see the value of the variable on the stage or graph its change during the simulation, make sure it is checked!</td>
-        </tr>
-        <tr>
-            <td><img src="/img/Resources/delta-t.png" align="left"/></td>
-            <td>A variable that keeps track of the change in time for your simulation. If you would like to see the value of the variable on the stage or graph its change during the simulation, make sure it is checked!</td>
-        </tr>
-        <tr>
-            <td><img src="/img/Resources/set-delta-t.png" align="left"/></td>
-            <td>As with any other variable, this block allows you to set the value of delta t.</td>
-        </tr>
-        <tr>
-            <td><img src="/img/Resources/position-variables.png" align="left"/></td>
-            <td>The variables that keeps track of the current x and y positions of the assigned object. If you would like to see the value of the variable on the stage or graph its change during the simulation, make sure it is checked!</td>
-        </tr>
-        <tr>
-            <td><img src="/img/Resources/set-position.png" align="left"/></td>
-            <td>To set the x or y position, use this block!</td>
-        </tr>
-        <tr>
-            <td><img src="/img/Resources/change-position.png" align="left"/></td>
-            <td>This block allows you to change the x or y position. When called, it changes the position based on the input once. Therefore, in a simulation step it is continuously called until the simulation ends.</td>
-        </tr>
-        <tr>
-            <td><img src="/img/Resources/velocity-variables.png" align="left"/></td>
-            <td>The variables that keep track of the x and y velocity of the assigned object. If you would like to see the value of the variable on the stage or graph its change during the simulation, make sure it is checked!</td>
-        </tr>
-        <tr>
-            <td><img src="/img/Resources/set-velocity.png" align="left"/></td>
-            <td>Allows you to set the velocity variable (either x or y or both) to a desired value.</td>
-        </tr>
-        <tr>
-            <td><img src="/img/Resources/change-velocity.png" align="left"/></td>
-            <td>This block allows you to change the x or y position. When called, it changes the position based on the input once. Therefore, in a simulation step it is continuously called until the simulation ends.</td>
-        </tr>
-        <tr>
-            <td><img src="/img/Resources/controlling-other-objects.png" align="left"/></td>
-            <td>If your program requires a reference to the position of another object, you can use these blocks to either keep track or set the position of the other object.</td>
-        </tr>
-        <tr>
-            <td><img src="/img/Resources/graphing.png" align="left"/></td>
-            <td>We've included the graphing blocks to use whenever you do not use a simulation step. If you use the simulation step blocks, the variables selected will automatically be graphed (click on the graphing icons under the stage to view!</td>
-        </tr>
-        <tr>
-            <td><img src="/img/Resources/update-position.png" align="left"/></td>
-            <td>This is an example of a behavior block. They will appear at the bottom of the physics category of blocks if selected in the conceptual model. To edit, right click on the block and select "edit."</td>
-        </tr>
-    </table>
-</div>
-<div id="simulation" class="tab-content">
-    <div>
-        <p>Our goal in this project is to learn physics by building computational models.
-            Here we will build a particular form of a computational model called a simulation model.
-            Let us explore what we mean by a simulation model. What are its essential components?</p>
-        <p><b>Computational modeling</b> is the use of computers to simulate and study the behaviors of systems.
-            A computational model contains variables that characterize the system being studied and the relations between those variables, expressed in a mathematical form.
-            Computational models come in various form. One type of a computational model  is a  <b>simulation model</b>, where we model the behaviors of a system in a mathematical and logical form that can be executed as a computer program.
-            In the current study, we will build simulation models in kinematics,
-            which is a branch of physics where we model the motion of physical objects without considering the forces that cause the motion. </p>
-        <img class="imgFloat" src="img/simulation.png"  width="20%" />
-        <p>Since we are interested in the motion of objects, our simulation models will capture the behaviors of objects over time.
-            There are many ways in which we can model the behavior of an object over time.
-            One useful way is to define how the behavior of objects evolve over one time step.
-            One can then simulate or execute this model for multiple time steps to study how the behavior of the objects evolve over time.
-            In other words, we define the model of the system for one  simulation step, and  repeat the execution for a fixed number of steps.
-            Sometimes, we can execute the simulation in an infinite loop, until a specific termination command ends the simulation.</p>
-        <p>SImulation helps us solve problems digitally on a computer, which saves us a lot of time and money, especially when we design and build complex systems like cars, aircraft, spacecraft, and power plants. Simulations also help us understand the natural and physical world, and how we may interact with the world in an effective and safe manner. To do this, we run experiments with our simulation models.</p>
-        <p> To run experiments with the model,  one can vary some of the variables of the system model, to understand how the behaviors are affected by the variable values, and also to determine what variables achieve specific outcomes. </p>
-        <p><em>Why do we care?</em>  When you are driving  a car and see a sharp bend ahead, you know you have to slow down to negotiate the bend; but how  often do you think of the deceleration needed to slow down the car to a safe speed? You may not, but the engineers who design the car do. Very often, these engineers create simulation models to study and design how to provide safe braking functions. </p>
-        <p>So far, all of our actions happen as soon as the green flag is clicked. As a means of adding more structure to the program, let’s create a model for a simulation step. To do so, initial variable creation will still happen at the green flag (such as asking the user for input and setting the respective variable to the submitted answer), but the simulation actions will take place in a simulation step that is called once all variables are initialized. </p>
-    </div>
-</div>
-<div id="conceptual" class="tab-content">
-    <p><b>Introduction to the Conceptual Modeling:</b>  We talked about building computational models earlier to describe motion of physical objects. We also saw that computational modeling on a computer involved creating programs that represent computational models of the physical system or phenomenon that contain one or more objects. Initially, this entails identifying (or exploring) the parameters (variables) </p>
-    <img class="ImageStyle" src="img/equation.png"  width="10%" align="centre"/>
-    <p>that play a role in the system being modeled and the mechanisms or rules that govern the phenomenon (these then constitute the “algorithm” in the computational model). </p>
-    <p>Very often, especially as the phenomenon being modeled becomes complex, it is useful to generate a structure for the model that we are trying to construct. Scientists and engineers often call this an abstract representation of a problem. Why do we want to create an abstract representation of a problem before we build its computational model and study its behaviors?</p>
-    <p>The principle of abstraction is very important in programming. Through the process of abstraction, a programmer hides all but the relevant details about an object in order to reduce the complexity in its description, and also making it easier to write programs that define its behaviors.  You can see that the same issues apply when we think of modeling a science phenomena.  For example, if we are modeling the motion of an object in kinematics, the position, velocity, and acceleration of the object at any time, are important parameters or variables to describe the object’s motion. On the other hand, the shape and size of the object, its color, whether the body of the object has stripes painted on it, and who the object belongs to is irrelevant. By choosing only the relevant properties of  objects, and none of the extraneous ones makes it easier for us define the behaviors and then build computational models corresponding to these behaviors.  In C2STEM, we will adopt this practice of combining conceptual and computational modeling, to help us structure the modeling task, and make it easier for us to generate correct model behaviors. You can see that this idea is simultaneously supported as a good programming practice. So, let us adopt it as we move forward.</p>
-    <p>In C2STEM we will be utilizing a conceptual model in order to organize the variables and behaviors that define each physics simulation model. Think of conceptual modeling or creating an abstract representation also as big picture planning when constructing a model. What components of the model do we need to build simulation models for using physics concepts and principles (laws)? We do not want to overload our computational model (and we definitely don’t want to overthink/create confusion with too many possibilities!).</p>
-    <p>In the Conceptual Model tab, you will need to add an objects that are relevant to the scenario you are building the model for, and add the necessary properties and behaviors that agent will need to have in the computational model to correctly model the system behavior. </p>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script >
 
     $(document).ready(function() {
@@ -199,6 +307,7 @@
             $(content).siblings('.tab-content').hide();
         });
     });
-</script>
+</script>-->
+
 </body>
 </html>
