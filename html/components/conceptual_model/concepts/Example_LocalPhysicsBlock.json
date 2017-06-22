@@ -1,0 +1,293 @@
+{
+  "environment": {
+  },
+  "agents": {
+    "Truck": {
+      "name": "Truck",
+      "elementID": "Truck",
+      "selected": false,
+      "isSprite": true,
+      "isBuiltIn": true,
+      "costume": "c2stem med truck",
+      "properties": {
+        "PositionX": {
+          "name": "x position in m",
+          "elementID": "PositionX",
+          "selected": false
+        },
+        "VelocityX": {
+          "name": "x velocity in m/s",
+          "elementID": "VelocityX",
+          "selected": false
+        },
+        "XAcceleration": {
+          "name": "x acceleration in m/s^2",
+          "elementID": "StartPosition",
+          "selected": false
+        },
+        "OldPositionX": {
+          "name": "old x position in m",
+          "elementID": "OldPositionX",
+          "selected": false
+        },
+        "PassedTheCone": {
+          "name": "passed the cone",
+          "elementID": "PassedTheCone",
+          "selected": false
+        }
+      },
+      "behaviors": {
+        "update_position": {
+          "name": "update position in m",
+          "elementID": "update_position",
+          "selected": false,
+          "category": "physics"
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "PositionX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "x position in m",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "false"
+            },
+            {
+              "name": "set x position to %'value' m",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "false"
+            },
+            {
+              "name": "change x position by %'value' m",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "false"
+            },
+            {
+              "name": "getPhysicsAttrOf",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setPhysicsAttrOf",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "VelocityX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "xVelocity",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setXVelocity",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changeXVelocity",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "XAcceleration"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "XAcceleration",
+              "category": "physics",
+              "type": "custom_variable",
+              "isGlobal": "false"
+            },{
+              "name": "x acceleration in m/s^2",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "false"
+            },
+            {
+              "name": "set x acceleration to %'value' m/s^2",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "false"
+            },
+            {
+              "name": "change x acceleration by %'value' m/s^2",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "false"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "OldPositionX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "old x position in m",
+              "category": "physics",
+              "type": "custom_variable",
+              "isGlobal": "false"
+            },
+            {
+            "name": "set old x position to %'value' m",
+            "category": "physics",
+            "type": "custom_block",
+            "isGlobal": "false"
+            },
+            {
+              "name": "change old x position by %'value' m",
+              "category": "physics",
+              "type": "custom_block",
+              "isGlobal": "false"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "PassedTheCone"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "passed the cone",
+              "category": "physics",
+              "type": "custom_variable",
+              "isGlobal": "false"
+            }
+          ]
+        }
+      ]
+    },
+    "Cone1": {
+      "name": "Cone1",
+      "elementID": "Cone1",
+      "selected": false,
+      "isSprite": true,
+      "isBuiltIn": true,
+      "costume": "cone1",
+      "properties": {
+        "PositionX": {
+          "name": "x position in m",
+          "elementID": "PositionX",
+          "selected": false
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "PositionX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsXPosition",
+              "category":"physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setPhysicsXPosition",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changePhysicsXPosition",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        }
+      ]
+    },
+    "Cone2": {
+      "name": "Cone2",
+      "elementID": "Cone2",
+      "selected": false,
+      "isSprite": true,
+      "isBuiltIn": true,
+      "costume": "cone2",
+      "properties": {
+        "PositionX": {
+          "name": "x position in m",
+          "elementID": "PositionX",
+          "selected": false
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "PositionX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsXPosition",
+              "category":"physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setPhysicsXPosition",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changePhysicsXPosition",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        }
+      ]
+    },
+    "Cone3": {
+      "name": "Cone3",
+      "elementID": "Cone3",
+      "selected": false,
+      "isSprite": true,
+      "isBuiltIn": true,
+      "costume": "cone3",
+      "properties": {
+        "PositionX": {
+          "name": "x position in m",
+          "elementID": "PositionX",
+          "selected": false
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "PositionX"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "physicsXPosition",
+              "category":"physics",
+              "type": "built_in"
+            },
+            {
+              "name": "setPhysicsXPosition",
+              "category": "physics",
+              "type": "built_in"
+            },
+            {
+              "name": "changePhysicsXPosition",
+              "category": "physics",
+              "type": "built_in"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
