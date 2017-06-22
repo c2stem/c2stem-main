@@ -11,7 +11,7 @@
 <br>
 
 <p>A fellow non-profit in the region has asked us to include a package in our drone delivery that will bring equipment to repair
-    a receiving tower near the tribe. The drone must drop 2 packages, but the trees of the rainforest force the drone to move to different altitudes to avoid crashing! </p>
+    a receiving tower near the tribe. The drone must drop 2 packages and account for the different heights of the two landing spots! </p>
 <br>
 
 <ul class="collapsible popout" data-collapsible="accordion">
@@ -19,21 +19,43 @@
         <div class="collapsible-header"><strong>Step One: Make a Prediction</strong></div>
         <div class="collapsible-body"><span><img src="/img/m3s3question.png"  width="20%" align="right"/>
         <p><strong>Imagine the drone is twice is high over target 1 as target 2.  How does the horizontal drop distance for target 2 compare with target 1 drop distance?</strong></p>
-            <form action="">
-                <input type="radio" name="landing" value="a">Double the distance<br>
-                <input type="radio" name="landing" value="b">Same<br>
-                <input type="radio" name="landing" value="b">Half the distance<br>
-                <input type="radio" name="landing" value="c">Less than half the distance
+              <form action="#">
+                <p>
+                  <input name="drop" type="radio" id="double" />
+                  <label for="double">Double the distance</label>
+                </p>
+                <p>
+                  <input name="drop" type="radio" id="same" />
+                  <label for="same">Same</label>
+                </p>
+                <p>
+                  <input name="drop" type="radio" id="half"  />
+                  <label for="half">Half the distance</label>
+                </p>
+                <p>
+                  <input name="drop" type="radio" id="less"/>
+                  <label for="less">Less than half the distance</label>
+                </p>
+              </form>
+            <br>
+            <p><strong>Explain your answer:</strong></p><br>
+              <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <textarea id="textarea2" class="materialize-textarea"></textarea>
+                      <label for="textarea2">Insert text here.</label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            <br>
+            <form action="#">
+                <p>
+                  <input type="checkbox" id="m3t3a" />
+                  <label for="m3t3a">SUBMIT SOLUTION</label>
+                </p>
             </form>
-            <br>
-            <strong>Explain your answer:</strong><br>
-            <textarea name="explanding" rows="3" cols="100">
-            </textarea>
-            <br>
-            <div class="panel-content">
-                <input type="checkbox">
-                <label><strong>SUBMIT SOLUTION</strong></label>
-            </div>
         </span>
         </div>
     </li>
@@ -47,17 +69,19 @@
         <div class="collapsible-header"><strong>Step Two: Drop the Package</strong></div>
         <div class="collapsible-body"><span><strong>Program Description</strong>
             <ul>
-                <li>Position the drone to the left of the target and height of 24 m</li>
-                <li>Target 1 has a height of 0m, target 2 has a height of 12m</li>
-                <li>Drone + packages travel to the right with constant velocity</li>
-                <li>Program your drone to hit each target with 1 package</li>
-                <li>Determine the horizontal release distance from each target</li>
+                <li>- Position the drone to the left of the target and height of 24 m</li>
+                <li>- Target 1 has a height of 0m, target 2 has a height of 12m</li>
+                <li>- Drone + packages travel to the right with constant velocity</li>
+                <li>- Program your drone to hit each target with 1 package</li>
+                <li>- Determine the horizontal release distance from each target</li>
             </ul>
             <br>
-            <div class="panel-content">
-                <input type="checkbox">
-                <label><strong>SUBMIT SOLUTION</strong></label>
-            </div>
+            <form action="#">
+                <p>
+                  <input type="checkbox" id="m3t3b" />
+                  <label for="m3t3b">SUBMIT SOLUTION</label>
+                </p>
+            </form>
         </span>
         </div>
     </li>

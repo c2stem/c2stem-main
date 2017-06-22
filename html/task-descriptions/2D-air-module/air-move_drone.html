@@ -14,39 +14,61 @@
 
 <ul class="collapsible popout" data-collapsible="accordion">
     <li>
-        <div class="collapsible-header"><strong>Step One: Make a Prediction</strong></div>
+        <div class="collapsible-header"><strong>Activity 3.2.A: Make a Prediction</strong></div>
         <div class="collapsible-body"><span><img src="/img/m3s1question.png"  width="20%" align="right"/>
         <p><strong>If the drone is moving to the right with constant speed, where should the drone drop the package so it hits the target?</strong></p>
-            <form action="">
-                <input type="radio" name="landing" value="a">A. Left of the target<br>
-                <input type="radio" name="landing" value="b">B. Directly above target<br>
-                <input type="radio" name="landing" value="c">C. To the right of the target
+            <form action="#">
+                <p>
+                  <input name="landing" type="radio" id="a" />
+                  <label for="a">A. Left of the target</label>
+                </p>
+                <p>
+                  <input name="landing" type="radio" id="b" />
+                  <label for="b">B. Directly above target</label>
+                </p>
+                <p>
+                  <input name="landing" type="radio" id="c"  />
+                  <label for="c">C. To the right of the target</label>
+                </p>
+              </form>
+
+            <br>
+            <p><strong>Explain your answer:</strong></p><br>
+              <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <textarea id="textarea1" class="materialize-textarea"></textarea>
+                      <label for="textarea1">Insert text here.</label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            <br>
+            <form action="#">
+                <p>
+                  <input type="checkbox" id="3t2a" />
+                  <label for="3t2a">SUBMIT SOLUTION</label>
+                </p>
             </form>
-            <br>
-            <strong>Explain your answer:</strong><br>
-            <textarea name="explanding" rows="3" cols="100">
-            </textarea>
-            <br>
-            <div class="panel-content">
-                <input type="checkbox">
-                <label><strong>SUBMIT SOLUTION</strong></label>
-            </div>
         </span>
         </div>
     </li>
     <li>
-        <div class="collapsible-header"><strong>Step Two: Make a Drop</strong></div>
+        <div class="collapsible-header"><strong>Activity 3.2.B: Make a Drop</strong></div>
         <div class="collapsible-body"><span><strong>Program Description:</strong>
             <ul>
-                <li>Position the drone + package to the left of target at a height of 20m</li>
-                <li>Move the drone + package to the right at a constant velocity of 9m/s</li>
-                <li>Release the package so that it hits the target</li>
-                <li>Determine the horizontal release distance from target and impact velocity</li>
+                <li>- Position the drone + package to the left of target at a height of 20m</li>
+                <li>- Move the drone + package to the right at a constant velocity of 9m/s</li>
+                <li>- Release the package so that it hits the target</li>
+                <li>- Determine the horizontal release distance from target and impact velocity</li>
             </ul>
-            <div class="panel-content">
-                <input type="checkbox">
-                <label><strong>SUBMIT SOLUTION</strong></label>
-            </div>
+            <form action="#">
+                <p>
+                  <input type="checkbox" id="3t2b" />
+                  <label for="3t2b">SUBMIT SOLUTION</label>
+                </p>
+            </form>
         </span>
         </div>
     </li>
@@ -54,10 +76,10 @@
         <div class="collapsible-header"><strong>Hints</strong></div>
         <div class="collapsible-body"><span>
             <ul>
-                <li>Your drone and package need to move at the same velocity, but remember - they are two separate objects!</li>
-                <li>Keep in mind the conditional logic used to make the medical truck stop in the previous module.</li>
-                <li>Think about how you modeled 2 dimensional motion in the river crossing problems. How will you update both horizontal and vertical position?</li>
-                <li>What is the relationship between the overall impact velocity of the package and its horizontal and vertical components?</li>
+                <li>- Your drone and package need to move at the same velocity, but remember - they are two separate objects!</li>
+                <li>- Keep in mind the conditional logic used to make the medical truck stop in the previous module.</li>
+                <li>- Think about how you modeled 2 dimensional motion in the river crossing problems. How will you update both horizontal and vertical position?</li>
+                <li>- What is the relationship between the overall impact velocity of the package and its horizontal and vertical components?</li>
             </ul>
         </span>
         </div>
