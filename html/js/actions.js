@@ -11,7 +11,7 @@
         this.eventListeners = [];
     };
 
-    GlobalActionManager.URL = '/events/record'
+    GlobalActionManager.URL = '/SnapCloud/events/record'
     GlobalActionManager.prototype.register = function(id, manager) {
         this.submanagers[id] = manager;
     };

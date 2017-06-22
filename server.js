@@ -43,8 +43,12 @@ function start(options) {
 
             // event logging endpoint
             var events = db.collection('event-logs');
-            app.post('/events/record', function (req, res) {
+            snapRouter.post('/events/record', function (req, res) {
                 const event = req.body;
+                const username = req.session.user;
+
+                event.username = username;
+
                 console.log('received event:', event);
                 return events.save(event)
                     .then(() => res.sendStatus(200));
