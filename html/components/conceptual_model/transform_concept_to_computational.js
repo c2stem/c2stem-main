@@ -217,8 +217,14 @@ transform_cm.show_concept =function(concept){
     // console.log("transform_cm.show_concept", concept.name);
     var ide = snap.world.children[0];
     var sprite = this.getSpriteOfConcept(concept);
-    if(sprite === null)
-        ide.rawOpenSpritesString(concept.sprite_bkup_xml);
+    var SnapActions = c2stem.snapWin.SnapActions;
+    if(sprite === null) {
+        SnapActions.currentEvent = {
+            id: SnapActions.lastSeen+1,
+            args:[]
+        };
+        SnapActions.onAddSprite(concept.sprite_bkup_xml);
+    }
 };
 
 transform_cm.getSpriteOfConcept=function(concept){

@@ -176,8 +176,11 @@ SnapSerializer.prototype.populateCustomBlocksFixed = function (
         if (scripts) {
             definition.scripts = myself.loadScriptsArray(scripts);
         }
+
         if(definition && definition.names)
             delete definition.names;
+
+        SnapActions.loadCustomBlocks([definition], object);
     });
 };
 
@@ -186,9 +189,10 @@ SnapSerializer.prototype.populateCustomBlocksFixed = function (
 IDE_Morph.prototype.import_block_xml =function(sprite, block_xml){
     // //console.log("importing block, sprite===null:",sprite===null);
     var ide = this;
-    if(sprite === null)
-        ide.droppedText(block_xml);
-    else{
+    block_xml = SnapActions.uniqueIdForImport(block_xml).toString();  // add unique ids
+    if(sprite === null) {
+        SnapActions.onImportBlocks(block_xml);
+    } else {
         // console.log("creating block under sprite:", sprite, "blockXML:",block_xml);
         var model = ide.serializer.parse(block_xml);
         ide.serializer.loadCustomBlocks(sprite, model, false);
