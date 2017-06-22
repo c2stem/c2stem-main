@@ -481,11 +481,6 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 name: 'Description',
                 markup: '<iframe id=desc_resourceIframe  src="task-descriptions/2D-module/2d-inst_crossing_river.html" frameborder="0"></iframe>'
             }, {
-                id: 'relativeassess',
-                type: 'desc',
-                name: 'PREDICT',
-                markup: '<iframe id=desc_resourceIframe  src="assessment1.1.html" frameborder="0"></iframe>'
-            }, {
                 id: 'planinstcross',
                 type: 'cm',
                 name: 'PLAN',
