@@ -451,7 +451,7 @@ C2Stem.prototype.extractCustomBlocks = function (filter_sprite_names) {
 C2Stem.prototype.testBlockCache = function(){
     c2stem.SaveBlocksCache("ExtractedBlocks", function (error) {
         if(error === null){
-            c2stem.loadBlocksCache("ExtractedBlocks", "d.asif.hasan", function (error) {
+            c2stem.loadBlocksCache("ExtractedBlocks", "nicole", function (error) {
                 if(!error)
                     console.log("Loaded blockCache", c2stem.blockCache );
             });
@@ -460,7 +460,7 @@ C2Stem.prototype.testBlockCache = function(){
 }
 
 C2Stem.prototype.loadBlockCacheDefault = function(callback){
-    c2stem.loadBlocksCache("ExtractedBlocks", "d.asif.hasan", function (error) {
+    c2stem.loadBlocksCache("ExtractedBlocks", "nicole", function (error) {
         if(!error){
             console.log("Loaded default blockCache", c2stem.blockCache );
         }
