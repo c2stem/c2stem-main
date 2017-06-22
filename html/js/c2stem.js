@@ -463,9 +463,9 @@ C2Stem.prototype.loadBlockCacheDefault = function(callback){
     c2stem.loadBlocksCache("ExtractedBlocks", "d.asif.hasan", function (error) {
         if(!error){
             console.log("Loaded default blockCache", c2stem.blockCache );
-            if(callback)
-                callback();
         }
+        if(callback)
+            callback();
     });
 }
 
