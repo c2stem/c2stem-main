@@ -7,39 +7,41 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <style>
-        header, main, footer {
-            padding-left: 300px!important;
-            height: 200%!important;
+        body, footer {
+            padding-left: 300px;
         }
 
         @media only screen and (max-width : 992px) {
             header, main, footer {
-                padding-left: 0!important;
+                padding-left: 0;
             }
         }
     </style>
+
+    <ul id="slide-out" class="side-nav fixed">
+        <li><a class="subheader">Physics Concepts</a></li>
+        <li><a href="#Position">Position</a></li>
+        <li><a href="#Speed">Speed</a></li>
+        <li><a href="#Velocity">Velocity</a></li>
+        <li><a href="#Accelaration">Accelaration</a></li>
+        <li><a href="#TwoDVelocity">2D Velocity</a></li>
+        <li><a href="#Math">Math Components</a></li>
+        <li><a href="#gravity">Gravity</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="subheader">Computational Concepts</a></li>
+        <li><a href="#glossary">Physics Blocks</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="subheader">Computational Practices</a></li>
+        <li><a href="#simulation">Simulation Model</a></li>
+        <li><a href="#conceptual">Conceptual Model</a></li>
+        <li><a href="#ctconstructs">CT Constructs</a></li>
+        <li><div class="divider"></div></li>
+    </ul>
+    <a href="#" data-activates="slide-out" class="button-collapse"></a>
 </head>
 <body>
 
-<ul id="slide-out" class="side-nav fixed">
-    <li><a class="subheader">Physics Concepts</a></li>
-    <li><a href="#Position">Position</a></li>
-    <li><a href="#Speed">Speed</a></li>
-    <li><a href="#Velocity">Velocity</a></li>
-    <li><a href="#Accelaration">Accelaration</a></li>
-    <li><a href="#TwoDVelocity">2D Velocity</a></li>
-    <li><a href="#Math">Math Components</a></li>
-    <li><a href="#gravity">Gravity</a></li>
-    <li><div class="divider"></div></li>
-    <li><a class="subheader">Computational Concepts</a></li>
-    <li><a href="#glossary">Glossary of Physics Blocks</a></li>
-    <li><div class="divider"></div></li>
-    <li><a class="subheader">Computational Practices</a></li>
-    <li><a href="#simulation">Simulation Model</a></li>
-    <li><a href="#conceptual">Conceptual Model</a></li>
-    <li><a href="#ctconstructs">CT Constructs</a></li>
-</ul>
-<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+
 
 <!--<div id="sidebar">
     <ul>
@@ -60,10 +62,9 @@
     </ul>
      class="tab-content"
 </div>-->
-<div class="container" align="left">
-        <div id="resources">
 
-            <h3>Welcome to the C2STEM Resources</h3>
+    <div id="resources">
+            <h3>C2STEM Resources</h3>
             <img src="img/the-challenges.jpg"  width="80%" align="centre"/>
         </div>
     <br><br>
@@ -75,8 +76,8 @@
             changing, it is moving. Motion then is inherently related to changing position. Within the programming environment, it
             will be helpful to note where the reference point is in the scene and how different positions are measured relative to
             that reference point, usually within the context of a Cartesian (x,y) coordinate system. Note that this position is
-            properly termed a vector quantity because the position is specified with both a magnitude of how far from the reference
-            point the object is and a direction of which way that position is relative to the reference point.</p>
+            properly termed a <em>vector quantity</em> because the position is specified with both a <em>magnitude</em> of how far from the reference
+            point the object is and a <em>direction</em> of which way that position is relative to the reference point.</p>
     </div>
         <br><br>
         <div id="Speed">
@@ -92,7 +93,7 @@
                 <img class="ImageStyle" src="img/speed.png"  width="20%" align="centre"/>
                 <p>where v represents speed, xrepresents the change in position (recall that the triangle symbol is the Greek letter “delta”
                     and means change mathematically), and tis the time interval or time step over which that change in position is measured.
-                    Speed is a scalar quantity, so it only represents the magnitude of that motion. The absolute value symbols around the
+                    Speed is a <em>scalar quantity</em>, so it only represents the magnitude of that motion. The absolute value symbols around the
                     change in position support this scalar representation. All this means that the number arrived at for the speed directly
                     correlates to how fast the object moves: larger numbers for speed represent faster moving objects, smaller numbers
                     represent slower moving objects, and a speed of zero represents an object that is not moving or at rest.</p>
@@ -299,17 +300,16 @@
                     <li>-- In Module Two, what role does gravity play in the overall environment?</li>
                 </ul>
         </div>
-</div>
+
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
 
 <script>
-    $(".button-collapse").sideNav();
+
     $('.button-collapse').sideNav({
-        menuWidth: 300, // Default is 300
-        edge: 'right', // Choose the horizontal origin
-        closeOnClick: true
+        menuWidth: 250, // Default is 300
+        edge: 'left', // Choose the horizontal origin
      }
      );
 </script>
