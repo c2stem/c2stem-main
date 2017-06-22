@@ -59,7 +59,7 @@
           "selected": false
         },
         "ResultantVelocity": {
-          "name": "resultant velocity in m/s",
+          "name": "resultant velocity of boat in m/s",
           "elementID": "ResultantVelocity",
           "selected": false
         },
@@ -68,9 +68,9 @@
           "elementID": "Angle",
           "selected": false
         },
-        "BoatSpeed": {
-          "name": "boat speed in m/s",
-          "elementID": "BoatSpeed",
+        "BoatVelocity": {
+          "name": "boat velocity on water in m/s",
+          "elementID": "BoatVelocity",
           "selected": false
         }
       },
@@ -229,21 +229,34 @@
           ],
           "GeneratedConstructs": [
             {
-              "name": "ResultantVelocity",
+              "name": "resultant velocity of boat in m/s",
               "category": "physics",
               "type": "custom_variable",
               "isGlobal": "false"
             },
             {
-              "name": "set ResultantVelocity to (m/s)",
+              "name": "set resultant velocity of boat to %'value' m/s",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
             },
             {
-              "name": "change ResultantVelocity by (m/s)",
+              "name": "change resultant velocity of boat by %'value' m/s",
               "category": "physics",
               "type": "custom_block",
+              "isGlobal": "false"
+            }
+          ]
+        },
+        {
+          "Required": [
+            "update_resultant_velocity"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "update resultant velocity of boat in m/s",
+              "category": "physics",
+              "type": "built_in_custom_block",
               "isGlobal": "false"
             }
           ]
@@ -272,23 +285,23 @@
         },
         {
           "Required": [
-            "BoatSpeed"
+            "BoatVelocity"
           ],
           "GeneratedConstructs": [
             {
-              "name": "boat speed in m/s",
+              "name": "boat velocity on water in m/s",
               "category": "physics",
               "type": "custom_variable",
               "isGlobal": "false"
             },
             {
-              "name": "set boat speed to (m/s)",
+              "name": "set boat velocity on water to %'value' m/s",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
             },
             {
-              "name": "change boat speed by (m/s)",
+              "name": "change boat velocity on water by %'value' m/s",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
@@ -298,7 +311,7 @@
       ]
     },
     "Dock": {
-      "name": "Dock ",
+      "name": "Dock",
       "elementID": "Dock",
       "selected": false,
       "isSprite": true,
@@ -397,6 +410,7 @@
       "selected": false,
       "isSprite": true,
       "isBuiltIn": true,
+      "costume": "island1",
       "properties": {
         "environment_IslandOneXPosition": {
           "name": "island1 x position in m",
@@ -422,13 +436,13 @@
               "isGlobal": "true"
             },
             {
-              "name": "set island1 x position in (m)",
+              "name": "set island1 x position in %'value' m",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "true"
             },
             {
-              "name": "change island1 x position by (m)",
+              "name": "change island1 x position by %'value' m",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "true"
@@ -446,13 +460,13 @@
               "isGlobal": "true"
             },
             {
-              "name": "set island1 y position in (m)",
+              "name": "set island1 y position in %'value' m",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "true"
             },
             {
-              "name": "change island1 y position by (m)",
+              "name": "change island1 y position by %'value' m",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "true"
@@ -464,8 +478,10 @@
     "Island2": {
       "name": "Island2",
       "elementID": "Island2",
-      "selected": true,
-      "isSprite": false,
+      "selected": false,
+      "isSprite": true,
+      "isBuiltIn": true,
+      "costume": "island2",
       "properties": {
         "environment_IslandTwoXPosition": {
           "name": "island2 x position in m",
@@ -491,13 +507,13 @@
               "isGlobal": "true"
             },
             {
-              "name": "set island2 x position in (m)",
+              "name": "set island2 x position in %'value' m",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "true"
             },
             {
-              "name": "change island2 x position by (m)",
+              "name": "change island2 x position by %'value' m",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "true"
@@ -515,13 +531,13 @@
               "isGlobal": "true"
             },
             {
-              "name": "set island2 y position in (m)",
+              "name": "set island2 y position in %'value' m",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "true"
             },
             {
-              "name": "change island2 y position by (m)",
+              "name": "change island2 y position by %'value' m",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "true"

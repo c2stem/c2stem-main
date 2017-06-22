@@ -80,7 +80,7 @@
           "category": "physics"
         },
         "set_acceleration": {
-          "name": "set acceleration to (m/s^2)",
+          "name": "set acceleration in m/s^2",
           "elementID": "set_acceleration",
           "selected": false,
           "category": "physics"
@@ -184,13 +184,13 @@
               "isGlobal": "false"
             },
             {
-              "name": "set target speed to (m/s)",
+              "name": "set target speed to %'value' m/s",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
             },
             {
-              "name": "change target speed by (m/s)",
+              "name": "change target speed by %'value' m/s",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
@@ -209,13 +209,13 @@
               "isGlobal": "false"
             },
             {
-              "name": "set max engine acceleration to (m/s^2)",
+              "name": "set max engine acceleration to %'value' m/s^2",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
             },
             {
-              "name": "change max engine acceleration by (m/s^2)",
+              "name": "change max engine acceleration by %'value' m/s^2",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
@@ -234,13 +234,13 @@
               "isGlobal": "false"
             },
             {
-              "name": "set max braking acceleration to (m/s^2)",
+              "name": "set max braking acceleration to %'value' m/s^2",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
             },
             {
-              "name": "change max braking acceleration by (m/s^2)",
+              "name": "change max braking acceleration by %'value' m/s^2",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
@@ -259,13 +259,13 @@
               "isGlobal": "false"
             },
             {
-              "name": "set speed limit to (m/s)",
+              "name": "set speed limit to %'value' m/s",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
             },
             {
-              "name": "change speed limit by (m/s)",
+              "name": "change speed limit by %'value' m/s",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
@@ -284,13 +284,13 @@
               "isGlobal": "false"
             },
             {
-              "name": "set coasting time to (s)",
+              "name": "set coasting time to %'value' s",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
             },
             {
-              "name": "change coasting time by (s)",
+              "name": "change coasting time by %'value' s",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
@@ -309,13 +309,13 @@
               "isGlobal": "false"
             },
             {
-              "name": "set deceleration time to (s)",
+              "name": "set deceleration time to %'value' s",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
             },
             {
-              "name": "change deceleration time by (s)",
+              "name": "change deceleration time by %'value' s",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
@@ -334,13 +334,13 @@
               "isGlobal": "false"
             },
             {
-              "name": "set acceleration time to (s)",
+              "name": "set acceleration time to %'value' s",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
             },
             {
-              "name": "change acceleration time by (s)",
+              "name": "change acceleration time by %'value' s",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
@@ -359,13 +359,13 @@
               "isGlobal": "false"
             },
             {
-              "name": "set start position to (m)",
+              "name": "set start position to %'value' m",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
             },
             {
-              "name": "change start position by (m)",
+              "name": "change start position by %'value' m",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
@@ -384,13 +384,13 @@
               "isGlobal": "false"
             },
             {
-              "name": "set x acceleration to (m/s^2)",
+              "name": "set x acceleration to %'value' m/s^2",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
             },
             {
-              "name": "change x acceleration by (m/s^2)",
+              "name": "change x acceleration by %'value' m/s^2",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"

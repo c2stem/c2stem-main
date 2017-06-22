@@ -448,6 +448,11 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 name: 'Description',
                 markup:'<iframe id=desc_resourceIframe  src="task-descriptions/2D-module/2d-motion_of_boat.html" frameborder="0"></iframe>'
             }, {
+                id: 'planinstboat',
+                type: 'cm',
+                name: 'PLAN',
+                data: '2d_inst_boat'
+            }, {
                 id: 'motionboat',
                 type: 'snap1',
                 name: 'BUILD',
@@ -480,6 +485,11 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 type: 'desc',
                 name: 'PREDICT',
                 markup: '<iframe id=desc_resourceIframe  src="assessment1.1.html" frameborder="0"></iframe>'
+            }, {
+                id: 'planinstcross',
+                type: 'cm',
+                name: 'PLAN',
+                data: '2d_inst_cross'
             }, {
                 id: 'instcross',
                 type: 'snap1',
@@ -613,6 +623,11 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 name: 'Description',
                 markup:'<iframe id=desc_resourceIframe  src="task-descriptions/2D-air-module/air-drop_package.html" frameborder="0"></iframe>'
             }, {
+                id: 'planairdrop',
+                type: 'cm',
+                name: 'PLAN',
+                data: 'air_inst_drop'
+            }, {
                 id: 'airbasic',
                 type: 'snap1',
                 name: 'BUILD',
@@ -640,6 +655,11 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 type: 'desc',
                 name: 'Description',
                 markup: '<iframe id=desc_resourceIframe  src="task-descriptions/2D-air-module/air-move_drone.html" frameborder="0"></iframe>'
+            }, {
+                id: 'planinstmoving',
+                type: 'cm',
+                name: 'PLAN',
+                data: 'air_inst_moving'
             }, {
                 id: 'instdrop',
                 type: 'snap1',

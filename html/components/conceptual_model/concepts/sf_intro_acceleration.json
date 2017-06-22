@@ -2,7 +2,7 @@
   "environment": {
   },
   "agents": {
-    "Truck": {
+    "Sloth": {
       "name": "Sloth",
       "elementID": "Sloth",
       "selected": false,
@@ -107,13 +107,13 @@
               "isGlobal": "false"
             },
             {
-              "name": "set x acceleration to (m/s^2)",
+              "name": "set x acceleration to %'value' m/s^2",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
             },
             {
-              "name": "change x acceleration by (m/s^2)",
+              "name": "change x acceleration by %'value' m/s^2",
               "category": "physics",
               "type": "custom_block",
               "isGlobal": "false"
