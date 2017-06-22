@@ -43,19 +43,31 @@
 </script>-->
 <script type="text/javascript">
     // registering function that returns data to be saved for this component
-    window.parent.c2stem.register_save_data_fetcher("name_of_data_record", function () {
-        var assessment_data = {
-            name: "demo data"
-        };
-        return assessment_data;
-    });
 
+    var assessmentData = {
+        "id_radio_btn": true
+    };
     // loading presaved data
-    var assessmentData = window.parent.c2stem.userTaskData["name_of_assessment"];
+    assessmentData = window.parent.c2stem.userTaskData["name_of_assessment"];
+    if(assessmentData == undefined)
+        assessmentData = {};
     console.log("is any data already saved? ", (assessmentData == undefined) ? "No" : "Yes");
     if(assessmentData){
         console.log("data record name:", assessmentData.name);
     }
+
+
+
+    window.parent.c2stem.register_save_data_fetcher("name_of_data_record", function () {
+
+        return assessmentData;
+    });
+
+
+    var functionRecordAssementInteraction(id, value){
+
+    };
+
 
 
     $(function() {

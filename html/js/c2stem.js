@@ -162,8 +162,7 @@ C2Stem.prototype.addSnap1Tab = function (id, name, template, callbackOnLoad) {
          snapWindow.SnapActions.applyEvent = function (event) {
              if (!event.namespace) { // route all internal events through C2StemActions
                  event.namespace = snapId;
-                 return C2StemActions.applyEvent(event);
-             } else {
+                 C2StemActions.applyEvent(event);
                  return snapWindow.ActionManager.prototype.applyEvent.call(this, event);
              }
          };
@@ -290,7 +289,9 @@ C2Stem.prototype.addConcpetualModelingTab = function (id, name, data, callbackOn
         </div>`);
 
     window.snap.callme = function () {
-        load_conceptual_model("conceptualModel", `tab${id}`, data, myself.register_save_data_fetcher);
+        c2stem.loadBlockCacheDefault( function () {
+            load_conceptual_model("conceptualModel", `tab${id}`, data, myself.register_save_data_fetcher);
+        });
     }
 };
 
@@ -367,7 +368,7 @@ C2Stem.prototype.saveUserProgress = function(callback){
 
 
 
-C2Stem.prototype.SaveBlocksCache = function(callback) {
+C2Stem.prototype.SaveBlocksCache = function(cacheName, callback) {
     console.log('ExportSnapBlocks');
     var cloud = C2StemCloud;
     // var extracted_blocks = this.extractCustomBlocks(['LibrarySprite']);
@@ -377,7 +378,7 @@ C2Stem.prototype.SaveBlocksCache = function(callback) {
     // userTaskData.conceptualModel = concepts;
     console.log("Save extracted_blocks, extracted_blocks:", extracted_blocks);
     cloud.saveUserProgress(
-        "ExtractedBlocks",
+        cacheName,
         extracted_blocks,
         function () {
             console.log("ExtractedBlocks saved for task:", c2stem.task_id);
@@ -403,7 +404,7 @@ C2Stem.prototype.loadBlocksCache = function (task_id, userName, callback) {
         Template: ""
     }), function (projectData) {
         c2stem.blockCache = JSON.parse(projectData);
-        console.log("loadBlocksCache", c2stem.blockCache);
+        // console.log("loadBlocksCache", c2stem.blockCache);
         if(callback)
             callback(null);
     }, function (err) {
@@ -446,3 +447,33 @@ C2Stem.prototype.extractCustomBlocks = function (filter_sprite_names) {
     console.log("extracted blocks:", blocks)
     return blocks;
 };
+
+C2Stem.prototype.testBlockCache = function(){
+    c2stem.SaveBlocksCache("ExtractedBlocks", function (error) {
+        if(error === null){
+            c2stem.loadBlocksCache("ExtractedBlocks", "d.asif.hasan", function (error) {
+                if(!error)
+                    console.log("Loaded blockCache", c2stem.blockCache );
+            });
+        }
+    });
+}
+
+C2Stem.prototype.loadBlockCacheDefault = function(callback){
+    c2stem.loadBlocksCache("ExtractedBlocks", "d.asif.hasan", function (error) {
+        if(!error){
+            console.log("Loaded default blockCache", c2stem.blockCache );
+        }
+        if(callback)
+            callback();
+    });
+}
+
+
+C2Stem.prototype.saveBlockCacheDefault = function(){
+    c2stem.SaveBlocksCache("ExtractedBlocks", function (error) {
+        if(error === null){
+            console.log("Saved default blockCache");
+        }
+    });
+}

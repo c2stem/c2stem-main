@@ -139,20 +139,27 @@ SnapSerializer.prototype.populateCustomBlocksFixed = function (
     element.children.forEach(function (child, index) {
         var b = object.blocksMatching(child.attributes.s);
         var block = null;
-        if( b !== null && b.length > 0)
+        if(!b && b !== null && b.length > 0)
             block = b[0].definition;
-        else
+        else{
+            console.log("object:", object, "name:", child.attributes.s, isGlobal);
             block = fnBlockMatching(object, child.attributes.s, isGlobal);
-        var idx = object.customBlocks.indexOf(block);
+        }
+        // var idx = object.customBlocks.indexOf(child);
+        // if(idx == -1) {
+        //     idx = ide.stage.globalBlocks.indexOf(child);
+        // }
+
         // console.log("populateCustomBlocks",child, index, idx);
-        // console.log("block def",block);
-        index = idx;
+        console.log("block def",block);
+        // index = idx;
         var definition, script, scripts;
         if (child.tag !== 'block-definition') {
             return;
         }
-        definition = isGlobal ? object.globalBlocks[index]
-            : object.customBlocks[index];
+        // definition = isGlobal ? object.globalBlocks[index]
+        //     : object.customBlocks[index];
+        definition = block;
         // console.log("definition",definition);
         script = child.childNamed('script');
         if (script) {
@@ -170,7 +177,10 @@ SnapSerializer.prototype.populateCustomBlocksFixed = function (
             definition.scripts = myself.loadScriptsArray(scripts);
         }
 
-        delete definition.names;
+        if(definition && definition.names)
+            delete definition.names;
+
+        SnapActions.loadCustomBlocks([definition], object);
     });
 };
 
@@ -179,12 +189,14 @@ SnapSerializer.prototype.populateCustomBlocksFixed = function (
 IDE_Morph.prototype.import_block_xml =function(sprite, block_xml){
     // //console.log("importing block, sprite===null:",sprite===null);
     var ide = this;
-    if(sprite === null)
-        ide.droppedText(block_xml);
-    else{
+    block_xml = SnapActions.uniqueIdForImport(block_xml).toString();  // add unique ids
+    if(sprite === null) {
+        SnapActions.onImportBlocks(block_xml);
+    } else {
         // console.log("creating block under sprite:", sprite, "blockXML:",block_xml);
         var model = ide.serializer.parse(block_xml);
         ide.serializer.loadCustomBlocks(sprite, model, false);
+        // ide.serializer.populateCustomBlocks(sprite, model, false)
         ide.serializer.populateCustomBlocksFixed(sprite, model, false, this.blocksMatching);
         ide.flushPaletteCache();
         ide.refreshPalette();

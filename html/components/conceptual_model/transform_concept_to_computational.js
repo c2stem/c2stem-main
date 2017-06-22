@@ -166,7 +166,16 @@ transform_cm.create_block = function(concepts, concept, blockName, category, isG
         return;
     // //console.log("create_block", name, "under category:", category);
     var ide = snap.world.children[0];
-    var block_text ='<blocks> <block-definition s="' + blockName + '" type="command" category="'+category+'"> <header></header> <code></code> <inputs></inputs> </block-definition> </blocks>';
+
+    var block_text = "";
+    if(c2stem.blockCache && blockName in c2stem.blockCache)
+    {
+        block_text = c2stem.blockCache[blockName];
+        console.log("Found block in Block Cache");
+    }else{
+        block_text ='<blocks> <block-definition s="' + blockName + '" type="command" category="'+category+'"> <header></header> <code></code> <inputs></inputs> </block-definition> </blocks>';
+    }
+
     //console.log("block_text: ", block_text);
     // console.log("transform_cm.create_block, creating new block", blockName);
     if(concept === null)
@@ -208,8 +217,14 @@ transform_cm.show_concept =function(concept){
     // console.log("transform_cm.show_concept", concept.name);
     var ide = snap.world.children[0];
     var sprite = this.getSpriteOfConcept(concept);
-    if(sprite === null)
-        ide.rawOpenSpritesString(concept.sprite_bkup_xml);
+    var SnapActions = c2stem.snapWin.SnapActions;
+    if(sprite === null) {
+        SnapActions.currentEvent = {
+            id: SnapActions.lastSeen+1,
+            args:[]
+        };
+        SnapActions.onAddSprite(concept.sprite_bkup_xml);
+    }
 };
 
 transform_cm.getSpriteOfConcept=function(concept){
