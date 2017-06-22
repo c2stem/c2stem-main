@@ -290,7 +290,9 @@ C2Stem.prototype.addConcpetualModelingTab = function (id, name, data, callbackOn
         </div>`);
 
     window.snap.callme = function () {
-        load_conceptual_model("conceptualModel", `tab${id}`, data, myself.register_save_data_fetcher);
+        C2Stem.prototype.loadBlockCacheDefault( function () {
+            load_conceptual_model("conceptualModel", `tab${id}`, data, myself.register_save_data_fetcher);
+        });
     }
 };
 
@@ -458,10 +460,13 @@ C2Stem.prototype.testBlockCache = function(){
     });
 }
 
-C2Stem.prototype.loadBlockCacheDefault = function(){
+C2Stem.prototype.loadBlockCacheDefault = function(callback){
     c2stem.loadBlocksCache("ExtractedBlocks", "d.asif.hasan", function (error) {
-        if(!error)
+        if(!error){
             console.log("Loaded default blockCache", c2stem.blockCache );
+            if(callback)
+                callback();
+        }
     });
 }
 
@@ -469,7 +474,7 @@ C2Stem.prototype.loadBlockCacheDefault = function(){
 C2Stem.prototype.saveBlockCacheDefault = function(){
     c2stem.SaveBlocksCache("ExtractedBlocks", function (error) {
         if(error === null){
-            console.log("Saved default blockCache", c2stem.blockCache );
+            console.log("Saved default blockCache");
         }
     });
 }

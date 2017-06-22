@@ -51,19 +51,22 @@
           ],
           "GeneratedConstructs": [
             {
-              "name": "physicsXPosition",
+              "name": "x position in m",
               "category": "physics",
-              "type": "built_in"
+              "type": "custom_block",
+              "isGlobal": "false"
             },
             {
-              "name": "setPhysicsXPosition",
+              "name": "set x position to %'value' m",
               "category": "physics",
-              "type": "built_in"
+              "type": "custom_block",
+              "isGlobal": "false"
             },
             {
-              "name": "changePhysicsXPosition",
+              "name": "change x position by %'value' m",
               "category": "physics",
-              "type": "built_in"
+              "type": "custom_block",
+              "isGlobal": "false"
             },
             {
               "name": "getPhysicsAttrOf",
@@ -105,9 +108,14 @@
           ],
           "GeneratedConstructs": [
             {
-              "name": "x acceleration in m/s^2",
+              "name": "XAcceleration",
               "category": "physics",
               "type": "custom_variable",
+              "isGlobal": "false"
+            },{
+              "name": "x acceleration in m/s^2",
+              "category": "physics",
+              "type": "custom_block",
               "isGlobal": "false"
             },
             {
