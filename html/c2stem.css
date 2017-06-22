@@ -309,7 +309,7 @@ tr:nth-child(even) {
 }
 
 #desc_resourceIframe{
-    height:   100%;
+    height:   90%;
     left:     0px;
     position: absolute;
     top:      64px;
@@ -320,15 +320,17 @@ tr:nth-child(even) {
     padding-left: 30px;
 }
 .floatHandle p{
-    float: left;
     margin-left: 0;
     margin-right: 0;
 }
 
 .floatHandle img{
-    float: left;
     padding: 0;
     margin: 0;
+}
+
+.floatHandle{
+    display: inline-block;
 }
 .row{
     margin: 10px;

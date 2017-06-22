@@ -2,7 +2,7 @@
   "item1": {
     "title": "Question 1.1",
     "firstLine": "A sprite travels a distance of 50m at a constant speed of 5m/s.",
-    "secondLine": "To program the motion of the sprite, open Item1.1 and use ONLY the available blocks to create the simulation.",
+    "secondLine": "To program the motion of the sprite, <strong>open TASK_1.1</strong> and use ONLY the available blocks to create the simulation.",
     "thirdLine": "Think about the blocks that must be used to initialize the model under the",
     "fourthLine": "block, and which should be executed in each simulation step under the",
     "fifthLine": "block",

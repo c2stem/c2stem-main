@@ -8,6 +8,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <script type="text/javascript" src="/js/action%20managers/AssessmentActionManager.js"></script>
     <style>
         body{
             padding: 5px;
@@ -15,7 +16,7 @@
             margin: 0 auto;
         }
         p{
-            margin-bottom:0px;
+            margin:0px;
         }
     </style>
 </head>
@@ -27,17 +28,24 @@
     <p><strong>{{title}}.</strong> {{firstLine}}</p>
     <div class="shift">
         <!--<a href ="/task.html#assesstab">{{secondLine}}</a>-->
-        <p>{{secondLine}}</p>
+        <p>{{{secondLine}}}</p>
         <div class="floatHandle">
             <p>{{thirdLine}}</p>
+        </div>
+        <div class="floatHandle">
             <img src="{{firstImage}}">
+        </div>
+        <div class="floatHandle">
             <p>{{fourthLine}}</p>
+        </div>
+        <div class="floatHandle">
             <img src="{{secondImage}}">
+        </div>
+        <div class="floatHandle">
             <p>{{fifthLine}}</p>
         </div>
     </div>
     {{/item1}}
-    <br><br>
     <hr class="style-two">
     {{#item2}}
     <div>
@@ -88,27 +96,27 @@
             <p>{{secondLine}}</p>
             <form action="#">
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="a" />
+                    <input class="with-gap" name="group" type="radio" id="a" />
                     <label for="a"><img for="a" src="{{firstOption}}" width="60%"></label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="b" />
+                    <input class="with-gap" name="group" type="radio" id="b" />
                     <label for="b"><img src="{{secondOption}}" width="60%"></label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="c"  />
+                    <input class="with-gap" name="group" type="radio" id="c"  />
                     <label for="c"><img src="{{thirdOption}}" width="60%"></label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="d"/>
+                    <input class="with-gap" name="group" type="radio" id="d"/>
                     <label for="d"><img src="{{fourthOption}}" width="60%"></label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="e"/>
+                    <input class="with-gap" name="group" type="radio" id="e"/>
                     <label for="e"><img src="{{fifthOption}}" width="60%"></label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="f" />
+                    <input class="with-gap" name="group" type="radio" id="f" />
                     <label for="f"><img src="{{sixthOption}}" width="60%"></label>
                 </p>
             </form>
@@ -165,12 +173,17 @@
     slingshot('assessment1.1.json', '#tpl', '#anchor'); // since url = 'data.json' , we can use both notations.
     //autosize textArea
     $('.textarea1').trigger('autoresize');
+
+    $('.textarea1').blur(function () {
+        window.parent.AssessmentActionManager.addText($(this).val(), $(this).attr('id'));
+    })
     //deleteTableRow
     function deleteRow(row)
     {
         var i=row.parentNode.parentNode.rowIndex;
         if(i>1) {
             document.getElementById('POITable').deleteRow(i);
+            window.parent.AssessmentActionManager.deleteObject(i);
         }
     }
     //add tableRow
@@ -190,8 +203,17 @@
         inp2.id += len;
         inp2.value = '';
         x.appendChild( new_row );
-    }
 
+        window.parent.AssessmentActionManager.addObject(len);
+        console.log(len);
+    }
+    $("input[type='radio']").click(function () {
+          window.parent.AssessmentActionManager.toggleRadioBttn($(this).attr('id'));
+          console.log($(this).attr('id'));
+    });
+
+
+    /*AssessmentActionManager*/
 
 </script>
 </body>

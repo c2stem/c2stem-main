@@ -38,12 +38,12 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
             }, {
                 id: '1d-elaborate',
                 name: 'Instructional Task - 1D Velocity: Elaborate Your Simulation'
-            }, {
-                id: '1d-checkin1',
-                name: 'Check-In #1'
             },{
                 id: '1d-inst_conceptual',
                 name: 'Instructional Task - 1D Velocity: Model Planning'
+            }, {
+                id: '1d-checkin1',
+                name: 'Check-In #1'
             }, {
                 id: '1d-constant',
                 name: 'Model Building - 1D Velocity: Simulate the Motion of a Truck'

@@ -1,6 +1,6 @@
 {
   "item1": {
-    "title": "Item 3.1",
+    "title": "Question 3.1",
     "firstLine": "The given program should simulate the motion of a sprite starting from rest and traveling <strong>a distance of 25 meters</strong> with an acceleration of <strong>2 m/s per second.</strong>",
     "secondLine": "Which of the following expressions should be placed in Line 1?",
     "thirdLine": "Which of the following expressions should be placed in Line 2?",
@@ -18,9 +18,9 @@
     "option_a5": "/img/Assessment/1d-Land/option1.3.1f.jpg"
   },
   "item2": {
-    "title": "Item 3.2",
-    "firstLine": "The following program does not correctly simulate the described motion of the sprite.",
-    "secondLine": "Debug the given program so that it correctly simulates the described motion of the sprite.",
+    "title": "Question 3.2",
+    "firstLine": "The following program<strong>(provided in TASK_1.3)</strong> does not correctly simulate the described motion of the sprite.",
+    "secondLine": "Open <strong>TASK_1.3</strong> and debug the given program so that it correctly simulates the described motion of the sprite.",
     "thirdLine": "A sprite starts moving horizontally with a constant velocity of 5m/s.",
     "fourthLine": "While the up arrow key is pressed, the sprite accelerates by 2m/s per second.",
     "fifthLine": "Pressing the space key stops the simulation.",
