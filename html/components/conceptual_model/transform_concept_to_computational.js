@@ -89,7 +89,6 @@ transform_cm.preprocess = function (concepts) {
     // }
 };
 
-
 transform_cm.delete_variable = function (concept, variable_name, isGlobal) {
     var ide = snap.world.children[0];
     var sprite = null;

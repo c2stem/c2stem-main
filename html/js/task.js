@@ -57,6 +57,15 @@ function loadTask(err, res) {
             c2stem.saveUserProgress();
         });
 
+        $("#ExportSnapBlocks").click(function () {
+            c2stem.SaveBlocksCache(function (error) {
+                if(error === null){
+                    c2stem.loadBlocksCache("ExtractedBlocks", "d.asif.hasan");
+                }
+            });
+        });
+
+
         $('ul.tabs').tabs(); // visualize the tabs
     }
 }

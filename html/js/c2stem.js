@@ -363,3 +363,85 @@ C2Stem.prototype.saveUserProgress = function(callback){
         }
     );
 };
+
+
+
+C2Stem.prototype.SaveBlocksCache = function(callback) {
+    console.log('ExportSnapBlocks');
+    var cloud = C2StemCloud;
+    // var extracted_blocks = this.extractCustomBlocks(['LibrarySprite']);
+    var extracted_blocks = this.extractCustomBlocks();
+    var s = JSON.stringify(extracted_blocks);
+    // console.log("Save user progress, userTaskData:", userTaskData);
+    // userTaskData.conceptualModel = concepts;
+    console.log("Save extracted_blocks, extracted_blocks:", extracted_blocks);
+    cloud.saveUserProgress(
+        "ExtractedBlocks",
+        extracted_blocks,
+        function () {
+            console.log("ExtractedBlocks saved for task:", c2stem.task_id);
+            if(callback)
+                callback(null);
+        },
+        function (msg) {
+            console.log("ExtractedBlocks could not be saved, error:", msg);
+            if(callback)
+                callback(msg);
+        }
+    );
+};
+
+
+C2Stem.prototype.loadBlocksCache = function (task_id, userName, callback) {
+    console.log('loadBlocksCache', task_id, "with userName", userName);
+    // var cloud = snapWin.SnapCloud;
+    var cloud = C2StemCloud;
+    cloud.loadUserProgress(cloud.encodeDict({
+        Username: userName,
+        ProjectName: task_id,
+        Template: ""
+    }), function (projectData) {
+        c2stem.blockCache = JSON.parse(projectData);
+        console.log("loadBlocksCache", c2stem.blockCache);
+        if(callback)
+            callback(null);
+    }, function (err) {
+        c2stem.blockCache = {};
+        if(callback)
+            callback(err);
+    });
+};
+
+
+C2Stem.prototype.extractCustomBlocks = function (filter_sprite_names) {
+    var ide = snap.world.children[0];
+    var candidateSprites = [];
+    for (var s in ide.sprites.contents){
+        if(!ide.sprites.contents.hasOwnProperty(s))
+            continue;
+        var sprite = ide.sprites.contents[s];
+        if(filter_sprite_names == undefined || filter_sprite_names === null){
+            candidateSprites.push(sprite);
+        }
+        else if(sprite.name in filter_sprite_names){
+            candidateSprites.push(sprite);
+        }
+    }
+
+    var blocks = {};
+    for (var s in candidateSprites){
+        var sprite = candidateSprites[s];
+
+        // console.log("Processing cache_blocks:", c.cache_blocks);
+        for (var block_id in sprite.customBlocks){
+            if(sprite.customBlocks.hasOwnProperty(block_id)){
+                var block = sprite.customBlocks[block_id];
+                var blockXML = ide.serializer.serialize(block);
+                blockXML = '<blocks>'+blockXML +'</blocks>';
+                blocks[block.spec] = blockXML;
+            }
+        }
+    }
+    console.log("extracted blocks:", blocks)
+    return blocks;
+};
