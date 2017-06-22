@@ -8,6 +8,7 @@
 (function(global) {
     var GlobalActionManager = function() {
         this.submanagers = {};
+        this.eventListeners = [];
     };
 
     GlobalActionManager.URL = '/events/record'
@@ -19,6 +20,18 @@
         delete this.submanagers[id];
     };
 
+
+    GlobalActionManager.prototype.addEventListener = function(listener){
+        if(this.eventListeners.indexOf(listener) == -1)
+            this.eventListeners.push(listener);
+    };
+
+    GlobalActionManager.prototype.removeEventListener = function(listener){
+        var edx = this.eventListeners.indexOf(listener);
+        if( edx != -1)
+            this.eventListeners.splice(edx, 1);
+    };
+
     GlobalActionManager.prototype.applyEvent = function(event) {
         var id = event.namespace;
         if (!id) {
@@ -27,6 +40,14 @@
 
         event.time = event.time || Date.now();
 
+        if(this.eventListeners.length !== 0){
+            var i = 0;
+            for(; i < this.eventListeners.length; i++){
+                var listener = this.eventListeners[i];
+                if(listener)
+                    listener(event);
+            }
+        }
          console.log("Recording event to server, event:", event);
         // record the event on the server
         $.ajax({
@@ -46,6 +67,7 @@
     function ActionManager() {
         this.id = null;
     }
+
 
     ActionManager.prototype.addActions = function() {
         var actions = Array.prototype.slice.call(arguments),
