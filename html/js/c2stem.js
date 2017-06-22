@@ -155,17 +155,18 @@ C2Stem.prototype.addSnap1Tab = function (id, name, template, callbackOnLoad) {
     snapWindow = snapWindow.contentWindow || snapWindow.contentDocument.defaultView;
     $(snapWindow).on('load', function () {
         // Register the computational action manager
-        C2StemActions.register('snap' + id, snapWindow.SnapActions);
+        var snapId = 'snap-' + id;
+        C2StemActions.register(snapId, snapWindow.SnapActions);
 
         // Configure SnapActions to route everything through the global manager
-        // snapWindow.SnapActions.applyEvent = function (event) {
-        //     if (!event.namespace) { // route all internal events through C2StemActions
-        //         event.namespace = SNAP_ID;
-        //         return C2StemActions.applyEvent(event);
-        //     } else {
-        //         return snapWindow.ActionManager.prototype.applyEvent.call(this, event);
-        //     }
-        // };
+         snapWindow.SnapActions.applyEvent = function (event) {
+             if (!event.namespace) { // route all internal events through C2StemActions
+                 event.namespace = snapId;
+                 return C2StemActions.applyEvent(event);
+             } else {
+                 return snapWindow.ActionManager.prototype.applyEvent.call(this, event);
+             }
+         };
 
         c2stem.snapWin = snapWindow;
 
