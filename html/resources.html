@@ -7,39 +7,41 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <style>
-        header, main, footer {
-            padding-left: 300px!important;
-            height: 200%!important;
+        body, footer {
+            padding-left: 300px;
         }
 
         @media only screen and (max-width : 992px) {
             header, main, footer {
-                padding-left: 0!important;
+                padding-left: 0;
             }
         }
     </style>
+
+    <ul id="slide-out" class="side-nav fixed">
+        <li><a class="subheader">Physics Concepts</a></li>
+        <li><a href="#Position">Position</a></li>
+        <li><a href="#Speed">Speed</a></li>
+        <li><a href="#Velocity">Velocity</a></li>
+        <li><a href="#Accelaration">Accelaration</a></li>
+        <li><a href="#TwoDVelocity">2D Velocity</a></li>
+        <li><a href="#Math">Math Components</a></li>
+        <li><a href="#gravity">Gravity</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="subheader">Computational Concepts</a></li>
+        <li><a href="#glossary">Physics Blocks</a></li>
+        <li><div class="divider"></div></li>
+        <li><a class="subheader">Computational Practices</a></li>
+        <li><a href="#simulation">Simulation Model</a></li>
+        <li><a href="#conceptual">Conceptual Model</a></li>
+        <li><a href="#ctconstructs">CT Constructs</a></li>
+        <li><div class="divider"></div></li>
+    </ul>
+    <a href="#" data-activates="slide-out" class="button-collapse"></a>
 </head>
 <body>
 
-<ul id="slide-out" class="side-nav fixed">
-    <li><a class="subheader">Physics Concepts</a></li>
-    <li><a href="#Position">Position</a></li>
-    <li><a href="#Speed">Speed</a></li>
-    <li><a href="#Velocity">Velocity</a></li>
-    <li><a href="#Accelaration">Accelaration</a></li>
-    <li><a href="#TwoDVelocity">2D Velocity</a></li>
-    <li><a href="#Math">Math Components</a></li>
-    <li><a href="#gravity">Gravity</a></li>
-    <li><div class="divider"></div></li>
-    <li><a class="subheader">Computational Concepts</a></li>
-    <li><a href="#glossary">Glossary of Physics Blocks</a></li>
-    <li><div class="divider"></div></li>
-    <li><a class="subheader">Computational Practices</a></li>
-    <li><a href="#simulation">Simulation Model</a></li>
-    <li><a href="#conceptual">Conceptual Model</a></li>
-    <li><a href="#ctconstructs">CT Constructs</a></li>
-</ul>
-<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+
 
 <!--<div id="sidebar">
     <ul>
@@ -60,10 +62,9 @@
     </ul>
      class="tab-content"
 </div>-->
-<div class="container" align="left">
-        <div id="resources">
 
-            <h3>Welcome to the C2STEM Resources</h3>
+    <div id="resources">
+            <h3>C2STEM Resources</h3>
             <img src="img/the-challenges.jpg"  width="80%" align="centre"/>
         </div>
     <br><br>
@@ -299,17 +300,16 @@
                     <li>-- In Module Two, what role does gravity play in the overall environment?</li>
                 </ul>
         </div>
-</div>
+
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
 
 <script>
-    $(".button-collapse").sideNav();
+
     $('.button-collapse').sideNav({
-        menuWidth: 300, // Default is 300
-        edge: 'right', // Choose the horizontal origin
-        closeOnClick: true
+        menuWidth: 250, // Default is 300
+        edge: 'left', // Choose the horizontal origin
      }
      );
 </script>
