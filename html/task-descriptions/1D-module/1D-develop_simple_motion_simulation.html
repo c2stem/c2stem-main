@@ -70,20 +70,14 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
 <script>
-    // registering function that returns data to be saved for this component
-
     var assessmentData = {
     };
     window.parent.c2stem.register_save_data_fetcher("assessmentData", function () {
         return assessmentData;
     });
 
-
-    // loading presaved data
     assessmentData = window.parent.c2stem.userTaskData["assessmentData"];
-    console.log("is any data already saved? ", (assessmentData == undefined) ? "No" : "Yes");
     if(assessmentData){
-        console.log("data record name:", assessmentData);
         for(var id in assessmentData){
             if(assessmentData.hasOwnProperty(id))
                 $("#" + id + "-label").text("  Last submitted on: " + assessmentData[id]);

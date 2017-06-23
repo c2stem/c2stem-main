@@ -30,12 +30,8 @@
                 <li>- Compare the components to the river’s velocity.</li>
             </ul>
             <br>
-            <form action="#">
-                <p>
-                  <input type="checkbox" id="m2t3a" />
-                  <label for="m2t3a">SUBMIT SOLUTION</label>
-                </p>
-            </form>
+            <button id="m2t3a" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
+            <label id="m2t3a-label" ></Label>
         </span>
         </div>
     </li>
@@ -46,12 +42,8 @@
                 <li>- Edit your simulation to check if her reasoning is correct.</li>
             </ul>
             <br>
-            <form action="#">
-                <p>
-                  <input type="checkbox" id="m2t3b" />
-                  <label for="m2t3b">SUBMIT SOLUTION</label>
-                </p>
-            </form>
+            <button id="m2t3b" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
+            <label id="m2t3b-label" ></Label>
         </span>
         </div>
     </li>
@@ -103,5 +95,39 @@
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<script>
+    var assessmentData = {
+    };
+    window.parent.c2stem.register_save_data_fetcher("assessmentData", function () {
+        return assessmentData;
+    });
 
+    assessmentData = window.parent.c2stem.userTaskData["assessmentData"];
+    if(assessmentData){
+        for(var id in assessmentData){
+            if(assessmentData.hasOwnProperty(id))
+                $("#" + id + "-label").text("  Last submitted on: " + assessmentData[id]);
+        }
+    }else {
+        assessmentData = {};
+    }
+
+    var getTimeString = function () {
+        return new Date().toLocaleDateString()+ " " + new Date().toLocaleTimeString();
+    }
+
+    var submitSolution = function(activityID){
+        window.parent.TaskDescriptionActionManger.submitSolution(activityID);
+        assessmentData[activityID] = getTimeString();
+        $("#" + activityID + "-label").text("  Last submitted on: " + assessmentData[activityID]);
+    }
+
+    $('.submit_solution').each(function() {
+        console.log(this.id);
+        $("#" + this.id).click(function () {
+            submitSolution( this.id );
+        });
+    });
+
+</script>
 </html>

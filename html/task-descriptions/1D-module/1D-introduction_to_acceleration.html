@@ -21,12 +21,8 @@
                 <li>- Run the program and use the “graphing view” and/or “table view” buttons to complete Table 1 and Plot 1 in your paper worksheet.</li>
             </ul>
             <br>
-            <form action="#">
-                <p>
-                  <input type="checkbox" id="m1t5a" />
-                  <label for="m1t5a">SUBMIT SOLUTION</label>
-                </p>
-            </form>
+            <button id="m1t5a" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
+            <label id="m1t5a-label" ></Label>
         </span>
         </div>
     </li>
@@ -44,12 +40,8 @@
                 <li>- Use the relation (position change) = (velocity change) * Δt to calculate the sloth’s new position each second.</li>
             </ul>
             <br>
-            <form action="#">
-                <p>
-                  <input type="checkbox" id="m1t5b" />
-                  <label for="m1t5b">SUBMIT SOLUTION</label>
-                </p>
-            </form>
+            <button id="m1t5b" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
+            <label id="m1t5b-label" ></Label>
         </span>
         </div>
     </li>
@@ -69,12 +61,8 @@
                 <li>- Think about how you calculated the velocity in Table 2 and Plot 2. How will your program update the velocity in each simulation step?</li>
             </ul>
             <br>
-            <form action="#">
-                <p>
-                  <input type="checkbox" id="m1t5c" />
-                  <label for="m1t5c">SUBMIT SOLUTION</label>
-                </p>
-            </form>
+            <button id="m1t5c" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
+            <label id="m1t5c-label" ></Label>
         </span>
         </div>
     </li>
@@ -93,12 +81,8 @@
                 <li>- How will you specify the condition for stopping the simulation?</li>
             </ul>
             <br>
-            <form action="#">
-                <p>
-                  <input type="checkbox" id="m1t5d" />
-                  <label for="m1t5d">SUBMIT SOLUTION</label>
-                </p>
-            </form>
+            <button id="m1t5d" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
+            <label id="m1t5d-label" ></Label>
         </span>
         </div>
     </li>
@@ -113,12 +97,8 @@
                 <li>- Run the program and use the “graphing view” and/or “table view” buttons to compare your prediction with your model. Do the graphs and table confirm the motion you predicted?</li>
             </ul>
             <br>
-            <form action="#">
-                <p>
-                  <input type="checkbox" id="m1t5e" />
-                  <label for="m1t5e">SUBMIT SOLUTION</label>
-                </p>
-            </form>
+            <button id="m1t5e" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
+            <label id="m1t5e-label" ></Label>
         </span>
         </div>
     </li>
@@ -131,12 +111,8 @@
                 <li>- Try reversing the order of your change position and change velocity blocks. What happens?</li>
                 <li>- Answer the Reflection questions in your paper worksheet</li>
             </ul>
-            <form action="#">
-                <p>
-                  <input type="checkbox" id="m1t5f" />
-                  <label for="m1t5f">SUBMIT SOLUTION</label>
-                </p>
-            </form>
+            <button id="m1t5f" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
+            <label id="m1t5f-label" ></Label>
         </span>
         </div>
     </li>
@@ -180,5 +156,39 @@
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<script>
+    var assessmentData = {
+    };
+    window.parent.c2stem.register_save_data_fetcher("assessmentData", function () {
+        return assessmentData;
+    });
 
+    assessmentData = window.parent.c2stem.userTaskData["assessmentData"];
+    if(assessmentData){
+        for(var id in assessmentData){
+            if(assessmentData.hasOwnProperty(id))
+                $("#" + id + "-label").text("  Last submitted on: " + assessmentData[id]);
+        }
+    }else {
+        assessmentData = {};
+    }
+
+    var getTimeString = function () {
+        return new Date().toLocaleDateString()+ " " + new Date().toLocaleTimeString();
+    }
+
+    var submitSolution = function(activityID){
+        window.parent.TaskDescriptionActionManger.submitSolution(activityID);
+        assessmentData[activityID] = getTimeString();
+        $("#" + activityID + "-label").text("  Last submitted on: " + assessmentData[activityID]);
+    }
+
+    $('.submit_solution').each(function() {
+        console.log(this.id);
+        $("#" + this.id).click(function () {
+            submitSolution( this.id );
+        });
+    });
+
+</script>
 </html>
