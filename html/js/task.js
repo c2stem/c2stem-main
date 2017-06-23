@@ -53,8 +53,14 @@ function loadTask(err, res) {
             });
         }
 
-        $("#saveProgress").click(function () {
-            c2stem.saveUserProgress();
+        $("#reset_to_template").click(function () {
+            var cloud = C2StemCloud;
+            cloud.deleteUserProgress(c2stem.task_id, function () {
+                console.log(c2stem.task_id," reset_to_template successful");
+                location.reload();
+            }, function (err) {
+                console.log(c2stem.task_id,"could not reset_to_template, err:", err);
+            });
         });
 
         // $("#ExportSnapBlocks").click(function () {

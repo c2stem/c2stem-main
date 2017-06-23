@@ -37,6 +37,21 @@ C2Cloud.prototype.encodeDict = function (dict) {
     return str;
 };
 
+C2Cloud.prototype.deleteUserProgress = function (projectName, callBack, errorCall) {
+    var myself = this;
+
+    myself.callService(
+        'deleteProject',
+        function (response, url) {
+            callBack.call(null, response, url);
+        },
+        errorCall,
+        [
+            projectName
+        ]
+    );
+};
+
 C2Cloud.prototype.loadUserProgress = function (
     id,
     callBack,
