@@ -327,6 +327,8 @@ C2Stem.prototype.loadPublicProject = function (task_id, template, shallAppend, c
     });
 };
 C2Stem.prototype.collectUserProgressData = function (saveMedia) {
+    if(!c2stem.saveDataFetchers)
+        return {};
     // console.log("collectUserProgressData, saveMedia:",saveMedia);
     saveMedia = saveMedia == undefined ? true : saveMedia;
     var userTaskData = {};
