@@ -355,12 +355,12 @@ C2Stem.prototype.saveUserProgress = function(callback){
     lastSavedData = s;
     // console.log("Save user progress, userTaskData:", userTaskData);
     // userTaskData.conceptualModel = concepts;
-    console.log("Save user progress, userTaskData:", userTaskData);
+    // console.log("Save user progress, userTaskData:", userTaskData);
     cloud.saveUserProgress(
         c2stem.task_id,
         userTaskData,
         function () {
-            console.log("User data saved for task:",c2stem.task_id);
+            // console.log("User data saved for task:",c2stem.task_id);
         },
         function (msg) {
             console.log("User data could not be saved, error:",msg);
