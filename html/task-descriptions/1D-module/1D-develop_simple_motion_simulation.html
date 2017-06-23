@@ -94,5 +94,18 @@
         console.log("data record name:", assessmentData.name);
     }
 
+    var submitSolution = function(activityID){
+        window.parent.TaskDescriptionActionManger.submitSolution(activityID);
+    }
+
+    $("#m1t1a").click(function () {
+        submitSolution("m1t1a");
+    });
+
+
+    $("#m1t1b").click(function () {
+        submitSolution("m1t1b");
+    });
+
 </script>
 </html>
