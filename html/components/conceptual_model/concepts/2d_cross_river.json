@@ -72,6 +72,16 @@
           "name": "boat velocity on water in m/s",
           "elementID": "BoatVelocity",
           "selected": false
+        },
+        "BoatSpeed": {
+          "name": "boat speed in m/s",
+          "elementID": "BoatVelocity",
+          "selected": false
+        },
+        "RiverSpeed": {
+          "name": "river speed in m/s",
+          "elementID": "BoatVelocity",
+          "selected": false
         }
       },
       "behaviors": {
@@ -233,17 +243,31 @@
               "category": "physics",
               "type": "custom_variable",
               "isGlobal": "false"
-            },
+            }
+          ]
+        },
+        {
+          "Required": [
+            "BoatSpeed"
+          ],
+          "GeneratedConstructs": [
             {
-              "name": "set resultant velocity of boat to %'value' m/s",
+              "name": "boat speed in m/s",
               "category": "physics",
-              "type": "custom_block",
+              "type": "custom_variable",
               "isGlobal": "false"
-            },
+            }
+          ]
+        },
+        {
+          "Required": [
+            "RiverSpeed"
+          ],
+          "GeneratedConstructs": [
             {
-              "name": "change resultant velocity of boat by %'value' m/s",
+              "name": "river speed in m/s",
               "category": "physics",
-              "type": "custom_block",
+              "type": "custom_variable",
               "isGlobal": "false"
             }
           ]
@@ -292,18 +316,6 @@
               "name": "boat velocity on water in m/s",
               "category": "physics",
               "type": "custom_variable",
-              "isGlobal": "false"
-            },
-            {
-              "name": "set boat velocity on water to %'value' m/s",
-              "category": "physics",
-              "type": "custom_block",
-              "isGlobal": "false"
-            },
-            {
-              "name": "change boat velocity on water by %'value' m/s",
-              "category": "physics",
-              "type": "custom_block",
               "isGlobal": "false"
             }
           ]

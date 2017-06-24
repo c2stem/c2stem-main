@@ -105,18 +105,6 @@
               "category": "physics",
               "type": "custom_variable",
               "isGlobal": "false"
-            },
-            {
-              "name": "set x acceleration to %'value' m/s^2",
-              "category": "physics",
-              "type": "custom_block",
-              "isGlobal": "false"
-            },
-            {
-              "name": "change x acceleration by %'value' m/s^2",
-              "category": "physics",
-              "type": "custom_block",
-              "isGlobal": "false"
             }
           ]
         }
