@@ -38,10 +38,8 @@
             <ul>
                 <li>- You may want to review your program for the medical truck stopping project!</li>
             </ul>
-            <div class="panel-content">
-                <input type="checkbox">
-                <label><strong>SUBMIT SOLUTION</strong></label>
-            </div>
+            <button id="m4t1a" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
+            <label id="m4t1a-label" ></Label>
         </span>
         </div>
     </li>
@@ -49,10 +47,8 @@
         <div class="collapsible-header"><strong>Step Three: Drop the Package</strong></div>
         <div class="collapsible-body"><span><p><strong>Now, add conditional logic to your program that tells Rey when to drop the package.</strong></p>
             <br>
-            <div class="panel-content">
-                <input type="checkbox">
-                <label><strong>SUBMIT SOLUTION</strong></label>
-            </div>
+            <button id="m4t1b" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
+            <label id="m4t1b-label" ></Label>
         </span>
         </div>
     </li>
@@ -64,10 +60,8 @@
                 <li>- The parachutes are designed so that the y velocity of the package is close to zero by the time the package reaches the ground!</li>
             </ul>
             <br>
-            <div class="panel-content">
-                <input type="checkbox">
-                <label><strong>SUBMIT SOLUTION</strong></label>
-            </div>
+            <button id="m4t1c" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
+            <label id="m4t1c-label" ></Label>
         </span>
         </div>
     </li>
@@ -77,5 +71,39 @@
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<script>
+    var assessmentData = {
+    };
+    window.parent.c2stem.register_save_data_fetcher("assessmentData", function () {
+        return assessmentData;
+    });
 
+    assessmentData = window.parent.c2stem.userTaskData["assessmentData"];
+    if(assessmentData){
+        for(var id in assessmentData){
+            if(assessmentData.hasOwnProperty(id))
+                $("#" + id + "-label").text("  Last submitted on: " + assessmentData[id]);
+        }
+    }else {
+        assessmentData = {};
+    }
+
+    var getTimeString = function () {
+        return new Date().toLocaleDateString()+ " " + new Date().toLocaleTimeString();
+    }
+
+    var submitSolution = function(activityID){
+        window.parent.TaskDescriptionActionManger.submitSolution(activityID);
+        assessmentData[activityID] = getTimeString();
+        $("#" + activityID + "-label").text("  Last submitted on: " + assessmentData[activityID]);
+    }
+
+    $('.submit_solution').each(function() {
+        console.log(this.id);
+        $("#" + this.id).click(function () {
+            submitSolution( this.id );
+        });
+    });
+
+</script>
 </html>

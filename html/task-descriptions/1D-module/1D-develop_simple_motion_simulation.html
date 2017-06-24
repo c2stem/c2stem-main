@@ -26,12 +26,8 @@
                 <li>- Program places the turtle at that position on the stage.</li>
             </ul>
             <br>
-            <form action="#">
-                <p>
-                  <input type="checkbox" id="m1t1a" />
-                  <label for="m1t1a">SUBMIT SOLUTION</label>
-                </p>
-            </form>
+            <button id="m1t1a" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
+            <label id="m1t1a-label" ></Label>
         </span>
         </div>
     </li>
@@ -43,12 +39,8 @@
                 <li>- Hint: Run your program multiple times. How will you make the turtle appear to be moving?</li>
             </ul>
             <br>
-            <form action="#">
-                <p>
-                  <input type="checkbox" id="m1t1b" />
-                  <label for="m1t1b">SUBMIT SOLUTION</label>
-                </p>
-            </form>
+             <button id="m1t1b" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
+            <label id="m1t1b-label" ></Label>
         </span>
         </div>
     </li>
@@ -78,21 +70,38 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
 <script>
-    // registering function that returns data to be saved for this component
-    window.parent.c2stem.register_save_data_fetcher("name_of_data_record", function () {
-        var assessment_data = {
-            name: "demo data"
-        };
-        return assessment_data;
+    var assessmentData = {
+    };
+    window.parent.c2stem.register_save_data_fetcher("assessmentData", function () {
+        return assessmentData;
     });
 
-
-    // loading presaved data
-    var assessmentData = window.parent.c2stem.userTaskData["name_of_assessment"];
-    console.log("is any data already saved? ", (assessmentData == undefined) ? "No" : "Yes");
+    assessmentData = window.parent.c2stem.userTaskData["assessmentData"];
     if(assessmentData){
-        console.log("data record name:", assessmentData.name);
+        for(var id in assessmentData){
+            if(assessmentData.hasOwnProperty(id))
+                $("#" + id + "-label").text("  Last submitted on: " + assessmentData[id]);
+        }
+    }else {
+        assessmentData = {};
     }
+
+    var getTimeString = function () {
+        return new Date().toLocaleDateString()+ " " + new Date().toLocaleTimeString();
+    }
+
+    var submitSolution = function(activityID){
+        window.parent.TaskDescriptionActionManger.submitSolution(activityID);
+        assessmentData[activityID] = getTimeString();
+        $("#" + activityID + "-label").text("  Last submitted on: " + assessmentData[activityID]);
+    }
+
+    $('.submit_solution').each(function() {
+        console.log(this.id);
+        $("#" + this.id).click(function () {
+            submitSolution( this.id );
+        });
+    });
 
 </script>
 </html>

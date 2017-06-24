@@ -327,6 +327,8 @@ C2Stem.prototype.loadPublicProject = function (task_id, template, shallAppend, c
     });
 };
 C2Stem.prototype.collectUserProgressData = function (saveMedia) {
+    if(!c2stem.saveDataFetchers)
+        return {};
     // console.log("collectUserProgressData, saveMedia:",saveMedia);
     saveMedia = saveMedia == undefined ? true : saveMedia;
     var userTaskData = {};
@@ -353,12 +355,12 @@ C2Stem.prototype.saveUserProgress = function(callback){
     lastSavedData = s;
     // console.log("Save user progress, userTaskData:", userTaskData);
     // userTaskData.conceptualModel = concepts;
-    console.log("Save user progress, userTaskData:", userTaskData);
+    // console.log("Save user progress, userTaskData:", userTaskData);
     cloud.saveUserProgress(
         c2stem.task_id,
         userTaskData,
         function () {
-            console.log("User data saved for task:",c2stem.task_id);
+            // console.log("User data saved for task:",c2stem.task_id);
         },
         function (msg) {
             console.log("User data could not be saved, error:",msg);

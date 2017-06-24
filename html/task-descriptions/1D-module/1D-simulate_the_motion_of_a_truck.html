@@ -31,12 +31,8 @@
                 <li>- Use the values you generate from your simulation model to draw a distance versus time graph.  What is the nature of this plot?  What corresponds to the velocity of the vehicle in this plot?  Why is generating a graph useful?</li>
             </ul>
             <br>
-            <form action="#">
-                <p>
-                  <input type="checkbox" id="m1t4a" />
-                  <label for="m1t4a">SUBMIT SOLUTION</label>
-                </p>
-            </form>
+            <button id="m1t4a" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
+            <label id="m1t4a-label" ></Label>
         </span>
         </div>
     </li>
@@ -47,12 +43,8 @@
                 <li>- Edit your program to determine what speed Robbie should set for his truck from cone 1 to cone 3, so he can cover the distance in 8 minutes?</li>
             </ul>
             <br>
-            <form action="#">
-                <p>
-                  <input type="checkbox" id="m1t4b" />
-                  <label for="m1t4b">SUBMIT SOLUTION</label>
-                </p>
-            </form>
+            <button id="m1t4b" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
+            <label id="m1t4b-label" ></Label>
         </span>
         </div>
     </li>
@@ -89,5 +81,39 @@
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<script>
+    var assessmentData = {
+    };
+    window.parent.c2stem.register_save_data_fetcher("assessmentData", function () {
+        return assessmentData;
+    });
 
+    assessmentData = window.parent.c2stem.userTaskData["assessmentData"];
+    if(assessmentData){
+        for(var id in assessmentData){
+            if(assessmentData.hasOwnProperty(id))
+                $("#" + id + "-label").text("  Last submitted on: " + assessmentData[id]);
+        }
+    }else {
+        assessmentData = {};
+    }
+
+    var getTimeString = function () {
+        return new Date().toLocaleDateString()+ " " + new Date().toLocaleTimeString();
+    }
+
+    var submitSolution = function(activityID){
+        window.parent.TaskDescriptionActionManger.submitSolution(activityID);
+        assessmentData[activityID] = getTimeString();
+        $("#" + activityID + "-label").text("  Last submitted on: " + assessmentData[activityID]);
+    }
+
+    $('.submit_solution').each(function() {
+        console.log(this.id);
+        $("#" + this.id).click(function () {
+            submitSolution( this.id );
+        });
+    });
+
+</script>
 </html>
