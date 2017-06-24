@@ -319,14 +319,14 @@ function transform_constructs_of_rule(concepts, rule, mode, concept) {
                 break;
             case "custom_variable":
                 if (mode === "create") {
-                    if(c.isGlobal == true )
+                    if(c.isGlobal === true || c.isGlobal === "true" )
                         transform_cm.add_variable(null, c.name, true);
                     else
                         transform_cm.add_variable(concept, c.name, false);
                 }
                 else if (mode === "delete")
                 {
-                    if(c.isGlobal == true )
+                    if(c.isGlobal === true || c.isGlobal === "true" )
                         transform_cm.delete_variable(null, c.name, true);
                     else
                         transform_cm.delete_variable(concept, c.name, false);
@@ -335,12 +335,12 @@ function transform_constructs_of_rule(concepts, rule, mode, concept) {
             case "custom_block":
                 if (mode === "create") {
                     // concepts, concept, blockName, category, isGlobal
-                    transform_cm.create_block(concepts, concept, c.name, c.category, c.isGlobal != undefined ? c.isGlobal == true : false);
+                    transform_cm.create_block(concepts, concept, c.name, c.category, c.isGlobal != undefined ? (c.isGlobal === true || c.isGlobal === "true") : false);
                 }
                 else if (mode === "delete")
                 {
                     // concepts, concept, blockName, isGlobal
-                    transform_cm.delete_block(concepts, concept, c.name, c.isGlobal != undefined ? c.isGlobal == true : false);
+                    transform_cm.delete_block(concepts, concept, c.name, c.isGlobal != undefined ? (c.isGlobal === true || c.isGlobal === "true"): false);
                 }
                 break;
             default:
