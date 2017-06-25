@@ -48,9 +48,9 @@
           "elementID": "MaxAcceleration",
           "selected": false
         },
-        "MaxDeceleration": {
+        "BrakingDeceleration": {
           "name": "max drone deceleration in m/s^2",
-          "elementID": "BrakingAcceleration",
+          "elementID": "BrakingDeceleration",
           "selected": false
         },
         "CoastingTime": {
@@ -296,7 +296,7 @@
         },
         {
           "Required": [
-            "BrakingAcceleration"
+            "BrakingDeceleration"
           ],
           "GeneratedConstructs": [
             {
@@ -446,9 +446,9 @@
           "elementID": "MaxAcceleration",
           "selected": false
         },
-        "MaxDeceleration": {
+        "BrakingDeceleration": {
           "name": "max drone deceleration in m/s^2",
-          "elementID": "BrakingAcceleration",
+          "elementID": "BrakingDeceleration",
           "selected": false
         },
         "CoastingTime": {
@@ -689,7 +689,7 @@
         },
         {
           "Required": [
-            "BrakingAcceleration"
+            "BrakingDeceleration"
           ],
           "GeneratedConstructs": [
             {
@@ -799,7 +799,7 @@
       "selected": false,
       "isSprite": true,
       "isBuiltIn": true,
-      "costume": "Package",
+      "costume": "Package2",
       "properties": {
         "PositionX": {
           "name": "x position in m",
@@ -826,9 +826,9 @@
           "elementID": "MaxAcceleration",
           "selected": false
         },
-        "MaxDeceleration": {
+        "BrakingDeceleration": {
           "name": "max drone deceleration in m/s^2",
-          "elementID": "BrakingAcceleration",
+          "elementID": "BrakingDeceleration",
           "selected": false
         },
         "CoastingTime": {
@@ -1069,7 +1069,7 @@
         },
         {
           "Required": [
-            "BrakingAcceleration"
+            "BrakingDeceleration"
           ],
           "GeneratedConstructs": [
             {

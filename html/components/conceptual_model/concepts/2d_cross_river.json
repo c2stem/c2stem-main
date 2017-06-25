@@ -274,19 +274,6 @@
         },
         {
           "Required": [
-            "update_resultant_velocity"
-          ],
-          "GeneratedConstructs": [
-            {
-              "name": "update resultant velocity of boat in m/s",
-              "category": "physics",
-              "type": "built_in_custom_block",
-              "isGlobal": "false"
-            }
-          ]
-        },
-        {
-          "Required": [
             "Angle"
           ],
           "GeneratedConstructs": [

@@ -48,9 +48,9 @@
           "elementID": "MaxAcceleration",
           "selected": false
         },
-        "MaxDeceleration": {
+        "BrakingDeceleration": {
           "name": "max drone deceleration in m/s^2",
-          "elementID": "BrakingAcceleration",
+          "elementID": "BrakingDeceleration",
           "selected": false
         },
         "CoastingTime": {
@@ -296,7 +296,7 @@
         },
         {
           "Required": [
-            "BrakingAcceleration"
+            "BrakingDeceleration"
           ],
           "GeneratedConstructs": [
             {
@@ -446,9 +446,9 @@
           "elementID": "MaxAcceleration",
           "selected": false
         },
-        "MaxDeceleration": {
+        "BrakingDeceleration": {
           "name": "max drone deceleration in m/s^2",
-          "elementID": "BrakingAcceleration",
+          "elementID": "BrakingDeceleration",
           "selected": false
         },
         "CoastingTime": {
@@ -689,7 +689,7 @@
         },
         {
           "Required": [
-            "BrakingAcceleration"
+            "BrakingDeceleration"
           ],
           "GeneratedConstructs": [
             {
@@ -788,100 +788,6 @@
               "category": "physics",
               "type": "custom_variable",
               "isGlobal": "false"
-            }
-          ]
-        }
-      ]
-    },
-    "Target": {
-      "name": "Target",
-      "elementID": "Target",
-      "selected": false,
-      "isSprite": true,
-      "isBuiltIn": true,
-      "costume": "target",
-      "properties": {
-        "PositionX": {
-          "name": "x position in m",
-          "elementID": "PositionX",
-          "selected": false
-        },
-        "PositionY": {
-          "name": "y position in m",
-          "elementID": "PositionY",
-          "selected": false
-        }
-      },
-      "rules": [
-        {
-          "Required": [
-            "PositionX"
-          ],
-          "GeneratedConstructs": [
-            {
-              "name": "physicsXPosition",
-              "category": "physics",
-              "type": "built_in"
-            },
-            {
-              "name": "setPhysicsXPosition",
-              "category": "physics",
-              "type": "built_in"
-            },
-            {
-              "name": "changePhysicsXPosition",
-              "category": "physics",
-              "type": "built_in"
-            }
-          ]
-        },
-        {
-          "Required": [
-            "PositionY"
-          ],
-          "GeneratedConstructs": [
-            {
-              "name": "physicsYPosition",
-              "category": "physics",
-              "type": "built_in"
-            },
-            {
-              "name": "setPhysicsYPosition",
-              "category": "physics",
-              "type": "built_in"
-            },
-            {
-              "name": "changePhysicsYPosition",
-              "category": "physics",
-              "type": "built_in"
-            }
-          ]
-        },
-        {
-          "Required": [
-            "PositionX",
-            "PositionY"
-          ],
-          "GeneratedConstructs": [
-            {
-              "name": "setPhysicsPosition",
-              "category": "physics",
-              "type": "built_in_custom_block"
-            },
-            {
-              "name": "changePhysicsPosition",
-              "category": "physics",
-              "type": "built_in_custom_block"
-            },
-            {
-              "name": "getPhysicsAttrOf",
-              "category": "physics",
-              "type": "built_in"
-            },
-            {
-              "name": "setPhysicsAttrOf",
-              "category": "physics",
-              "type": "built_in"
             }
           ]
         }
