@@ -289,9 +289,9 @@ C2Stem.prototype.addConcpetualModelingTab = function (id, name, data, callbackOn
         </div>`);
 
     window.snap.callme = function () {
-        c2stem.loadBlockCacheDefault( function () {
+        // c2stem.loadBlockCacheDefault( function () {
             load_conceptual_model("conceptualModel", `tab${id}`, data, myself.register_save_data_fetcher);
-        });
+        // });
     }
 };
 

@@ -296,15 +296,19 @@ IDE_Morph.prototype.add_variable = function(sprite, variable_name, isGlobal){
     var ide = this;
     if (isGlobal) {
         var stage = ide.stage;
-        if(stage.isVariableNameInUse(variable_name))
+        // if(stage.isVariableNameInUse(variable_name)) {
             stage.addVariable(variable_name, true);
-        else
-            return;
+            console.log("global variable added");
+        // }
+        // else{
+        //     console.log("global variable name in use: ", variable_name);
+        //     return;
+        // }
     } else {
-        if(!sprite.isVariableNameInUse(variable_name))
+        // if(!sprite.isVariableNameInUse(variable_name))
             sprite.addVariable(variable_name, false);
-        else
-            return;
+        // else
+        //     return;
     }
     ide.flushPaletteCache();
     ide.refreshPalette();

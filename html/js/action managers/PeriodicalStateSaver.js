@@ -45,7 +45,7 @@ var autoLog = debounce(function() {
         lastLoggedData = lg;
         PeriodicalStateSaver.logModelState(userTaskData);
     }
-}, 4000);
+}, 1000);
 
 
 var autoSave = debounce(function() {
@@ -53,7 +53,7 @@ var autoSave = debounce(function() {
     if(!c2stem.saveDataFetchers)
         return;
     c2stem.saveUserProgress();
-}, 7000);
+}, 2000);
 
 C2StemActions.addEventListener(function (event) {
     if(event.namespace === 'periodical-state-saver')
