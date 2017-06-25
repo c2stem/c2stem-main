@@ -107,7 +107,7 @@
             {
               "name": "x acceleration in m/s^2",
               "category": "physics",
-              "type": "custom_block",
+              "type": "custom_variable",
               "isGlobal": "false"
             }
           ]

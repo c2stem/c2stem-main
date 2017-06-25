@@ -960,12 +960,12 @@
             {
               "name": "setPhysicsPosition",
               "category": "physics",
-              "type": "built_in_custom_block"
+              "type": "built_in"
             },
             {
               "name": "changePhysicsPosition",
               "category": "physics",
-              "type": "built_in_custom_block"
+              "type": "built_in"
             },
             {
               "name": "getPhysicsAttrOf",
