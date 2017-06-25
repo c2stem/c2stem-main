@@ -172,3 +172,8 @@ program.version(version)
     .parse(process.argv);
 
 start(program);
+
+
+function debug() {
+    console.log.apply(this, arguments);
+}

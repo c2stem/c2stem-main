@@ -46,6 +46,8 @@
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+<script type="text/javascript" src="js/c2stem_cloud.js"></script>
 <script type="text/javascript" src="js/c2stem.js"></script>
 <script type="text/javascript" src="js/c2stem-data.js"></script>
 
@@ -68,11 +70,11 @@
                         </div>
                         <div class="card-content">
                             <span class="card-title">${module.name}</span>
-                            <input type="checkbox" id="${module.id}">
-                            <label for="${module.id}">Submit solution</label>
                         </div>
                     </div>
                 </a>
+                <button id="${module.id}" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
+                <label id="${module.id}-label" ></Label>
             </div>
         `;
     }
@@ -86,10 +88,60 @@
             var div = $("#modules");
             for (var i = 0; i < res.modules.length; i++)
                 div.append(getModuleCard(res.modules[i]));
+            init_module_state_saver();
         }
         ModuleListActionManger.pageLoaded();
     });
 
 </script>
+<script>
+    var assessmentData = {
+    };
 
+    var getTimeString = function () {
+        return new Date().toLocaleDateString()+ " " + new Date().toLocaleTimeString();
+    }
+
+    var submitSolution = function(activityID){
+        assessmentData[activityID] = getTimeString();
+        c2stem.module_state = assessmentData;
+        $("#" + activityID + "-label").text("  Last submitted on: " + assessmentData[activityID]);
+        ModuleListActionManger.submitSolution(activityID);
+        c2stem.SaveModulesState();
+    }
+
+
+    function init_module_state_saver() {
+
+        c2stem.loadModulesState(function (error) {
+            if(error === null)
+                assessmentData = c2stem.module_state;
+            OnSavedDataLoaded();
+        });
+
+    }
+
+    function OnSavedDataLoaded() {
+
+        if(assessmentData){
+            for(var id in assessmentData){
+                console.log(id + ": " + $("#" + id + "-label"));
+                if(assessmentData.hasOwnProperty(id)){
+                    $("#" + id + "-label").text("  Last submitted on: " + assessmentData[id]);
+                    console.log("#" + id + "-label");
+                }
+            }
+        }else {
+            assessmentData = {};
+        }
+
+        $('.submit_solution').each(function() {
+            console.log(this.id);
+            $("#" + this.id).click(function () {
+                submitSolution( this.id );
+            });
+        });
+    }
+
+</script>
 </html>

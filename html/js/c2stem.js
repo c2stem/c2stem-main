@@ -479,3 +479,46 @@ C2Stem.prototype.saveBlockCacheDefault = function(){
         }
     });
 }
+
+
+
+C2Stem.prototype.SaveModulesState = function(callback) {
+    console.log('SaveModulesState');
+    var cloud = C2StemCloud;
+    // var s = JSON.stringify(c2stem.module_state);
+    cloud.saveUserProgress(
+        "module_state",
+        c2stem.module_state,
+        function () {
+            console.log("ModulesState saved:", c2stem.module_state);
+            if(callback)
+                callback(null);
+        },
+        function (msg) {
+            console.log("ModulesState could not be saved, error:", msg);
+            if(callback)
+                callback(msg);
+        }
+    );
+};
+
+
+C2Stem.prototype.loadModulesState = function (callback) {
+    console.log('loadModulesState');
+    // var cloud = snapWin.SnapCloud;
+    var cloud = C2StemCloud;
+    cloud.loadUserProgress(cloud.encodeDict({
+        Username: "",
+        ProjectName: "module_state",
+        Template: ""
+    }), function (projectData) {
+        c2stem.module_state = JSON.parse(projectData);
+        // console.log("loadBlocksCache", c2stem.blockCache);
+        if(callback)
+            callback(null);
+    }, function (err) {
+        c2stem.module_state = {};
+        if(callback)
+            callback(err);
+    });
+};
