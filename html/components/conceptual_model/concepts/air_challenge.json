@@ -1,5 +1,20 @@
 {
   "environment": {
+    "Tree": {
+      "name": "Tree",
+      "elementID": "Tree",
+      "selected": false,
+      "isSprite": true,
+      "isBuiltIn": true,
+      "costume": "tree",
+      "properties": {
+        "tree_height": {
+          "name": "tree height in m",
+          "elementID": "Tree",
+          "selected": false
+        }
+      }
+    },
     "Physics": {
       "name": "Physics",
       "elementID": "env_physics",
