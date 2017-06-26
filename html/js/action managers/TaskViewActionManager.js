@@ -5,7 +5,8 @@ var TaskViewActionManger = new ActionManager();
 
 TaskViewActionManger.addActions(
     'switchTab',
-    'pageLoaded'
+    'pageLoaded',
+    'resetTask'
 );
 
 TaskViewActionManger._switchTab = function(tab_name, tab_type) {
@@ -20,6 +21,14 @@ TaskViewActionManger._pageLoaded = function(task_id, module_id) {
 };
 
 TaskViewActionManger.onPageLoaded = function(task_id, module_id) {
+};
+
+
+TaskViewActionManger._resetTask = function(task_id, module_id) {
+    return [task_id, module_id];
+};
+
+TaskViewActionManger.onResetTask = function(task_id, module_id) {
 };
 
 ///////////////// using the action manager /////////////////

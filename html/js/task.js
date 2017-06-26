@@ -55,12 +55,17 @@ function loadTask(err, res) {
 
         $("#reset_to_template").click(function () {
             var cloud = C2StemCloud;
+            TaskViewActionManger.resetTask(c2stem.task_id, c2stem.module_id);
             cloud.deleteUserProgress(c2stem.task_id, function () {
                 console.log(c2stem.task_id," reset_to_template successful");
                 location.reload();
             }, function (err) {
                 console.log(c2stem.task_id,"could not reset_to_template, err:", err);
             });
+        });
+
+        $("#logout").click(function () {
+            LoginActionManger.logout();
         });
 
         // $("#ExportSnapBlocks").click(function () {
