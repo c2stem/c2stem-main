@@ -48,21 +48,52 @@
     <hr class="style-two">
 </script>
 <script>
+    assessmentData = window.parent.c2stem.userTaskData["assessmentData"];
+    if(!assessmentData){
+        assessmentData = {};
+    }
     var url='assessment2.2.json';
     //4a.function creation
-    var slingshot = function (url, tplId, anchor) {
+    var slingshot = function (url, tplId, anchor, loaddata) {
         $.getJSON(url, function(data) {
             var template = $(tplId).html();
-            var stone = Handlebars.compile(template)(data);
+            var load=template+ "<script>"+loaddata+"<\/script>";
+            var stone = Handlebars.compile(load)(data);
             $(anchor).append(stone);
         });
     }
-    //4b.function firing
-    slingshot('assessment2.2.json', '#tpl', '#anchor'); // since url = 'data.json' , we can use both notations.
 
-    $(document).on('click', "input[type='radio']", function () {
+    $(document).on('click', "input[type='radio']", function () {var radio_id=$(this).attr('id');
         window.parent.AssessmentActionManager.toggleRadioBttn($(this).attr('id'));
+        var length=radio_id.length;
+        var string=radio_id.substring(0,length-1);
+        assessmentData[string]= radio_id ;
     });
+
+    window.parent.c2stem.register_save_data_fetcher("assessmentData", function () {
+        return assessmentData;
+    });
+
+    var updateAssessmentUI= function () {
+        console.log("inside Update UI");
+        for(var id in assessmentData){
+            if(assessmentData.hasOwnProperty(id)){
+                if(id.startsWith("radio")){
+                    id.startsWith("radio")
+                    console.log("in radio "+ id);
+                    console.log($('#' + id));
+                    $('#' + assessmentData[id]).prop('checked', true);
+                    /*load_save_data = load_save_data +"$('#' + id).prop('checked', true);";*/
+
+                }
+
+            }
+        }
+
+    };
+
+    //4b.function firing
+    slingshot('assessment2.2.json', '#tpl', '#anchor',"updateAssessmentUI()" );
 
 </script>
 </body>

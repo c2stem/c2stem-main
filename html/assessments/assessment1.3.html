@@ -49,24 +49,24 @@
             <p>{{thirdLine}}</p>
             <form action="#">
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="radio1_3_1_f" />
-                    <label for="radio1_3_1_f"><img for="a" src="{{option_a1}}" width="70%"></label>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_2_f" />
+                    <label for="radio1_3_2_f"><img for="a" src="{{option_a1}}" width="70%"></label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="radio1_3_1_g" />
-                    <label for="radio1_3_1_g"><img src="{{option_a2}}" width="70%"></label>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_2_g" />
+                    <label for="radio1_3_2_g"><img src="{{option_a2}}" width="70%"></label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="radio1_3_1_h"  />
-                    <label for="radio1_3_1_h"><img src="{{option_a3}}" width="70%"></label>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_2_h"  />
+                    <label for="radio1_3_2_h"><img src="{{option_a3}}" width="70%"></label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="radio1_3_1_i"/>
-                    <label for="radio1_3_1_i"><img src="{{option_a4}}" width="70%"></label>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_2_i"/>
+                    <label for="radio1_3_2_i"><img src="{{option_a4}}" width="70%"></label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="radio1_3_1_j"/>
-                    <label for="radio1_3_1_j"><img src="{{option_a5}}" width="70%"></label>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_2_j"/>
+                    <label for="radio1_3_2_j"><img src="{{option_a5}}" width="70%"></label>
                 </p>
             </form>
         </div>
@@ -94,23 +94,50 @@
     <hr class="style-two">
 </script>
 <script>
+    assessmentData = window.parent.c2stem.userTaskData["assessmentData"];
+    if(!assessmentData){
+        assessmentData = {};
+    }
     var url='assessment1.3.json';
     //4a.function creation
-    var slingshot = function (url, tplId, anchor) {
+    var slingshot = function (url, tplId, anchor, loaddata) {
         $.getJSON(url, function(data) {
             var template = $(tplId).html();
-            var stone = Handlebars.compile(template)(data);
+            var load=template+ "<script>"+loaddata+"<\/script>";
+            var stone = Handlebars.compile(load)(data);
             $(anchor).append(stone);
         });
     }
-    //4b.function firing
-    slingshot('assessment1.3.json', '#tpl', '#anchor'); // since url = 'data.json' , we can use both notations.
+
 
     $(document).on('click', "input[type='radio']", function () {
+        var radio_id=$(this).attr('id');
         window.parent.AssessmentActionManager.toggleRadioBttn($(this).attr('id'));
-       
+        var length=radio_id.length;
+        var string=radio_id.substring(0,length-1);
+        assessmentData[string]= radio_id ;
     });
 
+    window.parent.c2stem.register_save_data_fetcher("assessmentData", function () {
+        return assessmentData;
+    });
+
+    var updateAssessmentUI= function () {
+        console.log("inside Update UI");
+        for(var id in assessmentData){
+            if(assessmentData.hasOwnProperty(id)){
+                if(id.startsWith("radio")){
+                    id.startsWith("radio")
+                    console.log("in radio "+ id);
+                    console.log($('#' + id));
+                    $('#' + assessmentData[id]).prop('checked', true);
+
+                }
+            }
+        }
+    };
+    //4b.function firing
+    slingshot('assessment1.3.json', '#tpl', '#anchor',"updateAssessmentUI()" );
 </script>
 </body>
 </html>

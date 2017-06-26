@@ -130,6 +130,35 @@
     $(document).on('click', "input[type='checkbox']", function () {
         window.parent.AssessmentActionManager.toggleRadioBttn($(this).attr('id')+ " checked: " +$(this).prop('checked'));
     });
+
+    /*window.parent.c2stem.register_save_data_fetcher("assessmentData", function () {
+        return assessmentData;
+    });
+
+    var updateAssessmentUI= function () {
+        console.log("inside Update UI");
+        for(var id in assessmentData){
+            if(assessmentData.hasOwnProperty(id)){
+                if(id.startsWith("radio")){
+                    id.startsWith("radio")
+                    console.log("in radio "+ id);
+                    console.log($('#' + id));
+                    $('#' + assessmentData[id]).prop('checked', true);
+                    /!*load_save_data = load_save_data +"$('#' + id).prop('checked', true);";*!/
+
+                }else{
+                    console.log("in text areas "+ id);
+                    $('#' + id).val(assessmentData[id]);/!*
+                     load_save_data = load_save_data +"$('#' + id).val(assessmentData[id])";*!/
+                }
+
+            }
+        }
+
+    };
+
+    //4b.function firing
+    slingshot('assessment1.1.json', '#tpl', '#anchor',"updateAssessmentUI()" );*/
 </script>
 </body>
 </html>
