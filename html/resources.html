@@ -20,21 +20,21 @@
 
     <ul id="slide-out" class="side-nav fixed">
         <li><a class="subheader">Physics Concepts</a></li>
-        <li><a href="#Position">Position</a></li>
-        <li><a href="#Speed">Speed</a></li>
-        <li><a href="#Velocity">Velocity</a></li>
-        <li><a href="#Accelaration">Accelaration</a></li>
-        <li><a href="#TwoDVelocity">2D Velocity</a></li>
-        <li><a href="#Math">Math Components</a></li>
-        <li><a href="#gravity">Gravity</a></li>
+        <li><a href="#Position" class="side_nav_item">Position</a></li>
+        <li><a href="#Speed" class="side_nav_item">Speed</a></li>
+        <li><a href="#Velocity" class="side_nav_item" class="side_nav_item">Velocity</a></li>
+        <li><a href="#Accelaration" class="side_nav_item">Accelaration</a></li>
+        <li><a href="#TwoDVelocity" class="side_nav_item">2D Velocity</a></li>
+        <li><a href="#Math" class="side_nav_item">Math Components</a></li>
+        <li><a href="#gravity" class="side_nav_item">Gravity</a></li>
         <li><div class="divider"></div></li>
         <li><a class="subheader">Computational Concepts</a></li>
-        <li><a href="#glossary">Physics Blocks</a></li>
+        <li><a href="#glossary" class="side_nav_item">Physics Blocks</a></li>
         <li><div class="divider"></div></li>
         <li><a class="subheader">Computational Practices</a></li>
-        <li><a href="#simulation">Simulation Model</a></li>
-        <li><a href="#conceptual">Conceptual Model</a></li>
-        <li><a href="#ctconstructs">CT Constructs</a></li>
+        <li><a href="#simulation" class="side_nav_item">Simulation Model</a></li>
+        <li><a href="#conceptual" class="side_nav_item">Conceptual Model</a></li>
+        <li><a href="#ctconstructs" class="side_nav_item">CT Constructs</a></li>
         <li><div class="divider"></div></li>
     </ul>
     <a href="#" data-activates="slide-out" class="button-collapse"></a>
@@ -314,6 +314,16 @@
      );
 </script>
 
+
+<script>
+    $('.side_nav_item').each(function( index ) {
+        console.log( index + ": " + $( this ).text() );
+        $( this ).click(function () {
+            window.parent.ResourcesActionManager.clicked($( this ).text());
+        });
+    });
+
+</script>
 
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script >

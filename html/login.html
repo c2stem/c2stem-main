@@ -67,12 +67,15 @@
 <script type="text/javascript" src="js/c2stem.js"></script>
 <script type="text/javascript" src="js/c2stem-data.js"></script>
 <script type="text/javascript" src="js/actions.js"></script>
+<script type="text/javascript" src="js/action%20managers/LoginActionManager.js"></script>
 <!--<script type="text/javascript" src="js/action%20managers/PeriodicalStateSaver.js"></script>-->
 
 <script type="text/javascript">
     var c2stem = new C2Stem();
 
     $(document).ready(function () {
+
+        LoginActionManger.pageLoaded();
         // fields descriptors are sometimes not lifted
         Materialize.updateTextFields();
 
@@ -88,6 +91,7 @@
 
     $("#login").click(function (event) {
         event.preventDefault();
+        LoginActionManger.login();
         c2stem.login($("#username").val(), $("#password").val(), $("#remember").val(),
             function (err) {
                 if (err) {
