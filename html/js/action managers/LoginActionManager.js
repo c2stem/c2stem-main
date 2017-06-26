@@ -5,6 +5,7 @@ var LoginActionManger = new ActionManager();
 
 LoginActionManger.addActions(
     'login',
+    'logout',
     'pageLoaded'
 );
 
@@ -20,6 +21,13 @@ LoginActionManger._login = function() {
 };
 
 LoginActionManger.onLogin = function() {
+};
+
+LoginActionManger._logout = function() {
+    return [];
+};
+
+LoginActionManger.onLogout = function() {
 };
 
 ///////////////// using the action manager /////////////////
