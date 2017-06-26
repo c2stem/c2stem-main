@@ -38,8 +38,8 @@
             <form class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="texta" class="materialize-textarea textarea1"></textarea>
-                        <label for="texta">{{thirdLine}}</label>
+                        <textarea id="text2_1_2" class="materialize-textarea textarea1"></textarea>
+                        <label for="text2_1_2">{{thirdLine}}</label>
                     </div>
                 </div>
             </form>
@@ -57,16 +57,16 @@
                 <p>{{thirdLine}}</p>
                 <form action="#">
                     <p>
-                        <input class="with-gap" name="group1" type="radio" id="a" />
-                        <label for="a">{{fourthLine}}</label>
+                        <input class="with-gap" name="group1" type="radio" id="radio2_1_3_a" />
+                        <label for="radio2_1_3_a">{{fourthLine}}</label>
                     </p>
                     <p>
-                        <input class="with-gap" name="group1" type="radio" id="b" />
-                        <label for="b">{{fifthLine}}</label>
+                        <input class="with-gap" name="group1" type="radio" id="radio2_1_3_b" />
+                        <label for="radio2_1_3_b">{{fifthLine}}</label>
                     </p>
                     <p>
-                        <input class="with-gap" name="group1" type="radio" id="c"  />
-                        <label for="c">{{sixthLine}}</label>
+                        <input class="with-gap" name="group1" type="radio" id="radio2_1_3_c"  />
+                        <label for="radio2_1_3_c">{{sixthLine}}</label>
                     </p>
                 </form>
             </div>
@@ -74,8 +74,8 @@
                 <form class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
-                            <textarea id="textb" class="materialize-textarea textarea1"></textarea>
-                            <label for="textb">{{seventhLine}}</label>
+                            <textarea id="text2_1_3" class="materialize-textarea textarea1"></textarea>
+                            <label for="text2_1_3">{{seventhLine}}</label>
                         </div>
                     </div>
                 </form>
@@ -97,6 +97,14 @@
     //4b.function firing
     slingshot('assessment2.1.json', '#tpl', '#anchor'); // since url = 'data.json' , we can use both notations.
     $('.textarea1').trigger('autoresize');
+
+    $(document).on('blur', '.textarea1', function () {
+        window.parent.AssessmentActionManager.addText($(this).val(), $(this).attr('id'));
+    });
+
+    $(document).on('click', "input[type='radio']", function () {
+        window.parent.AssessmentActionManager.toggleRadioBttn($(this).attr('id'));
+    });
 </script>
 </body>
 </html>

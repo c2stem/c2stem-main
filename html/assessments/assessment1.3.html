@@ -24,24 +24,24 @@
             <p>{{secondLine}}</p>
             <form action="#">
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="a" />
-                    <label for="a"><img for="a" src="{{option_a}}" width="70%"></label>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_1_a" />
+                    <label for="radio1_3_1_a"><img for="a" src="{{option_a}}" width="70%"></label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="b" />
-                    <label for="b"><img src="{{option_b}}" width="70%"></label>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_1_b" />
+                    <label for="radio1_3_1_b"><img src="{{option_b}}" width="70%"></label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="c"  />
-                    <label for="c"><img src="{{option_c}}" width="70%"></label>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_1_c"  />
+                    <label for="radio1_3_1_c"><img src="{{option_c}}" width="70%"></label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="d"/>
-                    <label for="d"><img src="{{option_d}}" width="70%"></label>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_1_d"/>
+                    <label for="radio1_3_1_d"><img src="{{option_d}}" width="70%"></label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="e"/>
-                    <label for="e"><img src="{{option_e}}" width="70%"></label>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_1_e"/>
+                    <label for="radio1_3_1_e"><img src="{{option_e}}" width="70%"></label>
                 </p>
             </form>
         </div>
@@ -49,24 +49,24 @@
             <p>{{thirdLine}}</p>
             <form action="#">
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="a1" />
-                    <label for="a1"><img for="a" src="{{option_a1}}" width="70%"></label>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_1_f" />
+                    <label for="radio1_3_1_f"><img for="a" src="{{option_a1}}" width="70%"></label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="b1" />
-                    <label for="b1"><img src="{{option_a2}}" width="70%"></label>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_1_g" />
+                    <label for="radio1_3_1_g"><img src="{{option_a2}}" width="70%"></label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="c1"  />
-                    <label for="c1"><img src="{{option_a3}}" width="70%"></label>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_1_h"  />
+                    <label for="radio1_3_1_h"><img src="{{option_a3}}" width="70%"></label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="d1"/>
-                    <label for="d1"><img src="{{option_a4}}" width="70%"></label>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_1_i"/>
+                    <label for="radio1_3_1_i"><img src="{{option_a4}}" width="70%"></label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="e1"/>
-                    <label for="e1"><img src="{{option_a5}}" width="70%"></label>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_1_j"/>
+                    <label for="radio1_3_1_j"><img src="{{option_a5}}" width="70%"></label>
                 </p>
             </form>
         </div>
@@ -105,6 +105,12 @@
     }
     //4b.function firing
     slingshot('assessment1.3.json', '#tpl', '#anchor'); // since url = 'data.json' , we can use both notations.
+
+    $(document).on('click', "input[type='radio']", function () {
+        window.parent.AssessmentActionManager.toggleRadioBttn($(this).attr('id'));
+       
+    });
+
 </script>
 </body>
 </html>

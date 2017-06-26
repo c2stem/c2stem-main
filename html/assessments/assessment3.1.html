@@ -22,20 +22,20 @@
             <p>{{secondLine}}</p>
             <form action="#">
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="a" />
-                    <label for="a">{{thirdLine}}</label>
+                    <input class="with-gap" name="group1" type="radio" id="radio3_1_1_a" />
+                    <label for="radio3_1_1_a">{{thirdLine}}</label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="b" />
-                    <label for="b">{{fourthLine}}</label>
+                    <input class="with-gap" name="group1" type="radio" id="radio3_1_1_b" />
+                    <label for="radio3_1_1_b">{{fourthLine}}</label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="c"  />
-                    <label for="c">{{fifthLine}}</label>
+                    <input class="with-gap" name="group1" type="radio" id="radio3_1_1_c"  />
+                    <label for="radio3_1_1_c">{{fifthLine}}</label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group1" type="radio" id="c"  />
-                    <label for="c">{{sixthLine}}</label>
+                    <input class="with-gap" name="group1" type="radio" id="radio3_1_1_d"  />
+                    <label for="radio3_1_1_d">{{sixthLine}}</label>
                 </p>
             </form>
         </div>
@@ -43,8 +43,8 @@
             <form class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="textb" class="materialize-textarea textarea1"></textarea>
-                        <label for="textb">{{seventhLine}}</label>
+                        <textarea id="text3_1_1" class="materialize-textarea textarea1"></textarea>
+                        <label for="text3_1_1">{{seventhLine}}</label>
                     </div>
                 </div>
             </form>
@@ -72,32 +72,32 @@
                 <p>{{secondLine}}</p>
                 <form action="#">
                     <p>
-                        <input type="checkbox" id="a1" />
-                        <label for="a1">{{thirdLine}}</label>
+                        <input type="checkbox" id="checkbox3_1_3_a" />
+                        <label for="checkbox3_1_3_a">{{thirdLine}}</label>
                     </p>
                     <p>
-                        <input type="checkbox" id="b1" />
-                        <label for="b1">{{fourthLine}}</label>
+                        <input type="checkbox" id="checkbox3_1_3_b" />
+                        <label for="checkbox3_1_3_b">{{fourthLine}}</label>
                     </p>
                     <p>
-                        <input type="checkbox" id="c1" />
-                        <label for="c1">{{fifthLine}}</label>
+                        <input type="checkbox" id="checkbox3_1_3_c" />
+                        <label for="checkbox3_1_3_c">{{fifthLine}}</label>
                     </p>
                     <p>
-                        <input type="checkbox" id="d1" />
-                        <label for="d1">{{sixthLine}}</label>
+                        <input type="checkbox" id="checkbox3_1_3_d" />
+                        <label for="checkbox3_1_3_d">{{sixthLine}}</label>
                     </p>
                     <p>
-                        <input type="checkbox" id="e1" />
-                        <label for="e1">{{seventhLine}}</label>
+                        <input type="checkbox" id="checkbox3_1_3_e" />
+                        <label for="checkbox3_1_3_e">{{seventhLine}}</label>
                     </p>
                     <p>
-                        <input type="checkbox" id="f1" />
-                        <label for="f1">{{eighthLine}}</label>
+                        <input type="checkbox" id="checkbox3_1_3_f" />
+                        <label for="checkbox3_1_3_f">{{eighthLine}}</label>
                     </p>
                     <p>
-                        <input type="checkbox" id="g1" />
-                        <label for="g1">{{ninthLine}}</label>
+                        <input type="checkbox" id="checkbox3_1_3_g" />
+                        <label for="checkbox3_1_3_g">{{ninthLine}}</label>
                     </p>
                 </form>
             </div>
@@ -119,6 +119,17 @@
     slingshot('assessment3.1.json', '#tpl', '#anchor'); // since url = 'data.json' , we can use both notations.
     $('.textarea1').trigger('autoresize');
 
+    $(document).on('click', "input[type='radio']", function () {
+        window.parent.AssessmentActionManager.toggleRadioBttn($(this).attr('id'));
+    });
+
+    $(document).on('blur', '.textarea1', function () {
+        window.parent.AssessmentActionManager.addText($(this).val(), $(this).attr('id'));
+    });
+
+    $(document).on('click', "input[type='checkbox']", function () {
+        window.parent.AssessmentActionManager.toggleRadioBttn($(this).attr('id')+ " checked: " +$(this).prop('checked'));
+    });
 </script>
 </body>
 </html>

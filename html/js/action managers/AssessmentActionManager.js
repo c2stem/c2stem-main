@@ -15,7 +15,7 @@ AssessmentActionManager._addText= function(text_context, text_id) {
 };
 
 AssessmentActionManager.onAddText = function(text_context, text_id) {
-    console.log(tab_context + tab_id);
+    console.log(text_context + text_id);
 };
 
 AssessmentActionManager._toggleRadioBttn= function(bttn_id) {

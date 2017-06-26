@@ -27,8 +27,8 @@
                 <form class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
-                            <textarea id="texta" class="materialize-textarea textarea1"></textarea>
-                            <label for="texta">{{thirdLine}}</label>
+                            <textarea id="text3_2_1_a" class="materialize-textarea textarea1"></textarea>
+                            <label for="text3_2_1_a">{{thirdLine}}</label>
                         </div>
                     </div>
                 </form>
@@ -40,8 +40,8 @@
                 <form class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
-                            <textarea id="textb" class="materialize-textarea textarea1"></textarea>
-                            <label for="textb">{{fifthLine}}</label>
+                            <textarea id="text3_2_1_b" class="materialize-textarea textarea1"></textarea>
+                            <label for="text3_2_1_b">{{fifthLine}}</label>
                         </div>
                     </div>
                 </form>
@@ -64,6 +64,10 @@
     //4b.function firing
     slingshot('assessment3.2.json', '#tpl', '#anchor'); // since url = 'data.json' , we can use both notations.
     $('.textarea1').trigger('autoresize');
+
+    $(document).on('blur', '.textarea1', function () {
+        window.parent.AssessmentActionManager.addText($(this).val(), $(this).attr('id'));
+    });
 </script>
 </body>
 </html>

@@ -50,7 +50,7 @@
     {{#item2}}
     <div>
         <p><strong>{{title}}.</strong> {{firstLine}}</p>
-        <iframe class="resourseiFrame" width="60%" height="400" src="https://www.youtube.com/embed/jbNHoTl-MLo" frameborder="0" allowfullscreen></iframe>
+        <iframe class="resourseiFrame" width="60%" height="400" src="{{{video}}}" frameborder="0" allowfullscreen></iframe>
         <div class="shift">
             <p>{{secondLine}}</p>
             <p>{{thirdLine}}</p>
@@ -58,8 +58,8 @@
                 <form class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
-                            <textarea id="textarea1" class="materialize-textarea"></textarea>
-                            <label for="textarea1">Objects</label>
+                            <textarea id="objects" class="materialize-textarea textarea1"></textarea>
+                            <label for="objects">Objects</label>
                         </div>
                     </div>
                 </form>
@@ -96,28 +96,28 @@
             <p>{{secondLine}}</p>
             <form action="#">
                 <p>
-                    <input class="with-gap" name="group" type="radio" id="a" />
-                    <label for="a"><img for="a" src="{{firstOption}}" width="60%"></label>
+                    <input class="with-gap" name="group" type="radio" id="radio_1_1_2_a" />
+                    <label for="radio_1_1_2_a"><img for="a" src="{{firstOption}}" width="60%"></label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group" type="radio" id="b" />
-                    <label for="b"><img src="{{secondOption}}" width="60%"></label>
+                    <input class="with-gap" name="group" type="radio" id="radio_1_1_2_b" />
+                    <label for="radio_1_1_2_b"><img src="{{secondOption}}" width="60%"></label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group" type="radio" id="c"  />
-                    <label for="c"><img src="{{thirdOption}}" width="60%"></label>
+                    <input class="with-gap" name="group" type="radio" id="radio_1_1_2_c"  />
+                    <label for="radio_1_1_2_c"><img src="{{thirdOption}}" width="60%"></label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group" type="radio" id="d"/>
-                    <label for="d"><img src="{{fourthOption}}" width="60%"></label>
+                    <input class="with-gap" name="group" type="radio" id="radio_1_1_2_d"/>
+                    <label for="radio_1_1_2_d"><img src="{{fourthOption}}" width="60%"></label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group" type="radio" id="e"/>
-                    <label for="e"><img src="{{fifthOption}}" width="60%"></label>
+                    <input class="with-gap" name="group" type="radio" id="radio_1_1_2_e"/>
+                    <label for="radio_1_1_2_e"><img src="{{fifthOption}}" width="60%"></label>
                 </p>
                 <p>
-                    <input class="with-gap" name="group" type="radio" id="f" />
-                    <label for="f"><img src="{{sixthOption}}" width="60%"></label>
+                    <input class="with-gap" name="group" type="radio" id="radio_1_1_2_f" />
+                    <label for="radio_1_1_2_f"><img src="{{sixthOption}}" width="60%"></label>
                 </p>
             </form>
             </div>
@@ -136,20 +136,20 @@
                     <form class="col s12">
                         <div class="row">
                             <div class="input-field col s12">
-                                <textarea id="texta" class="materialize-textarea textarea1"></textarea>
-                                <label for="texta">a. What is the total distance traveled by the sprite?</label>
+                                <textarea id="text_1_1_4_a" class="materialize-textarea textarea1"></textarea>
+                                <label for="text_1_1_4_a">a. What is the total distance traveled by the sprite?</label>
                             </div>
                             <div class="input-field col s12">
-                                <textarea id="textb" class="materialize-textarea textarea1"></textarea>
-                                <label for="textb">b. What direction does it travel? (left, right, up, down)</label>
+                                <textarea id="text_1_1_4_b" class="materialize-textarea textarea1"></textarea>
+                                <label for="text_1_1_4_b">b. What direction does it travel? (left, right, up, down)</label>
                             </div>
                             <div class="input-field col s12">
-                                <textarea id="textc" class="materialize-textarea textarea1"></textarea>
-                                <label for="textc">c. For how much time does it travel?</label>
+                                <textarea id="text_1_1_4_c" class="materialize-textarea textarea1"></textarea>
+                                <label for="text_1_1_4_c">c. For how much time does it travel?</label>
                             </div>
                             <div class="input-field col s12">
-                                <textarea id="textd" class="materialize-textarea textarea1"></textarea>
-                                <label for="textd">d. What is the sprite’s speed?</label>
+                                <textarea id="text_1_1_4_d" class="materialize-textarea textarea1"></textarea>
+                                <label for="text_1_1_4_d">d. What is the sprite’s speed?</label>
                             </div>
                         </div>
                     </form>
@@ -160,6 +160,7 @@
     <hr class="style-two">
 </script>
 <script>
+
     var url='assessment1.1.json';
     //4a.function creation
     var slingshot = function (url, tplId, anchor) {
@@ -172,11 +173,14 @@
     //4b.function firing
     slingshot('assessment1.1.json', '#tpl', '#anchor'); // since url = 'data.json' , we can use both notations.
     //autosize textArea
-    $('.textarea1').trigger('autoresize');
 
-    $('.textarea1').blur(function () {
+    $(document).on('blur', '.textarea1', function () {
         window.parent.AssessmentActionManager.addText($(this).val(), $(this).attr('id'));
-    })
+    });
+
+    $(document).on('blur', '.txt', function () {
+        window.parent.AssessmentActionManager.addText($(this).val(), $(this).attr('id'));
+    });
     //deleteTableRow
     function deleteRow(row)
     {
@@ -205,16 +209,14 @@
         x.appendChild( new_row );
 
         window.parent.AssessmentActionManager.addObject(len);
-        console.log(len);
     }
-    $("input[type='radio']").click(function () {
+    $(document).on('click', "input[type='radio']", function () {
           window.parent.AssessmentActionManager.toggleRadioBttn($(this).attr('id'));
-          console.log($(this).attr('id'));
+          assessmentData[$(this).attr('id')]=true;
     });
 
 
     /*AssessmentActionManager*/
-
 </script>
 </body>
 </html>
