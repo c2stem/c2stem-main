@@ -1,20 +1,5 @@
 {
   "environment": {
-    "Tree": {
-      "name": "Tree",
-      "elementID": "Tree",
-      "selected": false,
-      "isSprite": true,
-      "isBuiltIn": true,
-      "costume": "tree",
-      "properties": {
-        "tree_height": {
-          "name": "tree height in m",
-          "elementID": "Tree",
-          "selected": false
-        }
-      }
-    },
     "Physics": {
       "name": "Physics",
       "elementID": "env_physics",
@@ -96,11 +81,6 @@
         "YAcceleration": {
           "name": "y acceleration in m/s^2",
           "elementID": "XAcceleration",
-          "selected": false
-        },
-        "HoldingPackage": {
-          "name": "holding package",
-          "elementID": "HoldingPackage",
           "selected": false
         }
       },
@@ -414,6 +394,35 @@
           ]
         }
       ]
+    },
+    "Tree": {
+      "name": "Tree",
+      "elementID": "Tree",
+      "selected": false,
+      "isSprite": true,
+      "isBuiltIn": true,
+      "costume": "tree",
+      "properties": {
+        "tree_height": {
+          "name": "tree height in m",
+          "elementID": "tree_height",
+          "selected": false
+        }
+      },
+      "rules": [
+        {
+          "Required": [
+            "tree_height"
+          ],
+          "GeneratedConstructs": [
+            {
+              "name": "tree height in m",
+              "category": "physics",
+              "type": "custom_variable",
+              "isGlobal": "true"
+            }
+          ]
+        },
     }
   }
 }
