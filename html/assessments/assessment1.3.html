@@ -107,8 +107,7 @@
             var stone = Handlebars.compile(load)(data);
             $(anchor).append(stone);
         });
-    }
-
+    };
 
     $(document).on('click', "input[type='radio']", function () {
         var radio_id=$(this).attr('id');
@@ -123,15 +122,11 @@
     });
 
     var updateAssessmentUI= function () {
-        console.log("inside Update UI");
+        $('.textarea1').trigger('autoresize');
         for(var id in assessmentData){
             if(assessmentData.hasOwnProperty(id)){
                 if(id.startsWith("radio")){
-                    id.startsWith("radio")
-                    console.log("in radio "+ id);
-                    console.log($('#' + id));
                     $('#' + assessmentData[id]).prop('checked', true);
-
                 }
             }
         }

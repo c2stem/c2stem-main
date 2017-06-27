@@ -6,6 +6,7 @@ var AssessmentActionManager = new ActionManager();
 AssessmentActionManager.addActions(
     'addText',
     'toggleRadioBttn',
+    'toggleCheckBox',
     'addObject',
     'deleteObject'
 );
@@ -24,6 +25,14 @@ AssessmentActionManager._toggleRadioBttn= function(bttn_id) {
 
 AssessmentActionManager.onToggleRadioBttn = function(bttn_id) {
     console.log(bttn_id);
+};
+
+AssessmentActionManager._toggleCheckBox= function(bttn_id, bttn_checked) {
+    return [bttn_id, bttn_checked];
+};
+
+AssessmentActionManager.onToggleCheckBox = function(bttn_id, bttn_checked) {
+    console.log(bttn_id + bttn_checked);
 };
 
 AssessmentActionManager._addObject= function(bttn_id) {

@@ -332,14 +332,16 @@ tr:nth-child(even) {
 .floatHandle{
     display: inline-block;
 }
+
+/*
 .row{
     margin: 10px;
-    /*width:80%;*/
+    !*width:80%;*!
 }
 
 .materialize-textarea{
     padding: 0!important;
-}
+}*/
 
 #POITable{
     border: solid black 3px;

@@ -52,22 +52,43 @@
     <hr class="style-two">
 </script>
 <script>
+    assessmentData = window.parent.c2stem.userTaskData["assessmentData"];
+    if(!assessmentData){
+        assessmentData = {};
+    }
     var url='assessment3.2.json';
     //4a.function creation
-    var slingshot = function (url, tplId, anchor) {
+    var slingshot = function (url, tplId, anchor, loaddata) {
         $.getJSON(url, function(data) {
             var template = $(tplId).html();
-            var stone = Handlebars.compile(template)(data);
+            var load=template+ "<script>"+loaddata+"<\/script>";
+            var stone = Handlebars.compile(load)(data);
             $(anchor).append(stone);
         });
-    }
-    //4b.function firing
-    slingshot('assessment3.2.json', '#tpl', '#anchor'); // since url = 'data.json' , we can use both notations.
-    $('.textarea1').trigger('autoresize');
+    };
 
     $(document).on('blur', '.textarea1', function () {
-        window.parent.AssessmentActionManager.addText($(this).val(), $(this).attr('id'));
+        var id=$(this).attr('id');
+        var value=$(this).val();
+        window.parent.AssessmentActionManager.addText(value, id);
+        assessmentData[id]=value;
     });
+
+    window.parent.c2stem.register_save_data_fetcher("assessmentData", function () {
+        return assessmentData;
+    });
+
+    var updateAssessmentUI= function () {
+        $('.textarea1').trigger('autoresize');
+        console.log("inside Update UI");
+        for(var id in assessmentData){
+            if(assessmentData.hasOwnProperty(id)){
+                    $('#' + id).val(assessmentData[id]);
+            }
+        }
+    };
+    //4b.function firing
+    slingshot('assessment3.2.json', '#tpl', '#anchor',"updateAssessmentUI()" );
 </script>
 </body>
 </html>
