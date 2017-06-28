@@ -98,7 +98,7 @@
             var stone = Handlebars.compile(load)(data);
             $(anchor).append(stone);
         });
-    }
+    };
 
     $(document).on('blur', '.textarea1', function () {
         var id=$(this).attr('id');
@@ -120,27 +120,17 @@
     });
 
     var updateAssessmentUI= function () {
-        console.log("inside Update UI");
+        $('.textarea1').trigger('autoresize');
         for(var id in assessmentData){
             if(assessmentData.hasOwnProperty(id)){
                 if(id.startsWith("radio")){
-                    id.startsWith("radio")
-                    console.log("in radio "+ id);
-                    console.log($('#' + id));
                     $('#' + assessmentData[id]).prop('checked', true);
-                    /*load_save_data = load_save_data +"$('#' + id).prop('checked', true);";*/
-
                 }else{
-                    console.log("in text areas "+ id);
-                    $('#' + id).val(assessmentData[id]);/*
-                     load_save_data = load_save_data +"$('#' + id).val(assessmentData[id])";*/
+                    $('#' + id).val(assessmentData[id]);
                 }
-
             }
         }
-
     };
-
     //4b.function firing
     slingshot('assessment2.1.json', '#tpl', '#anchor',"updateAssessmentUI()" );
 </script>
