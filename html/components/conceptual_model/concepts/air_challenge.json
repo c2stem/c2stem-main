@@ -97,12 +97,6 @@
           "selected": false,
           "category": "physics"
         },
-        "set_acceleration": {
-          "name": "set acceleration in m/s^2",
-          "elementID": "set_acceleration",
-          "selected": false,
-          "category": "physics"
-        },
         "speed_up": {
           "name": "speed up",
           "elementID": "speed_up",
@@ -422,7 +416,8 @@
               "isGlobal": "true"
             }
           ]
-        },
-    }
+        }
+        ]
+      }
   }
 }
