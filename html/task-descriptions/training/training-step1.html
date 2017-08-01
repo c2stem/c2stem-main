@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C2STEM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="/c2stem.css">
+
+</head>
+<body>
+<br>
+<div>
+    <p>Before we get into the physics, the first few lessons are designed to get you comfortable with the SNAP programming
+        environment. The more creative you are with these lessons - the easier the physics lessons will be! </p>
+    <br>
+</div>
+
+<ul class="collapsible popout" data-collapsible="accordion">
+    <li>
+        <div class="collapsible-header"><strong>Activity 0.1.A: Draw a Line.</strong></div>
+        <div class="collapsible-body"><span>
+            <p>Let’s start simple. In the BUILD tab, you have a turtle (your object) and a blank canvas (your stage).</p>
+            <ul>
+                <li>- Below the stage, make sure the “Turtle” object is selected.</li>
+                <li>- Drag and drop the [When Green Flag Clicked] block from the “Control” category on the top, left side of the BUILD page to the “Scripts” section in the middle of the screen.</li>
+                <li>- From the “Physics” category, drag and drop the [set x position to (0) m] block and attach it to the [When Green Flag Clicked] block.</li>
+                <li>- Change the value of the block to -10.</li>
+                <li>- Click on the green flag on the top, right side of your screen. Did your turtle move appropriately?</li>
+                <li>- In order to draw the line, we will need to use the [pen down] block from the “Pen” category of blocks. Drag and drop [pen down], connecting it to the [set x position to () m] block.</li>
+                <li>- We want to draw a line that is 20m long. In order to do so, drag the [change x position by () m] block and attach it to [pen down]. Set the value of that block to 20.</li>
+                <li>- Click on the green flag to run your program. If your stage looks like the image below, submit this task and move on to Activity 1.1.B.</li>
+            </ul>
+            <br>
+            <p><strong>When finished, click on the first button (the paper icon) on the top, left side of the SNAP environment. Click on “export summary.” At the top of the pop-up page, there is a link to your project. Please select that link and paste it here:</strong></p><br>
+              <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <textarea id="textarea2" class="materialize-textarea"></textarea>
+                      <label for="textarea2">Insert text here.</label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            <br>
+            <button id="m1t1a" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
+            <label id="m1t1a-label" ></Label>
+        </span>
+        </div>
+    </li>
+    <li>
+        <div class="collapsible-header"><strong>Activity 0.1.B: Draw a Triangle.</strong></div>
+        <div class="collapsible-body"><span>
+            <p>It is time to get more artistic! We now want our turtle to draw a triangle. We can’t simply tell the turtle “draw a triangle” and it will automatically know what to do. We have to give it step by step instructions - including the length it should travel for each side and the angle it needs to turn before drawing the next side. </p>
+            <br>
+            <ul>
+                <li>- Below the stage, make sure the “Turtle” object is selected.</li>
+                <li>- If you would like to clear your stage of your previous drawing, use the [clear] block from the “Pen” category</li>
+                <li>- Drag the current program down, releasing it from [when green flag is clicked].</li>
+                <li>- Drag and drop the [clear] block to [when green flag is clicked] and run the program.</li>
+                <li>- When finished, drag the [clear] block back towards the left column of blocks so that it is removed from your program and drag your prior program back to [when green flag is clicked].</li>
+                <li>- Drag and drop the [When Green Flag Clicked] block from the “Control” category on the top, left side of the BUILD page to the “Scripts” section in the middle of the screen.</li>
+                <li>- From the “Physics” category, drag and drop the [set position to x:(0) y:(0) m] block and attach it to the [When Green Flag Clicked] block.</li>
+                <li>- Change the value of x to -10 and y to -10.</li>
+                <li>- Click on the green flag on the top, right side of your screen. Did your turtle move appropriately?</li>
+                <li>- Drag and drop [pen down], connecting it to the [set x position to () m] block.</li>
+                <li>- Each of our triangle sides will be 20m long and we will need to turn the turtle by a specific angle before it moves to the next vertex of the triangle.</li>
+                <li>- For the bottom side of our triangle, use the [change x position by () m] block and attach it to [pen down]. Set the value of that block to 20.</li>
+                <li>- Drag and drop the [change angle to ()] to your program and set the degree to -45.</li>
+                <li>- Change the position of your turtle again to draw another side by changing the x and y by -10 and 20.</li>
+                <li>- Repeat these angle (-45) and position changes (x:-10, y:-20) one more time so that you have a complete equilateral triangle.</li>
+                <li>- Click on the green flag to run your program. If your stage looks like the image below, submit this task and move on to Activity 1.1.C.</li>
+            </ul>
+            <br>
+            <p><strong>Describe how you might program the turtle to draw an isosceles triangle: </strong></p><br>
+              <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <textarea id="textarea2" class="materialize-textarea"></textarea>
+                      <label for="textarea2">Insert text here.</label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            <br>
+             <button id="m1t1b" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
+            <label id="m1t1b-label" ></Label>
+        </span>
+        </div>
+    </li>
+    <li>
+        <div class="collapsible-header"><strong>Activity 0.1.C: Optical Illusion.</strong></div>
+        <div class="collapsible-body"><span>
+            <p>Moving along, let’s design something more engaging by adding loop structures. Your challenge will be to
+                program the turtle to draw a circle, but before we do that we will play around with a few loop structures. </p>
+            <p>Your stage is a 2d coordinate plane, with the center being (0,0). Say you start your turtle facing the
+                right side of the plane at position (0, 10). If you want him to draw a circle that has a diameter of 20m,
+                the turtle will pass through four quadrants and will need different directions while in each quadrant.
+                The actions the turtle does in a specific quadrant are based on the condition that the turtle is in that
+                quadrant. To help us define our program, we will use conditional loops that specify what happens in each quadrant.</p>
+            <img src="/img/spiral.jpg" alt="spiral" width="25%" align="right"/>
+            <ul>
+                <li>- Below the stage, make sure the “Turtle” object is selected.</li>
+                <li>- Drag and drop the [When Green Flag Clicked] block from the “Control” category on the top, left side
+                    of the BUILD page to the “Scripts” section in the middle of the screen.</li>
+                <li>- Set the position of your turtle to (0, 0) using the necessary physics block.</li>
+                <li>- From the “Pen” category, add the [pen down] block to your program. You’re welcome to change the color
+                    and size of your pen if you wish to change it up!</li>
+                <li>- Now, go to the “Control” category and add four [if] blocks to your script tab, connecting them to each
+                    other, but not to the main program yet! In each if condition, you will need to describe attributes of that
+                    specific quadrant. In this case, we can use the x and y positions of the turtle.</li>
+                <li>- What is true about the x and y positions of the turtle in each quadrant? <em>Hint: In the top, right quadrant the x position is always greater than -1 and the y position is also greater than -1.</em></li>
+                <li>- Add the necessary conditions to track for each quadrant to the four available if blocks.</li>
+                <li>- As with the triangle, you will need to change the x and y positions by a specific value each time step.
+                    Let’s start with values of either 1 or -1. Change the x and y position (using the appropriate block) by
+                    inserting values depending on the direction the object should take in that quadrant. </li>
+                <li>- Place all four if statements into a [repeat] loop. In this case, use the [repeat ()] block and insert the value 360.</li>
+                <li>- When you run your program, you should create a drawing similar to the one pictured.</li>
+            </ul>
+            <br>
+            <p><strong>If the x position is changing by 1 per time step, what is the x velocity of the turtle? If the y position is changing by 1 per time step, what is the y velocity of the turtle?</strong></p><br>
+              <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <textarea id="textarea2" class="materialize-textarea"></textarea>
+                      <label for="textarea2">Insert text here.</label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            <br>
+             <button id="m1t1b" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
+            <label id="m1t1b-label" ></Label>
+        </span>
+        </div>
+    </li>
+    <li>
+        <div class="collapsible-header"><strong>Activity 0.1.D: Circles.</strong></div>
+        <div class="collapsible-body"><span>
+            <p>As we move forward with the physics, you will be introduced to properties and behaviors of objects. In order to
+            allow for our turtle to draw a circle, we have added two behavior blocks for you called [update x position by m] and [update y position by m]. Your
+            task is to update this block with the equation necessary to update the position of the turtle (velocity times delta t).</p>
+            <ul>
+                <li>- Follow the initial steps used in the previous activities (verifying object selected, adding the [When green flag clicked] block, etc).</li>
+                <li>- Set the turtle's position to (0,0) using the appropriate block(s).</li>
+                <li>- Set the x velocity and y velocity to 0.</li>
+                <li>- Make sure the pen is down prior to starting the loop!</li>
+                <li>- Now, in order to draw a circle, we will need to use the behavior blocks and repeat them a specific amount of times in a loop.</li>
+                <li>- Add the preferred loop that you would like to use for your program.</li>
+                <li>- In each loop, make sure to change the angle of the turtle by a certain degree.</li>
+                <li>- Add the two behavior blocks to your loop and insert the appropriate equation that uses velocity to update the position of the object.</li>
+                <li>- Run your program. What do you see? What happens if you change the values of the velocities? How about the change in angle in each loop?</li>
+            </ul>
+            <br>
+            <p><strong>In this exercise you used "behavior" blocks. Describe what a behavior block is in relation to the object:</strong></p><br>
+              <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <textarea id="textarea2" class="materialize-textarea"></textarea>
+                      <label for="textarea2">Insert text here.</label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            <br>
+             <button id="m1t1b" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
+            <label id="m1t1b-label" ></Label>
+        </span>
+        </div>
+    </li>
+</ul>
+
+<br>
+<div class="container">
+    <h5> Helpful Hints <em>(from Resources)</em>:</h5>
+    <table>
+        <tr>
+            <th>Physics Concepts</th>
+            <th>Computational Concepts</th>
+            <th>Computational Practices</th>
+        </tr>
+        <tr>
+            <td><a href="../../resources.html#Position">Position</a></td>
+            <td><a href="../../resources.html#glossary">Glossary of Physics Blocks</a></td>
+            <td><a href="../../resources.html#ctconstructs">CT Constructs</a></td>
+        </tr>
+        <tr>
+            <td><a href="../../resources.html#Speed">Speed</a></td>
+            <td></td>
+            <td><a href="../../resources.html#simulation">Simulation Model</a></td>
+        </tr>
+        <tr>
+            <td><a href="../../resources.html#Velocity">Velocity</a></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+
+</body>
+
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<script>
+    var assessmentData = {
+    };
+    window.parent.c2stem.register_save_data_fetcher("assessmentData", function () {
+        return assessmentData;
+    });
+
+    assessmentData = window.parent.c2stem.userTaskData["assessmentData"];
+    if(assessmentData){
+        for(var id in assessmentData){
+            if(assessmentData.hasOwnProperty(id))
+                $("#" + id + "-label").text("  Last submitted on: " + assessmentData[id]);
+        }
+    }else {
+        assessmentData = {};
+    }
+
+    var getTimeString = function () {
+        return new Date().toLocaleDateString()+ " " + new Date().toLocaleTimeString();
+    }
+
+    var submitSolution = function(activityID){
+        window.parent.TaskDescriptionActionManger.submitSolution(activityID);
+        assessmentData[activityID] = getTimeString();
+        $("#" + activityID + "-label").text("  Last submitted on: " + assessmentData[activityID]);
+    }
+
+    $('.submit_solution').each(function() {
+        console.log(this.id);
+        $("#" + this.id).click(function () {
+            submitSolution( this.id );
+        });
+    });
+
+</script>
+</html>

@@ -1,6 +1,10 @@
 C2Stem.prototype.loadHomeData = function (callback) {
     var res = {
         modules: [{
+            id: 'training',
+            name: "Training",
+            icon: "img/spiral.jpg"
+        },{
             id: '1dmotion',
             name: "1D: Land",
             icon: "img/truck.jpg"
@@ -28,46 +32,56 @@ C2Stem.prototype.loadHomeData = function (callback) {
 C2Stem.prototype.loadModuleData = function (id, callback) {
     var res;
 
-    if (id === '1dmotion') {
+    if (id === 'training') {
         res = {
             id: id,
-            name: '1D: Land',
+            name: 'Training',
             tasks: [{
-                id: '1d-basics',
-                name: 'Instructional Task - Develop Simple Motion Simulation'
-            }, {
-                id: '1d-elaborate',
-                name: 'Instructional Task - 1D Velocity: Elaborate Your Simulation'
-            },{
-                id: '1d-inst_conceptual',
-                name: 'Instructional Task - 1D Velocity: Model Planning'
-            }, {
-                id: '1d-checkin1',
-                name: 'Check-In #1'
-            }, {
-                id: '1d-constant',
-                name: 'Model Building - 1D Velocity: Simulate the Motion of a Truck'
-            }, {
-                id: '1d-checkin2',
-                name: 'Check-In #2'
-            }, {
-                id: '1d-liftoff',
-                name: 'Instructional Task - 1D Acceleration: Changing Velocity'
-            }, {
-                id: '1d-checkin3',
-                name: 'Check-In #3'
-            }, {
-                id: '1d-stop',
-                name: 'Model Building -1D Acceleration: Make Your Truck Stop'
-            }, /*{
-                id: '1d-checkin4',
-                name: 'Check-In #4'
-            },*/ {
-                id: '1d-deliver',
-                name: 'Challenge Problem: Deliver the Medicine to the River! '
+                id: 'training-basics',
+                name: 'Instructional Task - Playing with Shapes'
             }
             ]
         };
+    } else if (id === '1dmotion') {
+            res = {
+                id: id,
+                name: '1D: Land',
+                tasks: [{
+                    id: '1d-basics',
+                    name: 'Instructional Task - Develop Simple Motion Simulation'
+                }, {
+                    id: '1d-elaborate',
+                    name: 'Instructional Task - 1D Velocity: Elaborate Your Simulation'
+                },{
+                    id: '1d-inst_conceptual',
+                    name: 'Instructional Task - 1D Velocity: Model Planning'
+                }, {
+                    id: '1d-checkin1',
+                    name: 'Check-In #1'
+                }, {
+                    id: '1d-constant',
+                    name: 'Model Building - 1D Velocity: Simulate the Motion of a Truck'
+                }, {
+                    id: '1d-checkin2',
+                    name: 'Check-In #2'
+                }, {
+                    id: '1d-liftoff',
+                    name: 'Instructional Task - 1D Acceleration: Changing Velocity'
+                }, {
+                    id: '1d-checkin3',
+                    name: 'Check-In #3'
+                }, {
+                    id: '1d-stop',
+                    name: 'Model Building -1D Acceleration: Make Your Truck Stop'
+                }, /*{
+                id: '1d-checkin4',
+                name: 'Check-In #4'
+            },*/ {
+                    id: '1d-deliver',
+                    name: 'Challenge Problem: Deliver the Medicine to the River! '
+                }
+                ]
+            };
     } else if (id === 'm2') {
         res = {
             id: id,
@@ -142,7 +156,35 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
 C2Stem.prototype.loadTaskData = function (id, callback) {
     var res;
 
-    if (id === '1d-basics') {
+    if (id === 'training-basics') {
+        res = {
+            parent: {
+                id: 'training',
+                name: 'Training'
+            },
+            id: id,
+            name: 'Instructional Task - Playing with Shapes',
+            tabs: [{
+                id: 'desc',
+                type: 'desc',
+                name: 'Description',
+                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/training/training-step1.html" frameborder="0"></iframe>'
+            }, {
+                id: 'onestep',
+                type: 'snap1',
+                name: 'BUILD',
+                template: {
+                    user: 'nicole',
+                    proj: 'sf-training_basics'
+                }
+            }, {
+                id: 'resource',
+                type: 'desc',
+                name: 'Resources',
+                markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
+            }]
+        };
+    } else if (id === '1d-basics') {
         res = {
             parent: {
                 id: '1dmotion',
