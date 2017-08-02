@@ -327,3 +327,57 @@ Cloud.prototype.setRoute = function (username) {};
 
 // set the backend database url
 // SnapCloud.url = "http://run.c2stem.org/SnapCloud/";
+
+// Fix the custom block editor size on initial open
+BlockEditorMorph.prototype.updateDefinition = function (silent) {
+    var head, ide,
+        pos = this.body.contents.position(),
+        element,
+        myself = this;
+
+    this.definition.receiver = this.target; // only for serialization
+    this.definition.spec = this.prototypeSpec();
+    this.definition.declarations = this.prototypeSlots();
+    this.definition.variableNames = this.variableNames();
+    this.definition.scripts = [];
+    // c2stem change: start
+    if (this.bounds.area()) {
+        this.definition.editorDimensions = this.bounds.copy();
+    }
+    // c2stem change: end
+    this.definition.cachedIsRecursive = null; // flush the cache, don't update
+
+    this.body.contents.children.forEach(function (morph) {
+        if (morph instanceof PrototypeHatBlockMorph) {
+            head = morph;
+        } else if (morph instanceof BlockMorph ||
+                (morph instanceof CommentMorph && !morph.block)) {
+            element = morph.fullCopy();
+            element.parent = null;
+            element.setPosition(morph.position().subtract(pos));
+            myself.definition.scripts.push(element);
+        }
+    });
+
+    if (head) {
+        this.definition.category = head.blockCategory;
+        this.definition.type = head.type;
+        if (head.comment) {
+            this.definition.comment = head.comment.fullCopy();
+            this.definition.comment.block = true; // serialize in short form
+        } else {
+            this.definition.comment = null;
+        }
+    }
+
+    this.definition.body = this.context(head);
+
+    if (!silent) {
+        this.refreshAllBlockInstances();
+
+        ide = this.target.parentThatIsA(IDE_Morph);
+        ide.flushPaletteCache();
+        ide.refreshPalette();
+    }
+};
+
