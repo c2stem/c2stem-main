@@ -7,7 +7,47 @@ transform_cm.init = function(concepts) {
     this.preprocess(concepts);
 };
 
+transform_cm.zOrderedConcepts = [];
 transform_cm.preprocess = function (concepts) {
+
+    // Sort the concepts in order to zIndex
+    for (var k in concepts.agents){
+        var c = concepts.agents[k];
+        var zIndex = 0;
+        if(c.zIndex != undefined)
+            zIndex = c.zIndex;
+        console.log(c.name + " zIndex:",zIndex);
+        var i = 0;
+        var found = false;
+        for (; i < this.zOrderedConcepts.length; i++)
+        {
+            var z = this.zOrderedConcepts[i];
+            if( z.zIndex > zIndex){
+                var o = {};
+                o.zIndex = zIndex;
+                o.concept = c;
+                c.sid = i;
+                this.zOrderedConcepts.splice(i, 0, o);
+                var j = i + 1;
+                for (; j < this.zOrderedConcepts.length; j++){
+                    this.zOrderedConcepts[j].concept.sid = j;
+                }
+                found = true;
+                break;
+            }
+        }
+        if(!found){
+            var o = {};
+            o.zIndex = zIndex;
+            o.concept = c;
+            c.sid = this.zOrderedConcepts.length;
+            this.zOrderedConcepts.push(o);
+        }
+    }
+    console.log("this.zOrderedConcepts:",this.zOrderedConcepts);
+
+
+
     var ide = snap.world.children[0];
     var candidateSprites = [];
     for (var s in ide.sprites.contents){
@@ -197,6 +237,57 @@ transform_cm.show_primitive = function(cat, prim){
     ide.show_primitive(cat, prim);
 };
 
+transform_cm.fix_z_ordering = function(concept, sprite){
+    var ide = snap.world.children[0];
+    var i = ide.stage.children.indexOf(sprite);
+    ide.stage.children.splice(i, 1);
+    var sid = concept.sid;
+    var lid = sid-1;
+    for (; lid >= 0; lid--){
+        if(this.zOrderedConcepts[lid].concept.selected)
+            break;
+    }
+    console.log("lid:",lid);
+    if(lid != -1){
+        var c = this.zOrderedConcepts[lid].concept;
+        var stage_child_id = 0;
+        var found = false;
+        for(; stage_child_id < ide.stage.children.length; stage_child_id++)
+        {
+            if(ide.stage.children[stage_child_id].name === c.name){
+                console.log("added sprite to index:", stage_child_id+1);
+                ide.stage.children.splice(stage_child_id+1, 0, sprite);
+                break;
+            }
+        }
+    }else{
+        var lid = sid+1;
+        for (; lid < this.zOrderedConcepts.length; lid++){
+            if(this.zOrderedConcepts[lid].concept.selected)
+                break;
+        }
+        console.log("rid:",lid);
+        if(lid != this.zOrderedConcepts.length){
+            var c = this.zOrderedConcepts[lid].concept;
+            var stage_child_id = 0;
+            var found = false;
+            for(; stage_child_id < ide.stage.children.length; stage_child_id++)
+            {
+                if(ide.stage.children[stage_child_id].name === c.name){
+                    console.log("added sprite to index:", stage_child_id);
+                    ide.stage.children.splice(stage_child_id, 0, sprite);
+                    break;
+                }
+            }
+        }else{
+            // do nothing assuming the sprite is already added to the last of the stage children list
+            console.log("doing nothing")
+            ide.stage.children.push(sprite);
+        }
+    }
+};
+
+
 transform_cm.create_new_sprite = function(concept) {
     // console.log("transform_cm.create_new_sprite", concept.name);
     var ide = snap.world.children[0];
@@ -205,6 +296,7 @@ transform_cm.create_new_sprite = function(concept) {
         return sprite;
 
     sprite = ide.create_new_sprite(concept.name);
+    this.fix_z_ordering(concept, sprite);
     return sprite;
 };
 
@@ -225,6 +317,7 @@ transform_cm.show_concept =function(concept){
         };
         SnapActions.onAddSprite(concept.sprite_bkup_xml);
     }
+    this.fix_z_ordering(concept, this.getSpriteOfConcept(concept));
 };
 
 transform_cm.getSpriteOfConcept=function(concept){

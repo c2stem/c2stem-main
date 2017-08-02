@@ -9,6 +9,7 @@
       "isSprite": true,
       "isBuiltIn": true,
       "costume": "c2stem med truck",
+      "zIndex": 1,
       "properties": {
         "PositionX": {
           "name": "x position in m",
@@ -291,6 +292,7 @@
       "isSprite": true,
       "isBuiltIn": true,
       "costume": "stop-sign",
+      "zIndex": 2,
       "properties": {
         "PositionX": {
           "name": "x position in m",
