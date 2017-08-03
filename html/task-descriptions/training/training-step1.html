@@ -24,12 +24,10 @@
             <ul>
                 <li>- Below the stage, make sure the “Turtle” object is selected.</li>
                 <li>- Drag and drop the [When Green Flag Clicked] block from the “Control” category on the top, left side of the BUILD page to the “Scripts” section in the middle of the screen.</li>
-                <li>- From the “Physics” category, drag and drop the [set x position to (0) m] block and attach it to the [When Green Flag Clicked] block.</li>
-                <li>- Change the value of the block to -10.</li>
-                <li>- Click on the green flag on the top, right side of your screen. Did your turtle move appropriately?</li>
+                <li>- In our class presentation we discussed delta t and the equation for changing the position using velocity. Drag and drop [set delta t] to your program and set the delta t to 1.</li>
                 <li>- In order to draw the line, we will need to use the [pen down] block from the “Pen” category of blocks. Drag and drop [pen down], connecting it to the [set x position to () m] block.</li>
-                <li>- We want to draw a line that is 20m long. In order to do so, drag the [change x position by () m] block and attach it to [pen down]. Set the value of that block to 20.</li>
-                <li>- Click on the green flag to run your program. If your stage looks like the image below, submit this task and move on to Activity 1.1.B.</li>
+                <li>- We want to draw a line that is 20m long. In the “Motion” category, use the [move () steps] block and insert the equation discussed. We will initially “hard code” velocity by typing the value we want the velocity to be into the equation. If we want a line that is 20m long, what value should we multiply our delta t by? </li>
+                <li>- Click on the green flag to run your program. When you’re finished with your program, answer the task question in the task description and submit. </li>
             </ul>
             <br>
             <p><strong>When finished, click on the first button (the paper icon) on the top, left side of the SNAP environment. Click on “export summary.” At the top of the pop-up page, there is a link to your project. Please select that link and paste it here:</strong></p><br>
@@ -50,77 +48,23 @@
         </div>
     </li>
     <li>
-        <div class="collapsible-header"><strong>Activity 0.1.B: Draw a Triangle.</strong></div>
+        <div class="collapsible-header"><strong>Activity 0.1.B: Draw an Octagon.</strong></div>
         <div class="collapsible-body"><span>
             <p>It is time to get more artistic! We now want our turtle to draw a triangle. We can’t simply tell the turtle “draw a triangle” and it will automatically know what to do. We have to give it step by step instructions - including the length it should travel for each side and the angle it needs to turn before drawing the next side. </p>
             <br>
             <ul>
-                <li>- Below the stage, make sure the “Turtle” object is selected.</li>
-                <li>- If you would like to clear your stage of your previous drawing, use the [clear] block from the “Pen” category</li>
-                <li>- Drag the current program down, releasing it from [when green flag is clicked].</li>
-                <li>- Drag and drop the [clear] block to [when green flag is clicked] and run the program.</li>
-                <li>- When finished, drag the [clear] block back towards the left column of blocks so that it is removed from your program and drag your prior program back to [when green flag is clicked].</li>
-                <li>- Drag and drop the [When Green Flag Clicked] block from the “Control” category on the top, left side of the BUILD page to the “Scripts” section in the middle of the screen.</li>
-                <li>- From the “Physics” category, drag and drop the [set position to x:(0) y:(0) m] block and attach it to the [When Green Flag Clicked] block.</li>
-                <li>- Change the value of x to -10 and y to -10.</li>
-                <li>- Click on the green flag on the top, right side of your screen. Did your turtle move appropriately?</li>
-                <li>- Drag and drop [pen down], connecting it to the [set x position to () m] block.</li>
-                <li>- Each of our triangle sides will be 20m long and we will need to turn the turtle by a specific angle before it moves to the next vertex of the triangle.</li>
-                <li>- For the bottom side of our triangle, use the [change x position by () m] block and attach it to [pen down]. Set the value of that block to 20.</li>
-                <li>- Drag and drop the [change angle to ()] to your program and set the degree to -45.</li>
-                <li>- Change the position of your turtle again to draw another side by changing the x and y by -10 and 20.</li>
-                <li>- Repeat these angle (-45) and position changes (x:-10, y:-20) one more time so that you have a complete equilateral triangle.</li>
-                <li>- Click on the green flag to run your program. If your stage looks like the image below, submit this task and move on to Activity 1.1.C.</li>
+                <li>- Follow the initial instructions described in the previous task to ensure that the correct object is selected, the green flag is added, and the pen is down. You may want to “clear” your canvas by running the [clear] block from the “Pen” category without any other code.</li>
+                <li>- Using the [move () steps] block from the “Motion” category with the same equation as used in the previous task, program the turtle to draw an octagon with sides 20m long.</li>
             </ul>
             <br>
-            <p><strong>Describe how you might program the turtle to draw an isosceles triangle: </strong></p><br>
-              <div class="row">
-                <form class="col s12">
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <textarea id="textarea2" class="materialize-textarea"></textarea>
-                      <label for="textarea2">Insert text here.</label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            <br>
-             <button id="m1t1b" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
-            <label id="m1t1b-label" ></Label>
-        </span>
-        </div>
-    </li>
-    <li>
-        <div class="collapsible-header"><strong>Activity 0.1.C: Optical Illusion.</strong></div>
-        <div class="collapsible-body"><span>
-            <p>Moving along, let’s design something more engaging by adding loop structures. Your challenge will be to
-                program the turtle to draw a circle, but before we do that we will play around with a few loop structures. </p>
-            <p>Your stage is a 2d coordinate plane, with the center being (0,0). Say you start your turtle facing the
-                right side of the plane at position (0, 10). If you want him to draw a circle that has a diameter of 20m,
-                the turtle will pass through four quadrants and will need different directions while in each quadrant.
-                The actions the turtle does in a specific quadrant are based on the condition that the turtle is in that
-                quadrant. To help us define our program, we will use conditional loops that specify what happens in each quadrant.</p>
-            <img src="/img/spiral.jpg" alt="spiral" width="25%" align="right"/>
+            <strong>Hints</strong>
             <ul>
-                <li>- Below the stage, make sure the “Turtle” object is selected.</li>
-                <li>- Drag and drop the [When Green Flag Clicked] block from the “Control” category on the top, left side
-                    of the BUILD page to the “Scripts” section in the middle of the screen.</li>
-                <li>- Set the position of your turtle to (0, 0) using the necessary physics block.</li>
-                <li>- From the “Pen” category, add the [pen down] block to your program. You’re welcome to change the color
-                    and size of your pen if you wish to change it up!</li>
-                <li>- Now, go to the “Control” category and add four [if] blocks to your script tab, connecting them to each
-                    other, but not to the main program yet! In each if condition, you will need to describe attributes of that
-                    specific quadrant. In this case, we can use the x and y positions of the turtle.</li>
-                <li>- What is true about the x and y positions of the turtle in each quadrant? <em>Hint: In the top, right quadrant the x position is always greater than -1 and the y position is also greater than -1.</em></li>
-                <li>- Add the necessary conditions to track for each quadrant to the four available if blocks.</li>
-                <li>- As with the triangle, you will need to change the x and y positions by a specific value each time step.
-                    Let’s start with values of either 1 or -1. Change the x and y position (using the appropriate block) by
-                    inserting values depending on the direction the object should take in that quadrant. </li>
-                <li>- Place all four if statements into a [repeat] loop. In this case, use the [repeat ()] block and insert the value 360.</li>
-                <li>- When you run your program, you should create a drawing similar to the one pictured.</li>
+                <li>- You may need to use a loop structure from the “Control” category to repeat actions - and to simplify your code!</li>
+                <li>- In the “Physics” category, we have added options to set or change the angle the object is directed.</li>
+                <li>- By what angle does the turtle need to turn at each edge of the octagon?</li>
             </ul>
             <br>
-            <p><strong>If the x position is changing by 1 per time step, what is the x velocity of the turtle? If the y position is changing by 1 per time step, what is the y velocity of the turtle?</strong></p><br>
+            <p><strong>Describe how you might program the turtle to draw a 20-sided figure:</strong></p><br>
               <div class="row">
                 <form class="col s12">
                   <div class="row">
@@ -145,8 +89,7 @@
             task is to update this block with the equation necessary to update the position of the turtle (velocity times delta t).</p>
             <ul>
                 <li>- Follow the initial steps used in the previous activities (verifying object selected, adding the [When green flag clicked] block, etc).</li>
-                <li>- Set the turtle's position to (0,0) using the appropriate block(s).</li>
-                <li>- Set the x velocity and y velocity to 0.</li>
+                <li>- Set the x velocity and y velocity to 0.5.</li>
                 <li>- Make sure the pen is down prior to starting the loop!</li>
                 <li>- Now, in order to draw a circle, we will need to use the behavior blocks and repeat them a specific amount of times in a loop.</li>
                 <li>- Add the preferred loop that you would like to use for your program.</li>

@@ -46,31 +46,31 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
             res = {
                 id: id,
                 name: '1D: Land',
-                tasks: [{
+                tasks: [/*{
                     id: '1d-basics',
                     name: 'Instructional Task - Develop Simple Motion Simulation'
-                }, {
+                },*/ {
                     id: '1d-elaborate',
-                    name: 'Instructional Task - 1D Velocity: Elaborate Your Simulation'
-                },{
+                    name: 'Instructional Task - 1D Velocity: Simulate Physics Phenomena'
+                },/*{
                     id: '1d-inst_conceptual',
                     name: 'Instructional Task - 1D Velocity: Model Planning'
                 }, {
                     id: '1d-checkin1',
                     name: 'Check-In #1'
-                }, {
+                },*/ {
                     id: '1d-constant',
                     name: 'Model Building - 1D Velocity: Simulate the Motion of a Truck'
-                }, {
+                },/* {
                     id: '1d-checkin2',
                     name: 'Check-In #2'
-                }, {
+                },*/ {
                     id: '1d-liftoff',
                     name: 'Instructional Task - 1D Acceleration: Changing Velocity'
-                }, {
+                },/* {
                     id: '1d-checkin3',
                     name: 'Check-In #3'
-                }, {
+                },*/ {
                     id: '1d-stop',
                     name: 'Model Building -1D Acceleration: Make Your Truck Stop'
                 }, /*{
@@ -219,12 +219,13 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 name: '1D: Land'
             },
             id: id,
-            name: 'Instructional Task - 1D Velocity: Elaborate Your Simulation',
+            name: 'Instructional Task - 1D Velocity: Simulate Physics Phenomena',
             tabs: [{
                 id: 'desc',
                 type: 'desc',
                 name: 'Description',
-                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-elaborate_your_simulation.html" frameborder="0"></iframe>'
+                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-simulate_physics_phenomena.html" frameborder="0"></iframe>'
+                /*markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-simulate_physics_phenomena.html" frameborder="0"></iframe>'*/
             }, {
                 id: 'loops',
                 type: 'snap1',
@@ -351,7 +352,8 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 id: 'desc',
                 type: 'desc',
                 name: 'Description',
-                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-introduction_to_acceleration.html" frameborder="0"></iframe>'
+                markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-aug4_intro_to_acceleration.html" frameborder="0"></iframe>'
+                /*markup: '<iframe id=desc_resourceIframe  src="task-descriptions/1D-module/1D-introduction_to_acceleration.html" frameborder="0"></iframe>'*/
             }, {
                 id: 'slothAccel',
                 type: 'cm',

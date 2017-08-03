@@ -8,30 +8,26 @@
     <link rel="stylesheet" href="/c2stem.css">
 </head>
 <body>
-<p>It is time to set off on our journey to deliver the medicine! For the next few tasks, you will be responsible for recording the accurate velocity, acceleration, and position of your medical truck as it makes its journey in time.</p>
-
-<p>In this first step, your truck will be driving through farmland. This portion of your journey may be delayed as you must maintain a reduced speed as you pass due to hazards such as animal crossings. In this model building task, you will analyze the time needed to pass the farm. To help with this process, you may use cone objects</p>
 <br>
 
 <ul class="collapsible popout" data-collapsible="accordion">
     <li>
-        <div class="collapsible-header"><strong>Step One - Plan Your Model:</strong></div>
-        <div class="collapsible-body"><span><p>Select all objects and their necessary properties and behaviors in the PLAN window.</p>
-        </span>
-        </div>
-    </li>
-    <li>
-        <div class="collapsible-header"><strong>Step Two - Build Your Model:</strong></div>
-        <div class="collapsible-body"><span><p><strong>Program Description:</strong></p>
+        <div class="collapsible-header"><strong>Activity 1.4.A - Increasing velocity: make a prediction</strong></div>
+        <div class="collapsible-body"><span><p><strong>Prediction task:</strong></p>
             <ul>
-                <li>- Initialize the necessary variables you selected from the PLAN tab.</li>
-                <li>- Define the simulation step of your simulation model to program your truck to move a constant velocity of 0.6m/s (the speed limit while passing the farm).</li>
-                <li>- Use the cones to support you in analyzing how much time it takes to travel the distance of the farm (to the intersecting dirt road at the noted constant velocity.</li>
-                <li>- Now run an experiment noting the distance traveled at different points in time starting from cone 1. </li>
-                <li>- Use the values you generate from your simulation model to draw a distance versus time graph.  What is the nature of this plot?  What corresponds to the velocity of the vehicle in this plot?  Why is generating a graph useful?</li>
+                <li>- Using the model planning tool and the simulation blocks, make the sloth move with constant velocity to the right (as you did previously)</li>
+                <li>- Start at position = 0 m; End at position = 10 m; Velocity  = 1 m/s</li>
+                <li>- Imagine the sloth will start at rest (velocity = 0), then increase its velocity by 1 m/s each second.</li>
+                <li>- Predict the sloth’s motion by completing Table 2 and Plot 2 in your paper worksheet. The first couple rows are done as an example.</li>
             </ul>
             <br>
-             <p><strong>Without changing the positions of the cones given, how much time does it take to travel from cone1 to cone3?</strong></p><br>
+            <p><strong>Hints</strong></p>
+            <ul>
+                <li>- Remember Δt = 1 second.</li>
+                <li>- Use the relation (position change) = (velocity change) * Δt to calculate the sloth’s new position each second.</li>
+            </ul>
+            <br>
+             <p><strong>What is the sloth’s x velocity in m/s and x position be after 5 seconds?  How about after 23 seconds?</strong></p><br>
               <div class="row">
                 <form class="col s12">
                   <div class="row">
@@ -43,19 +39,21 @@
                 </form>
               </div>
             <br>
-            <button id="m1t4a" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
-            <label id="m1t4a-label" ></Label>
+            <button id="m1t5b" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
+            <label id="m1t5b-label" ></Label>
         </span>
         </div>
     </li>
     <li>
-        <div class="collapsible-header"><strong>Step Three - Expand on Your Model:</strong></div>
-        <div class="collapsible-body"><span><p>Let’s  assume that the farmer has not specified a speed limit, and the driver wants to cover the 1 km span of the road in 8 minutes.</p>
+        <div class="collapsible-header"><strong>Activity 1.4.B - Build your model: decreasing velocity over time</strong></div>
+        <div class="collapsible-body"><span><p><strong>Program description:</strong></p>
             <ul>
-                <li>- Edit your program to determine what speed Robbie should set for his truck from cone 1 to cone 3, so he can cover the distance in 8 minutes?</li>
+                <li>- Build a model where the sloth starts with velocity 4 m/s, and decreases its velocity by 1 m/s each second.</li>
+                <li>- The sloth starts at position = 20 m; Ends when the sloth reaches a velocity of 0 m/s.</li>
+                <li>- Use Δt = 1 second</li>
             </ul>
             <br>
-             <p><strong>Submit the the speed you used to allow Robbie to cover the distance between cone1 and cone3 in 8 minutes. Use your graph to determine, how long it would take the truck to travel 1.8 m at this speed?  2.2 m?</strong></p><br>
+             <p><strong>Run the program and use the “graphing view” buttons to answer the following questions: (1) What is the position of the sloth after 3 seconds? (2) at what time does the sloth cross the 10m mark? </strong></p><br>
               <div class="row">
                 <form class="col s12">
                   <div class="row">
@@ -67,12 +65,38 @@
                 </form>
               </div>
             <br>
-            <button id="m1t4b" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
-            <label id="m1t4b-label" ></Label>
+            <button id="m1t5e" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
+            <label id="m1t5e-label" ></Label>
         </span>
         </div>
     </li>
+    <li>
+        <div class="collapsible-header"><strong>Activity 1.4.C - Exploration and Reflection</strong></div>
+        <div class="collapsible-body"><span><p><strong>Exploration:</strong></p>
+            <ul>
+                <li>- Let’s run an experiment, where we try three other values of  Δt, i.e., 0.01s, 0.1s, and 0.5s.  Look at the distance versus time graphs. What is the difference between these graphs, and why do you see this difference?</li>
+            </ul>
+            <br>
+             <p><strong>Try reversing the order of your change position and change velocity blocks. What happens? </strong></p><br>
+              <div class="row">
+                <form class="col s12">
+                  <div class="row">
+                    <div class="input-field col s12">
+                      <textarea id="textarea2" class="materialize-textarea"></textarea>
+                      <label for="textarea2">Insert text here.</label>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            <br>
+            <button id="m1t5f" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
+            <label id="m1t5f-label" ></Label>
+        </span>
+        </div>
+    </li>
+
 </ul>
+
 
 <br>
 <div class="container">
@@ -97,6 +121,11 @@
             <td><a href="../../resources.html#Velocity">Velocity</a></td>
             <td></td>
             <td><a href="../../resources.html#conceptual">Conceptual Model</a></td>
+        </tr>
+        <tr>
+            <td><a href="../../resources.html#Accelaration">Acceleration</a></td>
+            <td></td>
+            <td></td>
         </tr>
     </table>
 </div>
