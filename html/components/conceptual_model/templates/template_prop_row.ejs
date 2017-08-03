@@ -3,6 +3,10 @@
     <!--<a id = "delete_<%=elementID%>" class="btn-flat waves-effect waves-light valign right small"><i class="material-icons">close</i></a>-->
 <!--</li>-->
 
-<li id = "<%=elementID%>" class="collection-item"><div><%= name%><a id = "delete_<%=elementID%>" class="waves-effect waves-light secondary-content "><i class="material-icons">close</i></a></div></li>
+<li id="<%= elementID %>" class="collection-item">
+    <div class="tooltipped" data-position="bottom" data-delay="50" data-tooltip=""><%= name %>
+        <a id="delete_<%= elementID %>" class="waves-effect waves-light secondary-content"><i class="material-icons">close</i></a>
+    </div>
+</li>
 
 <!--<div id = "<%=elementID%>" class="collection-item"><%= name%><a id = "delete_<%=elementID%>" class="waves-effect waves-circle secondary-content"><i class="material-icons">close</i></a></div>-->

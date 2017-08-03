@@ -351,7 +351,7 @@ transform_cm.hide_concept =function(concept){
 };
 
 
-transform_cm.transform_concept_by_rules = function(concepts, concept, mode, rules, environment_concepts ) {
+transform_cm.transform_concept_by_rules = function(concepts, concept, mode, rules, environment_concepts, handle_block_edited ) {
     //////console.log("plugin_transform_by_rules, mode:", mode, " running for agent:", concept.name);
     for (var r in rules) {
         var rule = rules[r];
@@ -367,14 +367,14 @@ transform_cm.transform_concept_by_rules = function(concepts, concept, mode, rule
         if (mode === "delete_all") {
             //////console.log("delete_all");
             if (isGenerated) {
-                transform_constructs_of_rule(concepts, rule, "delete", concept);
+                transform_constructs_of_rule(concepts, rule, "delete", concept, handle_block_edited);
                 delete rule.map_generated_for[concept.name];
             }
         } else {
             // if (!isGenerated) {
                 if (isRuleSatisfied(rule, concept, environment_concepts)) {
                     //////console.log("rule satisfied for creation", rule);
-                    transform_constructs_of_rule(concepts, rule, "create", concept);
+                    transform_constructs_of_rule(concepts, rule, "create", concept, handle_block_edited);
                     rule.map_generated_for[concept.name] = true;
                 }else{
                     //////console.log("Rule not satisfied");
@@ -383,7 +383,7 @@ transform_cm.transform_concept_by_rules = function(concepts, concept, mode, rule
             if (isGenerated) {
                 if (!isRuleSatisfied(rule, concept, environment_concepts)) {
                     //////console.log("rule not satisfied so would delete existing constructs", rule);
-                    transform_constructs_of_rule(concepts, rule, "delete", concept);
+                    transform_constructs_of_rule(concepts, rule, "delete", concept, handle_block_edited);
                     delete rule.map_generated_for[concept.name];
                 }else{
                     //////console.log("Rule satisfied");
@@ -394,7 +394,7 @@ transform_cm.transform_concept_by_rules = function(concepts, concept, mode, rule
     }
 }
 
-function transform_constructs_of_rule(concepts, rule, mode, concept) {
+function transform_constructs_of_rule(concepts, rule, mode, concept, handle_block_edited) {
     //////console.log("transform_constructs_of_rule: ", rule, "mode:", mode);
     for (var cid in rule.GeneratedConstructs) {
         var c = rule.GeneratedConstructs[cid];
@@ -403,11 +403,14 @@ function transform_constructs_of_rule(concepts, rule, mode, concept) {
                 if (mode === "create") {
                     //console.log("show primitive:", c.name, " under category:", c.category);
                     transform_cm.show_primitive(c.category, c.name);
+                    // selected_concept, blockElementID, blockText, editType) {
+                    handle_block_edited(concept, c.name.replace(/\s/g,''), c.name, "ADD");
                 }
                 else if (mode === "delete")
                 {
                     //console.log("hide primitive:", c.name, " under category:", c.category);
                     transform_cm.hide_primitive(c.category, c.name);
+                    handle_block_edited(concept, c.name.replace(/\s/g,''), c.name, "DELETE");
                 }
                 break;
             case "custom_variable":
