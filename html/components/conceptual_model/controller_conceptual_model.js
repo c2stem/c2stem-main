@@ -3,6 +3,7 @@
  */
 
 ENABLE_TOOLTIPS = false;
+CUSTOM_BLOCKS_VISIBLE = false;
 
 function load_conceptual_model(instance_name, conceptual_html_element_id, data_path, register_save_data_fetcher) {
     // load data of all the modules
@@ -40,6 +41,32 @@ function conceptual_model_load_views(parent_id) {
 }
 
 
+function handle_block_edited(selected_concept, blockElementID, blockText, editType) {
+    if(!CUSTOM_BLOCKS_VISIBLE)
+        return;
+    if(selected_concept !== null)
+        blockElementID = selected_concept.name.replace(/\s/g,'') + "_" + blockElementID;
+    var $container_prop_row = $("#row_blocks_"+selected_concept.elementID);
+    if(editType === "ADD"){
+        //console.log(selected_prop_key,"selected_property",selected_property);
+        if(document.getElementById(blockElementID) !== null)
+            return;
+        var blockInfo = {
+            elementID: blockElementID,
+            name:blockText
+        }
+        var html = new EJS({url: 'components/conceptual_model/templates/template_prop_block.ejs'}).render(blockInfo);
+        $container_prop_row.append(html);
+        console.log("added block: ", blockElementID);
+        var tooltip_text = TooltipTexts.hasOwnProperty(blockElementID) ? TooltipTexts[blockElementID] : blockText;
+        if (ENABLE_TOOLTIPS)
+            $("#"+blockElementID + ' .tooltipped').tooltip({delay: 50, tooltip:tooltip_text});
+    }else if(editType === "DELETE"){
+        console.log("deleted block: ", blockElementID);
+        $("#"+blockElementID).remove();
+    }
+}
+
 
 function handle_property_events(selected_concept, selected_prop_key) {
     var selected_property = selected_concept.properties[selected_prop_key];
@@ -48,18 +75,22 @@ function handle_property_events(selected_concept, selected_prop_key) {
     var $container_prop_row = $("#row_prop_"+selected_concept.elementID);
 
     //console.log(selected_prop_key,"selected_property",selected_property);
-    var html = new EJS({url: 'components/conceptual_model/templates/template_prop_row.ejs'}).render(selected_property);
+    var elementInfo = {
+        elementID: selected_concept.name + "_" + selected_property.elementID,
+        name:selected_property.name
+    }
+    var html = new EJS({url: 'components/conceptual_model/templates/template_prop_row.ejs'}).render(elementInfo);
     $container_prop_row.append(html);
     selected_property.selected = true;
 
 
-    var n = document.getElementById("delete_"+selected_property.elementID);
+    var n = document.getElementById("delete_" + elementInfo.elementID);
 
     n.selected_concept = selected_concept;
     n.selected_property = selected_property;
     n.selected_prop_key = selected_prop_key;
 
-    $("#delete_"+selected_property.elementID).click(function (event) {
+    $("#delete_"+elementInfo.elementID).click(function (event) {
         var eid = event.currentTarget.id;
         var n = document.getElementById(eid);
 
@@ -67,20 +98,20 @@ function handle_property_events(selected_concept, selected_prop_key) {
         selected_property = n.selected_property;
         selected_prop_key = n.selected_prop_key;
 
-        $("#"+selected_property.elementID).remove();
+        $("#"+selected_concept.name + "_" + selected_property.elementID).remove();
         $("#sel_prop_" + selected_concept.elementID + " option[value='"+ selected_prop_key +"']").show();
         selected_property.selected = false;
         //console.log("delete selected_property",selected_property);
         OnModelChanged();
 
-        transform_cm.transform_concept_by_rules(concepts, selected_concept, "delete", selected_concept.rules, concepts.environment );
+        transform_cm.transform_concept_by_rules(concepts, selected_concept, "delete", selected_concept.rules, concepts.environment , handle_block_edited);
         ConceptualActionManager.deleteProperty(selected_concept, selected_property);
     });
 
     var tooltip_text = TooltipTexts.hasOwnProperty(selected_property.elementID) ? TooltipTexts[selected_property.elementID] : selected_property.name ;
     if (ENABLE_TOOLTIPS)
-        $("#"+selected_property.elementID + ' .tooltipped').tooltip({delay: 50, tooltip:tooltip_text});
-    transform_cm.transform_concept_by_rules(concepts, selected_concept, "create", selected_concept.rules, concepts.environment );
+        $("#"+elementInfo.elementID + ' .tooltipped').tooltip({delay: 50, tooltip:tooltip_text});
+    transform_cm.transform_concept_by_rules(concepts, selected_concept, "create", selected_concept.rules, concepts.environment, handle_block_edited );
 }
 
 function handle_behavior_events(selected_concept, selected_behavior_key) {
@@ -91,21 +122,23 @@ function handle_behavior_events(selected_concept, selected_behavior_key) {
     // check prop delete handler
     // upon delete make prop reappear in the list and delete prop row
     var $container_be_row = $("#row_be_"+selected_concept.elementID);
-    var html = new EJS({url: 'components/conceptual_model/templates/template_prop_row.ejs'}).render(selected_behavior);
+
+    var elementInfo = {
+        elementID: selected_concept.name + "_" + selected_behavior.elementID,
+        name:selected_behavior.name
+    }
+    var html = new EJS({url: 'components/conceptual_model/templates/template_prop_row.ejs'}).render(elementInfo);
     $container_be_row.append(html);
     selected_behavior.selected = true;
     //console.log("selected_behavior",selected_behavior);
 
-
-    var n = document.getElementById("delete_"+selected_behavior.elementID);
+    var n = document.getElementById("delete_"+elementInfo.elementID);
 
     n.selected_concept = selected_concept;
     n.selected_behavior = selected_behavior;
     n.selected_behavior_key = selected_behavior_key;
 
-
-
-    $("#delete_"+selected_behavior.elementID).click(function () {
+    $("#delete_"+elementInfo.elementID).click(function () {
         var eid = event.currentTarget.id;
         var n = document.getElementById(eid);
 
@@ -113,22 +146,22 @@ function handle_behavior_events(selected_concept, selected_behavior_key) {
         selected_behavior = n.selected_behavior;
         selected_behavior_key = n.selected_behavior_key;
 
-        $("#"+selected_behavior.elementID).remove();
+        $("#"+selected_concept.name + "_" + selected_behavior.elementID).remove();
         $("#sel_be_" + selected_concept.elementID + " option[value='"+ selected_behavior_key +"']").show();
         selected_behavior.selected = false;
         //console.log("delete selected_behavior",selected_behavior);
         OnModelChanged();
 
-        transform_cm.transform_concept_by_rules(concepts, selected_concept, "delete", selected_concept.rules, concepts.environment );
+        transform_cm.transform_concept_by_rules(concepts, selected_concept, "delete", selected_concept.rules, concepts.environment, handle_block_edited);
         transform_cm.delete_block(concepts, n.selected_concept, n.selected_behavior.name, false);
         ConceptualActionManager.deleteBehavior(selected_concept, selected_behavior);
     });
 
     var tooltip_text = TooltipTexts.hasOwnProperty(selected_behavior.elementID) ? TooltipTexts[selected_behavior.elementID] : selected_behavior.name ;
     if (ENABLE_TOOLTIPS)
-        $("#"+selected_behavior.elementID + ' .tooltipped').tooltip({delay: 50, tooltip:tooltip_text});
+        $("#"+elementInfo.elementID + ' .tooltipped').tooltip({delay: 50, tooltip:tooltip_text});
 
-    transform_cm.transform_concept_by_rules(concepts, selected_concept, "create", selected_concept.rules, concepts.environment );
+    transform_cm.transform_concept_by_rules(concepts, selected_concept, "create", selected_concept.rules, concepts.environment, handle_block_edited );
 
     transform_cm.create_block(concepts, n.selected_concept, n.selected_behavior.name, n.selected_behavior.category, false);
 }
@@ -155,7 +188,7 @@ function create_new_concept(selected_concept_key, selected_concept, isEnvironmen
                 transform_cm.create_new_sprite(selected_concept);
         }
 
-        transform_cm.transform_concept_by_rules(concepts, selected_concept, "create", selected_concept.rules, concepts.environment );
+        transform_cm.transform_concept_by_rules(concepts, selected_concept, "create", selected_concept.rules, concepts.environment, handle_block_edited );
     }
 
     $("#cm_concepts option[value='"+ selected_concept_key +"']").hide();
@@ -167,7 +200,7 @@ function create_new_concept(selected_concept_key, selected_concept, isEnvironmen
         selected_concept.selected = false;
         //console.log("delete selected_concept",selected_concept);
         if(selected_concept.isSprite) {
-            transform_cm.transform_concept_by_rules(concepts, selected_concept, "delete_all", selected_concept.rules, concepts.environment );
+            transform_cm.transform_concept_by_rules(concepts, selected_concept, "delete_all", selected_concept.rules, concepts.environment, handle_block_edited );
             transform_cm.hide_concept(selected_concept);
             ConceptualActionManager.deleteConcept(selected_concept);
         }
