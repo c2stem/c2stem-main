@@ -2,6 +2,7 @@
  * Created by hasanm on 5/9/2017.
  */
 
+ENABLE_TOOLTIPS = false;
 
 function load_conceptual_model(instance_name, conceptual_html_element_id, data_path, register_save_data_fetcher) {
     // load data of all the modules
@@ -77,7 +78,8 @@ function handle_property_events(selected_concept, selected_prop_key) {
     });
 
     var tooltip_text = TooltipTexts.hasOwnProperty(selected_property.elementID) ? TooltipTexts[selected_property.elementID] : selected_property.name ;
-    $("#"+selected_property.elementID + ' .tooltipped').tooltip({delay: 50, tooltip:tooltip_text});
+    if (ENABLE_TOOLTIPS)
+        $("#"+selected_property.elementID + ' .tooltipped').tooltip({delay: 50, tooltip:tooltip_text});
     transform_cm.transform_concept_by_rules(concepts, selected_concept, "create", selected_concept.rules, concepts.environment );
 }
 
@@ -123,7 +125,8 @@ function handle_behavior_events(selected_concept, selected_behavior_key) {
     });
 
     var tooltip_text = TooltipTexts.hasOwnProperty(selected_behavior.elementID) ? TooltipTexts[selected_behavior.elementID] : selected_behavior.name ;
-    $("#"+selected_behavior.elementID + ' .tooltipped').tooltip({delay: 50, tooltip:tooltip_text});
+    if (ENABLE_TOOLTIPS)
+        $("#"+selected_behavior.elementID + ' .tooltipped').tooltip({delay: 50, tooltip:tooltip_text});
 
     transform_cm.transform_concept_by_rules(concepts, selected_concept, "create", selected_concept.rules, concepts.environment );
 
