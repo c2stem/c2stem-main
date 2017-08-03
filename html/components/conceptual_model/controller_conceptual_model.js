@@ -76,7 +76,8 @@ function handle_property_events(selected_concept, selected_prop_key) {
         ConceptualActionManager.deleteProperty(selected_concept, selected_property);
     });
 
-
+    var tooltip_text = TooltipTexts.hasOwnProperty(selected_property.elementID) ? TooltipTexts[selected_property.elementID] : selected_property.name ;
+    $("#"+selected_property.elementID + ' .tooltipped').tooltip({delay: 50, tooltip:tooltip_text});
     transform_cm.transform_concept_by_rules(concepts, selected_concept, "create", selected_concept.rules, concepts.environment );
 }
 
@@ -121,6 +122,8 @@ function handle_behavior_events(selected_concept, selected_behavior_key) {
         ConceptualActionManager.deleteBehavior(selected_concept, selected_behavior);
     });
 
+    var tooltip_text = TooltipTexts.hasOwnProperty(selected_behavior.elementID) ? TooltipTexts[selected_behavior.elementID] : selected_behavior.name ;
+    $("#"+selected_behavior.elementID + ' .tooltipped').tooltip({delay: 50, tooltip:tooltip_text});
 
     transform_cm.transform_concept_by_rules(concepts, selected_concept, "create", selected_concept.rules, concepts.environment );
 
