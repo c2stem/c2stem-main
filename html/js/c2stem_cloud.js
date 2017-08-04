@@ -92,7 +92,7 @@ C2Cloud.prototype.loadUserProgress = function (
                     errorCall.call(
                         null,
                         myself.url + 'Public',
-                        localize('could not connect to:')
+                        'could not connect to:'
                     );
                 }
             }
