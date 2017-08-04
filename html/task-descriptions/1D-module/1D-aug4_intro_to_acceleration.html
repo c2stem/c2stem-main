@@ -32,8 +32,8 @@
                 <form class="col s12">
                   <div class="row">
                     <div class="input-field col s12">
-                      <textarea id="textarea2" class="materialize-textarea"></textarea>
-                      <label for="textarea2">Insert text here.</label>
+                      <textarea id="textarea1" class="materialize-textarea"></textarea>
+                      <label for="textarea1">Insert text here.</label>
                     </div>
                   </div>
                 </form>
@@ -82,8 +82,8 @@
                 <form class="col s12">
                   <div class="row">
                     <div class="input-field col s12">
-                      <textarea id="textarea2" class="materialize-textarea"></textarea>
-                      <label for="textarea2">Insert text here.</label>
+                      <textarea id="textarea3" class="materialize-textarea"></textarea>
+                      <label for="textarea3">Insert text here.</label>
                     </div>
                   </div>
                 </form>
@@ -168,5 +168,20 @@
         });
     });
 
+    function initTextArea(elementID) {
+        $('#' + elementID).on("change", function () {
+            var t = $(this).val();
+            console.log(elementID,"changed, text:", t);
+            assessmentData[elementID] = t;
+            window.parent.AssessmentActionManager.addText(t, elementID);
+        });
+        if(assessmentData.hasOwnProperty(elementID))
+            $('#' + elementID).text(assessmentData[elementID]);
+        else
+            $('#' + elementID).text("");
+    }
+    initTextArea('textarea1');
+    initTextArea('textarea2');
+    initTextArea('textarea3');
 </script>
 </html>
