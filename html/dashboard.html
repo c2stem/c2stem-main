@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>C2STEM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="c2stem.css">
+</head>
+<body>
+<nav class="c2stem-nav">
+    <div class="nav-wrapper c2stem-nav-wrapper">
+        <a href="index.html" class="breadcrumb">Home</a>
+        <ul class="right">
+            <li><a id="logout" href="login.html">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container">
+    <p style="height:1em"></p>
+    <div class="container">
+        <h3>Students</h3>
+        <p style="height:1em"></p>
+        <ul id="students" class="collection"></ul>
+    </div>
+</div>
+
+</body>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+<script type="text/javascript" src="js/c2stem_cloud.js"></script>
+<script type="text/javascript" src="js/c2stem.js"></script>
+<script type="text/javascript" src="js/c2stem-data.js"></script>
+
+
+<script type="text/javascript">
+    var c2stem = new C2Stem();
+    c2stem.fixupLogoutLink();
+    $("#students").hide();
+
+
+    function getStudentItem(student) {
+        return `
+            <li id="std_${student}">
+                <a href="student_details.html?${$.param({id: student})}"
+                    class="collection-item">${student}</a>
+            </li>
+            `;
+    }
+
+    c2stem.getUserRole(function (err) {
+        if(!err){
+            if(c2stem.userRole.role === "teacher"){
+                $("#students").show();
+                c2stem.getStudentList(c2stem.userRole.study, function (err) {
+                    if(!err){
+                        c2stem.studentsList.forEach(function (s) {
+                            console.log(s);
+                            $("#students").append(getStudentItem(s));
+                        });
+                    }
+                })
+            }else{
+                $("#students").html("NOT ALLOWED");
+            }
+        }
+    })
+
+
+</script>
+</html>

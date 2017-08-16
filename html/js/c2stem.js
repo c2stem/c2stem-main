@@ -322,6 +322,7 @@ C2Stem.prototype.loadPublicProject = function (task_id, template, shallAppend, c
         lastSavedData = JSON.stringify(c2stem.userTaskData);
         callback(null);
     }, function (err) {
+        console.log(err);
         c2stem.userTaskData = {};
         callback(err);
     });
@@ -348,6 +349,7 @@ C2Stem.prototype.saveUserProgress = function(callback){
     var cloud = C2StemCloud;
     var userTaskData = this.collectUserProgressData();
     var s = JSON.stringify(userTaskData);
+    console.log("saving progress data, isFirstTime:", c2stem.isFirstTime);
     if(s === lastSavedData){
         console.log("SKIPPING SAVING AS THE DATA ARE SAME");
         return;
@@ -523,16 +525,21 @@ C2Stem.prototype.loadModulesState = function (callback) {
     });
 };
 
-C2Stem.prototype.getUserList =function(study, callback){
+C2Stem.prototype.getStudentList =function(study, callback){
     var cloud = C2StemCloud;
     cloud.getData("getUserList", cloud.encodeDict({
-        study: study
+        study: study,
+        role: 'student'
     }), function (userList) {
-        console.log("userList:",userList);
+        console.log("StudentList:",userList);
+        c2stem.studentsList = JSON.parse(userList).map(function (u) {
+            return u["_id"];
+        });
         if(callback)
             callback(null);
     }, function (err) {
         console.log("userList err:",err);
+        c2stem.studentsList = {};
         if(callback)
             callback(err);
     });
@@ -542,10 +549,12 @@ C2Stem.prototype.getUserRole =function(callback){
     var cloud = C2StemCloud;
     cloud.getData("getUserRole","", function (userRole) {
         console.log("userRole:",userRole);
+        c2stem.userRole = JSON.parse(userRole);
         if(callback)
             callback(null);
     }, function (err) {
         console.log("userRole err:",err);
+        c2stem.userRole = {};
         if(callback)
             callback(err);
     });

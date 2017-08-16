@@ -192,7 +192,8 @@ function init_c2stem_server(router, projects, user_roles, users) {
 
     router.get('/getUserList', function rawPublic(req, res) {
         var study = req.query.study;
-        users.find({study:study},{_id:1}).toArray(function (err, doc) {
+        var role = req.query.role;
+        users.find({study:study, role:role},{_id:1}).toArray(function (err, doc) {
             if (err || !doc) {
                 console.log(err, doc);
                 sendSnapError(res, 'No users found');

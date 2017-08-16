@@ -22,7 +22,17 @@ function loadTask(err, res) {
     } else if (err && err !== "ERROR: Project not found" ) {
         Materialize.toast(err || 'Could not load tasks');
     } else {
-        c2stem.fixupModuleLink(res.parent.id, res.parent.name);
+
+        if(c2stem.userTaskData != undefined && c2stem.userTaskData !== null && JSON.stringify(c2stem.userTaskData) !== "{}"){
+            c2stem.isFirstTime = false;
+        }else{
+            c2stem.isFirstTime = true;
+        }
+        console.log("isFirstTime:", c2stem.isFirstTime);
+        console.log("c2stem.userTaskData:", c2stem.userTaskData);
+
+
+            c2stem.fixupModuleLink(res.parent.id, res.parent.name);
         c2stem.fixupTaskLink(res.id, res.name);
 
         $('#tabs-div').append('<ul class="tabs tabs-transparent"></ul>');
