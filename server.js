@@ -33,7 +33,9 @@ function start(options) {
                 default_origin: 'http://run.c2stem.org'
             });
             var projects = db.collection('projects');
-            init_c2stem_server(snapRouter, projects);
+            var user_roles = db.collection('user-roles');
+            var users = db.collection('users');
+            init_c2stem_server(snapRouter, projects, user_roles, users);
 
             app.use('/SnapCloud', snapRouter);
 
@@ -66,7 +68,7 @@ function start(options) {
 function debug(text) {
     // console.log(text);
 }
-function init_c2stem_server(router, projects) {
+function init_c2stem_server(router, projects, user_roles, users) {
 
     router.addSnapApi('saveUserProgress', ['ProjectName', 'UserTaskData'], 'Post', function (req, res) {
         var userName = req.session.user,
@@ -161,6 +163,43 @@ function init_c2stem_server(router, projects) {
                 }
             });
         }
+    });
+
+    router.get('/getUserRole', function rawPublic(req, res) {
+        var sessionUserName = req.session.user;
+        debug('sessionUserName', sessionUserName);
+
+        if (typeof sessionUserName !== 'string') {
+            sendSnapError(res, 'No session inititated');
+        } else {
+            debug('Trying to load user role');
+            // db structure:
+            // user: {role: student, study: name-of-the-study}
+            user_roles.findOne({
+                user_id: sessionUserName
+            },{role:1, study:1}, function (err, doc) {
+                if (err || !doc) {
+                    console.log(err, doc);
+                    sendSnapError(res, 'User role not found');
+                } else {
+                    debug('User role found');
+                    res.send(JSON.stringify(doc));
+                }
+            });
+        }
+    });
+
+
+    router.get('/getUserList', function rawPublic(req, res) {
+        var study = req.query.study;
+        users.find({study:study},{_id:1}).toArray(function (err, doc) {
+            if (err || !doc) {
+                console.log(err, doc);
+                sendSnapError(res, 'No users found');
+            } else {
+                res.send(JSON.stringify(doc));
+            }
+        });
     });
 };
 

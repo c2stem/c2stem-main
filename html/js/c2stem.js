@@ -522,3 +522,31 @@ C2Stem.prototype.loadModulesState = function (callback) {
             callback(err);
     });
 };
+
+C2Stem.prototype.getUserList =function(study, callback){
+    var cloud = C2StemCloud;
+    cloud.getData("getUserList", cloud.encodeDict({
+        study: study
+    }), function (userList) {
+        console.log("userList:",userList);
+        if(callback)
+            callback(null);
+    }, function (err) {
+        console.log("userList err:",err);
+        if(callback)
+            callback(err);
+    });
+};
+
+C2Stem.prototype.getUserRole =function(callback){
+    var cloud = C2StemCloud;
+    cloud.getData("getUserRole","", function (userRole) {
+        console.log("userRole:",userRole);
+        if(callback)
+            callback(null);
+    }, function (err) {
+        console.log("userRole err:",err);
+        if(callback)
+            callback(err);
+    });
+};
