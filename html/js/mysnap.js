@@ -23,26 +23,6 @@ WorldMorph.prototype.updateSize = function () {
     }
 };
 
-// Hide cloud button
-IDE_Morph.prototype.c2StemCreateControlBar = IDE_Morph.prototype.createControlBar;
-IDE_Morph.prototype.xcreateControlBar = function () {
-    this.c2StemCreateControlBar();
-
-    this.controlBar.c2StemFixLayout = this.controlBar.fixLayout;
-    this.controlBar.fixLayout = function () {
-        this.c2StemFixLayout();
-        this.cloudButton.hide();
-        this.projectButton.setRight(this.cloudButton.right());
-    }
-}
-
-// Hide cloud button
-IDE_Morph.prototype.c2StemToggleAppMode = IDE_Morph.prototype.toggleAppMode;
-IDE_Morph.prototype.xtoggleAppMode = function (appMode) {
-    this.c2StemToggleAppMode(appMode);
-    this.controlBar.cloudButton.hide();
-}
-
 // Load the proper resources from SnapPhysics
 IDE_Morph.prototype.resourceURL = function () {
     var args = Array.prototype.slice.call(arguments, 0);
