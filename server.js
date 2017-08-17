@@ -33,9 +33,8 @@ function start(options) {
                 default_origin: 'http://run.c2stem.org'
             });
             var projects = db.collection('projects');
-            var user_roles = db.collection('user-roles');
             var users = db.collection('users');
-            init_c2stem_server(snapRouter, projects, user_roles, users);
+            init_c2stem_server(snapRouter, projects, users);
 
             app.use('/SnapCloud', snapRouter);
 
@@ -68,7 +67,7 @@ function start(options) {
 function debug(text) {
     // console.log(text);
 }
-function init_c2stem_server(router, projects, user_roles, users) {
+function init_c2stem_server(router, projects, users) {
 
     router.addSnapApi('saveUserProgress', ['ProjectName', 'UserTaskData'], 'Post', function (req, res) {
         var userName = req.session.user,
@@ -175,8 +174,8 @@ function init_c2stem_server(router, projects, user_roles, users) {
             debug('Trying to load user role');
             // db structure:
             // user: {role: student, study: name-of-the-study}
-            user_roles.findOne({
-                user_id: sessionUserName
+            users.findOne({
+                _id: sessionUserName
             },{role:1, study:1}, function (err, doc) {
                 if (err || !doc) {
                     console.log(err, doc);
