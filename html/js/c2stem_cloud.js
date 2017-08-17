@@ -224,7 +224,7 @@ C2Cloud.prototype.callService = function (
                     errorCall.call(
                         this,
                         request.responseText,
-                        localize('Service:') + ' ' + localize(serviceName)
+                        'Service:' + ' ' + serviceName
                     );
                     return;
                 }
@@ -269,7 +269,7 @@ C2Cloud.prototype.parseResponse = function (src) {
 };
 
 
-C2Cloud.prototype.recordTaskModified = function (taskName, callBack, errorCall) {
+C2Cloud.prototype.recordTaskModified = function (taskName, study, callBack, errorCall) {
     var myself = this;
 
     myself.callService(
@@ -279,13 +279,14 @@ C2Cloud.prototype.recordTaskModified = function (taskName, callBack, errorCall) 
         },
         errorCall,
         [
-            taskName
+            taskName,
+            study
         ]
     );
 };
 
 
-C2Cloud.prototype.recordTaskSubmitted = function (activityID, taskName, callBack, errorCall) {
+C2Cloud.prototype.recordTaskSubmitted = function (activityID, taskName, study, callBack, errorCall) {
     var myself = this;
 
     myself.callService(
@@ -296,12 +297,13 @@ C2Cloud.prototype.recordTaskSubmitted = function (activityID, taskName, callBack
         errorCall,
         [
             activityID,
-            taskName
+            taskName,
+            study
         ]
     );
 };
 
-C2Cloud.prototype.recordCurrentTask = function (taskID, callBack, errorCall) {
+C2Cloud.prototype.recordCurrentTask = function (taskID, study, callBack, errorCall) {
     var myself = this;
 
     myself.callService(
@@ -311,7 +313,8 @@ C2Cloud.prototype.recordCurrentTask = function (taskID, callBack, errorCall) {
         },
         errorCall,
         [
-            taskID
+            taskID,
+            study
         ]
     );
 };

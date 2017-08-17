@@ -204,13 +204,15 @@ function init_c2stem_server(router, projects, users, studentStatus) {
     });
 
 
-    router.addSnapApi('recordTaskModified', ['taskID'], 'Post', function (req, res) {
+    router.addSnapApi('recordTaskModified', ['taskID','study'], 'Post', function (req, res) {
         var userName = req.session.user,
-            taskID = req.body.taskID;
+            taskID = req.body.taskID,
+            study = req.body.study;
         debug('update student status, record task modified', userName, taskID);
 
         if (typeof userName !== 'string' ||
-            typeof taskID !== 'string') {
+            typeof taskID !== 'string' ||
+            typeof study !== 'string') {
             sendSnapError(res, 'Invalid request');
         } else {
             var fields = {
@@ -220,7 +222,8 @@ function init_c2stem_server(router, projects, users, studentStatus) {
             fields.tasks[taskID] = { id: taskID, submitted:{}};
 
             studentStatus.update({
-                user: userName
+                user: userName,
+                study: study
             }, {
                 $set: fields
             }, {
@@ -237,22 +240,25 @@ function init_c2stem_server(router, projects, users, studentStatus) {
         }
     });
 
-    router.addSnapApi('recordTaskSubmitted', ['activityID','taskID'], 'Post', function (req, res) {
+    router.addSnapApi('recordTaskSubmitted', ['activityID','taskID', 'study'], 'Post', function (req, res) {
         var userName = req.session.user,
             activityID = req.body.activityID,
-            taskID = req.body.taskID;
+            taskID = req.body.taskID,
+            study = req.body.study;
         debug('update student status, record task submitted', userName, taskID);
 
         if (typeof userName !== 'string' ||
             typeof activityID !== 'string' ||
-            typeof taskID !== 'string') {
+            typeof taskID !== 'string' ||
+            typeof study !== 'string') {
             sendSnapError(res, 'Invalid request');
         } else {
             studentStatus.findOne({user: userName}, function (err, doc) {
                 console.log("student status:", doc);
                doc.tasks[taskID].submitted[activityID] = Date.now();
                 studentStatus.update({
-                    user: userName
+                    user: userName,
+                    study: study
                 }, {
                     $set: doc
                 }, {
@@ -293,17 +299,20 @@ function init_c2stem_server(router, projects, users, studentStatus) {
         }
     });
 
-    router.addSnapApi('recordCurrentTask', ['taskID'], 'Post', function (req, res) {
+    router.addSnapApi('recordCurrentTask', ['taskID', 'study'], 'Post', function (req, res) {
         var userName = req.session.user,
-            taskID = req.body.taskID;
-        debug('update student status, record current task', userName, taskID);
+            taskID = req.body.taskID,
+            study = req.body.study;
+        debug('update student status, record current task', userName, taskID, study);
 
         if (typeof userName !== 'string' ||
-            typeof taskID !== 'string') {
+            typeof taskID !== 'string' ||
+            typeof study !== 'string') {
             sendSnapError(res, 'Invalid request');
         } else {
             studentStatus.update({
-                user: userName
+                user: userName,
+                study: study
             }, {
                 $set: {currentTask:taskID}
             }, {

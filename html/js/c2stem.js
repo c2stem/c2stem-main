@@ -46,7 +46,8 @@ C2Stem.prototype.login = function (username, password, remember, callback) {
             if (req.readyState === 4) {
                 if (req.status === 200) {
                     myself.api = myself.parseAPI(req.responseText);
-                    callback(null);
+                    c2stem.getUserRole(callback);
+                    // callback(null);
                 } else {
                     callback(req.responseText || 'Connection refused');
                 }
@@ -574,6 +575,7 @@ C2Stem.prototype.recordTaskModified = function(callback){
     var cloud = C2StemCloud;
     cloud.recordTaskModified(
         c2stem.task_id,
+        c2stem.userRole.study,
         function () {
             console.log("Student status updated, record task modified:", c2stem.task_id);
             c2stem.isFirstTime = false;
@@ -595,6 +597,7 @@ C2Stem.prototype.recordTaskSubmitted = function(activityID, callback){
     cloud.recordTaskSubmitted(
         activityID,
         c2stem.task_id,
+        c2stem.userRole.study,
         function () {
             console.log("Student status updated, record task submitted:", c2stem.task_id, " activity:", activityID);
             if(callback)
@@ -614,6 +617,7 @@ C2Stem.prototype.recordCurrentTask = function(callback){
     var cloud = C2StemCloud;
     cloud.recordCurrentTask(
         c2stem.task_id,
+        c2stem.userRole.study,
         function () {
             console.log("Student status updated, record current task:", c2stem.task_id);
             isCurrentWorkingStatusUpdated = true;
