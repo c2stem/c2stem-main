@@ -16,7 +16,7 @@ transform_cm.preprocess = function (concepts) {
         var zIndex = 0;
         if(c.zIndex != undefined)
             zIndex = c.zIndex;
-        console.log(c.name + " zIndex:",zIndex);
+        // console.log(c.name + " zIndex:",zIndex);
         var i = 0;
         var found = false;
         for (; i < this.zOrderedConcepts.length; i++)
@@ -44,7 +44,7 @@ transform_cm.preprocess = function (concepts) {
             this.zOrderedConcepts.push(o);
         }
     }
-    console.log("this.zOrderedConcepts:",this.zOrderedConcepts);
+    // console.log("this.zOrderedConcepts:",this.zOrderedConcepts);
 
 
 
