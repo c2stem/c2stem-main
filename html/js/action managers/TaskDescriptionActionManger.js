@@ -12,7 +12,8 @@ TaskDescriptionActionManger._submitSolution = function(activityID) {
     return [activityID, c2stem.task_id, c2stem.module_id];
 };
 
-TaskDescriptionActionManger.onSubmitSolution = function(tab_name, tab_type) {
+TaskDescriptionActionManger.onSubmitSolution = function(activityID, taskID, moduleID) {
+    c2stem.recordTaskSubmitted(activityID);
 };
 
 ///////////////// using the action manager /////////////////

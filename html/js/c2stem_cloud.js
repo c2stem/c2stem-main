@@ -267,3 +267,36 @@ C2Cloud.prototype.parseResponse = function (src) {
     });
     return ans;
 };
+
+
+C2Cloud.prototype.recordTaskModified = function (taskName, callBack, errorCall) {
+    var myself = this;
+
+    myself.callService(
+        'recordTaskModified',
+        function (response, url) {
+            callBack.call(null, response, url);
+        },
+        errorCall,
+        [
+            taskName
+        ]
+    );
+};
+
+
+C2Cloud.prototype.recordTaskSubmitted = function (activityID, taskName, callBack, errorCall) {
+    var myself = this;
+
+    myself.callService(
+        'recordTaskSubmitted',
+        function (response, url) {
+            callBack.call(null, response, url);
+        },
+        errorCall,
+        [
+            activityID,
+            taskName
+        ]
+    );
+};

@@ -34,7 +34,8 @@ function start(options) {
             });
             var projects = db.collection('projects');
             var users = db.collection('users');
-            init_c2stem_server(snapRouter, projects, users);
+            var studentStatus = db.collection('student-status');
+            init_c2stem_server(snapRouter, projects, users, studentStatus);
 
             app.use('/SnapCloud', snapRouter);
 
@@ -50,7 +51,7 @@ function start(options) {
 
                 event.username = username;
 
-                console.log('received event:', event);
+                console.log('received event:', event.namespace);
                 return events.save(event)
                     .then(() => res.sendStatus(200));
             });
@@ -67,7 +68,7 @@ function start(options) {
 function debug(text) {
     // console.log(text);
 }
-function init_c2stem_server(router, projects, users) {
+function init_c2stem_server(router, projects, users, studentStatus) {
 
     router.addSnapApi('saveUserProgress', ['ProjectName', 'UserTaskData'], 'Post', function (req, res) {
         var userName = req.session.user,
@@ -200,6 +201,96 @@ function init_c2stem_server(router, projects, users) {
                 res.send(JSON.stringify(doc));
             }
         });
+    });
+
+
+    router.addSnapApi('recordTaskModified', ['taskID'], 'Post', function (req, res) {
+        var userName = req.session.user,
+            taskID = req.body.taskID;
+        debug('update student status, record task modified', userName, taskID);
+
+        if (typeof userName !== 'string' ||
+            typeof taskID !== 'string') {
+            sendSnapError(res, 'Invalid request');
+        } else {
+            var fields = {
+                tasks: {
+                }
+            };
+            fields.tasks[taskID] = { id: taskID, submitted:{}};
+
+            studentStatus.update({
+                user: userName
+            }, {
+                $set: fields
+            }, {
+                upsert: true,
+                multi: false
+            }, function (err) {
+                if (err) {
+                    sendSnapError(res, 'Database error');
+                } else {
+                    res.sendStatus(200);
+                    debug('Student status updated, record task modified', userName, taskID);
+                }
+            });
+        }
+    });
+
+    router.addSnapApi('recordTaskSubmitted', ['activityID','taskID'], 'Post', function (req, res) {
+        var userName = req.session.user,
+            activityID = req.body.activityID,
+            taskID = req.body.taskID;
+        debug('update student status, record task submitted', userName, taskID);
+
+        if (typeof userName !== 'string' ||
+            typeof activityID !== 'string' ||
+            typeof taskID !== 'string') {
+            sendSnapError(res, 'Invalid request');
+        } else {
+            studentStatus.findOne({user: userName}, function (err, doc) {
+                console.log("student status:", doc);
+               doc.tasks[taskID].submitted[activityID] = Date.now();
+                studentStatus.update({
+                    user: userName
+                }, {
+                    $set: doc
+                }, {
+                    upsert: true,
+                    multi: false
+                }, function (err) {
+                    if (err) {
+                        sendSnapError(res, 'Database error');
+                    } else {
+                        res.sendStatus(200);
+                        debug('Student status updated, record task submitted', userName, taskID);
+                    }
+                });
+            });
+
+            // var fields = {
+            //     tasks: {
+            //     }
+            // };
+            // fields.tasks[taskID] = { };
+            // fields.tasks[taskID].submitted = { };
+            // fields.tasks[taskID].submitted[activityID] = Date.now();
+            // studentStatus.update({
+            //     user: userName
+            // }, {
+            //     $set: fields
+            // }, {
+            //     upsert: true,
+            //     multi: false
+            // }, function (err) {
+            //     if (err) {
+            //         sendSnapError(res, 'Database error');
+            //     } else {
+            //         res.sendStatus(200);
+            //         debug('Student status updated, record task submitted', userName, taskID);
+            //     }
+            // });
+        }
     });
 };
 

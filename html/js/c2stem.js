@@ -363,13 +363,15 @@ C2Stem.prototype.saveUserProgress = function(callback){
         userTaskData,
         function () {
             // console.log("User data saved for task:",c2stem.task_id);
+            if(c2stem.isFirstTime){
+                c2stem.recordTaskModified();
+            }
         },
         function (msg) {
             console.log("User data could not be saved, error:",msg);
         }
     );
 };
-
 
 
 C2Stem.prototype.SaveBlocksCache = function(cacheName, callback) {
@@ -558,4 +560,46 @@ C2Stem.prototype.getUserRole =function(callback){
         if(callback)
             callback(err);
     });
+};
+
+
+C2Stem.prototype.recordTaskModified = function(callback){
+    console.log("Record Task Modified", c2stem.module_id, c2stem.task_id);
+    var taskData = c2stem.loadTaskData(c2stem.task_id);
+    console.log("module name", taskData.parent.name, "task name", taskData.name);
+    var cloud = C2StemCloud;
+    cloud.recordTaskModified(
+        c2stem.task_id,
+        function () {
+            console.log("Student status updated, record task modified:", c2stem.task_id);
+            c2stem.isFirstTime = false;
+            if(callback)
+                callback(null);
+        },
+        function (msg) {
+            console.log("Could not record task modified, error:", msg);
+            if(callback)
+                callback(msg);
+        }
+    );
+};
+
+
+C2Stem.prototype.recordTaskSubmitted = function(activityID, callback){
+    console.log("Record Task Submitted", c2stem.module_id, c2stem.task_id);
+    var cloud = C2StemCloud;
+    cloud.recordTaskSubmitted(
+        activityID,
+        c2stem.task_id,
+        function () {
+            console.log("Student status updated, record task submitted:", c2stem.task_id, " activity:", activityID);
+            if(callback)
+                callback(null);
+        },
+        function (msg) {
+            console.log("Could not record task submitted, error:", msg);
+            if(callback)
+                callback(msg);
+        }
+    );
 };
