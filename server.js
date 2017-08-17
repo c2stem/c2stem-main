@@ -292,6 +292,34 @@ function init_c2stem_server(router, projects, users, studentStatus) {
             // });
         }
     });
+
+    router.addSnapApi('recordCurrentTask', ['taskID'], 'Post', function (req, res) {
+        var userName = req.session.user,
+            taskID = req.body.taskID;
+        debug('update student status, record current task', userName, taskID);
+
+        if (typeof userName !== 'string' ||
+            typeof taskID !== 'string') {
+            sendSnapError(res, 'Invalid request');
+        } else {
+            studentStatus.update({
+                user: userName
+            }, {
+                $set: {currentTask:taskID}
+            }, {
+                upsert: true,
+                multi: false
+            }, function (err) {
+                if (err) {
+                    sendSnapError(res, 'Database error');
+                } else {
+                    res.sendStatus(200);
+                    debug('Student status updated, record task modified', userName, taskID);
+                }
+            });
+        }
+    });
+
 };
 
 program.version(version)

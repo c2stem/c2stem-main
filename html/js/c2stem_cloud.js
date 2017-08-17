@@ -300,3 +300,19 @@ C2Cloud.prototype.recordTaskSubmitted = function (activityID, taskName, callBack
         ]
     );
 };
+
+C2Cloud.prototype.recordCurrentTask = function (taskID, callBack, errorCall) {
+    var myself = this;
+
+    myself.callService(
+        'recordCurrentTask',
+        function (response, url) {
+            callBack.call(null, response, url);
+        },
+        errorCall,
+        [
+            taskID
+        ]
+    );
+};
+

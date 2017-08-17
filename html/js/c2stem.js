@@ -344,11 +344,15 @@ C2Stem.prototype.collectUserProgressData = function (saveMedia) {
     return userTaskData;
 }
 var lastSavedData = "";
+var isCurrentWorkingStatusUpdated = false;
 C2Stem.prototype.saveUserProgress = function(callback){
     // console.log('saving user progress for task:',c2stem.task_id);
     var cloud = C2StemCloud;
     var userTaskData = this.collectUserProgressData();
     var s = JSON.stringify(userTaskData);
+    if(!isCurrentWorkingStatusUpdated){
+        c2stem.recordCurrentTask();
+    }
     console.log("saving progress data, isFirstTime:", c2stem.isFirstTime);
     if(s === lastSavedData){
         console.log("SKIPPING SAVING AS THE DATA ARE SAME");
@@ -598,6 +602,26 @@ C2Stem.prototype.recordTaskSubmitted = function(activityID, callback){
         },
         function (msg) {
             console.log("Could not record task submitted, error:", msg);
+            if(callback)
+                callback(msg);
+        }
+    );
+};
+
+
+C2Stem.prototype.recordCurrentTask = function(callback){
+    console.log("Record CurrentTask", c2stem.module_id, c2stem.task_id);
+    var cloud = C2StemCloud;
+    cloud.recordCurrentTask(
+        c2stem.task_id,
+        function () {
+            console.log("Student status updated, record current task:", c2stem.task_id);
+            isCurrentWorkingStatusUpdated = true;
+            if(callback)
+                callback(null);
+        },
+        function (msg) {
+            console.log("Could not record current task, error:", msg);
             if(callback)
                 callback(msg);
         }
