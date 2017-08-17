@@ -190,15 +190,36 @@ function init_c2stem_server(router, projects, users, studentStatus) {
     });
 
 
-    router.get('/getUserList', function rawPublic(req, res) {
+    router.get('/getStudentStatus', function rawPublic(req, res) {
         var study = req.query.study;
-        var role = req.query.role;
-        users.find({study:study, role:role},{_id:1}).toArray(function (err, doc) {
+        studentStatus.find({study:study}).toArray(function (err, doc) {
             if (err || !doc) {
                 console.log(err, doc);
-                sendSnapError(res, 'No users found');
+                sendSnapError(res, 'No student records found');
             } else {
                 res.send(JSON.stringify(doc));
+            }
+        });
+    });
+
+    router.get('/isNewTask', function rawPublic(req, res) {
+        var userName = req.session.user,
+            study = req.query.study,
+            taskID = req.query.taskID;
+        studentStatus.findOne({study:study, user: userName}, function (err, doc) {
+            if (err || !doc) {
+                console.log(err, doc);
+                res.send(JSON.stringify({isNew:true}));
+            } else {
+                if("tasks" in doc){
+                    if (taskID in doc.tasks){
+                        res.send(JSON.stringify({isNew:false}));
+                        console.log("NEW TASK FALSE");
+                        return;
+                    }
+                }
+                console.log("NEW TASK TRUE");
+                res.send(JSON.stringify({isNew:true}));
             }
         });
     });
@@ -215,27 +236,26 @@ function init_c2stem_server(router, projects, users, studentStatus) {
             typeof study !== 'string') {
             sendSnapError(res, 'Invalid request');
         } else {
-            var fields = {
-                tasks: {
-                }
-            };
-            fields.tasks[taskID] = { id: taskID, submitted:{}};
-
-            studentStatus.update({
-                user: userName,
-                study: study
-            }, {
-                $set: fields
-            }, {
-                upsert: true,
-                multi: false
-            }, function (err) {
-                if (err) {
-                    sendSnapError(res, 'Database error');
-                } else {
-                    res.sendStatus(200);
-                    debug('Student status updated, record task modified', userName, taskID);
-                }
+            studentStatus.findOne({user: userName, study:study}, function (err, doc) {
+                if(!("tasks" in doc))
+                    doc.tasks = {};
+                doc.tasks[taskID] = { id: taskID, submitted:{}};
+                studentStatus.update({
+                    user: userName,
+                    study: study
+                }, {
+                    $set: doc
+                }, {
+                    upsert: true,
+                    multi: false
+                }, function (err) {
+                    if (err) {
+                        sendSnapError(res, 'Database error');
+                    } else {
+                        res.sendStatus(200);
+                        debug('Student status updated, record task submitted', userName, taskID);
+                    }
+                });
             });
         }
     });
@@ -253,7 +273,7 @@ function init_c2stem_server(router, projects, users, studentStatus) {
             typeof study !== 'string') {
             sendSnapError(res, 'Invalid request');
         } else {
-            studentStatus.findOne({user: userName}, function (err, doc) {
+            studentStatus.findOne({user: userName, study: study}, function (err, doc) {
                 console.log("student status:", doc);
                doc.tasks[taskID].submitted[activityID] = Date.now();
                 studentStatus.update({

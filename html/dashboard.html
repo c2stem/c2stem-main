@@ -56,9 +56,9 @@
         if(!err){
             if(c2stem.userRole.role === "teacher"){
                 $("#students").show();
-                c2stem.getStudentList(c2stem.userRole.study, function (err) {
+                c2stem.getStudentStatus(c2stem.userRole.study, function (err) {
                     if(!err){
-                        c2stem.studentsList.forEach(function (s) {
+                        c2stem.studentsStatus.forEach(function (s) {
                             console.log(s);
                             $("#students").append(getStudentItem(s));
                         });

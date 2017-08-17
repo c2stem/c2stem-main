@@ -9,8 +9,15 @@ c2stem.loadTaskData(c2stem.query.id, function (err, res) {
 
     TaskViewActionManger.pageLoaded(c2stem.task_id, c2stem.module_id);
 
-    c2stem.loadPublicProject(c2stem.task_id, null, false, function (err) {
-        loadTask(err,res);
+
+    c2stem.getUserRole(function () {
+        console.log()
+        c2stem.isNewTask(function () {
+            console.log("isNewTask:", c2stem.isNewTask);
+            c2stem.loadPublicProject(c2stem.task_id, null, false, function (err) {
+                loadTask(err,res);
+            });
+        });
     });
 
 });
@@ -22,17 +29,8 @@ function loadTask(err, res) {
     } else if (err && err !== "ERROR: Project not found" ) {
         Materialize.toast(err || 'Could not load tasks');
     } else {
-
-        if(c2stem.userTaskData != undefined && c2stem.userTaskData !== null && JSON.stringify(c2stem.userTaskData) !== "{}"){
-            c2stem.isFirstTime = false;
-        }else{
-            c2stem.isFirstTime = true;
-        }
-        console.log("isFirstTime:", c2stem.isFirstTime);
         console.log("c2stem.userTaskData:", c2stem.userTaskData);
-
-
-            c2stem.fixupModuleLink(res.parent.id, res.parent.name);
+        c2stem.fixupModuleLink(res.parent.id, res.parent.name);
         c2stem.fixupTaskLink(res.id, res.name);
 
         $('#tabs-div').append('<ul class="tabs tabs-transparent"></ul>');
