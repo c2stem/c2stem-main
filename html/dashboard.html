@@ -50,8 +50,10 @@
                 var first = true;
                 for (var j in student.tasks[key].submitted) {
                     if (student.tasks[key].submitted.hasOwnProperty(j)) {
+                        var date = student.tasks[key].submitted[j];
+                        var dateString = new Date(date).toLocaleDateString()+ " " + new Date(date).toLocaleTimeString();
                         var s = j;
-                        var sd = `<span>${s}</span>`;
+                        var sd = `<span>${s} (${dateString})</span>`;
                         if(!first){
                             sd = ", " + sd;
                         }
