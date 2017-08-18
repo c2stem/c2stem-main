@@ -58,29 +58,19 @@
           "elementID": "VelocityY",
           "selected": false
         },
-        "ResultantVelocity": {
-          "name": "resultant velocity of boat in m/s",
-          "elementID": "ResultantVelocity",
+        "xAcceleration": {
+          "name": "x acceleration in m/s^2",
+          "elementID": "xAcceleration",
+          "selected": false
+        },
+        "yAcceleration": {
+          "name": "x acceleration in m/s^2",
+          "elementID": "xAcceleration",
           "selected": false
         },
         "Angle": {
           "name": "angle in deg",
           "elementID": "Angle",
-          "selected": false
-        },
-        "BoatVelocity": {
-          "name": "boat velocity on water in m/s",
-          "elementID": "BoatVelocity",
-          "selected": false
-        },
-        "BoatSpeed": {
-          "name": "boat speed in m/s",
-          "elementID": "BoatVelocity",
-          "selected": false
-        },
-        "RiverSpeed": {
-          "name": "river speed in m/s",
-          "elementID": "BoatVelocity",
           "selected": false
         }
       },
@@ -235,40 +225,48 @@
         },
         {
           "Required": [
-            "ResultantVelocity"
+            "xAcceleration"
           ],
           "GeneratedConstructs": [
             {
-              "name": "resultant velocity of boat in m/s",
+              "name": "xAcceleration",
               "category": "physics",
-              "type": "custom_variable",
-              "isGlobal": "false"
+              "type": "built_in"
+            },
+            {
+              "name": "setXAcceleration",
+              "category": "physics",
+              "type": "built_in"
             }
           ]
         },
         {
           "Required": [
-            "BoatSpeed"
+            "yAcceleration"
           ],
           "GeneratedConstructs": [
             {
-              "name": "boat speed in m/s",
+              "name": "yAcceleration",
               "category": "physics",
-              "type": "custom_variable",
-              "isGlobal": "false"
+              "type": "built_in"
+            },
+            {
+              "name": "setYAcceleration",
+              "category": "physics",
+              "type": "built_in"
             }
           ]
         },
         {
           "Required": [
-            "RiverSpeed"
+            "xAcceleration",
+            "yAcceleration"
           ],
           "GeneratedConstructs": [
             {
-              "name": "river speed in m/s",
+              "name": "setAcceleration",
               "category": "physics",
-              "type": "custom_variable",
-              "isGlobal": "false"
+              "type": "built_in"
             }
           ]
         },
@@ -291,19 +289,6 @@
               "name": "changePhysicsAngle",
               "category": "physics",
               "type": "built_in"
-            }
-          ]
-        },
-        {
-          "Required": [
-            "BoatVelocity"
-          ],
-          "GeneratedConstructs": [
-            {
-              "name": "boat velocity on water in m/s",
-              "category": "physics",
-              "type": "custom_variable",
-              "isGlobal": "false"
             }
           ]
         }

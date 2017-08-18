@@ -55,28 +55,28 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
                 },/*{
                     id: '1d-inst_conceptual',
                     name: 'Instructional Task - 1D Velocity: Model Planning'
-                }, {
+                },*/ {
                     id: '1d-checkin1',
                     name: 'Check-In #1'
-                },*/ {
+                }, {
                     id: '1d-constant',
                     name: 'Model Building - 1D Velocity: Simulate the Motion of a Truck'
-                },/* {
+                }, {
                     id: '1d-checkin2',
                     name: 'Check-In #2'
-                },*/ {
+                }, {
                     id: '1d-liftoff',
                     name: 'Instructional Task - 1D Acceleration: Changing Velocity'
-                },/* {
+                }, {
                     id: '1d-checkin3',
                     name: 'Check-In #3'
-                },*/ {
+                }, {
                     id: '1d-stop',
                     name: 'Model Building -1D Acceleration: Make Your Truck Stop'
-                }, /*{
-                id: '1d-checkin4',
-                name: 'Check-In #4'
-            },*/ {
+                }, {
+                    id: '1d-checkin4',
+                    name: 'Check-In #4'
+                }, {
                     id: '1d-deliver',
                     name: 'Challenge Problem: Deliver the Medicine to the River! '
                 }
