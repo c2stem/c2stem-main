@@ -20,19 +20,9 @@
           "elementID": "VelocityX",
           "selected": false
         },
-        "XAcceleration": {
+        "xAcceleration": {
           "name": "x acceleration in m/s^2",
-          "elementID": "StartPosition",
-          "selected": false
-        },
-        "OldPositionX": {
-          "name": "old x position in m",
-          "elementID": "OldPositionX",
-          "selected": false
-        },
-        "PassedTheCone": {
-          "name": "passed the cone",
-          "elementID": "PassedTheCone",
+          "elementID": "xAcceleration",
           "selected": false
         }
       },
@@ -40,6 +30,12 @@
         "update_position": {
           "name": "update position in m",
           "elementID": "update_position",
+          "selected": false,
+          "category": "physics"
+        },
+        "update_velocity": {
+          "name": "update velocity in m/s",
+          "elementID": "update_velocity",
           "selected": false,
           "category": "physics"
         }
@@ -101,40 +97,18 @@
         },
         {
           "Required": [
-            "XAcceleration"
+            "xAcceleration"
           ],
           "GeneratedConstructs": [
             {
-              "name": "x acceleration in m/s^2",
+              "name": "xAcceleration",
               "category": "physics",
-              "type": "custom_variable",
-              "isGlobal": "false"
-            }
-          ]
-        },
-        {
-          "Required": [
-            "OldPositionX"
-          ],
-          "GeneratedConstructs": [
+              "type": "built_in"
+            },
             {
-              "name": "old x position in m",
+              "name": "setXAcceleration",
               "category": "physics",
-              "type": "custom_variable",
-              "isGlobal": "false"
-            }
-          ]
-        },
-        {
-          "Required": [
-            "PassedTheCone"
-          ],
-          "GeneratedConstructs": [
-            {
-              "name": "passed the cone",
-              "category": "physics",
-              "type": "custom_variable",
-              "isGlobal": "false"
+              "type": "built_in"
             }
           ]
         }

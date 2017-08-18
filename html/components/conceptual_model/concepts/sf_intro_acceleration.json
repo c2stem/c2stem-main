@@ -20,9 +20,9 @@
           "elementID": "VelocityX",
           "selected": false
         },
-        "XAcceleration": {
+        "xAcceleration": {
           "name": "x acceleration in m/s^2",
-          "elementID": "StartPosition",
+          "elementID": "xAcceleration",
           "selected": false
         }
       },
@@ -35,7 +35,7 @@
         },
         "update_velocity": {
           "name": "update velocity in m/s",
-          "elementID": "update_position",
+          "elementID": "update_velocity",
           "selected": false,
           "category": "physics"
         }
@@ -97,14 +97,18 @@
         },
         {
           "Required": [
-            "XAcceleration"
+            "xAcceleration"
           ],
           "GeneratedConstructs": [
             {
-              "name": "x acceleration in m/s^2",
+              "name": "xAcceleration",
               "category": "physics",
-              "type": "custom_variable",
-              "isGlobal": "false"
+              "type": "built_in"
+            },
+            {
+              "name": "setXAcceleration",
+              "category": "physics",
+              "type": "built_in"
             }
           ]
         }
