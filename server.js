@@ -117,9 +117,12 @@ function init_c2stem_server(router, projects, users, studentStatus) {
     router.get('/getUserProgress', function rawPublic(req, res) {
         var userName = req.query.Username,
             projectName = req.query.ProjectName,
-            template = req.query.Template;
+            template = req.query.Template,
+            mode = req.query.mode;
 
         var sessionUserName = req.session.user;
+        if(mode !== null && mode === 'teacher')
+            sessionUserName = userName;
         debug('Load public', userName, projectName, template);
         debug('sessionUserName', sessionUserName);
 

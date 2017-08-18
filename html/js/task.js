@@ -6,9 +6,12 @@ c2stem.loadTaskData(c2stem.query.id, function (err, res) {
     console.log("loading task",res.id);
     c2stem.task_id = res.id;
     c2stem.module_id = res.parent.id;
-
+    c2stem.mode = c2stem.query.mode;
     TaskViewActionManger.pageLoaded(c2stem.task_id, c2stem.module_id);
 
+
+    if(c2stem.mode !== null && c2stem.mode === 'teacher')
+        $('#reset_to_template').hide();
 
     c2stem.getUserRole(function () {
         console.log()

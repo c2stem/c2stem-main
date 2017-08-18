@@ -44,7 +44,7 @@
                 var t = student.tasks[key];
                 var taskData = c2stem.loadTaskData(t.id);
                 var tn = taskData.name + " (" + taskData.parent.name + ")";
-                td += `<a style="margin-right: 20px" href="task.html?id=${key}">${tn}</a>`;
+                td += `<a style="margin-right: 20px" href="task.html?id=${key}&mode=teacher&student=${student.user}">${tn}</a>`;
                 if(Object.keys(student.tasks[key].submitted).length > 0)
                     td += "Activities submitted: "
                 var first = true;

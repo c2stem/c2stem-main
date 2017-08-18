@@ -115,7 +115,7 @@ C2Stem.prototype.parseQueryString = function () {
             q[decodeURIComponent(b[0])] = decodeURIComponent(b[1] || '');
         }
     }
-
+    console.log("query string:",q);
     return q;
 }
 
@@ -312,10 +312,14 @@ C2Stem.prototype.loadPublicProject = function (task_id, template, shallAppend, c
     console.log('loading data for task', task_id, "with snap template", template);
     // var cloud = snapWin.SnapCloud;
     var cloud = C2StemCloud;
+    var userName = template !== null ? template.user : "";
+    if(c2stem.mode !== null && c2stem.mode === 'teacher')
+        userName = c2stem.query.student;
     cloud.loadUserProgress(cloud.encodeDict({
-        Username: template !== null ? template.user : "",
+        Username: userName,
         ProjectName: task_id,
-        Template: template !== null ? template.proj : ""
+        Template: template !== null ? template.proj : "",
+        mode:c2stem.mode
     }), function (projectData) {
         c2stem.userTaskData = JSON.parse(projectData);
         console.log("loadPublicProject", c2stem.userTaskData);
@@ -346,6 +350,8 @@ C2Stem.prototype.collectUserProgressData = function (saveMedia) {
 var lastSavedData = "";
 var isCurrentWorkingStatusUpdated = false;
 C2Stem.prototype.saveUserProgress = function(callback){
+    if(c2stem.mode !== null && c2stem.mode === 'teacher')
+        return;
     // console.log('saving user progress for task:',c2stem.task_id);
     var cloud = C2StemCloud;
     var userTaskData = this.collectUserProgressData();
