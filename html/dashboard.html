@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>C2STEM</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="c2stem.css">
+</head>
+<body>
+<nav class="c2stem-nav">
+    <div class="nav-wrapper c2stem-nav-wrapper">
+        <a href="index.html" class="breadcrumb">Home</a>
+        <ul class="right">
+            <li><a id="logout" href="login.html">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<h3 style="margin-left: 20px;">Students</h3>
+    <ul id="students" class="collapsible popout" data-collapsible="accordion">
+</body>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+<script type="text/javascript" src="js/c2stem_cloud.js"></script>
+<script type="text/javascript" src="js/c2stem.js"></script>
+<script type="text/javascript" src="js/c2stem-data.js"></script>
+
+
+<script type="text/javascript">
+    var c2stem = new C2Stem();
+    c2stem.fixupLogoutLink();
+    $("#students").hide();
+
+
+    function getStudentDetails(student) {
+        var td = "";
+        for (var key in student.tasks) {
+            td += `<div class="row">`;
+            if (student.tasks.hasOwnProperty(key)) {
+                var t = student.tasks[key];
+                var taskData = c2stem.loadTaskData(t.id);
+                var tn = taskData.name + " (" + taskData.parent.name + ")";
+                td += `<a style="margin-right: 20px" href="task.html?id=${key}&mode=teacher&student=${student.user}">${tn}</a>`;
+                if(Object.keys(student.tasks[key].submitted).length > 0)
+                    td += "Activities submitted: "
+                var first = true;
+                for (var j in student.tasks[key].submitted) {
+                    if (student.tasks[key].submitted.hasOwnProperty(j)) {
+                        var s = j;
+                        var sd = `<span>${s}</span>`;
+                        if(!first){
+                            sd = ", " + sd;
+                        }
+                        first = false;
+                        td = td + sd;
+                    }
+                }
+            }
+            td += `</div>`;
+        }
+
+        return  td;
+    }
+
+    function getStudentItem(student) {
+        var totalWorking = Object.keys(student.tasks).length;
+        var currentTask = student.currentTask;
+        var totalSubmitted = 0;
+
+        for (var key in student.tasks) {
+            if (student.tasks.hasOwnProperty(key)) {
+                for (var j in student.tasks[key].submitted) {
+                    if (student.tasks[key].submitted.hasOwnProperty(j)) {
+                        totalSubmitted++;
+                    }
+                }
+            }
+        }
+
+        var taskData = c2stem.loadTaskData(currentTask);
+        currentTask = taskData.name + " (" + taskData.parent.name + ")";
+
+        return `
+            <li>
+                <div class="collapsible-header">
+                     <div class="row">
+                        <div class="col l1" ><p style="font-size: 1.3em;">${student.user}</p></div>
+                        <div class="col l7"><p style="font-size: 1em; padding-top: 3px;">${currentTask}</p></div>
+                        <div class="col l2"><p style="font-size: 1em; padding-top: 3px;">#submitted: ${totalSubmitted}</p></div>
+                        <div class="col l2"><p style="font-size: 1em; padding-top: 3px;">#opened: ${totalWorking}</p></div>
+                      </div>
+                 </div>
+                <div class="collapsible-body">
+                    ${getStudentDetails(student)}
+                </div>
+            </li>
+        `;
+    }
+
+    c2stem.getUserRole(function (err) {
+        if(!err){
+            if(c2stem.userRole.role === "teacher"){
+                $("#students").show();
+                c2stem.getStudentStatus(c2stem.userRole.study, function (err) {
+                    if(!err){
+                        c2stem.studentsStatus.forEach(function (s) {
+                            console.log(s);
+                            $("#students").append(getStudentItem(s));
+                        });
+                    }
+                })
+            }else{
+                $("#students").html("NOT ALLOWED");
+            }
+        }
+    })
+
+
+</script>
+</html>

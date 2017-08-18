@@ -115,7 +115,7 @@ C2Stem.prototype.parseQueryString = function () {
             q[decodeURIComponent(b[0])] = decodeURIComponent(b[1] || '');
         }
     }
-
+    console.log("query string:",q);
     return q;
 }
 
@@ -312,16 +312,21 @@ C2Stem.prototype.loadPublicProject = function (task_id, template, shallAppend, c
     console.log('loading data for task', task_id, "with snap template", template);
     // var cloud = snapWin.SnapCloud;
     var cloud = C2StemCloud;
+    var userName = template !== null ? template.user : "";
+    if(c2stem.mode !== null && c2stem.mode === 'teacher')
+        userName = c2stem.query.student;
     cloud.loadUserProgress(cloud.encodeDict({
-        Username: template !== null ? template.user : "",
+        Username: userName,
         ProjectName: task_id,
-        Template: template !== null ? template.proj : ""
+        Template: template !== null ? template.proj : "",
+        mode:c2stem.mode
     }), function (projectData) {
         c2stem.userTaskData = JSON.parse(projectData);
         console.log("loadPublicProject", c2stem.userTaskData);
         lastSavedData = JSON.stringify(c2stem.userTaskData);
         callback(null);
     }, function (err) {
+        console.log(err);
         c2stem.userTaskData = {};
         callback(err);
     });
@@ -343,11 +348,21 @@ C2Stem.prototype.collectUserProgressData = function (saveMedia) {
     return userTaskData;
 }
 var lastSavedData = "";
+var isCurrentWorkingStatusUpdated = false;
 C2Stem.prototype.saveUserProgress = function(callback){
+    if(c2stem.mode !== null && c2stem.mode === 'teacher')
+        return;
     // console.log('saving user progress for task:',c2stem.task_id);
     var cloud = C2StemCloud;
     var userTaskData = this.collectUserProgressData();
     var s = JSON.stringify(userTaskData);
+    if(!isCurrentWorkingStatusUpdated){
+        c2stem.recordCurrentTask();
+    }
+    console.log("saving progress data, isNewTask:", c2stem.isNewTask);
+    if(c2stem.isNewTask){
+        c2stem.recordTaskModified();
+    }
     if(s === lastSavedData){
         console.log("SKIPPING SAVING AS THE DATA ARE SAME");
         return;
@@ -367,7 +382,6 @@ C2Stem.prototype.saveUserProgress = function(callback){
         }
     );
 };
-
 
 
 C2Stem.prototype.SaveBlocksCache = function(cacheName, callback) {
@@ -521,4 +535,132 @@ C2Stem.prototype.loadModulesState = function (callback) {
         if(callback)
             callback(err);
     });
+};
+
+C2Stem.prototype.getStudentStatus =function(study, callback){
+    var cloud = C2StemCloud;
+    cloud.getData("getStudentStatus", cloud.encodeDict({
+        study: study
+    }), function (studentStatus) {
+        console.log("StudentStatus:",studentStatus);
+        c2stem.studentsStatus = JSON.parse(studentStatus);
+        if(callback)
+            callback(null);
+    }, function (err) {
+        console.log("StudentStatus err:",err);
+        c2stem.studentsStatus = {};
+        if(callback)
+            callback(err);
+    });
+};
+
+C2Stem.prototype.getUserRole =function(callback){
+    var cloud = C2StemCloud;
+    cloud.getData("getUserRole","", function (userRole) {
+        console.log("userRole:",userRole);
+        c2stem.userRole = JSON.parse(userRole);
+        if(callback)
+            callback(null);
+    }, function (err) {
+        console.log("userRole err:",err);
+        c2stem.userRole = {};
+        if(callback)
+            callback(err);
+    });
+};
+
+C2Stem.prototype.isNewTask =function(callback){
+    var cloud = C2StemCloud;
+    cloud.getData("isNewTask", cloud.encodeDict({
+        study: c2stem.userRole.study, taskID: c2stem.task_id
+    }), function (isNew) {
+        console.log("isNewTask:",isNew);
+        c2stem.isNewTask = (JSON.parse(isNew)).isNew;
+        if(callback)
+            callback(null);
+    }, function (err) {
+        console.log("isNewTask err:",err);
+        c2stem.isNewTask = true;
+        if(callback)
+            callback(err);
+    });
+};
+
+C2Stem.prototype.recordTaskModified = function(callback){
+    if(c2stem.userRole.role !== 'student'){
+        if(callback)
+            callback(null);
+        return;
+    }
+    console.log("Record Task Modified", c2stem.module_id, c2stem.task_id);
+    var taskData = c2stem.loadTaskData(c2stem.task_id);
+    console.log("module name", taskData.parent.name, "task name", taskData.name);
+    var cloud = C2StemCloud;
+    cloud.recordTaskModified(
+        c2stem.task_id,
+        c2stem.userRole.study,
+        function () {
+            console.log("Student status updated, record task modified:", c2stem.task_id);
+            c2stem.isNewTask = false;
+            if(callback)
+                callback(null);
+        },
+        function (msg) {
+            console.log("Could not record task modified, error:", msg);
+            if(callback)
+                callback(msg);
+        }
+    );
+};
+
+
+C2Stem.prototype.recordTaskSubmitted = function(activityID, callback){
+    if(c2stem.userRole.role !== 'student'){
+        if(callback)
+            callback(null);
+        return;
+    }
+    console.log("Record Task Submitted", c2stem.module_id, c2stem.task_id);
+    var cloud = C2StemCloud;
+    cloud.recordTaskSubmitted(
+        activityID,
+        c2stem.task_id,
+        c2stem.userRole.study,
+        function () {
+            console.log("Student status updated, record task submitted:", c2stem.task_id, " activity:", activityID);
+            if(callback)
+                callback(null);
+        },
+        function (msg) {
+            console.log("Could not record task submitted, error:", msg);
+            if(callback)
+                callback(msg);
+        }
+    );
+};
+
+
+C2Stem.prototype.recordCurrentTask = function(callback){
+    if(c2stem.userRole.role !== 'student'){
+        if(callback)
+            callback(null);
+        return;
+    }
+    console.log("Record CurrentTask", c2stem.module_id, c2stem.task_id);
+    var cloud = C2StemCloud;
+    cloud.recordCurrentTask(
+        c2stem.task_id,
+        c2stem.userRole.study,
+        function () {
+            console.log("Student status updated, record current task:", c2stem.task_id);
+            isCurrentWorkingStatusUpdated = true;
+            if(callback)
+                callback(null);
+        },
+        function (msg) {
+            console.log("Could not record current task, error:", msg);
+            if(callback)
+                callback(msg);
+        }
+    );
 };

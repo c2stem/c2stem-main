@@ -33,7 +33,9 @@ function start(options) {
                 default_origin: 'http://run.c2stem.org'
             });
             var projects = db.collection('projects');
-            init_c2stem_server(snapRouter, projects);
+            var users = db.collection('users');
+            var studentStatus = db.collection('student-status');
+            init_c2stem_server(snapRouter, projects, users, studentStatus);
 
             app.use('/SnapCloud', snapRouter);
 
@@ -49,7 +51,7 @@ function start(options) {
 
                 event.username = username;
 
-                console.log('received event:', event);
+                console.log('received event:', event.namespace);
                 return events.save(event)
                     .then(() => res.sendStatus(200));
             });
@@ -66,7 +68,7 @@ function start(options) {
 function debug(text) {
     // console.log(text);
 }
-function init_c2stem_server(router, projects) {
+function init_c2stem_server(router, projects, users, studentStatus) {
 
     router.addSnapApi('saveUserProgress', ['ProjectName', 'UserTaskData'], 'Post', function (req, res) {
         var userName = req.session.user,
@@ -115,9 +117,12 @@ function init_c2stem_server(router, projects) {
     router.get('/getUserProgress', function rawPublic(req, res) {
         var userName = req.query.Username,
             projectName = req.query.ProjectName,
-            template = req.query.Template;
+            template = req.query.Template,
+            mode = req.query.mode;
 
         var sessionUserName = req.session.user;
+        if(mode !== null && mode === 'teacher')
+            sessionUserName = userName;
         debug('Load public', userName, projectName, template);
         debug('sessionUserName', sessionUserName);
 
@@ -162,6 +167,191 @@ function init_c2stem_server(router, projects) {
             });
         }
     });
+
+    router.get('/getUserRole', function rawPublic(req, res) {
+        var sessionUserName = req.session.user;
+        debug('sessionUserName', sessionUserName);
+
+        if (typeof sessionUserName !== 'string') {
+            sendSnapError(res, 'No session inititated');
+        } else {
+            debug('Trying to load user role');
+            // db structure:
+            // user: {role: student, study: name-of-the-study}
+            users.findOne({
+                _id: sessionUserName
+            },{role:1, study:1}, function (err, doc) {
+                if (err || !doc) {
+                    console.log(err, doc);
+                    sendSnapError(res, 'User role not found');
+                } else {
+                    debug('User role found');
+                    res.send(JSON.stringify(doc));
+                }
+            });
+        }
+    });
+
+
+    router.get('/getStudentStatus', function rawPublic(req, res) {
+        var study = req.query.study;
+        studentStatus.find({study:study}).toArray(function (err, doc) {
+            if (err || !doc) {
+                console.log(err, doc);
+                sendSnapError(res, 'No student records found');
+            } else {
+                res.send(JSON.stringify(doc));
+            }
+        });
+    });
+
+    router.get('/isNewTask', function rawPublic(req, res) {
+        var userName = req.session.user,
+            study = req.query.study,
+            taskID = req.query.taskID;
+        studentStatus.findOne({study:study, user: userName}, function (err, doc) {
+            if (err || !doc) {
+                console.log(err, doc);
+                res.send(JSON.stringify({isNew:true}));
+            } else {
+                if("tasks" in doc){
+                    if (taskID in doc.tasks){
+                        res.send(JSON.stringify({isNew:false}));
+                        console.log("NEW TASK FALSE");
+                        return;
+                    }
+                }
+                console.log("NEW TASK TRUE");
+                res.send(JSON.stringify({isNew:true}));
+            }
+        });
+    });
+
+
+    router.addSnapApi('recordTaskModified', ['taskID','study'], 'Post', function (req, res) {
+        var userName = req.session.user,
+            taskID = req.body.taskID,
+            study = req.body.study;
+        debug('update student status, record task modified', userName, taskID);
+
+        if (typeof userName !== 'string' ||
+            typeof taskID !== 'string' ||
+            typeof study !== 'string') {
+            sendSnapError(res, 'Invalid request');
+        } else {
+            studentStatus.findOne({user: userName, study:study}, function (err, doc) {
+                if(!("tasks" in doc))
+                    doc.tasks = {};
+                doc.tasks[taskID] = { id: taskID, submitted:{}};
+                studentStatus.update({
+                    user: userName,
+                    study: study
+                }, {
+                    $set: doc
+                }, {
+                    upsert: true,
+                    multi: false
+                }, function (err) {
+                    if (err) {
+                        sendSnapError(res, 'Database error');
+                    } else {
+                        res.sendStatus(200);
+                        debug('Student status updated, record task submitted', userName, taskID);
+                    }
+                });
+            });
+        }
+    });
+
+    router.addSnapApi('recordTaskSubmitted', ['activityID','taskID', 'study'], 'Post', function (req, res) {
+        var userName = req.session.user,
+            activityID = req.body.activityID,
+            taskID = req.body.taskID,
+            study = req.body.study;
+        debug('update student status, record task submitted', userName, taskID);
+
+        if (typeof userName !== 'string' ||
+            typeof activityID !== 'string' ||
+            typeof taskID !== 'string' ||
+            typeof study !== 'string') {
+            sendSnapError(res, 'Invalid request');
+        } else {
+            studentStatus.findOne({user: userName, study: study}, function (err, doc) {
+                console.log("student status:", doc);
+               doc.tasks[taskID].submitted[activityID] = Date.now();
+                studentStatus.update({
+                    user: userName,
+                    study: study
+                }, {
+                    $set: doc
+                }, {
+                    upsert: true,
+                    multi: false
+                }, function (err) {
+                    if (err) {
+                        sendSnapError(res, 'Database error');
+                    } else {
+                        res.sendStatus(200);
+                        debug('Student status updated, record task submitted', userName, taskID);
+                    }
+                });
+            });
+
+            // var fields = {
+            //     tasks: {
+            //     }
+            // };
+            // fields.tasks[taskID] = { };
+            // fields.tasks[taskID].submitted = { };
+            // fields.tasks[taskID].submitted[activityID] = Date.now();
+            // studentStatus.update({
+            //     user: userName
+            // }, {
+            //     $set: fields
+            // }, {
+            //     upsert: true,
+            //     multi: false
+            // }, function (err) {
+            //     if (err) {
+            //         sendSnapError(res, 'Database error');
+            //     } else {
+            //         res.sendStatus(200);
+            //         debug('Student status updated, record task submitted', userName, taskID);
+            //     }
+            // });
+        }
+    });
+
+    router.addSnapApi('recordCurrentTask', ['taskID', 'study'], 'Post', function (req, res) {
+        var userName = req.session.user,
+            taskID = req.body.taskID,
+            study = req.body.study;
+        debug('update student status, record current task', userName, taskID, study);
+
+        if (typeof userName !== 'string' ||
+            typeof taskID !== 'string' ||
+            typeof study !== 'string') {
+            sendSnapError(res, 'Invalid request');
+        } else {
+            studentStatus.update({
+                user: userName,
+                study: study
+            }, {
+                $set: {currentTask:taskID}
+            }, {
+                upsert: true,
+                multi: false
+            }, function (err) {
+                if (err) {
+                    sendSnapError(res, 'Database error');
+                } else {
+                    res.sendStatus(200);
+                    debug('Student status updated, record task modified', userName, taskID);
+                }
+            });
+        }
+    });
+
 };
 
 program.version(version)

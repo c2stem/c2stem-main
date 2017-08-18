@@ -870,9 +870,12 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
             tabs: []
         }
     }
-
-    // hack, to make sure that we are logged in
-    this.login(null, null, null, function (err) {
-        callback(err, err ? null : res);
-    });
+    if (callback) {
+        // hack, to make sure that we are logged in
+        this.login(null, null, null, function (err) {
+            callback(err, err ? null : res);
+        });
+    } else {
+        return res;
+    }
 }
