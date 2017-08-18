@@ -17,6 +17,12 @@ c2stem.loadTaskData(c2stem.query.id, function (err, res) {
         if(c2stem.userRole.role !== 'teacher' && c2stem.mode === 'teacher'){
             c2stem.mode = "";
         }
+
+        $("#dashboard").hide();
+        if(c2stem.userRole.role === "teacher"){
+            $("#dashboard").show();
+        }
+
         console.log()
         c2stem.isNewTask(function () {
             console.log("isNewTask:", c2stem.isNewTask);
