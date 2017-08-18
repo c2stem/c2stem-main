@@ -18,15 +18,8 @@
     </div>
 </nav>
 
-<div class="container">
-    <p style="height:1em"></p>
-    <div class="container">
-        <h3>Students</h3>
-        <p style="height:1em"></p>
-        <ul id="students" class="collection"></ul>
-    </div>
-</div>
-
+<h3 style="margin-left: 20px;">Students</h3>
+    <ul id="students" class="collapsible popout" data-collapsible="accordion">
 </body>
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -42,6 +35,36 @@
     c2stem.fixupLogoutLink();
     $("#students").hide();
 
+
+    function getStudentDetails(student) {
+        var td = "";
+        for (var key in student.tasks) {
+            td += `<div class="row">`;
+            if (student.tasks.hasOwnProperty(key)) {
+                var t = student.tasks[key];
+                var taskData = c2stem.loadTaskData(t.id);
+                var tn = taskData.name + " (" + taskData.parent.name + ")";
+                td += `<a style="margin-right: 20px" href="task.html?id=${key}">${tn}</a>`;
+                if(Object.keys(student.tasks[key].submitted).length > 0)
+                    td += "Activities submitted: "
+                var first = true;
+                for (var j in student.tasks[key].submitted) {
+                    if (student.tasks[key].submitted.hasOwnProperty(j)) {
+                        var s = j;
+                        var sd = `<span>${s}</span>`;
+                        if(!first){
+                            sd = ", " + sd;
+                        }
+                        first = false;
+                        td = td + sd;
+                    }
+                }
+            }
+            td += `</div>`;
+        }
+
+        return  td;
+    }
 
     function getStudentItem(student) {
         var totalWorking = Object.keys(student.tasks).length;
@@ -62,15 +85,20 @@
         currentTask = taskData.name + " (" + taskData.parent.name + ")";
 
         return `
-            <li id="std_${student.user}"  style="border-top: solid">
-                <a style="font-size: 1.3em" href="student_details.html?${$.param({id: student.user})}"
-                    class="collection-item">${student.user}
-                    </a>
-                    <div style="color:black; margin:5px; margin-left: 30px; "> ${currentTask}</div>
-                    <span style="color:black; margin:5px; margin-left: 30px;"> #submitted: ${totalSubmitted}</span>
-                    <span style="color:black; margin:5px; margin-left: 10px;"> #opened: ${totalWorking}</span>
+            <li>
+                <div class="collapsible-header">
+                     <div class="row">
+                        <div class="col l1" ><p style="font-size: 1.3em;">${student.user}</p></div>
+                        <div class="col l7"><p style="font-size: 1em; padding-top: 3px;">${currentTask}</p></div>
+                        <div class="col l2"><p style="font-size: 1em; padding-top: 3px;">#submitted: ${totalSubmitted}</p></div>
+                        <div class="col l2"><p style="font-size: 1em; padding-top: 3px;">#opened: ${totalWorking}</p></div>
+                      </div>
+                 </div>
+                <div class="collapsible-body">
+                    ${getStudentDetails(student)}
+                </div>
             </li>
-            `;
+        `;
     }
 
     c2stem.getUserRole(function (err) {
