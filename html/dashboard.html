@@ -44,10 +44,31 @@
 
 
     function getStudentItem(student) {
+        var totalWorking = Object.keys(student.tasks).length;
+        var currentTask = student.currentTask;
+        var totalSubmitted = 0;
+
+        for (var key in student.tasks) {
+            if (student.tasks.hasOwnProperty(key)) {
+                for (var j in student.tasks[key].submitted) {
+                    if (student.tasks[key].submitted.hasOwnProperty(j)) {
+                        totalSubmitted++;
+                    }
+                }
+            }
+        }
+
+        var taskData = c2stem.loadTaskData(currentTask);
+        currentTask = taskData.name + " (" + taskData.parent.name + ")";
+
         return `
-            <li id="std_${student}">
-                <a href="student_details.html?${$.param({id: student})}"
-                    class="collection-item">${student}</a>
+            <li id="std_${student.user}"  style="border-top: solid">
+                <a style="font-size: 1.3em" href="student_details.html?${$.param({id: student.user})}"
+                    class="collection-item">${student.user}
+                    </a>
+                    <div style="color:black; margin-left: 30px;"> ${currentTask}</div>
+                    <span style="color:black; margin-left: 30px;"> #submitted: ${totalSubmitted}</span>
+                    <span style="color:black; margin-left: 10px;"> #opened: ${totalWorking}</span>
             </li>
             `;
     }
