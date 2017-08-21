@@ -16,11 +16,11 @@ C2Stem.prototype.loadHomeData = function (callback) {
             id: 'm3',
             name: "2D: Air",
             icon: "img/drone.jpg"
-        }, {
+        }/*, {
             id: 'm4',
             name: "Challenge",
             icon: "img/para.jpg"
-        }]
+        }*/]
     };
 
     // hack, to make sure that we are logged in
