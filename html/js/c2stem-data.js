@@ -38,72 +38,72 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
             name: 'Training',
             tasks: [{
                 id: 'training-basics',
-                name: 'Instructional Task - Playing with Shapes'
+                name: 'Activity 0.1: Instructional Task - Playing with Shapes'
             }
             ]
         };
     } else if (id === '1dmotion') {
-            res = {
-                id: id,
-                name: '1D: Land',
-                tasks: [/*{
+        res = {
+            id: id,
+            name: '1D: Land',
+            tasks: [/*{
                     id: '1d-basics',
                     name: 'Instructional Task - Develop Simple Motion Simulation'
                 },*/ {
-                    id: '1d-elaborate',
-                    name: 'Instructional Task - 1D Velocity: Simulate Physics Phenomena'
-                },/*{
+                id: '1d-elaborate',
+                name: '1.1 Instructional Task: 1D Velocity - Simulate Physics Phenomena'
+            },/*{
                     id: '1d-inst_conceptual',
                     name: 'Instructional Task - 1D Velocity: Model Planning'
                 },*/ {
-                    id: '1d-checkin1',
-                    name: 'Check-In #1'
-                }, {
-                    id: '1d-constant',
-                    name: 'Model Building - 1D Velocity: Simulate the Motion of a Truck'
-                }, {
-                    id: '1d-checkin2',
-                    name: 'Check-In #2'
-                }, {
-                    id: '1d-liftoff',
-                    name: 'Instructional Task - 1D Acceleration: Changing Velocity'
-                }, {
-                    id: '1d-checkin3',
-                    name: 'Check-In #3'
-                }, {
-                    id: '1d-stop',
-                    name: 'Model Building -1D Acceleration: Make Your Truck Stop'
-                }, {
-                    id: '1d-checkin4',
-                    name: 'Check-In #4'
-                }, {
-                    id: '1d-deliver',
-                    name: 'Challenge Problem: Deliver the Medicine to the River! '
-                }
-                ]
-            };
+                id: '1d-checkin1',
+                name: 'Check-In #1'
+            }, {
+                id: '1d-constant',
+                name: '1.2 Model Building Task: 1D Velocity - Simulate the Motion of a Truck'
+            }, {
+                id: '1d-checkin2',
+                name: 'Check-In #2'
+            }, {
+                id: '1d-liftoff',
+                name: '1.3 Instructional Task: 1D Acceleration - Changing Velocity'
+            }, {
+                id: '1d-checkin3',
+                name: 'Check-In #3'
+            }, {
+                id: '1d-stop',
+                name: '1.4 Model Building Task: 1D Acceleration - Make Your Truck Stop'
+            }, {
+                id: '1d-checkin4',
+                name: 'Check-In #4'
+            }, {
+                id: '1d-deliver',
+                name: '1.5 Challenge Problem: Deliver the Medicine to the River! '
+            }
+            ]
+        };
     } else if (id === 'm2') {
         res = {
             id: id,
             name: '2D: Water',
             tasks: [{
                 id: '2d-basics',
-                name: 'Instructional Task: Motion of a Boat in a River'
+                name: '2.1 Instructional Task: Motion of a Boat in a River'
             }, {
                 id: '2d-inst_cross',
-                name: 'Instructional Task: Crossing the River'
+                name: '2.2 Instructional Task: Crossing the River'
             }, {
                 id: '2d-checkin1',
                 name: 'Check-In #1'
             }, {
                 id: '2d-mb_cross',
-                name: 'Model Building - Crossing the River to Get to the Airstrip'
+                name: '2.3 Model Building Task: Crossing the River to Get to the Airstrip'
             }, {
                 id: '2d-checkin2',
                 name: 'Check-In #2'
             }, {
                 id: '2d-river_challenge',
-                name: 'Challenge: The Uncertain Amazon River'
+                name: '2.4 Challenge: The Uncertain Amazon River'
             }]
         };
     } else if (id === 'm3') {
@@ -135,8 +135,8 @@ C2Stem.prototype.loadModuleData = function (id, callback) {
             id: id,
             name: 'Challenge',
             tasks: [{
-            id: 'para-challenge',
-            name: 'Challenge: Parachute Drop!'
+                id: 'para-challenge',
+                name: 'Challenge: Parachute Drop!'
             }]
         };
     } else {
@@ -253,7 +253,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 id: 'assessment',
                 type: 'desc',
                 name: 'Assessment',
-                markup: '<iframe id=desc_resourceIframe  src="assessments/checkin_1.1.html" frameborder="0"></iframe>'
+                markup: '<iframe id=desc_resourceIframe  src="assessments/assessment1.1.html" frameborder="0"></iframe>'
             }, {
                 id: 'assess',
                 type: 'snap1',
@@ -329,7 +329,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 id: 'assessment',
                 type: 'desc',
                 name: 'Assessment',
-                markup: '<iframe id=desc_resourceIframe  src="assessments/checkin_1.2.html" frameborder="0"></iframe>'
+                markup: '<iframe id=desc_resourceIframe  src="assessments/assessment1.2.html" frameborder="0"></iframe>'
             }, {
                 id: 'assess',
                 type: 'snap1',
@@ -386,7 +386,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 id: 'assessment',
                 type: 'desc',
                 name: 'Assessment',
-                markup: '<iframe id=desc_resourceIframe  src="assessments/checkin_1.3.html" frameborder="0"></iframe>'
+                markup: '<iframe id=desc_resourceIframe  src="assessments/assessment1.3.html" frameborder="0"></iframe>'
             }, {
                 id: 'assess',
                 type: 'snap1',
@@ -870,9 +870,12 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
             tabs: []
         }
     }
-
-    // hack, to make sure that we are logged in
-    this.login(null, null, null, function (err) {
-        callback(err, err ? null : res);
-    });
+    if (callback) {
+        // hack, to make sure that we are logged in
+        this.login(null, null, null, function (err) {
+            callback(err, err ? null : res);
+        });
+    } else {
+        return res;
+    }
 }
