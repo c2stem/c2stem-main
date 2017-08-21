@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C2STEM</title>
+    <script src="handlebars-v4.0.10.js"></script>
+    <link rel="stylesheet" type="text/css" href="/c2stem.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+</head>
+<body class="assessBody">
+<div id="anchor"><h4>Assessment</h4></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<script id="tpl" type="text/template">
+    {{#item1}}
+    <p><strong>{{title}}.</strong> {{{firstLine}}}</p>
+    <div class="shift">
+        <div>
+            <img class="responsive-img" src="{{firstImage}}" width="20%">
+            <img class="responsive-img" src="{{secondImage}}" width="45%">
+        </div>
+        <div>
+            <p>{{secondLine}}</p>
+            <form action="#">
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_1_a" />
+                    <label for="radio1_3_1_a"><img for="a" src="{{option_a}}" width="70%"></label>
+                </p>
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_1_b" />
+                    <label for="radio1_3_1_b"><img src="{{option_b}}" width="70%"></label>
+                </p>
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_1_c"  />
+                    <label for="radio1_3_1_c"><img src="{{option_c}}" width="70%"></label>
+                </p>
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_1_d"/>
+                    <label for="radio1_3_1_d"><img src="{{option_d}}" width="70%"></label>
+                </p>
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_1_e"/>
+                    <label for="radio1_3_1_e"><img src="{{option_e}}" width="70%"></label>
+                </p>
+            </form>
+        </div>
+        <div>
+            <p>{{thirdLine}}</p>
+            <form action="#">
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_2_f" />
+                    <label for="radio1_3_2_f"><img for="a" src="{{option_a1}}" width="70%"></label>
+                </p>
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_2_g" />
+                    <label for="radio1_3_2_g"><img src="{{option_a2}}" width="70%"></label>
+                </p>
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_2_h"  />
+                    <label for="radio1_3_2_h"><img src="{{option_a3}}" width="70%"></label>
+                </p>
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_2_i"/>
+                    <label for="radio1_3_2_i"><img src="{{option_a4}}" width="70%"></label>
+                </p>
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_3_2_j"/>
+                    <label for="radio1_3_2_j"><img src="{{option_a5}}" width="70%"></label>
+                </p>
+            </form>
+        </div>
+    </div>
+    {{/item1}}
+    <hr class="style-two">
+    {{#item2}}
+    <p><strong>{{title}}.</strong></p>
+    <div class="shift">
+        <div>
+            <ul>
+                <li>{{{thirdLine}}}</li>
+                <li>{{{fourthLine}}}</li>
+                <li>{{fifthLine}}</li>
+                <li>{{{sixthLine}}}</li>
+            </ul>
+        </div>
+        <p>{{{firstLine}}}</p>
+        <p>{{{secondLine}}}</p>
+        <div>
+            <img class="responsive-img" src="{{firstImage}}" width="20%">
+            <img class="responsive-img" src="{{secondImage}}" width="35%">
+        </div>
+    </div>
+    {{/item2}}
+    <hr class="style-two">
+</script>
+<script>
+    assessmentData = window.parent.c2stem.userTaskData["assessmentData"];
+    if(!assessmentData){
+        assessmentData = {};
+    }
+    var url='checkin_1.3.json';
+    //4a.function creation
+    var slingshot = function (url, tplId, anchor, loaddata) {
+        $.getJSON(url, function(data) {
+            var template = $(tplId).html();
+            var load=template+ "<script>"+loaddata+"<\/script>";
+            var stone = Handlebars.compile(load)(data);
+            $(anchor).append(stone);
+        });
+    };
+
+    $(document).on('click', "input[type='radio']", function () {
+        var radio_id=$(this).attr('id');
+        window.parent.AssessmentActionManager.toggleRadioBttn($(this).attr('id'));
+        var length=radio_id.length;
+        var string=radio_id.substring(0,length-1);
+        assessmentData[string]= radio_id ;
+    });
+
+    window.parent.c2stem.register_save_data_fetcher("assessmentData", function () {
+        return assessmentData;
+    });
+
+    var updateAssessmentUI= function () {
+        $('.textarea1').trigger('autoresize');
+        for(var id in assessmentData){
+            if(assessmentData.hasOwnProperty(id)){
+                if(id.startsWith("radio")){
+                    $('#' + assessmentData[id]).prop('checked', true);
+                }
+            }
+        }
+    };
+    //4b.function firing
+    slingshot('checkin_1.3.json', '#tpl', '#anchor',"updateAssessmentUI()" );
+</script>
+</body>
+</html>

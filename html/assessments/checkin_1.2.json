@@ -1,0 +1,35 @@
+{
+  "item1": {
+    "title": "Question 2.1",
+    "firstLine": "You’d like to model the motion of the objects in the following video.",
+    "video":"https://www.youtube.com/embed/lQL8TqOmxY4?ecver=2&rel=0",
+    "secondLine": "Identify the objects that you would need to create a simulation for this motion. ",
+    "thirdLine": "Objects (Separate with commas): ",
+    "fourthLine": "For each object, specify its properties. If you believe that the object also has behaviors, specify the object’s behaviors as well.",
+    "firstColoumn": "<strong>Object name</strong>",
+    "secondColoumn": "<strong>Properties</strong>(Separate with commas)",
+    "thirdColoumn": "<strong>Behaviors</strong>(Separate with Commas)"
+  },
+  "item2":{
+    "title": "Question 2.2",
+    "firstLine": "The following program moves the sprite to the right when the right arrow is held, and to the left when the left arrow is held. The space bar stops the simulation.",
+    "firstImage": "/img/Assessment/1d-Land/checkin_1.2.2a.jpg",
+    "secondImage": "/img/Assessment/1d-Land/checkin_1.2.2b.jpg",
+    "secondLine": "Open the code for <strong>Checkin1.2.2</strong> and add code to the given program to <strong>update the total distance traveled</strong> by the sprite in addition to its position. For instance, if the sprite moved 2 meters to the right, then 1 meter to the left, the total distance traveled would be 3 meters."
+  },
+  "item3":{
+    "title": "Question 2.3",
+    "firstLine":"The following program simulates the motion of a sprite. ",
+    "firstQuestion":"a. Which direction does the sprite travel in?",
+    "firstOption":"Left",
+    "secondOption":"Right",
+    "thirdOption":"Up",
+    "fourthOption":"Down",
+    "secondQuestion":"b. What is the sprite’s speed while in motion?",
+    "thirdQuestion":"c. What is the total distance traveled that the sprite will have traveled when the simulation ends?",
+    "fourthQuestion":"d. For how much time will the sprite have traveled when the simulation ends?",
+    "firstImage":"/img/Assessment/1d-Land/checkin_1.2.3a.jpg",
+    "secondImage":"/img/Assessment/1d-Land/checkin_1.2.3b.jpg"
+  }
+
+}

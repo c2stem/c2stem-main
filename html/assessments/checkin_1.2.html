@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C2STEM</title>
+    <script src="handlebars-v4.0.10.js"></script>
+    <link rel="stylesheet" type="text/css" href="/c2stem.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <script type="text/javascript" src="/js/action%20managers/AssessmentActionManager.js"></script>
+    <style>
+        body{
+            padding: 5px;
+            width:95%;
+            margin: 0 auto;
+        }
+        p{
+            margin:0px;
+        }
+    </style>
+</head>
+<body>
+<div id="anchor"><h4>Assessment</h4></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<script id="tpl" type="text/template">
+    {{#item1}}
+    <div>
+        <p><strong>{{title}}.</strong> {{firstLine}}</p>
+        <iframe class="resourseiFrame" width="60%" height="400" src="{{{video}}}" frameborder="0" allowfullscreen></iframe>
+        <div class="shift">
+            <p>{{secondLine}}</p>
+            <p>{{thirdLine}}</p>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="objects" class="materialize-textarea textarea1"></textarea>
+                            <label for="objects">Objects</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <p>{{fourthLine}}</p>
+            <table id="POITable">
+                <tr>
+                    <td>{{{firstColoumn}}}</td>
+                    <td>{{{secondColoumn}}}</td>
+                    <td>{{{thirdColoumn}}}</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td> <input type="text" id="row_1_object" name="object" value="" class="txt" autocomplete='off' /></td>
+                    <td> <input type="text" id="row_1_property" name="property" value="" class="txt" autocomplete='off' /></td>
+                    <td> <input type="text" id="row_1_behaviour" name="behaviour" value="" class="txt" autocomplete='off' /></td>
+                    <td><input type="button" id="delPOIbutton" value="Delete Object" onclick="deleteRow(this)"/></td>
+                    <td><input type="button" id="addmorePOIbutton" value="Add Object" onclick="insRow()"/></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    {{/item1}}
+    <hr class="style-two">
+    {{#item2}}
+    <p><strong>{{title}}.</strong> {{firstLine}}</p>
+    <div class="shift">
+        <div>
+            <img class="responsive-img" src="{{firstImage}}" width="16%">
+            <img class="responsive-img" src="{{secondImage}}" width="25%">
+        </div>
+        <p>{{{secondLine}}}</p>
+    </div>
+    {{/item2}}
+    <hr class="style-two">
+    {{#item3}}
+    <p><strong>{{title}}.</strong> {{firstLine}}</p>
+    <div class="shift">
+        <div>
+            <img class="responsive-img" src="{{firstImage}}" width="17%">
+            <img class="responsive-img" src="{{secondImage}}" width="30%">
+        </div>
+        <div class="shift">
+            <p>{{firstQuestion}}</p>
+            <form action="#">
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_2_3_a" />
+                    <label for="radio1_2_3_a">{{firstOption}}</label>
+                </p>
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_2_3_b" />
+                    <label for="radio1_2_3_b">{{secondOption}}</label>
+                </p>
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_2_3_c"  />
+                    <label for="radio1_2_3_c">{{thirdOption}}</label>
+                </p>
+                <p>
+                    <input class="with-gap" name="group1" type="radio" id="radio1_2_3_d"  />
+                    <label for="radio1_2_3_d">{{fourthOption}}</label>
+                </p>
+            </form>
+        </div>
+        <div>
+            <div class="row">
+                <form class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="text_1_2_3_a" class="materialize-textarea textarea1"></textarea>
+                            <label for="text_1_2_3_a">{{secondQuestion}}</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <textarea id="text_1_2_3_b" class="materialize-textarea textarea1"></textarea>
+                            <label for="text_1_2_3_b">{{thirdQuestion}}</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <textarea id="text_1_2_3_c" class="materialize-textarea textarea1"></textarea>
+                            <label for="text_1_2_3_c">{{fourthQuestion}}</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{/item3}}
+    <hr class="style-two">
+</script>
+<script>
+    var newRowIndex=2;
+    assessmentData = window.parent.c2stem.userTaskData["assessmentData"];
+    if(!assessmentData){
+        assessmentData = {};
+    }
+    var url='checkin_1.2.json';
+    //4a.function creation
+    var slingshot = function (url, tplId, anchor, loaddata) {
+        $.getJSON(url, function(data) {
+            var template = $(tplId).html();
+            var load=template+ "<script>"+loaddata+"<\/script>";
+            var stone = Handlebars.compile(load)(data);
+            $(anchor).append(stone);
+        });
+    };
+
+    $(document).on('blur', '.textarea1', function () {
+        var id=$(this).attr('id');
+        var value=$(this).val();
+        window.parent.AssessmentActionManager.addText(value, id);
+        assessmentData[id]=value;
+    });
+
+    $(document).on('blur', '.txt', function () {
+        var table_id=$(this).attr('id');
+        var table_val=$(this).val();
+        window.parent.AssessmentActionManager.addText(table_val, table_id);
+        assessmentData[table_id]=table_val;
+    });
+    //deleteTableRow
+    function deleteRow(row)
+    {
+        var i=row.parentNode.parentNode.rowIndex;
+        if(i>1) {
+            document.getElementById('POITable').deleteRow(i);
+            window.parent.AssessmentActionManager.deleteObject(i);
+            assessmentData["DeleteRow"]=i;
+        }
+    }
+    //add tableRow
+    function insRow()
+    {
+        var x=document.getElementById('POITable');
+        var new_row = x.rows[1].cloneNode(true);
+        var len = x.rows.length;
+        /*new_row.cells[0].innerHTML = len;*/
+        var inp1 = new_row.cells[0].getElementsByTagName('input')[0];
+        inp1.id += len;
+        inp1.id= "row_"+len +"_object";
+        inp1.value = '';
+        var inp2 = new_row.cells[1].getElementsByTagName('input')[0];
+        inp2.id += len;
+        inp2.id="row_"+len+ "_property";
+        inp2.value = '';
+        var inp3 = new_row.cells[2].getElementsByTagName('input')[0];
+        inp3.id += len;
+        inp3.id="row_"+len+"_behaviour";
+        inp3.value = '';
+        x.appendChild( new_row );
+
+        window.parent.AssessmentActionManager.addObject(len);
+        assessmentData["addObject"]=len;
+    }
+
+    $(document).on('click', "input[type='radio']", function () {
+        var radio_id=$(this).attr('id');
+        window.parent.AssessmentActionManager.toggleRadioBttn($(this).attr('id'));
+        var length=radio_id.length;
+        var string=radio_id.substring(0,length-1);
+        assessmentData[string]= radio_id ;
+    });
+
+
+    window.parent.c2stem.register_save_data_fetcher("assessmentData", function () {
+        return assessmentData;
+    });
+
+    function newRow(objectList, propList, behList) {
+        var x = document.getElementById('POITable');
+        var firstRow = x.rows[1];
+        var firstobject = firstRow.cells[0].getElementsByTagName('input')[0];
+        firstobject.value = objectList["row_1_object"];
+        var firstproperty = firstRow.cells[1].getElementsByTagName('input')[0];
+        firstproperty.value = propList["row_1_property"];
+        var firstbehaviour = firstRow.cells[2].getElementsByTagName('input')[0];
+        firstbehaviour.value = behList["row_1_behaviour"];
+
+        var len = (Object.keys(objectList).length);
+
+        for (var i = 1; i <= len; i++) {
+            if ("row_" + newRowIndex + "_object" in objectList) {
+                var new_row = x.rows[1].cloneNode(true);
+                var inp1 = new_row.cells[0].getElementsByTagName('input')[0];
+                inp1.value = objectList["row_" + newRowIndex + "_object"];
+                var inp2 = new_row.cells[1].getElementsByTagName('input')[0];
+                inp2.value = propList["row_" + newRowIndex + "_property"];
+                var inp3 = new_row.cells[2].getElementsByTagName('input')[0];
+                inp3.value = behList["row_" + newRowIndex + "_behaviour"];
+                x.appendChild(new_row);
+
+            }
+            newRowIndex = newRowIndex + 1;
+        }
+
+    }
+    var updateAssessmentUI= function () {
+        var objectList={};
+        var propList={};
+        var behList={};
+        var totalLength=assessmentData["addObject"];
+        for(var id in assessmentData){
+            if(assessmentData.hasOwnProperty(id)){
+                if(id.startsWith("radio")){
+                    $('#' + assessmentData[id]).prop('checked', true);
+                }else if(id.startsWith("row")){
+                    if(id.endsWith("object")){
+                        objectList[id]=assessmentData[id];
+                    }else if(id.endsWith("property")){
+                        propList[id]=assessmentData[id];
+                    }else if(id.endsWith("behaviour")){
+                        behList[id]=assessmentData[id];
+                    }
+                }else if(id.startsWith("Delete")){
+                    var del= assessmentData[id];
+                    delete objectList["row_"+del+"_object"];
+                    delete propList["row_"+del+"_property"];
+                    delete behList["row_"+del+"_behaviour"];
+                    assessmentData["addObject"]=totalLength-1;
+                    delete assessmentData["DeleteRow"];
+                    delete assessmentData["row_"+del+"_object"];
+                    delete assessmentData["row_"+del+"_property"];
+                    delete assessmentData["row_"+del+"_behaviour"];
+                }else{
+                    $('#' + id).val(assessmentData[id]);
+                }
+            }
+        }
+        var objListLen = (Object.keys(objectList).length);
+        if(objListLen>0) {
+            newRow(objectList, propList, behList);
+        }
+    };
+    //4b.function firing
+    slingshot('checkin_1.2.json', '#tpl', '#anchor',"updateAssessmentUI()" );
+</script>
+</body>
+</html>

@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C2STEM</title>
+    <script src="handlebars-v4.0.10.js"></script>
+    <link rel="stylesheet" type="text/css" href="/c2stem.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <script type="text/javascript" src="/js/action%20managers/AssessmentActionManager.js"></script>
+    <style>
+        body{
+            padding: 5px;
+            width:95%;
+            margin: 0 auto;
+        }
+        p{
+            margin:0px;
+        }
+        tr{
+            background-color: white!important;
+        }
+        table, th, td{
+            border: 1px solid black!important;
+            text-align: center;
+        }
+        .dataTable{
+            width: 250px;
+            /*font-size: small;*/
+        }
+        td{
+            padding: 0px;
+        }
+        .options{
+            height: 260px !important;
+        }
+    </style>
+</head>
+<body class="assessBody">
+<div id="anchor"><h4>Assessment</h4></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<script id="tpl" type="text/template">
+    {{#item1}}
+    <p><strong>{{title}}</strong></p>
+    <p>{{{firstLine}}}</p>
+    <div class="shift">
+        <!--<a href ="/task.html#assesstab">{{secondLine}}</a>-->
+        <div class="floatHandle">
+            <p>{{secondLine}}</p>
+        </div>
+        <div class="floatHandle">
+            <img src="{{firstImage}}">
+        </div>
+        <div class="floatHandle">
+            <p>{{thirdLine}}</p>
+        </div>
+        <div class="floatHandle">
+            <img src="{{secondImage}}">
+        </div>
+        <div class="floatHandle">
+            <p>{{fourthLine}}</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <table class="bordered">
+            <tr>
+                <th></th>
+                <th>{{firstheader}}<img src="{{firstImage}}"></th>
+                <th>{{secondheader}}<img src="{{secondImage}}"></th>
+                <th>{{thirdheader}}</th>
+            </tr>
+            <tr>
+                <td><img src="{{thirdImage}}" width="90%"></td>
+                <td><p>
+                    <input class="with-gap" name="group" type="radio" id="radio_1_1_1_a" />
+                    <label for="radio_1_1_1_a"></label>
+                </p></td>
+                <td><p><input class="with-gap" name="group" type="radio" id="radio_1_1_1_b" />
+                    <label for="radio_1_1_1_b"></label>
+                </p></td>
+                <td><p><input class="with-gap" name="group" type="radio" id="radio_1_1_1_c" />
+                    <label for="radio_1_1_1_c"></label>
+                    </p></td>
+            </tr>
+            <tr>
+                <td><img src="{{fourthImage}}"width="35%"></td>
+                <td><p><input class="with-gap" name="group1" type="radio" id="radio_1_1_1_d" />
+                    <label for="radio_1_1_1_d"></label>
+                </p></td>
+                <td><p><input class="with-gap" name="group1" type="radio" id="radio_1_1_1_e" />
+                    <label for="radio_1_1_1_e"></label>
+                    </p></td>
+                <td><p><input class="with-gap" name="group1" type="radio" id="radio_1_1_1_f" />
+                    <label for="radio_1_1_1_f"></label>
+                    </p></td>
+            </tr>
+            <tr>
+                <td><img src="{{fifthImage}}"width="30%"></td>
+                <td><p><input class="with-gap" name="group2" type="radio" id="radio_1_1_1_g" />
+                    <label for="radio_1_1_1_g"></label>
+                    </p></td>
+                <td><p><input class="with-gap" name="group2" type="radio" id="radio_1_1_1_h" />
+                    <label for="radio_1_1_1_h"></label>
+                    </p></td>
+                <td><p><input class="with-gap" name="group2" type="radio" id="radio_1_1_1_i" />
+                    <label for="radio_1_1_1_i"></label>
+                    </p></td>
+            </tr>
+            <tr>
+                <td><img src="{{sixthImage}}" width="40%"></td>
+                <td><p><input class="with-gap" name="group3" type="radio" id="radio_1_1_1_j" />
+                    <label for="radio_1_1_1_j"></label>
+                    </p></td>
+                <td><p><input class="with-gap" name="group3" type="radio" id="radio_1_1_1_k" />
+                    <label for="radio_1_1_1_k"></label>
+                    </p></td>
+                <td><p><input class="with-gap" name="group3" type="radio" id="radio_1_1_1_l" />
+                    <label for="radio_1_1_1_l"></label>
+                    </p></td>
+            </tr>
+            <tr>
+                <td><img src="{{seventhImage}}" width="40%"></td>
+                <td><p><input class="with-gap" name="group4" type="radio" id="radio_1_1_1_m" />
+                    <label for="radio_1_1_1_m"></label>
+                    </p></td>
+                <td><p><input class="with-gap" name="group4" type="radio" id="radio_1_1_1_n" />
+                    <label for="radio_1_1_1_n"></label>
+                    </p></td>
+                <td><p><input class="with-gap" name="group4" type="radio" id="radio_1_1_1_o" />
+                    <label for="radio_1_1_1_o"></label>
+                    </p></td>
+            </tr>
+            <tr>
+                <td><img src="{{eigthImage}}" width="40%"></td>
+                <td><p><input class="with-gap" name="group5" type="radio" id="radio_1_1_1_p" />
+                    <label for="radio_1_1_1_p"></label>
+                    </p></td>
+                <td><p><input class="with-gap" name="group5" type="radio" id="radio_1_1_1_q" />
+                    <label for="radio_1_1_1_q"></label>
+                    </p></td>
+                <td><p><input class="with-gap" name="group5" type="radio" id="radio_1_1_1_r" />
+                    <label for="radio_1_1_1_r"></label>
+                    </p></td>
+            </tr>
+            <tr>
+                <td><img src="{{ninthImage}}" width="20%"></td>
+                <td><p><input class="with-gap" name="group6" type="radio" id="radio_1_1_1_s" />
+                    <label for="radio_1_1_1_s"></label>
+                    </p></td>
+                <td><p><input class="with-gap" name="group6" type="radio" id="radio_1_1_1_t" />
+                    <label for="radio_1_1_1_t"></label>
+                    </p></td>
+                <td><p><input class="with-gap" name="group6" type="radio" id="radio_1_1_1_u" />
+                    <label for="radio_1_1_1_u"></label>
+                    </p></td>
+            </tr>
+            <tr>
+                <td><img src="{{tenthImage}}" width="40%"></td>
+                <td><p><input class="with-gap" name="group7" type="radio" id="radio_1_1_1_v"/>
+                    <label for="radio_1_1_1_v"></label>
+                    </p></td>
+                <td><p><input class="with-gap" name="group7" type="radio" id="radio_1_1_1_w" />
+                    <label for="radio_1_1_1_w"></label>
+                    </p></td>
+                <td><p><input class="with-gap" name="group7" type="radio" id="radio_1_1_1_x" />
+                    <label for="radio_1_1_1_x"></label>
+                    </p></td>
+            </tr>
+
+        </table>
+    </div>
+    <br><br>
+    <p>b. {{{program_1_line}}}</p>
+    <ul>
+        <li>
+            <div class="shift">
+                <div class="floatHandle">
+                    <p>{{program_2_line}}</p>
+                </div>
+                <div class="floatHandle">
+                    <img src="{{firstImage}}">
+                </div>
+                <div class="floatHandle">
+                    <p>{{program_3_line}}</p>
+                </div>
+                <div class="floatHandle">
+                    <img src="{{secondImage}}">
+                </div>
+                <div class="floatHandle">
+                    <p>{{program_4_line}}</p>
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="shift">
+                <div class="floatHandle">
+                    <p>{{program_5_line}}</p>
+                </div>
+            </div>
+        </li>
+    </ul>
+    {{/item1}}
+    <hr class="style-two">
+    {{#item2}}
+    <p><strong>{{title}}.</strong> {{firstLine}}</p>
+    <div class="shift">
+        <div>
+            <img class="responsive-img" src="{{firstImage}}" width="20%">
+            <img class="responsive-img" src="{{secondImage}}" width="30%">
+        </div>
+    </div>
+<br>
+    <table class="bordered dataTable">
+        <tr>
+            <th>{{{firstColoumn}}}</th>
+            <th>{{{secondColoumn}}}</th>
+        </tr>
+        <tr>
+            <td>{{table_1_a1}}</td>
+            <td>{{table_1_b1}}</td>
+        </tr>
+        <tr>
+            <td>{{table_1_a2}}</td>
+            <td>{{table_1_b2}}</td>
+        </tr>
+        <tr>
+            <td>{{table_1_a3}}</td>
+            <td>{{table_1_b3}}</td>
+        </tr>
+        <tr>
+            <td>{{table_1_a4}}</td>
+            <td>{{table_1_b4}}</td>
+        </tr>
+        <tr>
+            <td>{{table_1_a5}}</td>
+            <td>{{table_1_b5}}</td>
+        </tr>
+        <tr>
+            <td>{{table_1_a6}}</td>
+            <td>{{table_1_b6}}</td>
+        </tr>
+        <tr>
+            <td>{{table_1_a7}}</td>
+            <td>{{table_1_b7}}</td>
+        </tr>
+        <tr>
+            <td>{{table_1_a8}}</td>
+            <td>{{table_1_b8}}</td>
+        </tr>
+        <tr>
+            <td>{{table_1_a9}}</td>
+            <td>{{table_1_b9}}</td>
+        </tr>
+        <tr>
+            <td>{{table_1_a10}}</td>
+            <td>{{table_1_b10}}</td>
+        </tr>
+        <tr>
+            <td>{{table_1_a11}}</td>
+            <td>{{table_1_b11}}</td>
+        </tr>
+        <tr>
+            <td>{{table_1_a12}}</td>
+            <td>{{table_1_b12}}</td>
+        </tr>
+
+    </table>
+<br>
+    <div class="shift">
+        <p>{{{secondLine}}}</p>
+    </div>
+<br>
+    <div class="floatHandle options">
+
+            <input class="with-gap" name="group1" type="radio" id="radio1_1_2_a" />
+            <label for="radio1_1_2_a">
+                <table class="bordered dataTable">
+                    <tr>
+                        <th>{{{firstColoumn}}}</th>
+                        <th>{{{secondColoumn}}}</th>
+                    </tr>
+                    <tr>
+                        <td>{{table_2_a1}}</td>
+                        <td>{{table_2_b1}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{table_2_a2}}</td>
+                        <td>{{table_2_b2}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{table_2_a3}}</td>
+                        <td>{{table_2_b3}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{table_2_a4}}</td>
+                        <td>{{table_2_b4}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{table_2_a5}}</td>
+                        <td>{{table_2_b5}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{table_2_a6}}</td>
+                        <td>{{table_2_b6}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{table_2_a7}}</td>
+                        <td>{{table_2_b7}}</td>
+                    </tr>
+                </table>
+                </label>
+
+        </div>
+        <div class="floatHandle options">
+
+            <input class="with-gap" name="group1" type="radio" id="radio1_1_2_b" />
+            <label for="radio1_1_2_b">
+                <table class="bordered dataTable">
+                    <tr>
+                        <th>{{{firstColoumn}}}</th>
+                        <th>{{{secondColoumn}}}</th>
+                    </tr>
+                    <tr>
+                        <td>{{table_3_a1}}</td>
+                        <td>{{table_3_b1}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{table_3_a2}}</td>
+                        <td>{{table_3_b2}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{table_3_a3}}</td>
+                        <td>{{table_3_b3}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{table_3_a4}}</td>
+                        <td>{{table_3_b4}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{table_3_a5}}</td>
+                        <td>{{table_3_b5}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{table_3_a6}}</td>
+                        <td>{{table_3_b6}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{table_3_a7}}</td>
+                        <td>{{table_3_b7}}</td>
+                    </tr>
+                </table>
+
+            </label>
+
+        </div>
+    <div class="floatHandle options" >
+
+            <input class="with-gap" name="group1" type="radio" id="radio1_1_2_c"   />
+            <label for="radio1_1_2_c" >
+                <table class="bordered dataTable">
+                    <tr>
+                        <th>{{{firstColoumn}}}</th>
+                        <th>{{{secondColoumn}}}</th>
+                    </tr>
+                    <tr>
+                        <td>{{table_4_a1}}</td>
+                        <td>{{table_4_b1}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{table_4_a2}}</td>
+                        <td>{{table_4_b2}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{table_4_a3}}</td>
+                        <td>{{table_4_b3}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{table_4_a4}}</td>
+                        <td>{{table_4_b4}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{table_4_a5}}</td>
+                        <td>{{table_4_b5}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{table_4_a6}}</td>
+                        <td>{{table_4_b6}}</td>
+                    </tr>
+                    <tr>
+                        <td>{{table_4_a7}}</td>
+                        <td>{{table_4_b7}}</td>
+                    </tr>
+                </table>
+            </label>
+    </div>
+    <br><br>
+    <p>{{{thirdLine}}}</p>
+    <div class="shift">
+        <form action="#">
+            <p>
+                <input class="with-gap" name="group1" type="radio" id="radio1_1_2_d" />
+                <label for="radio1_1_2_d">{{firstOption}}</label>
+            </p>
+            <p>
+                <input class="with-gap" name="group1" type="radio" id="radio1_1_2_e" />
+                <label for="radio1_1_2_e">{{secondOption}}</label>
+            </p>
+            <p>
+                <input class="with-gap" name="group1" type="radio" id="radio1_1_2_f"  />
+                <label for="radio1_1_2_f">{{thirdOption}}</label>
+            </p>
+        </form>
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="text1_1_2_b" class="materialize-textarea textarea1"></textarea>
+                        <label for="text1_1_2_b">{{fourthLine}}</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {{/item2}}
+    <hr class="style-two">
+    {{#item3}}
+        <p><strong>{{title}}.</strong> {{firstLine}}</p>
+        <div class="shift">
+            <div>
+                <img class="responsive-img" src="{{firstImage}}" width="20%">
+            </div>
+        <p>{{{secondLine}}}</p>
+        </div>
+        <div>
+                <input class="with-gap" name="group1" type="radio" id="radio1_1_3_a" />
+                <label for="radio1_1_3_a"><img for="a" src="{{firstOption}}" width="70%"></label>
+
+                <input class="with-gap" name="group1" type="radio" id="radio1_1_3_b" />
+                <label for="radio1_1_3_b"><img src="{{secondOption}}" width="70%"></label>
+
+
+                <input class="with-gap" name="group1" type="radio" id="radio1_1_3_c"  />
+                <label for="radio1_1_3_c"><img src="{{thirdOption}}" width="70%"></label>
+
+                <input class="with-gap" name="group1" type="radio" id="radio1_1_3_d"/>
+                <label for="radio1_1_3_d"><img src="{{fourthOption}}" width="70%"></label>
+
+
+                <input class="with-gap" name="group1" type="radio" id="radio1_1_3_e"/>
+                <label for="radio1_1_3_e"><img src="{{fifthOption}}" width="70%"></label>
+
+
+                <input class="with-gap" name="group1" type="radio" id="radio1_1_3_f"/>
+                <label for="radio1_1_3_f"><img src="{{sixthOption}}" width="70%"></label>
+
+        </div>
+    {{/item3}}
+    <hr class="style-two">
+</script>
+<script>
+    var newRowIndex=2;
+    assessmentData = window.parent.c2stem.userTaskData["assessmentData"];
+    if(!assessmentData){
+        assessmentData = {};
+    }
+    var url='checkin_1.1.json';
+    //4a.function creation
+    var slingshot = function (url, tplId, anchor, loaddata) {
+        $.getJSON(url, function(data) {
+            var template = $(tplId).html();
+            var load=template+ "<script>"+loaddata+"<\/script>";
+            var stone = Handlebars.compile(load)(data);
+            $(anchor).append(stone);
+        });
+    };
+
+    $(document).on('blur', '.textarea1', function () {
+        var id=$(this).attr('id');
+        var value=$(this).val();
+        window.parent.AssessmentActionManager.addText(value, id);
+        assessmentData[id]=value;
+    });
+
+    $(document).on('blur', '.txt', function () {
+        var table_id=$(this).attr('id');
+        var table_val=$(this).val();
+        window.parent.AssessmentActionManager.addText(table_val, table_id);
+        assessmentData[table_id]=table_val;
+    });
+    //deleteTableRow
+    function deleteRow(row)
+    {
+        var i=row.parentNode.parentNode.rowIndex;
+        if(i>1) {
+            document.getElementById('POITable').deleteRow(i);
+            window.parent.AssessmentActionManager.deleteObject(i);
+            assessmentData["DeleteRow"]=i;
+        }
+    }
+   /* //add tableRow
+    function insRow()
+    {
+        var x=document.getElementById('POITable');
+        var new_row = x.rows[1].cloneNode(true);
+        var len = x.rows.length;
+        /!*new_row.cells[0].innerHTML = len;*!/
+        var inp1 = new_row.cells[0].getElementsByTagName('input')[0];
+        inp1.id += len;
+        inp1.id= "row_"+len +"_object";
+        inp1.value = '';
+        var inp2 = new_row.cells[1].getElementsByTagName('input')[0];
+        inp2.id += len;
+        inp2.id="row_"+len+ "_property";
+        inp2.value = '';
+        var inp3 = new_row.cells[2].getElementsByTagName('input')[0];
+        inp3.id += len;
+        inp3.id="row_"+len+"_behaviour";
+        inp3.value = '';
+        x.appendChild( new_row );
+
+        window.parent.AssessmentActionManager.addObject(len);
+        assessmentData["addObject"]=len;
+    }*/
+
+    $(document).on('click', "input[type='radio']", function () {
+        var radio_id=$(this).attr('id');
+        window.parent.AssessmentActionManager.toggleRadioBttn($(this).attr('id'));
+        var length=radio_id.length;
+        var string=radio_id.substring(0,length-1);
+        assessmentData[string]= radio_id ;
+    });
+
+
+    window.parent.c2stem.register_save_data_fetcher("assessmentData", function () {
+        return assessmentData;
+    });
+
+    var updateAssessmentUI= function () {
+        var objectList={};
+        var propList={};
+        var behList={};
+        var totalLength=assessmentData["addObject"];
+        for(var id in assessmentData){
+            if(assessmentData.hasOwnProperty(id)){
+                if(id.startsWith("radio")){
+                    $('#' + assessmentData[id]).prop('checked', true);
+                }else if(id.startsWith("row")){
+                    if(id.endsWith("object")){
+                        objectList[id]=assessmentData[id];
+                    }else if(id.endsWith("property")){
+                        propList[id]=assessmentData[id];
+                    }else if(id.endsWith("behaviour")){
+                        behList[id]=assessmentData[id];
+                    }
+                }else if(id.startsWith("Delete")){
+                    var del= assessmentData[id];
+                    delete objectList["row_"+del+"_object"];
+                    delete propList["row_"+del+"_property"];
+                    delete behList["row_"+del+"_behaviour"];
+                    assessmentData["addObject"]=totalLength-1;
+                    delete assessmentData["DeleteRow"];
+                    delete assessmentData["row_"+del+"_object"];
+                    delete assessmentData["row_"+del+"_property"];
+                    delete assessmentData["row_"+del+"_behaviour"];
+                }else{
+                    $('#' + id).val(assessmentData[id]);
+                }
+            }
+        }
+        var objListLen = (Object.keys(objectList).length);
+        if(objListLen>0) {
+            newRow(objectList, propList, behList);
+        }
+    };
+    //4b.function firing
+    slingshot('checkin_1.1.json', '#tpl', '#anchor',"updateAssessmentUI()" );
+</script>
+</body>
+</html>

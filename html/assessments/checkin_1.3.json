@@ -1,0 +1,31 @@
+{
+  "item1": {
+    "title": "Question 3.1",
+    "firstLine": "The given program should simulate the motion of a sprite starting from rest and traveling <strong>a distance of 25 meters</strong> with an acceleration of <strong>2 m/s per second.</strong>",
+    "secondLine": "Which of the following expressions should be placed in Line 1?",
+    "thirdLine": "Which of the following expressions should be placed in Line 2?",
+    "firstImage": "/img/Assessment/1d-Land/item1.3.1a.jpg",
+    "secondImage": "/img/Assessment/1d-Land/checkin_1.3.1b.jpg",
+    "option_a": "/img/Assessment/1d-Land/option1.3.1a.jpg",
+    "option_b": "/img/Assessment/1d-Land/option1.3.1b.jpg",
+    "option_c": "/img/Assessment/1d-Land/option1.3.1c.jpg",
+    "option_d": "/img/Assessment/1d-Land/option1.3.1d.jpg",
+    "option_e": "/img/Assessment/1d-Land/option1.3.1e.jpg",
+    "option_a1": "/img/Assessment/1d-Land/option1.3.1f.jpg",
+    "option_a2": "/img/Assessment/1d-Land/option1.3.1c.jpg",
+    "option_a3": "/img/Assessment/1d-Land/option1.3.1d.jpg",
+    "option_a4": "/img/Assessment/1d-Land/option1.3.1e.jpg",
+    "option_a5": "/img/Assessment/1d-Land/option1.3.1f.jpg"
+  },
+  "item2": {
+    "title": "Question 3.2",
+    "firstLine": "The following program does not correctly simulate the described motion of the sprite.",
+    "secondLine": "Debug the given program so that it correctly simulates the described motion of the sprite.",
+    "thirdLine": "A sprite starts moving to the right with a constant <strong>velocity of 1m/s.</strong>",
+    "fourthLine": "While the up arrow key is held down, the sprite <strong>accelerates by 2m/s per second.</strong>",
+    "fifthLine": "While the up arrow key is NOT held down, the sprite continues at its previous velocity.",
+    "sixthLine": "Pressing <strong>the space key stops the simulation.</strong>",
+    "firstImage": "/img/Assessment/1d-Land/checkin_1.3.2a.jpg",
+    "secondImage": "/img/Assessment/1d-Land/checkin_1.3.2b.jpg"
+  }
+}
