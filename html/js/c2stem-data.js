@@ -253,7 +253,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 id: 'assessment',
                 type: 'desc',
                 name: 'Assessment',
-                markup: '<iframe id=desc_resourceIframe  src="assessments/assessment1.1.html" frameborder="0"></iframe>'
+                markup: '<iframe id=desc_resourceIframe  src="assessments/checkin_1.1.html" frameborder="0"></iframe>'
             }, {
                 id: 'assess',
                 type: 'snap1',
@@ -329,7 +329,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 id: 'assessment',
                 type: 'desc',
                 name: 'Assessment',
-                markup: '<iframe id=desc_resourceIframe  src="assessments/assessment1.2.html" frameborder="0"></iframe>'
+                markup: '<iframe id=desc_resourceIframe  src="assessments/checkin_1.2.html" frameborder="0"></iframe>'
             }, {
                 id: 'assess',
                 type: 'snap1',
@@ -386,7 +386,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 id: 'assessment',
                 type: 'desc',
                 name: 'Assessment',
-                markup: '<iframe id=desc_resourceIframe  src="assessments/assessment1.3.html" frameborder="0"></iframe>'
+                markup: '<iframe id=desc_resourceIframe  src="assessments/checkin_1.3.html" frameborder="0"></iframe>'
             }, {
                 id: 'assess',
                 type: 'snap1',
