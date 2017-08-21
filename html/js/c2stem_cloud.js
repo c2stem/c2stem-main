@@ -52,6 +52,57 @@ C2Cloud.prototype.deleteUserProgress = function (projectName, callBack, errorCal
     );
 };
 
+C2Cloud.prototype.getData = function (
+    service,
+    id,
+    callBack,
+    errorCall
+) {
+    // id is Username=username&projectName=projectname,
+    // where the values are url-component encoded
+    // callBack is a single argument function, errorCall take two args
+    var request = new XMLHttpRequest(),
+        myself = this;
+    try {
+        var u = this.url + service;
+        if(id)
+            u = u + '?'
+                + id;
+        console.log("making GET request: ", u);
+        request.open("GET", u, true);
+        request.setRequestHeader(
+            "Content-Type",
+            "application/x-www-form-urlencoded"
+        );
+        request.withCredentials = true;
+        request.onreadystatechange = function () {
+            if (request.readyState === 4) {
+                if (request.responseText) {
+                    if (request.responseText.indexOf('ERROR') === 0) {
+                        errorCall.call(
+                            this,
+                            request.responseText
+                        );
+                    } else {
+                        callBack.call(
+                            null,
+                            request.responseText
+                        );
+                    }
+                } else {
+                    errorCall.call(
+                        null,
+                        myself.url + 'Public',
+                        'could not connect to:'
+                    );
+                }
+            }
+        };
+        request.send(null);
+    } catch (err) {
+        errorCall.call(this, err.toString(), 'Snap!Cloud');
+    }
+};
 C2Cloud.prototype.loadUserProgress = function (
     id,
     callBack,
@@ -62,6 +113,9 @@ C2Cloud.prototype.loadUserProgress = function (
     // callBack is a single argument function, errorCall take two args
     var request = new XMLHttpRequest(),
         myself = this;
+    console.log("load userprogress url: ", this.url + 'getUserProgress'
+        + '?'
+        + id);
     try {
         request.open(
             "GET", this.url + 'getUserProgress'
@@ -127,6 +181,9 @@ C2Cloud.prototype.saveUserProgress = function (projectName, userTaskData, callBa
 
 };
 
+
+
+
 C2Cloud.prototype.callService = function (
     serviceName,
     callBack,
@@ -167,7 +224,7 @@ C2Cloud.prototype.callService = function (
                     errorCall.call(
                         this,
                         request.responseText,
-                        localize('Service:') + ' ' + localize(serviceName)
+                        'Service:' + ' ' + serviceName
                     );
                     return;
                 }
@@ -210,3 +267,55 @@ C2Cloud.prototype.parseResponse = function (src) {
     });
     return ans;
 };
+
+
+C2Cloud.prototype.recordTaskModified = function (taskName, study, callBack, errorCall) {
+    var myself = this;
+
+    myself.callService(
+        'recordTaskModified',
+        function (response, url) {
+            callBack.call(null, response, url);
+        },
+        errorCall,
+        [
+            taskName,
+            study
+        ]
+    );
+};
+
+
+C2Cloud.prototype.recordTaskSubmitted = function (activityID, taskName, study, callBack, errorCall) {
+    var myself = this;
+
+    myself.callService(
+        'recordTaskSubmitted',
+        function (response, url) {
+            callBack.call(null, response, url);
+        },
+        errorCall,
+        [
+            activityID,
+            taskName,
+            study
+        ]
+    );
+};
+
+C2Cloud.prototype.recordCurrentTask = function (taskID, study, callBack, errorCall) {
+    var myself = this;
+
+    myself.callService(
+        'recordCurrentTask',
+        function (response, url) {
+            callBack.call(null, response, url);
+        },
+        errorCall,
+        [
+            taskID,
+            study
+        ]
+    );
+};
+
