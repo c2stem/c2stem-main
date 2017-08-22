@@ -35,6 +35,43 @@
     c2stem.fixupLogoutLink();
     $("#students").hide();
 
+    function getActivityDetails(activities) {
+        var html = "<div>Activities submitted: </div>"
+        for (var j in activities) {
+            if (activities.hasOwnProperty(j)) {
+                var activityString = "";
+                var numSubmission = 1;
+                if(activities[j].constructor === Array){
+                    numSubmission = activities[j].constructor === Array ? activities[j].length : 1;
+                    var ds = "";
+                    var first = true;
+                    for(var d in activities[j]){
+                        if(activities[j].hasOwnProperty(d)){
+                            var date = activities[j][d];
+                            var dateString = new Date(date).toLocaleTimeString()+ " " + new Date(date).toLocaleDateString();
+
+                            if(first){
+                                ds += `<span>${dateString}</span>`;
+                                first = false;
+                            }
+                            else
+                                ds += `<span>${", " + dateString}</span>`;
+                        }
+                    }
+                    activityString += ds;
+                }else{
+                    var date = activities[j];
+                    var dateString = new Date(date).toLocaleDateString()+ " " + new Date(date).toLocaleTimeString();
+                    var ds = `<span>${dateString}</span>`;
+                    activityString += ds;
+                }
+                var activityTitle = j;
+                var sd = `<div>${activityTitle} - Trials: ${numSubmission}</div>`;
+                html = html + sd + activityString;
+            }
+        }
+        return html;
+    }
 
     function getStudentDetails(student) {
         var td = "";
@@ -46,21 +83,8 @@
                 var tn = taskData.name + " (" + taskData.parent.name + ")";
                 td += `<a style="margin-right: 20px" href="task.html?id=${key}&mode=teacher&student=${student.user}">${tn}</a>`;
                 if(Object.keys(student.tasks[key].submitted).length > 0)
-                    td += "Activities submitted: "
-                var first = true;
-                for (var j in student.tasks[key].submitted) {
-                    if (student.tasks[key].submitted.hasOwnProperty(j)) {
-                        var date = student.tasks[key].submitted[j];
-                        var dateString = new Date(date).toLocaleDateString()+ " " + new Date(date).toLocaleTimeString();
-                        var s = j;
-                        var sd = `<span>${s} (${dateString})</span>`;
-                        if(!first){
-                            sd = ", " + sd;
-                        }
-                        first = false;
-                        td = td + sd;
-                    }
-                }
+                    td += getActivityDetails(student.tasks[key].submitted);
+//                    td += "Activities submitted: "
             }
             td += `</div>`;
         }
