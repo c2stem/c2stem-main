@@ -270,7 +270,8 @@ function check_then_create_concept() {
 }
 
 function OnModelChanged() {
-    //console.log("OnModelChanged");
+    console.log("OnConceptualModelChanged - Resetting Undo Queue");
+    c2stem.snapWin.SnapUndo.reset();
     // updateComputationalModel();
 }
 function OnViewLoaded() {
