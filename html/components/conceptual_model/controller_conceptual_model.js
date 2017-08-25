@@ -2,7 +2,7 @@
  * Created by hasanm on 5/9/2017.
  */
 
-ENABLE_TOOLTIPS = false;
+ENABLE_TOOLTIPS = true;
 CUSTOM_BLOCKS_VISIBLE = false;
 
 function load_conceptual_model(instance_name, conceptual_html_element_id, data_path, register_save_data_fetcher) {
