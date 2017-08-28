@@ -19,10 +19,12 @@
     "ninthImage": "/img/Assessment/1d-Land/checkin_1.1.1g.jpg",
     "tenthImage": "/img/Assessment/1d-Land/checkin_1.1.1h.jpg",
     "program_1_line": "<strong>Let’s test your predictions in Part a.</strong>",
-    "program_2_line": "Open ‘Checkin1.1.1’ and arrange the blocks available on the stage under",
+    "program_2_line": "Open ‘Checkin1.1.1’",
+    "program_2a_line": " and arrange the blocks available on the stage under",
     "program_3_line": "or",
     "program_4_line": "based on what you have indicated in Part a.  If you think that a block need not be used in the program, you can leave it on the stage.",
-    "program_5_line": "Run your program. Does it simulate the motion of a sprite traveling a distance of 20m at a constant speed of 0.5m/s? If not, try to fix your program."
+    "program_5_line": "Run your program.",
+    "program_6_line": "Does it simulate the motion of a sprite traveling a distance of 20m at a constant speed of 0.5m/s? If not, try to fix your program."
   },
   "item2":{
     "title": "Question 1.2",
@@ -42,7 +44,7 @@
     "table_3_b1": "0", "table_3_b2": "0.4", "table_3_b3": "0.8", "table_3_b4": "1.2", "table_3_b5": "1.6", "table_3_b6": "2", "table_3_b7": "2.4",
     "table_4_a1": "0", "table_4_a2": "0.4", "table_4_a3": "0.8", "table_4_a4": "1.2", "table_4_a5": "1.6", "table_4_a6": "2", "table_4_a7": "2.4",
     "table_4_b1": "0", "table_4_b2": "0.1", "table_4_b3": "0.2", "table_4_b4": "0.3", "table_4_b5": "0.4", "table_4_b6": "0.5", "table_4_b7": "0.6",
-    "thirdLine": "<strong>b. For the given program, we see that at 2 seconds, the x-position of the sprite is 2 meters. When ∆t is doubled to 0.4 instead of 0.2, what will the x-position of the sprite be at 3 seconds?</strong> ",
+    "thirdLine": "<strong>b. For the given program, we see that at 2 seconds, the x-position of the sprite is 2 meters. When ∆t is doubled to 0.4 instead of 0.2, what will the x-position of the sprite be at 2 seconds?</strong> ",
     "firstOption": "Less than 2 meters",
     "secondOption": "More than 2meters",
     "thirdOption": "Equal to 2 meters",

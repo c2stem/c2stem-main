@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>C2STEM</title>
+    <script src="handlebars-v4.0.10.js"></script>
+    <link rel="stylesheet" type="text/css" href="/c2stem.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+    <style>
+        tr{
+            background-color: white!important;
+        }
+        table, th, td{
+            border: 1px solid black!important;
+            text-align: center;
+        }
+        td{
+            padding: 0px;
+        }
+        .options{
+            height: 260px !important;
+        }
+        .centre label{
+            vertical-align:60%;
+        }
+    </style>
+</head>
+<body class="assessBody">
+<div id="anchor"><h4>Assessment</h4></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<script id="tpl" type="text/template">
+    {{#item1}}
+        <p><strong>{{title}}.</strong></p>
+        <div class="shift">
+            <p>{{firstLine}}</p>
+            <ul>
+                <li>{{secondLine}}</li>
+                <li>{{thirdLine}}</li>
+                <li>{{fourthLine}}</li>
+            </ul>
+            <p>{{{fifthLine}}}</p>
+            <div>
+                <img class="responsive-img" src="{{firstImage}}" width="50%">
+            </div>
+            <p>{{{sixthLine}}}</p>
+            <p>{{seventhLine}}</p>
+            <br>
+                <div class="container">
+                    <table class="bordered">
+                        <tr>
+                            <th>{{firstHeader}}</th>
+                            <th>{{secondHeader}}</th>
+                            <th>{{thirdHeader}}</th>
+                        </tr>
+                        <div>
+                        <tr>
+                            <td>{{firstColoumn}}</td>
+                            <td><p>
+                                <input class="with-gap" name="group" type="radio" id="radio_1_4_1a_a" />
+                                <label for="radio_1_4_1a_a"></label>
+                            </p></td>
+                            <td><p><input class="with-gap" name="group" type="radio" id="radio_1_4_1a_b" />
+                                <label for="radio_1_4_1a_b"></label>
+                            </p></td>
+                        </tr>
+                        </div>
+                        <tr>
+                            <td>{{secondColoumn}}</td>
+                            <td><p><input class="with-gap" name="group1" type="radio" id="radio_1_4_1a_c" />
+                                <label for="radio_1_4_1a_c"></label>
+                            </p></td>
+                            <td><p><input class="with-gap" name="group1" type="radio" id="radio_1_4_1a_d" />
+                                <label for="radio_1_4_1a_d"></label>
+                            </p></td>
+                        </tr>
+                        <tr>
+                            <td>{{thirdColoumn}}</td>
+                            <td><p><input class="with-gap" name="group2" type="radio" id="radio_1_4_1a_e" />
+                                <label for="radio_1_4_1a_e"></label>
+                            </p></td>
+                            <td><p><input class="with-gap" name="group2" type="radio" id="radio_1_4_1a_f" />
+                                <label for="radio_1_4_1a_f"></label>
+                            </p></td>
+                        </tr>
+                        <tr>
+                            <td>{{fourthColoumn}}</td>
+                            <td><p><input class="with-gap" name="group3" type="radio" id="radio_1_4_1a_g" />
+                                <label for="radio_1_4_1a_g"></label>
+                            </p></td>
+                            <td><p><input class="with-gap" name="group3" type="radio" id="radio_1_4_1a_h" />
+                                <label for="radio_1_4_1a_h"></label>
+                            </p></td>
+                        </tr>
+                    </table>
+                </div>
+                <br>
+            <p>{{{eightLine}}}</p>
+            <div class="floatHandle">
+                <form action="#">
+                    <div class="centre">
+                        <input type="checkbox" id="checkbox1_4_1b_a" />
+                        <label for="checkbox1_4_1b_a"></label><img class="responsive-img" src="{{secondImage}}" width="250px">
+                    </div>
+                    <div class="centre">
+                        <input type="checkbox" id="checkbox1_4_1b_b" />
+                        <label for="checkbox1_4_1b_b"></label><img class="responsive-img" src="{{thirdImage}}" width="250px">
+                    </div>
+                    <div class="centre">
+                        <input type="checkbox" id="checkbox1_4_1b_c" />
+                        <label for="checkbox1_4_1b_c"></label><img class="responsive-img" src="{{fourthImage}}" width="350px">
+                    </div>
+                    <div class="centre">
+                        <input type="checkbox" id="checkbox1_4_1b_d" />
+                        <label for="checkbox1_4_1b_d"></label><img class="responsive-img" src="{{fifthImage}}" width="350px">
+                    </div>
+                </form>
+            </div>
+        </div>
+    {{/item1}}
+    <hr class="style-two">
+    {{#item2}}
+        <p><strong>{{title}}.</strong> {{firstLine}}</p>
+        <div class="shift">
+            <div class="floatHandle">
+                <img class="responsive-img" src="{{firstImage}}">
+                <img class="responsive-img" src="{{secondImage}}">
+            </div>
+            <br>
+            <img class="responsive-img" src="{{thirdImage}}" width="500px">
+            <br>
+            <div class="floatHandle">
+            <p>{{secondLine}}</p>
+            <div>
+                <img class="responsive-img" src="{{fourthImage}}">
+            </div>
+            </div>
+            <div>
+                <input class="with-gap" name="group1" type="radio" id="radio1_4_2a_a" />
+                <label for="radio1_4_2a_a"><img for="a" src="{{fifthImage}}" width="550px"></label>
+
+                <input class="with-gap" name="group1" type="radio" id="radio1_4_2a_b" />
+                <label for="radio1_4_2a_b"><img src="{{sixthImage}}" width="550px"></label>
+
+                <input class="with-gap" name="group1" type="radio" id="radio1_4_2a_c"  />
+                <label for="radio1_4_2a_c"><img src="{{seventhImage}}" width="550px"></label>
+            </div>
+            <div>
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea id="text_1_4_2a_a" class="materialize-textarea textarea1"></textarea>
+                                <label for="text_1_4_2a_a">{{thirdLine}}</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <textarea id="text_1_4_2a_b" class="materialize-textarea textarea1"></textarea>
+                                <label for="text_1_4_2a_b">{{fourthLine}}</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <p>{{fifthLine}}</p>
+            <img class="responsive-img" src="{{eightImage}}" width="550px">
+            <div>
+                <p>{{{sixthLine}}}</p>
+                <div class="floatHandle">
+                <form action="#">
+                    <div class="centre">
+                        <input type="checkbox" id="checkbox1_4_2b_a" />
+                        <label for="checkbox1_4_2b_a"></label>
+                        <!--<label for="checkbox1_4_2b_a">--><img class="responsive-img" src="{{ninthImage}}"><!--</label>-->
+                    </div>
+                    <div class="centre">
+                        <input type="checkbox" id="checkbox1_4_2b_b" />
+                        <label for="checkbox1_4_2b_b"></label>
+                        <img class="responsive-img" src="{{tenthImage}}">
+                    </div>
+                    <div class="centre">
+                        <input type="checkbox" id="checkbox1_4_2b_c" />
+                        <label for="checkbox1_4_2b_c"></label>
+                        <img class="responsive-img" src="{{eleventhImage}}">
+                    </div>
+                    <div class="centre">
+                        <input type="checkbox" id="checkbox1_4_2b_d" />
+                        <label for="checkbox1_4_2b_d"></label>
+                        <img class="responsive-img" src="{{twelvethImage}}">
+                    </div>
+                </form>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <textarea id="text_1_4_2b_a" class="materialize-textarea textarea1"></textarea>
+                                <label for="text_1_4_2b_a">{{thirdLine}}</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    {{/item2}}
+</script>
+<script>
+    assessmentData = window.parent.c2stem.userTaskData["assessmentData"];
+    if(!assessmentData){
+        assessmentData = {};
+    }
+    var url='checkin_1.4.json';
+    //4a.function creation
+    var slingshot = function (url, tplId, anchor, loaddata) {
+        $.getJSON(url, function(data) {
+            var template = $(tplId).html();
+            var load=template+ "<script>"+loaddata+"<\/script>";
+            var stone = Handlebars.compile(load)(data);
+            $(anchor).append(stone);
+        });
+    };
+
+    $(document).on('click', "input[type='radio']", function () {
+        var radio_id=$(this).attr('id');
+        window.parent.AssessmentActionManager.toggleRadioBttn($(this).attr('id'));
+        assessmentData[radio_id]= radio_id ;
+    });
+
+    $(document).on('blur', '.textarea1', function () {
+        var id=$(this).attr('id');
+        var value=$(this).val();
+        window.parent.AssessmentActionManager.addText(value, id);
+        assessmentData[id]=value;
+    });
+
+    $(document).on('click', "input[type='checkbox']", function () {
+        var check_id=$(this).attr('id');
+        var is_checked=$(this).prop('checked');
+        window.parent.AssessmentActionManager.toggleCheckBox(check_id, is_checked);
+        if(is_checked) {
+            assessmentData[check_id] = is_checked;
+        }else{
+            delete assessmentData[check_id];
+        }
+    });
+    window.parent.c2stem.register_save_data_fetcher("assessmentData", function () {
+        return assessmentData;
+    });
+
+    var updateAssessmentUI= function () {
+        $('.textarea1').trigger('autoresize');
+        for(var id in assessmentData){
+            if(assessmentData.hasOwnProperty(id)){
+                console.log("here is assessment"+assessmentData[id] + id);
+                if(id.startsWith("radio")){
+                    $('#' + assessmentData[id]).prop('checked', true);
+                }else if(id.startsWith("check")){
+                    $('#' + id).prop('checked', assessmentData[id]);
+                }else{
+                    $('#' + id).val(assessmentData[id]);
+                }
+            }
+        }
+    };
+    //4b.function firing
+    slingshot('checkin_1.4.json', '#tpl', '#anchor',"updateAssessmentUI()" );
+</script>
+</body>
+</html>

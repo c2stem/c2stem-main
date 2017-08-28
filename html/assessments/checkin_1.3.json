@@ -20,7 +20,7 @@
   "item2": {
     "title": "Question 3.2",
     "firstLine": "The following program does not correctly simulate the described motion of the sprite.",
-    "secondLine": "Debug the given program so that it correctly simulates the described motion of the sprite.",
+    "secondLine": "Debug the given program <strong>(Checkin_1.3.2)</strong> so that it correctly simulates the described motion of the sprite.",
     "thirdLine": "A sprite starts moving to the right with a constant <strong>velocity of 1m/s.</strong>",
     "fourthLine": "While the up arrow key is held down, the sprite <strong>accelerates by 2m/s per second.</strong>",
     "fifthLine": "While the up arrow key is NOT held down, the sprite continues at its previous velocity.",

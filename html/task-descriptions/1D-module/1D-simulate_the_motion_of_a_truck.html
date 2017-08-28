@@ -13,75 +13,17 @@
 <p>In this first step, your truck will be driving through farmland. This portion of your journey may be delayed as you must maintain a reduced speed as you pass due to hazards such as animal crossings. In this model building task, you will analyze the time needed to pass the farm. To help with this process, you may use cone objects</p>
 <br>
 
-<ul class="collapsible popout" data-collapsible="accordion">
-    <li>
-        <div class="collapsible-header"><strong>1.2.A: Step One - Plan Your Model:</strong></div>
-        <div class="collapsible-body"><span><p>Select all objects and their necessary properties and behaviors in the PLAN window.</p>
-        </span>
-        </div>
-    </li>
-    <li>
-        <div class="collapsible-header"><strong>1.2.B: Step Two - Build Your Model:</strong></div>
-        <div class="collapsible-body"><span><p><strong>Program Description:</strong></p>
-            <ul>
-                <li>- Initialize the necessary variables you selected from the PLAN tab.</li>
-                <li>- Define the simulation step of your simulation model to program your truck to move a constant velocity of 0.6m/s (the speed limit while passing the farm).</li>
-                <li>- Use the cones to support you in analyzing how much time it takes to travel the distance of the farm (to the intersecting dirt road at the noted constant velocity.</li>
-                <li>- Now run an experiment noting the distance traveled at different points in time starting from cone 1. </li>
-                <li>- Use the values you generate from your simulation model to draw a distance versus time graph.  What is the nature of this plot?  What corresponds to the velocity of the vehicle in this plot?  Why is generating a graph useful?</li>
-            </ul>
-            <br>
-             <p><strong>Without changing the positions of the cones given, how much time does it take to travel from cone1 to cone3?</strong></p><br>
-              <div class="row">
-                <form class="col s12">
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <textarea id="textarea1" class="materialize-textarea"></textarea>
-                      <label for="textarea1">Insert text here.</label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            <br>
-            <button id="m1t4a" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
-            <label id="m1t4a-label" ></Label>
-        </span>
-        </div>
-    </li>
-    <li>
-        <div class="collapsible-header"><strong>1.2.C: Step Three - Expand on Your Model:</strong></div>
-        <div class="collapsible-body"><span><p>Let’s  assume that the farmer has not specified a speed limit, and the driver wants to cover the 1 km span of the road in 8 minutes.</p>
-            <ul>
-                <li>- Edit your program to determine what speed Robbie should set for his truck from cone 1 to cone 3, so he can cover the distance in 8 minutes?</li>
-            </ul>
-            <br>
-             <p><strong>Submit the the speed you used to allow Robbie to cover the distance between cone1 and cone3 in 8 minutes. Use your graph to determine, how long it would take the truck to travel 1.8 m at this speed?  2.2 m?</strong></p><br>
-              <div class="row">
-                <form class="col s12">
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <textarea id="textarea2" class="materialize-textarea"></textarea>
-                      <label for="textarea2">Insert text here.</label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            <br>
-            <button id="m1t4b" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
-            <label id="m1t4b-label" ></Label>
-        </span>
-        </div>
-    </li>
-    <li>
-        <div class="collapsible-header"><strong>Activity 1.2.D - Using Motion Graphs in C2STEM</strong></div>
-        <div class="collapsible-body"><span>
-            <p>You will complete the final activity of this model building task on paper. In order to do so, you will
-                need the code that you've built for the truck! When you are ready to get going with this activity,
-                please let one of the instructors know.</p>
-            <br>
-        </span>
-        </div>
-    </li>
+
+<ul>
+    <li><a data-target="modal_1.2.A" class="waves-effect waves-light btn" onclick="open_1_2_A_Modal()">Activity 1.2.A: Step One - Plan Your Model:</a></li>
+    <label id="m1t2ab-label" ></Label>
+    <br>
+    <li><a data-target="modal_1.2.B" class="waves-effect waves-light btn" onclick="open_1_2_B_Modal()">Activity 1.2.B: Step Two - Build Your Model:</a></li>
+    <br>
+    <li><a data-target="modal_1.2.C" class="waves-effect waves-light btn" onclick="open_1_2_C_Modal()">Activity 1.2.C: Step Three - Expand on Your Model:</a></li>
+    <br>
+    <li><a data-target="modal_1.2.D" class="waves-effect waves-light btn" onclick="open_1_2_D_Modal()">Activity 1.2.D - Using Motion Graphs in C2STEM</a></li>
+
 </ul>
 
 <br>
@@ -163,6 +105,23 @@
     }
     initTextArea('textarea1');
     initTextArea('textarea2');
+
+    function open_1_2_A_Modal(){
+        window.parent.$("#modal2a").appendTo("body").modal('show');
+
+    }
+    function open_1_2_B_Modal(){
+        window.parent.$('#modal2b').appendTo("body").modal('show');
+
+    }
+    function open_1_2_C_Modal(){
+        window.parent.$('#modal2c').appendTo("body").modal('show');
+
+    }
+    function open_1_2_D_Modal(){
+        window.parent.$('#modal2d').appendTo("body").modal('show');
+
+    }
 
 </script>
 </html>

@@ -15,7 +15,7 @@
     "firstLine": "The following program moves the sprite to the right when the right arrow is held, and to the left when the left arrow is held. The space bar stops the simulation.",
     "firstImage": "/img/Assessment/1d-Land/checkin_1.2.2a.jpg",
     "secondImage": "/img/Assessment/1d-Land/checkin_1.2.2b.jpg",
-    "secondLine": "Open the code for <strong>Checkin1.2.2</strong> and add code to the given program to <strong>update the total distance traveled</strong> by the sprite in addition to its position. For instance, if the sprite moved 2 meters to the right, then 1 meter to the left, the total distance traveled would be 3 meters."
+    "secondLine": "Open the code for <strong>Checkin1.2.2</strong> and add code to the given program to <strong>update the total distance traveled</strong> by the sprite in addition to its position. For instance, if the sprite moved 4 meters to the right, then 1 meter to the left, the total distance traveled would be 5 meters."
   },
   "item3":{
     "title": "Question 2.3",

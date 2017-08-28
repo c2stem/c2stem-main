@@ -20,147 +20,18 @@
         How do otherwise non-moving images model motion?
     </p>
 </div>
+<ul>
+    <li><a data-target="modal_1.1.A" class="waves-effect waves-light btn" onclick="open_1_1_A_Modal()">Activity 1.1.A - Use a loop:</a></li>
+    <label id="m1t2ab-label" ></Label>
+    <br>
+    <li><a data-target="modal_1.1.B" class="waves-effect waves-light btn" onclick="open_1_1_B_Modal()">Activity 1.1.B - Adjusting the Time Step:</a></li>
+    <br>
+    <li><a data-target="modal_1.1.C" class="waves-effect waves-light btn" onclick="open_1_1_C_Modal()">Activity 1.1.C - Adjusting speed and direction</a></li>
+    <br>
+    <li><a data-target="modal_1.1.D" class="waves-effect waves-light btn" onclick="open_1_1_D_Modal()">Activity 1.1.D - Design Your Simulation Step</a></li>
+    <br>
+    <li><a data-target="modal_1.1.E" class="waves-effect waves-light btn" onclick="open_1_1_E_Modal()">Activity 1.1.E - Using a Simulation to Predict Motion</a></li>
 
-
-<ul class="collapsible popout" data-collapsible="accordion">
-    <li>
-        <div class="collapsible-header"><strong>Activity 1.1.A - Use a loop:</strong></div>
-        <div class="collapsible-body"><span>
-            <p><strong>Program description - When Green Flag is clicked:</strong></p>
-            <ul>
-                <li>- Use a loop structure to simulate the sloth’s motion to the right</li>
-                <li>- The program should update the sloth’s position at 1 second intervals</li>
-                <li>- Speed = 1 m/s</li>
-                <li>- Initial position = 0 m</li>
-                <li>- Final position = 10 m</li>
-            </ul>
-            <br>
-            <p><strong>Hints</strong></p>
-            <ul>
-                <li>- Change the position of the sloth on each loop</li>
-                <li>- Use the “Wait” block to slow down the execution of each loop</li>
-                <li>- How will your program make the sloth stop moving after 10 m?</li>
-            </ul>
-            <br>
-            <p><strong>Which loop structure did you use to program the sloth (if, if-else, repeat, etc) and why? </strong></p><br>
-              <div class="row">
-                <form class="col s12">
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <textarea id="textarea1" class="materialize-textarea"></textarea>
-                      <label for="textarea1">Insert text here.</label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            <br>
-            <button id="m1t2a" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
-            <label id="m1t2a-label" ></Label>
-        </span>
-        </div>
-    </li>
-    <li>
-        <div class="collapsible-header"><strong>Activity 1.1.B - Adjusting the Time Step:</strong></div>
-        <div class="collapsible-body"><span><img src="/img/change position equation.png"  width="20%" align="right"/>
-            <p><strong>Program description:</strong></p>
-            <ul>
-                <li>- Add a variable “delta t” to the previous program that allows the user to specify the length of the time step</li>
-                <li>- The program must work for all “delta t” values greater than zero</li>
-                <li>- Test the program: What happens if you set delta t to a very small value? a larger value?</li>
-            </ul>
-            <br>
-             <p><strong>Make sure the [time in s] variable is selected. Set delta t to .5 and run your program. How long does it take the sloth to complete the journey?</strong></p><br>
-              <div class="row">
-                <form class="col s12">
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <textarea id="textarea2" class="materialize-textarea"></textarea>
-                      <label for="textarea2">Insert text here.</label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            <br>
-            <button id="m1t2b" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
-            <label id="m1t2b-label" ></Label>
-        </span>
-        </div>
-    </li>
-    <li>
-        <div class="collapsible-header"><strong>Activity 1.1.C - Adjusting speed and direction</strong></div>
-        <div class="collapsible-body"><span><p><strong>Program description:</strong></p>
-            <ul>
-                <li>- Add a variable “velocity” to the previous program that allows the user to specify the speed AND direction of the sloth’s movement</li>
-                <li>- The program must work for all velocity values (positive and negative)</li>
-            </ul>
-            <br>
-            <p><strong>Hints</strong></p>
-            <ul>
-                <li>- How does the position change of the sloth relate to its velocity and the delta t?</li>
-                <li>- What does negative velocity mean?</li>
-            </ul>
-            <br>
-             <p><strong>Set the velocity to 4m/s. How much time does it take for the sloth to finish?</strong></p><br>
-              <div class="row">
-                <form class="col s12">
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <textarea id="textarea3" class="materialize-textarea"></textarea>
-                      <label for="textarea3">Insert text here.</label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            <br>
-            <button id="m1t2c" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
-            <label id="m1t2c-label" ></Label>
-        </span>
-        </div>
-    </li>
-    <li>
-        <div class="collapsible-header"><strong>Activity 1.1.D - Design Your Simulation Step</strong></div>
-        <div class="collapsible-body"><span><p><strong>Program description:</strong></p>
-            <ul>
-                <li>- Replace the loop structure in your previous code with the “simulation” blocks (pictured)</li>
-                <li>- The program should otherwise work in the same way as the previous program</li>
-            </ul>
-            <br>
-            <p><strong>Hints</strong></p>
-            <ul>
-                <li>- Initialize your variables when the Green Flag is clicked</li>
-                <li>- Use the simulation step as your looping structure</li>
-                <li>- The simulation step runs only when called</li>
-                <li>- Simulation blocks take care of delta t automatically</li>
-                <li>- How does your program know when to stop the simulation?</li>
-            </ul>
-            <br>
-             <p><strong>In your own words, describe what a simulation step is:</strong></p><br>
-              <div class="row">
-                <form class="col s12">
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <textarea id="textarea4" class="materialize-textarea"></textarea>
-                      <label for="textarea4">Insert text here.</label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            <br>
-            <button id="m1t2d" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
-            <label id="m1t2d-label" ></Label>
-        </span>
-        </div>
-    </li>
-    <li>
-        <div class="collapsible-header"><strong>Activity 1.1.E - Using a Simulation to Predict Motion</strong></div>
-        <div class="collapsible-body"><span>
-            <p>You will complete the final activity of this task on paper. In order to do so, you will need the code that
-                you've built for the sloth! When you are ready to get going with this activity, please let one of the
-                instructors know.</p>
-            <br>
-        </span>
-        </div>
-    </li>
 </ul>
 
 <br>
@@ -193,6 +64,8 @@
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+<!--
+<script type="text/javascript" src="/jquery.simplemodal.1.4.4.min.js"></script>-->
 <script>
     var assessmentData = {
     };
@@ -244,6 +117,27 @@
     initTextArea('textarea2');
     initTextArea('textarea3');
     initTextArea('textarea4');
+
+   function open_1_1_A_Modal(){
+       window.parent.$("#modal1a").appendTo("body").modal('show');
+
+   }
+    function open_1_1_B_Modal(){
+        window.parent.$('#modal2').appendTo("body").modal('show');
+
+    }
+    function open_1_1_C_Modal(){
+        window.parent.$('#modal3').appendTo("body").modal('show');
+
+    }
+    function open_1_1_D_Modal(){
+        window.parent.$('#modal4').appendTo("body").modal('show');
+
+    }
+    function open_1_1_E_Modal(){
+        window.parent.$('#modal5').appendTo("body").modal('show');
+
+    }
 
 </script>
 </html>

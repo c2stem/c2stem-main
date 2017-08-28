@@ -50,13 +50,13 @@
             <p>{{secondLine}}</p>
         </div>
         <div class="floatHandle">
-            <img src="{{firstImage}}">
+            <img src="{{firstImage}}" width="120px">
         </div>
         <div class="floatHandle">
             <p>{{thirdLine}}</p>
         </div>
         <div class="floatHandle">
-            <img src="{{secondImage}}">
+            <img src="{{secondImage}}" width="130px">
         </div>
         <div class="floatHandle">
             <p>{{fourthLine}}</p>
@@ -67,12 +67,12 @@
         <table class="bordered">
             <tr>
                 <th></th>
-                <th>{{firstheader}}<img src="{{firstImage}}"></th>
-                <th>{{secondheader}}<img src="{{secondImage}}"></th>
+                <th>{{firstheader}}<img src="{{firstImage}}" width="120px"></th>
+                <th>{{secondheader}}<img src="{{secondImage}}" width="120px"></th>
                 <th>{{thirdheader}}</th>
             </tr>
             <tr>
-                <td><img src="{{thirdImage}}" width="90%"></td>
+                <td><img src="{{thirdImage}}" width="450px"></td>
                 <td><p>
                     <input class="with-gap" name="group" type="radio" id="radio_1_1_1_a" />
                     <label for="radio_1_1_1_a"></label>
@@ -85,7 +85,7 @@
                     </p></td>
             </tr>
             <tr>
-                <td><img src="{{fourthImage}}"width="35%"></td>
+                <td><img src="{{fourthImage}}"></td>
                 <td><p><input class="with-gap" name="group1" type="radio" id="radio_1_1_1_d" />
                     <label for="radio_1_1_1_d"></label>
                 </p></td>
@@ -97,7 +97,7 @@
                     </p></td>
             </tr>
             <tr>
-                <td><img src="{{fifthImage}}"width="30%"></td>
+                <td><img src="{{fifthImage}}"></td>
                 <td><p><input class="with-gap" name="group2" type="radio" id="radio_1_1_1_g" />
                     <label for="radio_1_1_1_g"></label>
                     </p></td>
@@ -109,7 +109,7 @@
                     </p></td>
             </tr>
             <tr>
-                <td><img src="{{sixthImage}}" width="40%"></td>
+                <td><img src="{{sixthImage}}"></td>
                 <td><p><input class="with-gap" name="group3" type="radio" id="radio_1_1_1_j" />
                     <label for="radio_1_1_1_j"></label>
                     </p></td>
@@ -121,7 +121,7 @@
                     </p></td>
             </tr>
             <tr>
-                <td><img src="{{seventhImage}}" width="40%"></td>
+                <td><img src="{{seventhImage}}"></td>
                 <td><p><input class="with-gap" name="group4" type="radio" id="radio_1_1_1_m" />
                     <label for="radio_1_1_1_m"></label>
                     </p></td>
@@ -133,7 +133,7 @@
                     </p></td>
             </tr>
             <tr>
-                <td><img src="{{eigthImage}}" width="40%"></td>
+                <td><img src="{{eigthImage}}"></td>
                 <td><p><input class="with-gap" name="group5" type="radio" id="radio_1_1_1_p" />
                     <label for="radio_1_1_1_p"></label>
                     </p></td>
@@ -145,7 +145,7 @@
                     </p></td>
             </tr>
             <tr>
-                <td><img src="{{ninthImage}}" width="20%"></td>
+                <td><img src="{{ninthImage}}"></td>
                 <td><p><input class="with-gap" name="group6" type="radio" id="radio_1_1_1_s" />
                     <label for="radio_1_1_1_s"></label>
                     </p></td>
@@ -157,7 +157,7 @@
                     </p></td>
             </tr>
             <tr>
-                <td><img src="{{tenthImage}}" width="40%"></td>
+                <td><img src="{{tenthImage}}" ></td>
                 <td><p><input class="with-gap" name="group7" type="radio" id="radio_1_1_1_v"/>
                     <label for="radio_1_1_1_v"></label>
                     </p></td>
@@ -175,31 +175,35 @@
     <p>b. {{{program_1_line}}}</p>
     <ul>
         <li>
+            <div class="floatHandle">
+            <p>{{program_2_line}}</p>
+            </div>
+            <div class="floatHandle">
+                <p>{{program_2a_line}}</p>
+            </div>
+            <div class="floatHandle">
+                <img src="{{firstImage}}">
+            </div>
+            <div class="floatHandle">
+                <p>{{program_3_line}}</p>
+            </div>
+            <div class="floatHandle">
+                <img src="{{secondImage}}">
+            </div>
+        </li>
             <div class="shift">
-                <div class="floatHandle">
-                    <p>{{program_2_line}}</p>
-                </div>
-                <div class="floatHandle">
-                    <img src="{{firstImage}}">
-                </div>
-                <div class="floatHandle">
-                    <p>{{program_3_line}}</p>
-                </div>
-                <div class="floatHandle">
-                    <img src="{{secondImage}}">
-                </div>
+
                 <div class="floatHandle">
                     <p>{{program_4_line}}</p>
                 </div>
             </div>
-        </li>
+
         <li>
-            <div class="shift">
-                <div class="floatHandle">
-                    <p>{{program_5_line}}</p>
-                </div>
+            <div class="floatHandle">
+               <p>{{program_5_line}}</p>
             </div>
         </li>
+        <div class="shift"><p>{{program_6_line}}</p></div>
     </ul>
     {{/item1}}
     <hr class="style-two">
@@ -207,8 +211,8 @@
     <p><strong>{{title}}.</strong> {{firstLine}}</p>
     <div class="shift">
         <div>
-            <img class="responsive-img" src="{{firstImage}}" width="20%">
-            <img class="responsive-img" src="{{secondImage}}" width="30%">
+            <img class="responsive-img" src="{{firstImage}}" width="210px">
+            <img class="responsive-img" src="{{secondImage}}" width="350px">
         </div>
     </div>
 <br>
@@ -490,47 +494,11 @@
         window.parent.AssessmentActionManager.addText(table_val, table_id);
         assessmentData[table_id]=table_val;
     });
-    //deleteTableRow
-    function deleteRow(row)
-    {
-        var i=row.parentNode.parentNode.rowIndex;
-        if(i>1) {
-            document.getElementById('POITable').deleteRow(i);
-            window.parent.AssessmentActionManager.deleteObject(i);
-            assessmentData["DeleteRow"]=i;
-        }
-    }
-   /* //add tableRow
-    function insRow()
-    {
-        var x=document.getElementById('POITable');
-        var new_row = x.rows[1].cloneNode(true);
-        var len = x.rows.length;
-        /!*new_row.cells[0].innerHTML = len;*!/
-        var inp1 = new_row.cells[0].getElementsByTagName('input')[0];
-        inp1.id += len;
-        inp1.id= "row_"+len +"_object";
-        inp1.value = '';
-        var inp2 = new_row.cells[1].getElementsByTagName('input')[0];
-        inp2.id += len;
-        inp2.id="row_"+len+ "_property";
-        inp2.value = '';
-        var inp3 = new_row.cells[2].getElementsByTagName('input')[0];
-        inp3.id += len;
-        inp3.id="row_"+len+"_behaviour";
-        inp3.value = '';
-        x.appendChild( new_row );
-
-        window.parent.AssessmentActionManager.addObject(len);
-        assessmentData["addObject"]=len;
-    }*/
 
     $(document).on('click', "input[type='radio']", function () {
         var radio_id=$(this).attr('id');
         window.parent.AssessmentActionManager.toggleRadioBttn($(this).attr('id'));
-        var length=radio_id.length;
-        var string=radio_id.substring(0,length-1);
-        assessmentData[string]= radio_id ;
+        assessmentData[radio_id]= radio_id ;
     });
 
 
@@ -547,24 +515,6 @@
             if(assessmentData.hasOwnProperty(id)){
                 if(id.startsWith("radio")){
                     $('#' + assessmentData[id]).prop('checked', true);
-                }else if(id.startsWith("row")){
-                    if(id.endsWith("object")){
-                        objectList[id]=assessmentData[id];
-                    }else if(id.endsWith("property")){
-                        propList[id]=assessmentData[id];
-                    }else if(id.endsWith("behaviour")){
-                        behList[id]=assessmentData[id];
-                    }
-                }else if(id.startsWith("Delete")){
-                    var del= assessmentData[id];
-                    delete objectList["row_"+del+"_object"];
-                    delete propList["row_"+del+"_property"];
-                    delete behList["row_"+del+"_behaviour"];
-                    assessmentData["addObject"]=totalLength-1;
-                    delete assessmentData["DeleteRow"];
-                    delete assessmentData["row_"+del+"_object"];
-                    delete assessmentData["row_"+del+"_property"];
-                    delete assessmentData["row_"+del+"_behaviour"];
                 }else{
                     $('#' + id).val(assessmentData[id]);
                 }

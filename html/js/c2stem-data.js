@@ -257,10 +257,10 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
             }, {
                 id: 'assess',
                 type: 'snap1',
-                name: 'Task_1.1',
+                name: 'Checkin_1.1.1',
                 template: {
-                    user: 'Naveed',
-                    proj: 'Module1_1.1'
+                    user: 'satabdi27',
+                    proj: 'Checkin1.1.1'
                 }
             }]
         };
@@ -333,10 +333,10 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
             }, {
                 id: 'assess',
                 type: 'snap1',
-                name: 'Task_1.2',
+                name: 'Checkin_1.2.2',
                 template: {
-                    user: 'Naveed',
-                    proj: 'Module1_2.1'
+                    user: 'satabdi27',
+                    proj: 'Checkin1.2.2'
                 }
             }]
         };
@@ -390,10 +390,10 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
             }, {
                 id: 'assess',
                 type: 'snap1',
-                name: 'Task_1.3',
+                name: 'Checkin_1.3.2',
                 template: {
-                    user: 'Naveed',
-                    proj: 'Module1_3.2'
+                    user: 'satabdi27',
+                    proj: 'Checkin1.3.2'
                 }
             }]
         };
@@ -430,7 +430,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 markup: '<iframe id=desc_resourceIframe  src="resources.html" frameborder="0"></iframe>'
             }]
         };
-    }/*else if (id === '1d-checkin4') {
+    }else if (id === '1d-checkin4') {
         res = {
             parent: {
                 id: '1dmotion',
@@ -442,10 +442,10 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
                 id: 'assessment',
                 type: 'desc',
                 name: 'Assessment',
-                markup: '<iframe id=desc_resourceIframe  src="assessment1.1.html" frameborder="0"></iframe>'
+                markup: '<iframe id=desc_resourceIframe  src="assessments/checkin_1.4.html" frameborder="0"></iframe>'
             }]
         };
-    }*/else if (id === '1d-deliver') {
+    }else if (id === '1d-deliver') {
         res = {
             parent: {
                 id: '1dmotion',
