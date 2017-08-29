@@ -18,7 +18,7 @@
     </div>
 </nav>
 
-<h3 style="margin-left: 20px;">Students</h3>
+<h3 style="margin-left: 20px;">Total Students: <span id="std_total">0</span></h3>
     <ul id="students" class="collapsible popout" data-collapsible="accordion">
 </body>
 
@@ -140,6 +140,7 @@
                 $("#students").show();
                 c2stem.getStudentStatus(c2stem.userRole.study, function (err) {
                     if(!err){
+                        $("#std_total").html(c2stem.studentsStatus.length);
                         c2stem.studentsStatus.forEach(function (s) {
                             console.log(s);
                             $("#students").append(getStudentItem(s));
