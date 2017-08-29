@@ -93,23 +93,30 @@
     }
 
     function getStudentItem(student) {
-        var totalWorking = Object.keys(student.tasks).length;
+        var totalWorking = 0;
         var currentTask = student.currentTask;
         var totalSubmitted = 0;
 
-        for (var key in student.tasks) {
-            if (student.tasks.hasOwnProperty(key)) {
-                for (var j in student.tasks[key].submitted) {
-                    if (student.tasks[key].submitted.hasOwnProperty(j)) {
-                        totalSubmitted++;
+
+        if(student.tasks !== undefined){
+            totalWorking = Object.keys(student.tasks).length;
+            for (var key in student.tasks) {
+                if (student.tasks.hasOwnProperty(key)) {
+                    for (var j in student.tasks[key].submitted) {
+                        if (student.tasks[key].submitted.hasOwnProperty(j)) {
+                            totalSubmitted++;
+                        }
                     }
                 }
             }
         }
 
-        var taskData = c2stem.loadTaskData(currentTask);
-        currentTask = taskData.name + " (" + taskData.parent.name + ")";
-
+        if(currentTask !== undefined){
+            var taskData = c2stem.loadTaskData(currentTask);
+            currentTask = taskData.name + " (" + taskData.parent.name + ")";
+        }else{
+            currentTask = "";
+        }
         return `
             <li>
                 <div class="collapsible-header">
