@@ -251,7 +251,7 @@
 <script type="text/javascript" src="js/action%20managers/ConceptualActionManager.js"></script>
 <script type="text/javascript" src="js/action%20managers/TaskViewActionManager.js"></script>
 <script type="text/javascript" src="js/action%20managers/PeriodicalStateSaver.js"></script>
-<script type="text/javascript" src="js/action%20managers/AssessmentActionManager.js"></script>
+<!--<script type="text/javascript" src="js/action%20managers/AssessmentActionManager.js"></script>-->
 <script type="text/javascript" src="js/action%20managers/TaskDescriptionActionManger.js"></script>
 <script type="text/javascript" src="js/action%20managers/ResourcesActionManager.js"></script>
 <script type="text/javascript" src="js/action%20managers/LoginActionManager.js"></script>
@@ -332,54 +332,54 @@
         console.log(this.id);
         $('.modal').modal('hide');
     }
-    var assessmentData = {
-    };
-    c2stem.register_save_data_fetcher("assessmentData", function () {
-        return assessmentData;
-    });
+    <!--var assessmentData = {-->
+    <!--};-->
+    <!--c2stem.register_save_data_fetcher("assessmentData", function () {-->
+        <!--return assessmentData;-->
+    <!--});-->
 
-    assessmentData = window.parent.c2stem.userTaskData["assessmentData"];
-    if(assessmentData){
-        for(var id in assessmentData){
-            if(assessmentData.hasOwnProperty(id))
-                $("#" + id + "-label").text("  Last submitted on: " + assessmentData[id]);
-        }
-    }else {
-        assessmentData = {};
-    }
-
-
-    var submitSolution = function(activityID){
-        window.parent.TaskDescriptionActionManger.submitSolution(activityID);
-        assessmentData[activityID] = getTimeString();
-        $("#" + activityID + "-label").text("  Last submitted on: " + assessmentData[activityID]);
-    }
-
-    $('.submit_solution').each(function() {
-        $('.modal').modal('hide');
-        console.log(this.id);
-        $("#" + this.id).click(function () {
-            submitSolution( this.id );
-        });
-    });
+    <!--assessmentData = window.parent.c2stem.userTaskData["assessmentData"];-->
+    <!--if(assessmentData){-->
+        <!--for(var id in assessmentData){-->
+            <!--if(assessmentData.hasOwnProperty(id))-->
+                <!--$("#" + id + "-label").text("  Last submitted on: " + assessmentData[id]);-->
+        <!--}-->
+    <!--}else {-->
+        <!--assessmentData = {};-->
+    <!--}-->
 
 
-    function initTextArea(elementID) {
-        $('#' + elementID).on("change", function () {
-            var t = $(this).val();
-            console.log(elementID,"changed, text:", t);
-            assessmentData[elementID] = t;
-            window.parent.AssessmentActionManager.addText(t, elementID);
-        });
-        if(assessmentData.hasOwnProperty(elementID))
-            $('#' + elementID).text(assessmentData[elementID]);
-        else
-            $('#' + elementID).text("");
-    }
-    initTextArea('textarea1');
-    initTextArea('textarea2');
-    initTextArea('textarea3');
-    initTextArea('textarea4');
+    <!--var submitSolution = function(activityID){-->
+        <!--window.parent.TaskDescriptionActionManger.submitSolution(activityID);-->
+        <!--assessmentData[activityID] = getTimeString();-->
+        <!--$("#" + activityID + "-label").text("  Last submitted on: " + assessmentData[activityID]);-->
+    <!--}-->
+
+    <!--$('.submit_solution').each(function() {-->
+        <!--$('.modal').modal('hide');-->
+        <!--console.log(this.id);-->
+        <!--$("#" + this.id).click(function () {-->
+            <!--submitSolution( this.id );-->
+        <!--});-->
+    <!--});-->
+
+
+//    function initTextArea(elementID) {
+//        $('#' + elementID).on("change", function () {
+//            var t = $(this).val();
+//            console.log(elementID,"changed, text:", t);
+//            assessmentData[elementID] = t;
+//            window.parent.AssessmentActionManager.addText(t, elementID);
+//        });
+//        if(assessmentData.hasOwnProperty(elementID))
+//            $('#' + elementID).text(assessmentData[elementID]);
+//        else
+//            $('#' + elementID).text("");
+//    }
+//    initTextArea('textarea1');
+//    initTextArea('textarea2');
+//    initTextArea('textarea3');
+//    initTextArea('textarea4');
 </script>
 
 </html>
