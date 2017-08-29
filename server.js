@@ -278,7 +278,17 @@ function init_c2stem_server(router, projects, users, studentStatus) {
         } else {
             studentStatus.findOne({user: userName, study: study}, function (err, doc) {
                 console.log("student status:", doc);
-               doc.tasks[taskID].submitted[activityID] = Date.now();
+
+                if(!(activityID in doc.tasks[taskID].submitted)){
+                    doc.tasks[taskID].submitted[activityID] = [Date.now()];
+                }else{
+                    if(doc.tasks[taskID].submitted[activityID].constructor === Array){
+                        doc.tasks[taskID].submitted[activityID].push(Date.now());
+                    }else{
+                        doc.tasks[taskID].submitted[activityID] = [doc.tasks[taskID].submitted[activityID], Date.now()];
+                    }
+                }
+
                 studentStatus.update({
                     user: userName,
                     study: study

@@ -82,7 +82,8 @@ IDE_Morph.prototype.hide_primitive = function(cat, prim){
 };
 IDE_Morph.prototype.show_primitive = function(cat, prim){
     var ide = this;
-    ide.stage.hiddenPrimitives[prim] = false;
+    delete ide.stage.hiddenPrimitives[prim];
+    // ide.stage.hiddenPrimitives[prim] = false;
     ide.flushBlocksCache(cat);
     ide.refreshPalette();
 };
