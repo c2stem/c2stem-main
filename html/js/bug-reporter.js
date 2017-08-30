@@ -9,7 +9,6 @@ BugReporter.enable = function() {
         };
 
         // Make an ajax request to the server containing the bug report
-        // TODO
         var req = new XMLHttpRequest();
         req.open('POST', '/SnapCloud/BugReport');
         req.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
@@ -19,11 +18,4 @@ BugReporter.enable = function() {
 };
 
 BugReporter.disable = function() {
-};
-
-
-// For testing
-document.body.onkeyup = function(e){
-    console.error('>>> break stuff');
-    asdf;
 };
