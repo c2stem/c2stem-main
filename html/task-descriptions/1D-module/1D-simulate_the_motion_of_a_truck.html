@@ -15,14 +15,18 @@
 
 
 <ul>
-    <li><a data-target="modal_1.2.A" class="waves-effect waves-light btn" onclick="open_1_2_A_Modal()">Activity 1.2.A: Step One - Plan Your Model:</a></li>
-    <label id="m1t2ab-label" ></Label>
+    <li><a data-target="modal_1.2.A" class="waves-effect waves-light btn" onclick="open_1_2_A_Modal()">Activity 1.2.A: Step One - Plan Your Model:</a>
+        <label id="m1t3a-label" ></Label></li>
+
     <br>
-    <li><a data-target="modal_1.2.B" class="waves-effect waves-light btn" onclick="open_1_2_B_Modal()">Activity 1.2.B: Step Two - Build Your Model:</a></li>
+    <li><a data-target="modal_1.2.B" class="waves-effect waves-light btn" onclick="open_1_2_B_Modal()">Activity 1.2.B: Step Two - Build Your Model:</a>
+        <label id="m1t3b-label" ></Label></li>
     <br>
-    <li><a data-target="modal_1.2.C" class="waves-effect waves-light btn" onclick="open_1_2_C_Modal()">Activity 1.2.C: Step Three - Expand on Your Model:</a></li>
+    <li><a data-target="modal_1.2.C" class="waves-effect waves-light btn" onclick="open_1_2_C_Modal()">Activity 1.2.C: Step Three - Expand on Your Model:</a>
+        <label id="m1t3c-label" ></Label></li>
     <br>
-    <li><a data-target="modal_1.2.D" class="waves-effect waves-light btn" onclick="open_1_2_D_Modal()">Activity 1.2.D - Using Motion Graphs in C2STEM</a></li>
+    <li><a data-target="modal_1.2.D" class="waves-effect waves-light btn" onclick="open_1_2_D_Modal()">Activity 1.2.D - Using Motion Graphs in C2STEM</a>
+        <label id="m1t3d-label" ></Label></li>
 </ul>
 
 <br>
@@ -57,68 +61,21 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
 <script>
-    var assessmentData = {
-    };
-    window.parent.c2stem.register_save_data_fetcher("assessmentData", function () {
-        return assessmentData;
-    });
-
-    assessmentData = window.parent.c2stem.userTaskData["assessmentData"];
-    if(assessmentData){
-        for(var id in assessmentData){
-            if(assessmentData.hasOwnProperty(id))
-                $("#" + id + "-label").text("  Last submitted on: " + assessmentData[id]);
-        }
-    }else {
-        assessmentData = {};
-    }
-
-    var getTimeString = function () {
-        return new Date().toLocaleDateString()+ " " + new Date().toLocaleTimeString();
-    }
-
-    var submitSolution = function(activityID){
-        window.parent.TaskDescriptionActionManger.submitSolution(activityID);
-        assessmentData[activityID] = getTimeString();
-        $("#" + activityID + "-label").text("  Last submitted on: " + assessmentData[activityID]);
-    }
-
-    $('.submit_solution').each(function() {
-        console.log(this.id);
-        $("#" + this.id).click(function () {
-            submitSolution( this.id );
-        });
-    });
-
-    function initTextArea(elementID) {
-        $('#' + elementID).on("change", function () {
-            var t = $(this).val();
-            console.log(elementID,"changed, text:", t);
-            assessmentData[elementID] = t;
-            window.parent.AssessmentActionManager.addText(t, elementID);
-        });
-        if(assessmentData.hasOwnProperty(elementID))
-            $('#' + elementID).text(assessmentData[elementID]);
-        else
-            $('#' + elementID).text("");
-    }
-    initTextArea('textarea1');
-    initTextArea('textarea2');
 
     function open_1_2_A_Modal(){
-        window.parent.$("#modal2a").appendTo("body").modal('show');
+        window.parent.$("#1D_simulate_motion_1_2_A").appendTo("body").modal('show');
 
     }
     function open_1_2_B_Modal(){
-        window.parent.$('#modal2b').appendTo("body").modal('show');
+        window.parent.$('#1D_simulate_motion_1_2_B').appendTo("body").modal('show');
 
     }
     function open_1_2_C_Modal(){
-        window.parent.$('#modal2c').appendTo("body").modal('show');
+        window.parent.$('#1D_simulate_motion_1_2_C').appendTo("body").modal('show');
 
     }
     function open_1_2_D_Modal(){
-        window.parent.$('#modal2d').appendTo("body").modal('show');
+        window.parent.$('#1D_simulate_motion_1_2_D').appendTo("body").modal('show');
 
     }
 

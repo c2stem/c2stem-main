@@ -12,114 +12,24 @@
 <p><strong>Consider a bus as an object that has already been placed at a specific position (x = -57m), but it is at rest. You must program your bus to start, maintain a target speed (15m/s), and slow down at an appropriate distance away from the stop sign to ensure that it to safely stop at the given stop sign.</strong></p>
 <br>
 
-<ul class="collapsible popout" data-collapsible="accordion">
-    <li>
-        <div class="collapsible-header"><strong>1.4.A: Step One - Plan Your Model</strong></div>
-        <div class="collapsible-body"><span><p>In this module, we will not only be programming updates to position and velocity, we will need to program behaviors for Robbie that will allow him to speed up, maintain a speed, or slow down to a stop when necessary.</p>        <br>
-            <br>
-            <p><strong>Hint:</strong></p>
-            <ul>
-                <li>- Let’s accomplish this modeling task in parts in order to introduce new programming concepts into your code.</li>
-                <li>- You can build your model step-by-step or all at once. If you forget to add a property or behavior, you can return to your Plan tab to add it!</li>
-                <li>- A good model is one which can be applied to multiple objects in different scenarios. To make a general model, you should model your behaviors with variables, instead of using constant values. For example, instead of specifying the truck acceleration as 4 m/sec per second in modeling the speed up behavior, use the truck’s acceleration value. If you do this, the procedure you write will work for different values of truck acceleration.</li>
-            </ul>
-        </span>
-        </div>
-    </li>
-    <li>
-        <div class="collapsible-header"><strong>1.4.B: Step Two - Make the Truck Speed Up</strong></div>
-        <div class="collapsible-body"><span><p>First, develop the code needed to speed up the truck from an at rest position.</p>
-            <br>
-            <p><strong>Hint:</strong></p>
-            <ul>
-                <li>- Think back on your programs for constant acceleration motion for the sloth.</li>
-                <li>- Please note that the truck engine can provide a maximum acceleration of 4 m/sec per second</li>
-            </ul>
-            <br>
-             <p><strong>What is the x velocity of the truck in m/s after 3 seconds?</strong></p><br>
-              <div class="row">
-                <form class="col s12">
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <textarea id="textarea1" class="materialize-textarea"></textarea>
-                      <label for="textarea1">Insert text here.</label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            <br>
-            <button id="m1t6a" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
-            <label id="m1t6a-label" ></Label>
-        </span>
-        </div>
-    </li>
-    <li>
-        <div class="collapsible-header"><strong>1.4.C: Step Three - Maintain a Target Speed</strong></div>
-        <div class="collapsible-body"><span><p>Currently, your truck simply speeds up, but in the real world -- we have speed limits!</p>
-            <p>For the next step, add a “cruise” behavior for the truck, so that it maintains a certain speed once the truck’s speed reaches the given speed limit</p>        <br>
-            <br>
-            <p><strong>Hints:</strong></p>
-            <ul>
-                <li>- What is the acceleration of the truck when maintaining a specific speed?</li>
-                <li>- You will need to incorporate conditional logic in your code in order to switch behaviors when a certain speed is reached.</li>
-                <li>- Use the Resources section on Conditional Logic as reference!</li>
-            </ul>
-            <br>
-             <p><strong>How long should the truck be in speed up mode before it changes in order to maintain target speed?</strong></p><br>
-              <div class="row">
-                <form class="col s12">
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <textarea id="textarea2" class="materialize-textarea"></textarea>
-                      <label for="textarea2">Insert text here.</label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            <br>
-            <button id="m1t6b" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
-            <label id="m1t6b-label" ></Label>
-        </span>
-        </div>
-    </li>
-    <li>
-        <div class="collapsible-header"><strong>1.4.D: Step Three - Slow Down to a Stop</strong></div>
-        <div class="collapsible-body"><span><p>Your next step will be to slow down starting at a certain distance away from the stop sign. In traffic simulation problems this distance is called the lookahead distance. Let’s call this the “slow down to stop” behavior. To make sure you stop exactly at the stop sign you will have to consider the speed of the truck and the maximum braking acceleration for the truck, which is -4 m/sec per second.</p>        <br>
-            <br>
-            <p><strong>Hints:</strong></p>
-            <ul>
-                <li>- See if you can derive the equation for the lookahead distance given the truck’s velocity and braking acceleration. If you need help, check the resource pages.</li>
-                <li>- Again, you will have to use conditional logic to switch the truck from cruise to the slow down to stop behavior.</li>
-                <li>- Don't forget your graphing tool!</li>
-            </ul>
-            <br>
-             <p><strong>How long does it take the truck to move from the starting position to the stop sign?</strong></p><br>
-              <div class="row">
-                <form class="col s12">
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <textarea id="textarea3" class="materialize-textarea"></textarea>
-                      <label for="textarea3">Insert text here.</label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            <br>
-            <button id="m1t6c" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
-            <label id="m1t6c-label" ></Label>
-        </span>
-        </div>
-    </li>
-    <li>
-        <div class="collapsible-header"><strong>Simulation Video <em>(for Reference)</em></strong></div>
-        <div class="collapsible-body"><span><br>
-            <iframe class="resourseiFrame" width="60%" height="400" src="https://www.youtube.com/embed/jbNHoTl-MLo" frameborder="0" allowfullscreen></iframe>
-            <br>
-        </span>
-        </div>
-    </li>
-</ul>
+<ul>
+    <li><a data-target="modal_1.4.A" class="waves-effect waves-light btn" onclick="open_1_4_A_Modal()">Activity 1.4.A: Step One - Plan Your Model</a>
+        <label id="m1t5a-label" ></Label></li>
 
+    <br>
+    <li><a data-target="modal_1.4.B" class="waves-effect waves-light btn" onclick="open_1_4_B_Modal()">Activity 1.4.B: Step Two - Make the Truck Speed Up</a>
+        <label id="m1t5b-label" ></Label></li>
+    <br>
+    <li><a data-target="modal_1.4.C" class="waves-effect waves-light btn" onclick="open_1_4_C_Modal()">Activity 1.4.C: Step Three - Maintain a Target Speed</a>
+        <label id="m1t5c-label" ></Label></li>
+    <br>
+    <li><a data-target="modal_1.4.D" class="waves-effect waves-light btn" onclick="open_1_4_D_Modal()">Activity 1.4.D: Step Three - Slow Down to a Stop</a>
+        <label id="m1t5d-label" ></Label></li>
+    <br>
+    <li><a data-target="modal_1.4.E" class="waves-effect waves-light btn" onclick="open_1_4_E_Modal()">Simulation Video <em>(for Reference)</em></a>
+        <label id="m1t5e-label" ></Label></li>
+
+</ul>
 <br>
 <div class="container">
     <h5> Helpful Hints <em>(from Resources)</em>:</h5>
@@ -205,5 +115,27 @@
     initTextArea('textarea1');
     initTextArea('textarea2');
     initTextArea('textarea3');
+
+    function open_1_4_A_Modal(){
+        window.parent.$("#1D_truck_stop_1_4_A").appendTo("body").modal('show');
+
+    }
+    function open_1_4_B_Modal(){
+        window.parent.$('#1D_truck_stop_1_4_B').appendTo("body").modal('show');
+
+    }
+    function open_1_4_C_Modal(){
+        window.parent.$('#1D_truck_stop_1_4_C').appendTo("body").modal('show');
+
+    }
+    function open_1_4_D_Modal(){
+        window.parent.$('#1D_truck_stop_1_4_D').appendTo("body").modal('show');
+
+    }
+    function open_1_4_E_Modal(){
+        window.parent.$('#1D_truck_stop_1_4_E').appendTo("body").modal('show');
+
+    }
+
 </script>
 </html>

@@ -10,94 +10,20 @@
 <body>
 <br>
 
-<ul class="collapsible popout" data-collapsible="accordion">
-    <li>
-        <div class="collapsible-header"><strong>Activity 1.4.A - Increasing velocity: make a prediction</strong></div>
-        <div class="collapsible-body"><span><p><strong>Prediction task:</strong></p>
-            <ul>
-                <li>- Using the model planning tool and the simulation blocks, make the sloth move with constant velocity to the right (as you did previously)</li>
-                <li>- Start at position = 0 m; End at position = 10 m; Velocity  = 1 m/s</li>
-                <li>- Imagine the sloth will start at rest (velocity = 0), then increase its velocity by 1 m/s each second.</li>
-                <li>- Predict the sloth’s motion by completing Table 2 and Plot 2 in your paper worksheet. The first couple rows are done as an example.</li>
-            </ul>
-            <br>
-            <p><strong>Hints</strong></p>
-            <ul>
-                <li>- Remember Δt = 1 second.</li>
-                <li>- Use the relation (position change) = (velocity change) * Δt to calculate the sloth’s new position each second.</li>
-            </ul>
-            <br>
-             <p><strong>What is the sloth’s x velocity in m/s and x position be after 5 seconds?  How about after 23 seconds?</strong></p><br>
-              <div class="row">
-                <form class="col s12">
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <textarea id="textarea1" class="materialize-textarea"></textarea>
-                      <label for="textarea1">Insert text here.</label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            <br>
-            <button id="m1t5b" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
-            <label id="m1t5b-label" ></Label>
-        </span>
-        </div>
+<ul>
+    <li><a data-target="modal_1.3.A" class="waves-effect waves-light btn" onclick="open_1_3_A_Modal()">Activity 1.4.A - Increasing velocity: make a prediction</a>
+        <label id="m1t4a-label" ></Label>
     </li>
-    <li>
-        <div class="collapsible-header"><strong>Activity 1.4.B - Build your model: decreasing velocity over time</strong></div>
-        <div class="collapsible-body"><span><p><strong>Program description:</strong></p>
-            <ul>
-                <li>- Build a model where the sloth starts with velocity 4 m/s, and decreases its velocity by 1 m/s each second.</li>
-                <li>- The sloth starts at position = 20 m; Ends when the sloth reaches a velocity of 0 m/s.</li>
-                <li>- Use Δt = 1 second</li>
-            </ul>
-            <br>
-             <p><strong>Run the program and use the “graphing view” buttons to answer the following questions: (1) What is the position of the sloth after 3 seconds? (2) at what time does the sloth cross the 10m mark? </strong></p><br>
-              <div class="row">
-                <form class="col s12">
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <textarea id="textarea2" class="materialize-textarea"></textarea>
-                      <label for="textarea2">Insert text here.</label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            <br>
-            <button id="m1t5e" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
-            <label id="m1t5e-label" ></Label>
-        </span>
-        </div>
+    <br>
+    <li><a data-target="modal_1.3.B" class="waves-effect waves-light btn" onclick="open_1_3_B_Modal()">Activity 1.4.B - Build your model: decreasing velocity over time</a>
+        <label id="m1t4b-label" ></Label>
     </li>
-    <li>
-        <div class="collapsible-header"><strong>Activity 1.4.C - Exploration and Reflection</strong></div>
-        <div class="collapsible-body"><span><p><strong>Exploration:</strong></p>
-            <ul>
-                <li>- Let’s run an experiment, where we try three other values of  Δt, i.e., 0.01s, 0.1s, and 0.5s.  Look at the distance versus time graphs. What is the difference between these graphs, and why do you see this difference?</li>
-            </ul>
-            <br>
-             <p><strong>Try reversing the order of your change position and change velocity blocks. What happens? </strong></p><br>
-              <div class="row">
-                <form class="col s12">
-                  <div class="row">
-                    <div class="input-field col s12">
-                      <textarea id="textarea3" class="materialize-textarea"></textarea>
-                      <label for="textarea3">Insert text here.</label>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            <br>
-            <button id="m1t5f" class="waves-effect waves-light btn submit_solution">SUBMIT SOLUTION</button>
-            <label id="m1t5f-label" ></Label>
-        </span>
-        </div>
+    <br>
+    <li><a data-target="modal_1.3.C" class="waves-effect waves-light btn" onclick="open_1_3_C_Modal()">Activity 1.4.C - Exploration and Reflection</a>
+        <label id="m1t4c-label" ></Label>
     </li>
 
 </ul>
-
-
 <br>
 <div class="container">
 <h5> Helpful Hints <em>(from Resources)</em>:</h5>
@@ -135,53 +61,17 @@
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
 <script>
-    var assessmentData = {
-    };
-    window.parent.c2stem.register_save_data_fetcher("assessmentData", function () {
-        return assessmentData;
-    });
+    function open_1_3_A_Modal(){
+        window.parent.$('#1D_intro_acceleration_1_3_A').appendTo("body").modal('show');
 
-    assessmentData = window.parent.c2stem.userTaskData["assessmentData"];
-    if(assessmentData){
-        for(var id in assessmentData){
-            if(assessmentData.hasOwnProperty(id))
-                $("#" + id + "-label").text("  Last submitted on: " + assessmentData[id]);
-        }
-    }else {
-        assessmentData = {};
     }
+    function open_1_3_B_Modal(){
+        window.parent.$('#1D_intro_acceleration_1_3_B').appendTo("body").modal('show');
 
-    var getTimeString = function () {
-        return new Date().toLocaleDateString()+ " " + new Date().toLocaleTimeString();
     }
+    function open_1_3_C_Modal(){
+        window.parent.$('#1D_intro_acceleration_1_3_C').appendTo("body").modal('show');
 
-    var submitSolution = function(activityID){
-        window.parent.TaskDescriptionActionManger.submitSolution(activityID);
-        assessmentData[activityID] = getTimeString();
-        $("#" + activityID + "-label").text("  Last submitted on: " + assessmentData[activityID]);
     }
-
-    $('.submit_solution').each(function() {
-        console.log(this.id);
-        $("#" + this.id).click(function () {
-            submitSolution( this.id );
-        });
-    });
-
-    function initTextArea(elementID) {
-        $('#' + elementID).on("change", function () {
-            var t = $(this).val();
-            console.log(elementID,"changed, text:", t);
-            assessmentData[elementID] = t;
-            window.parent.AssessmentActionManager.addText(t, elementID);
-        });
-        if(assessmentData.hasOwnProperty(elementID))
-            $('#' + elementID).text(assessmentData[elementID]);
-        else
-            $('#' + elementID).text("");
-    }
-    initTextArea('textarea1');
-    initTextArea('textarea2');
-    initTextArea('textarea3');
 </script>
 </html>
