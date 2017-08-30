@@ -19,3 +19,5 @@ BugReporter.enable = function() {
 
 BugReporter.disable = function() {
 };
+
+BugReporter.enable();
