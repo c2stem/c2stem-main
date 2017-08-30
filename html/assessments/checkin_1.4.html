@@ -207,6 +207,8 @@
         </div>
 
     {{/item2}}
+    <button id="submit-btn" class="waves-effect waves-light btn submit_solution" >SUBMIT SOLUTION</button>
+    <label id="submit-btn-label"></Label></li>
 </script>
 <script>
     assessmentData = window.parent.c2stem.userTaskData["assessmentData"];
@@ -265,6 +267,35 @@
                 }
             }
         }
+        if(assessmentData){
+            if("submissions" in assessmentData) {
+                for (var id in assessmentData.submissions) {
+                    if (assessmentData.submissions.hasOwnProperty(id))
+                        $("#" + id + "-label").text("  Last submitted on: " + assessmentData.submissions[id]);
+                }
+            }
+        }
+
+        var getTimeString = function () {
+            return new Date().toLocaleDateString()+ " " + new Date().toLocaleTimeString();
+        }
+
+        var submitSolution = function(activityID){
+            window.parent.TaskDescriptionActionManger.submitSolution(activityID);
+            if(!("submissions" in assessmentData)){
+                assessmentData.submissions = {};
+            }
+
+            assessmentData.submissions[activityID] = getTimeString();
+            $("#" + activityID + "-label").text("  Last submitted on: " + assessmentData.submissions[activityID]);
+        }
+
+        $('.submit_solution').each(function() {
+//        console.log(this.id);
+            $("#" + this.id).click(function () {
+                submitSolution( this.id );
+            });
+        });
     };
     //4b.function firing
     slingshot('checkin_1.4.json', '#tpl', '#anchor',"updateAssessmentUI()" );
