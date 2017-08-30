@@ -117,16 +117,19 @@ function init_c2stem_server(router, projects, users, studentStatus) {
         res.status(400).send(text);
     }
 
+    // Automatic bug reporting
     var MAINTAINER_EMAIL = process.env.MAINTAINER_EMAIL;
+    if (MAINTAINER_EMAIL) console.log('Bugs will be reported to', MAINTAINER_EMAIL);
+
     router.post('/BugReport', function reportBug(req, res) {
         console.log('received bug', req.body);
         var report = req.body;
 
         // Add the timestamp
         report.timestamp = new Date();
+        report.username = req.session.user;
 
         // Email the bug report
-        console.log('EMAIL', MAINTAINER_EMAIL);
         if (MAINTAINER_EMAIL) {
             var subject = 'Auto Bug Report';
             var body = JSON.stringify(report, null, 2);
