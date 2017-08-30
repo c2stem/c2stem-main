@@ -6,11 +6,10 @@ function C2Stem(snapCloudUrl) {
     this.query = this.parseQueryString();
 };
 
-
-
 C2Stem.prototype.parseAPI = function (src) {
     var api = {},
         services;
+
     services = src.split(" ");
     services.forEach(function (service) {
         var entries = service.split("&"),
@@ -192,6 +191,7 @@ C2Stem.prototype.addSnap1Tab = function (id, name, template, callbackOnLoad) {
     });
 };
 
+// TODO: Check if the snap environment has been loaded
 function on_snap_project_loading_done(ide, snapData, callback) {
     if (snapData != undefined && snapData.indexOf('<snapdata') === 0) {
         ide.rawOpenCloudDataString(snapData);
