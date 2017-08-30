@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 var program = require('commander'),
+    mailer = require('./snap-cloud/src/mailer'),
     version = require('./package.json').version;
 
 function start(options) {
@@ -14,6 +15,7 @@ function start(options) {
         snapCloud = require('./snap-cloud/snap-cloud'),
         MongoClient = require('mongodb').MongoClient;
 
+    // TODO: Disable caching
     MongoClient.connect('mongodb:' + options.mongo, function (err, db) {
         if (err) {
             console.log('Could not connect to MongoDB at ' + options.mongo, err);
@@ -114,6 +116,26 @@ function init_c2stem_server(router, projects, users, studentStatus) {
         debug(text);
         res.status(400).send(text);
     }
+
+    var MAINTAINER_EMAIL = process.env.MAINTAINER_EMAIL;
+    router.post('/BugReport', function reportBug(req, res) {
+        console.log('received bug', req.body);
+        var report = req.body;
+
+        // Add the timestamp
+        report.timestamp = new Date();
+
+        // Email the bug report
+        console.log('EMAIL', MAINTAINER_EMAIL);
+        if (MAINTAINER_EMAIL) {
+            var subject = 'Auto Bug Report';
+            var body = JSON.stringify(report, null, 2);
+            mailer.sendEmail(MAINTAINER_EMAIL, subject, body);
+        } else {
+            console.error('No MAINTAINER_EMAIL set. Skipping bug report email');
+        }
+    });
+
     router.get('/getUserProgress', function rawPublic(req, res) {
         var userName = req.query.Username,
             projectName = req.query.ProjectName,
