@@ -59,7 +59,7 @@
         },
         "maintain_speed": {
           "name": "maintain speed",
-          "elementID": "fly_backward",
+          "elementID": "maintain_speed",
           "selected": false,
           "category": "physics"
         }
