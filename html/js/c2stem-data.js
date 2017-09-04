@@ -3,7 +3,7 @@ C2Stem.prototype.loadHomeData = function (callback) {
         modules: [{
             id: 'training',
             name: "Training",
-            icon: "img/spiral.jpg"
+            icon: "img/training.jpg"
         },{
             id: '1dmotion',
             name: "1D: Land",
