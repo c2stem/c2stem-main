@@ -56,7 +56,7 @@ function start(options) {
                 console.log('received event:', event.namespace);
                 return events.save(event)
                     .then(() => res.sendStatus(200))
-                    .catch(err => console.log("event saving error", err));
+                    .catch(err => console.log("saving to event-logs failed", event));
             });
 
             // Start the server
