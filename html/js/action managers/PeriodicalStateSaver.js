@@ -43,7 +43,7 @@ var autoLog = debounce(function() {
         console.log("SKIPPING LOGGING MODEL STATE AS THE DATA REMAIN UNCHANGED");
     }else{
         lastLoggedData = lg;
-        PeriodicalStateSaver.logModelState(userTaskData);
+        PeriodicalStateSaver.logModelState(lg);
     }
 }, 1000);
 
