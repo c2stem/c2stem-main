@@ -776,11 +776,12 @@
         if (assessmentData) {
             for (var id in assessmentData) {
                 try {
-                    if (assessmentData.hasOwnProperty(id))
+                    if (assessmentData.hasOwnProperty(id)) {
                         var iframe0 = document.getElementById("desc_resourceIframe");
-                    var iframe0document = iframe0.contentDocument || iframe0.contentWindow.document;
-                    var inputIframe = iframe0document.getElementById(id + "-label");
-                    inputIframe.innerHTML = " Last submitted on: " + assessmentData[id];
+                        var iframe0document = iframe0.contentDocument || iframe0.contentWindow.document;
+                        var inputIframe = iframe0document.getElementById(id + "-label");
+                        inputIframe.innerHTML = " Last submitted on: " + assessmentData[id];
+                    }
                 } catch (e) {
                     console.log(e);
                 }
