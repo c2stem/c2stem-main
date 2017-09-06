@@ -338,7 +338,7 @@ C2Stem.prototype.collectUserProgressData = function (saveMedia) {
     saveMedia = saveMedia == undefined ? true : saveMedia;
     var userTaskData = {};
     var i = 0;
-    // console.log(this.saveDataFetchers);
+    console.log("save DATA Fectcher"+this.saveDataFetchers);
     for(; i < this.saveDataFetchers.length; i++){
         f = this.saveDataFetchers[i];
         // console.log(f, "Calling fetcher", f.name);
@@ -355,11 +355,12 @@ C2Stem.prototype.saveUserProgress = function(callback){
     // console.log('saving user progress for task:',c2stem.task_id);
     var cloud = C2StemCloud;
     var userTaskData = this.collectUserProgressData();
+    c2stem.userTaskData = userTaskData;
     var s = JSON.stringify(userTaskData);
     if(!isCurrentWorkingStatusUpdated){
         c2stem.recordCurrentTask();
     }
-    console.log("saving progress data, isNewTask:", c2stem.isNewTask);
+    console.log("saving progress data, isNewTask:", c2stem.isNewTask, "data: ", userTaskData );
     if(c2stem.isNewTask){
         c2stem.recordTaskModified();
     }
