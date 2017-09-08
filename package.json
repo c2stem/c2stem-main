@@ -4,7 +4,8 @@
   "description": "C2STEM main website",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "cd test/; chimp --mocha"
   },
   "bin": {
     "snap-server": "./server.js"
