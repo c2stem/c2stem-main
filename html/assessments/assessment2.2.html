@@ -46,6 +46,31 @@
         </div>
     {{/item1}}
     <hr class="style-two">
+    {{#item2}}
+    <p><strong>{{title}}</strong></p>
+    <div class="shift">
+        <p>{{firstLine}}</p>
+        <p>{{secondLine}}</p>
+        <div class="shift">
+            <ul>
+                <li>{{{thirdLine}}}</li>
+                <li>{{{fourthLine}}}</li>
+                <li>{{{fifthLine}}}</li>
+                <li>{{{sixthLine}}}</li>
+                <li>{{{seventhLine}}}</li>
+                <ul>
+                    <li>{{eigthLine}}</li>
+                    <li>{{ninthLine}}</li>
+                </ul>
+            </ul>
+        </div>
+        <p>{{tenthLine}}</p>
+        <ul>
+            <li>{{eleventhLine}}</li>
+        </ul>
+    </div>
+    {{/item2}}
+    <hr class="style-two">
     <button id="submit-btn" class="waves-effect waves-light btn submit_solution" >SUBMIT SOLUTION</button>
     <label id="submit-btn-label"></Label></li>
 </script>
@@ -54,7 +79,7 @@
     if(!assessmentData){
         assessmentData = {};
     }
-    var url='assessment2.2.json';
+    var url='checkin_2.2.json';
     //4a.function creation
     var slingshot = function (url, tplId, anchor, loaddata) {
         $.getJSON(url, function(data) {
@@ -115,7 +140,7 @@
         });
     };
     //4b.function firing
-    slingshot('assessment2.2.json', '#tpl', '#anchor',"updateAssessmentUI()" );
+    slingshot('checkin_2.2.json', '#tpl', '#anchor',"updateAssessmentUI()" );
 
 </script>
 </body>

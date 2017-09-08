@@ -1,0 +1,31 @@
+{
+  "item1": {
+    "title": "Question 2.1",
+    "firstLine": "An airplane points at an angle of 75 degrees as shown in the figure and flies at a speed of 250m/s in still air. The plane then encounters wind blowing in the x direction at a speed of 10m/s, changing the resultant velocity of the airplane.",
+    "secondLine": "In a simulation of the airplane’s motion, which of the following sets of blocks should be used to set the x and y components of the airplane’s resultant velocity?",
+    "firstImage": "/img/Assessment/2d-Water/checkin_2.2.1.jpg",
+    "firstOption": "/img/Assessment/2d-Water/item2.2.2a.jpg",
+    "secondOption": "/img/Assessment/2d-Water/item2.2.2b.jpg",
+    "thirdOption": "/img/Assessment/2d-Water/item2.2.2c.jpg",
+    "fourthOption": "/img/Assessment/2d-Water/item2.2.2d.jpg",
+    "fifthOption": "/img/Assessment/2d-Water/item2.2.2e.jpg"
+  },
+  "item2": {
+    "title": "Question 2.2",
+    "firstLine": "Ken is taking a one-day road trip. He maintains a speed of 65miles/hour for most of his journey. Ken refuels his car completely before starting. During the trip, Ken takes three road-side stops just off the highway (two 1-hour stops and one 30-minute stop).  He chooses all the stops to be between 1 and 2 miles from the highway so that he can quickly get back on the highway.",
+    "secondLine": "The following procedure helps predict whether Ken will need to refuel the car on the way:",
+    "thirdLine": "Enter total trip distance, assign input to the variable <strong>Trip_Distance</strong>",
+    "fourthLine": "Enter fuel tank capacity, assign input to the variable <strong>Fuel_Tank_Capacity</strong>",
+    "fifthLine": "Enter vehicle miles per gallon, assign input to the variable <strong>Miles_Per_Gallon</strong>",
+    "sixthLine": "Set <strong>Distance_Driven_On_Full_Tank</strong> = <strong>Fuel_Tank_Capacity</strong> * <strong>Miles_Per_Gallon</strong>",
+    "seventhLine": "If (<strong>Distance_Driven_On_Full_Tank < Trip_Distance</strong>)",
+    "eigthLine": "Then (Say: Refuel car before reaching the destination)",
+    "ninthLine": "Else (Say: Refuel car after reaching destination)",
+    "tenthLine": "Indicate whether you believe Ken’s choice of variables and condition for refueling is appropriate:",
+    "eleventhLine": "Determining whether the car will need to be refueled before the end of the trip",
+    "twelfthLine": "YES, APPROPRIATE",
+    "thirteenthLine": "NO, NOT APPROPRIATE",
+    "fourteenthLine": "Use the given procedure to explain your choice."
+
+  }
+}
