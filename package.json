@@ -34,5 +34,14 @@
     "body-parser": "^1.17.1",
     "snap-cloud": "file:snap-cloud"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "chimp": "^0.50.0",
+    "wdio-appium-service": "^0.2.3",
+    "wdio-browserstack-service": "^0.1.12",
+    "wdio-firefox-profile-service": "^0.1.0",
+    "wdio-mocha-framework": "^0.5.11",
+    "wdio-sauce-service": "^0.4.0",
+    "wdio-testingbot-service": "^0.1.7",
+    "webdriverio": "^4.8.0"
+  }
 }
