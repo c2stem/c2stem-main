@@ -179,7 +179,7 @@ function create_new_concept(selected_concept_key, selected_concept, isEnvironmen
     $concept_container.append(html);
 
     if(selected_concept.isSprite){
-        if(selected_concept.isBuiltIn)
+        if(selected_concept.isBuiltIn && selected_concept.sprite_bkup_xml !== null)
             transform_cm.show_concept(selected_concept);
         else{
             if(selected_concept.sprite_bkup_xml !== null)
