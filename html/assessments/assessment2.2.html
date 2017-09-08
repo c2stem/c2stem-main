@@ -51,23 +51,51 @@
     <div class="shift">
         <p>{{firstLine}}</p>
         <p>{{secondLine}}</p>
-        <div class="shift">
+        <div class="doubleShift">
             <ul>
                 <li>{{{thirdLine}}}</li>
                 <li>{{{fourthLine}}}</li>
                 <li>{{{fifthLine}}}</li>
                 <li>{{{sixthLine}}}</li>
                 <li>{{{seventhLine}}}</li>
+                <div class="shift">
                 <ul>
                     <li>{{eigthLine}}</li>
                     <li>{{ninthLine}}</li>
                 </ul>
+                </div>
             </ul>
         </div>
         <p>{{tenthLine}}</p>
-        <ul>
-            <li>{{eleventhLine}}</li>
-        </ul>
+        <div class="doubleShift">
+            <ul>
+                <li>{{eleventhLine}}</li>
+
+            </ul>
+            <div class="shift">
+                <form action="#">
+                    <p>
+                        <input class="with-gap" name="group2" type="radio" id="radio2_2_2_a" />
+                        <label for="radio2_2_2_a">{{twelfthLine}}</label>
+                    </p>
+                    <p>
+                        <input class="with-gap" name="group2" type="radio" id="radio2_2_2_b" />
+                        <label for="radio2_2_2_b">{{thirteenthLine}}</label>
+                    </p>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea id="text2_2_2" class="materialize-textarea textarea1"></textarea>
+                        <label for="text2_2_2">{{fourteenthLine}}</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+
     </div>
     {{/item2}}
     <hr class="style-two">
@@ -90,6 +118,13 @@
         });
     };
 
+    $(document).on('blur', '.textarea1', function () {
+        var id=$(this).attr('id');
+        var value=$(this).val();
+        window.parent.AssessmentActionManager.addText(value, id);
+        assessmentData[id]=value;
+    });
+
     $(document).on('click', "input[type='radio']", function () {var radio_id=$(this).attr('id');
         window.parent.AssessmentActionManager.toggleRadioBttn($(this).attr('id'));
         var length=radio_id.length;
@@ -106,6 +141,8 @@
             if(assessmentData.hasOwnProperty(id)){
                 if(id.startsWith("radio")){
                     $('#' + assessmentData[id]).prop('checked', true);
+                }else{
+                    $('#' + id).val(assessmentData[id]);
                 }
             }
         }

@@ -319,6 +319,10 @@ tr:nth-child(even) {
 .shift{
     padding-left: 30px;
 }
+
+.doubleShift{
+    padding-left: 60px;
+}
 .floatHandle p{
     margin-left: 0;
     margin-right: 0;
