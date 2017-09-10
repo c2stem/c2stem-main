@@ -357,6 +357,12 @@ C2Stem.prototype.saveUserProgress = function(callback){
     var userTaskData = this.collectUserProgressData();
     c2stem.userTaskData = userTaskData;
     var s = JSON.stringify(userTaskData);
+
+
+    if(s.toLowerCase().indexOf('untitled') !== -1 ) {
+        console.log("Corrupted or unwanted snap project, will not save user progress at this point");
+        return;
+    }
     if(!isCurrentWorkingStatusUpdated){
         c2stem.recordCurrentTask();
     }
@@ -369,7 +375,7 @@ C2Stem.prototype.saveUserProgress = function(callback){
         return;
     }
     lastSavedData = s;
-    // console.log("Save user progress, userTaskData:", userTaskData);
+        // console.log("Save user progress, userTaskData:", userTaskData);
     // userTaskData.conceptualModel = concepts;
     // console.log("Save user progress, userTaskData:", userTaskData);
     cloud.saveUserProgress(
