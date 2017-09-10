@@ -1,0 +1,28 @@
+{
+  "item1": {
+    "title": "Question 1.1",
+    "firstLine": "Josh and Kate start walking together from Point A at the same speed of 1.5m/s towards Point C (see figure).",
+    "secondLine": "At Point B, Josh steps onto a moving walkway that is traveling at 1m/s in the direction of Point C. Josh continues walking at his previous pace while on the moving walkway, which takes him all the way to Point C. Kate does not step onto the moving walkway. Instead, she keeps walking at the speed of 1.5m/s till she reaches Point C.",
+    "thirdLine": "Open the given code for “Checkin2.1.1”. The program currently simulates Kate’s motion from Point A to Point C, and simulates Josh’s motion only from Point A to Point B.",
+    "fourthLine": "Complete the procedure called “Set Josh’s resultant velocity” so that the program simulates Josh’s motion on the moving walkway until he reaches Point C.",
+    "fifthLine": "The simulation should stop when Josh reaches Point C.",
+    "firstImage": "/img/Assessment/2d-Water/item2.1.1a.jpg"
+  },
+  "item2": {
+    "title": "Question 1.2",
+    "firstLine": "Use the model you developed in Question 2.1.1 to answer the following question as precisely as possible:",
+    "secondLine": "When Josh is halfway across the walkway, how far away from Josh is Kate?",
+    "thirdLine": "Explain how you arrived at your answer."
+  },
+  "item3": {
+    "title": "Question 1.3",
+    "firstLine": "Two identical boats, Boat A and Boat B, cross a river with the same width at different locations. Boat A crosses the river where the current flows at 3 m/s to the right, while Boat B crosses where the current flows at 5 m/s to the right.",
+    "secondLine": "Both boats point straight across the river and propel themselves at the same maximum speed.",
+    "thirdLine": "Which boat will take longer to cross the river?",
+    "fourthLine": "Boat A will take longer",
+    "fifthLine": "Boat B will take longer",
+    "sixthLine": "The two boats will take the same amount of time to cross",
+    "seventhLine": "Explain your answer:",
+    "firstImage": "/img/Assessment/2d-Water/item2.1.1b.jpg"
+  }
+}

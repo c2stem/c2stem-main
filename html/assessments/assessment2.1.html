@@ -33,13 +33,16 @@
     <p><strong>{{title}}</strong></p>
     <div class="shift">
         <p>{{firstLine}}</p>
-        <p>{{secondLine}}</p>
         <div class="row">
             <form class="col s12">
                 <div class="row">
                     <div class="input-field col s12">
-                        <textarea id="text2_1_2" class="materialize-textarea textarea1"></textarea>
-                        <label for="text2_1_2">{{thirdLine}}</label>
+                        <textarea id="text2_1_2a" class="materialize-textarea textarea1"></textarea>
+                        <label for="text2_1_2a">{{secondLine}}</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea id="text2_1_2b" class="materialize-textarea textarea1"></textarea>
+                        <label for="text2_1_2b">{{thirdLine}}</label>
                     </div>
                 </div>
             </form>
@@ -91,7 +94,7 @@
     if(!assessmentData){
         assessmentData = {};
     }
-    var url='assessment2.1.json';
+    var url='checkin_2.1.json';
     //4a.function creation
     var slingshot = function (url, tplId, anchor, loaddata) {
         $.getJSON(url, function(data) {
@@ -163,7 +166,7 @@
         });
     };
     //4b.function firing
-    slingshot('assessment2.1.json', '#tpl', '#anchor',"updateAssessmentUI()" );
+    slingshot('checkin_2.1.json', '#tpl', '#anchor',"updateAssessmentUI()" );
 </script>
 </body>
 </html>
