@@ -254,6 +254,58 @@ function init_c2stem_server(router, projects, users, studentStatus) {
     });
 
 
+    router.get('/getStudentAssessmentData', function rawPublic(req, res) {
+        var studentList = JSON.parse(req.query.studentList) ;
+
+        console.log("getStudentAssessmentData: " );
+        // console.log(studentList);
+
+
+        var fetchAssessmentData = function (taskFetchList, index) {
+            console.log(taskFetchList.length, "fetchAssessmentData index:", index);
+            console.log(taskFetchList[index]);
+            var taskName = taskFetchList[index].taskName, user = taskFetchList[index].user, task = taskFetchList[index].task;
+            projects.findOne({
+                user: { // HACK: username is sent in lowercase
+                    $regex: new RegExp('^' + user + '$', 'i')
+                },
+                name: taskName
+            }, function (err, doc) {
+                if (err || !doc) {
+                    console.log(err, doc);
+                } else {
+                    debug(user, 'Task found:' , taskName);
+                    if(doc.userTaskData){
+                        var u = JSON.parse(doc.userTaskData);
+                        if(u.assessmentData) {
+                            debug(user, 'Assessment found:' , taskName);
+                            task.assessmentData = u.assessmentData;
+                        }
+                    }
+                }
+                if(index >= taskFetchList.length-1 ){
+                    res.send(JSON.stringify(studentList));
+                }else{
+                    fetchAssessmentData(taskFetchList, index+1);
+                }
+            });
+        };
+
+        var taskFetchList = [];
+        for(var user in studentList){
+            if(studentList.hasOwnProperty(user)){
+                var tasks = studentList[user].tasks;
+                for(var task in tasks){
+                    if(tasks.hasOwnProperty(task)){
+                        taskFetchList.push({taskName:task, user:user, task:tasks[task]});
+                    }
+                }
+            }
+        }
+
+        fetchAssessmentData(taskFetchList, 0);
+    });
+
     router.addSnapApi('recordTaskModified', ['taskID','study'], 'Post', function (req, res) {
         var userName = req.session.user,
             taskID = req.body.taskID,

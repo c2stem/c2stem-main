@@ -538,12 +538,30 @@ C2Stem.prototype.loadModulesState = function (callback) {
     });
 };
 
+C2Stem.prototype.getStudentAssessmentData =function(studentList, callback){
+    var cloud = C2StemCloud;
+    cloud.getData("getStudentAssessmentData", cloud.encodeDict({
+        studentList: JSON.stringify(studentList)
+    }), function (assessmentData) {
+        c2stem.studentAssessmentData = JSON.parse(assessmentData);
+        if(callback)
+            callback(null);
+    }, function (err) {
+        console.log("getStudentAssessmentData err:",err);
+        c2stem.studentAssessmentData = {};
+        if(callback)
+            callback(err);
+    });
+}
+
+
+
 C2Stem.prototype.getStudentStatus =function(study, callback){
     var cloud = C2StemCloud;
     cloud.getData("getStudentStatus", cloud.encodeDict({
         study: study
     }), function (studentStatus) {
-        console.log("StudentStatus:",studentStatus);
+        // console.log("StudentStatus:",studentStatus);
         c2stem.studentsStatus = JSON.parse(studentStatus);
         if(callback)
             callback(null);

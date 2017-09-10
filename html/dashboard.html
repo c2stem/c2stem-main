@@ -13,6 +13,7 @@
     <div class="nav-wrapper c2stem-nav-wrapper">
         <a href="index.html" class="breadcrumb">Home</a>
         <ul class="right">
+            <li><a id="export" href="#">Export</a></li>
             <li><a id="logout" href="login.html">Logout</a></li>
         </ul>
     </div>
@@ -35,90 +36,97 @@
     var c2stem = new C2Stem();
     c2stem.fixupLogoutLink();
     $("#students").hide();
+    $( window ).on( "load", function() {
+        function getActivityDetails(activities) {
+            var html = "<div>Activities submitted: </div>"
+            for (var j in activities) {
+                if (activities.hasOwnProperty(j)) {
+                    var activityString = "";
+                    var numSubmission = 1;
+                    if (activities[j].constructor === Array) {
+                        numSubmission = activities[j].constructor === Array ? activities[j].length : 1;
+                        var ds = "";
+                        var first = true;
+                        for (var d in activities[j]) {
+                            if (activities[j].hasOwnProperty(d)) {
+                                var date = activities[j][d];
+                                var dateString = new Date(date).toLocaleTimeString() + " " + new Date(date).toLocaleDateString();
 
-    function getActivityDetails(activities) {
-        var html = "<div>Activities submitted: </div>"
-        for (var j in activities) {
-            if (activities.hasOwnProperty(j)) {
-                var activityString = "";
-                var numSubmission = 1;
-                if(activities[j].constructor === Array){
-                    numSubmission = activities[j].constructor === Array ? activities[j].length : 1;
-                    var ds = "";
-                    var first = true;
-                    for(var d in activities[j]){
-                        if(activities[j].hasOwnProperty(d)){
-                            var date = activities[j][d];
-                            var dateString = new Date(date).toLocaleTimeString()+ " " + new Date(date).toLocaleDateString();
-
-                            if(first){
-                                ds += `<span>${dateString}</span>`;
-                                first = false;
+                                if (first) {
+                                    ds += `<span>${dateString}</span>`;
+                                    first = false;
+                                }
+                                else
+                                    ds += `<span>${", " + dateString}</span>`;
                             }
-                            else
-                                ds += `<span>${", " + dateString}</span>`;
                         }
+                        activityString += ds;
+                    } else {
+                        var date = activities[j];
+                        var dateString = new Date(date).toLocaleDateString() + " " + new Date(date).toLocaleTimeString();
+                        var ds = `<span>${dateString}</span>`;
+                        activityString += ds;
                     }
-                    activityString += ds;
-                }else{
-                    var date = activities[j];
-                    var dateString = new Date(date).toLocaleDateString()+ " " + new Date(date).toLocaleTimeString();
-                    var ds = `<span>${dateString}</span>`;
-                    activityString += ds;
+                    var activityTitle = j;
+                    var sd = `<div><span style="color:orangered">${activityTitle}</span> - Trials: ${numSubmission}</div>`;
+                    html = html + sd + activityString;
                 }
-                var activityTitle = j;
-                var sd = `<div><span style="color:orangered">${activityTitle}</span> - Trials: ${numSubmission}</div>`;
-                html = html + sd + activityString;
             }
-        }
-        return html;
-    }
-
-    function getStudentDetails(student) {
-        var td = "";
-        for (var key in student.tasks) {
-            td += `<div class="row">`;
-            if (student.tasks.hasOwnProperty(key)) {
-                var t = student.tasks[key];
-                var taskData = c2stem.loadTaskData(t.id);
-                var tn = taskData.name + " (" + taskData.parent.name + ")";
-                td += `<a style="margin-right: 20px" href="task.html?id=${key}&mode=teacher&student=${student.user}">${tn}</a>`;
-                if(Object.keys(student.tasks[key].submitted).length > 0)
-                    td += getActivityDetails(student.tasks[key].submitted);
-//                    td += "Activities submitted: "
-            }
-            td += `</div>`;
+            return html;
         }
 
-        return  td;
-    }
-
-    function getStudentItem(student) {
-        var totalWorking = 0;
-        var currentTask = student.currentTask;
-        var totalSubmitted = 0;
-
-
-        if(student.tasks !== undefined){
-            totalWorking = Object.keys(student.tasks).length;
+        function getStudentDetails(student) {
+            var td = "";
+            var studentTask = {
+                user: student.user,
+                tasks: {}
+            }
             for (var key in student.tasks) {
+                td += `<div class="row">`;
                 if (student.tasks.hasOwnProperty(key)) {
-                    for (var j in student.tasks[key].submitted) {
-                        if (student.tasks[key].submitted.hasOwnProperty(j)) {
-                            totalSubmitted++;
+                    var t = student.tasks[key];
+                    var taskData = c2stem.loadTaskData(t.id);
+                    var tn = taskData.name + " (" + taskData.parent.name + ")";
+
+                    studentTask.tasks[key] = {};
+                    td += `<a style="margin-right: 20px" href="task.html?id=${key}&mode=teacher&student=${student.user}">${tn}</a>`;
+                    if (Object.keys(student.tasks[key].submitted).length > 0)
+                        td += getActivityDetails(student.tasks[key].submitted);
+//                    td += "Activities submitted: "
+                }
+                td += `</div>`;
+                studentTaskList[student.user] = studentTask;
+            }
+
+            return td;
+        }
+
+        function getStudentItem(student) {
+            var totalWorking = 0;
+            var currentTask = student.currentTask;
+            var totalSubmitted = 0;
+
+
+            if (student.tasks !== undefined) {
+                totalWorking = Object.keys(student.tasks).length;
+                for (var key in student.tasks) {
+                    if (student.tasks.hasOwnProperty(key)) {
+                        for (var j in student.tasks[key].submitted) {
+                            if (student.tasks[key].submitted.hasOwnProperty(j)) {
+                                totalSubmitted++;
+                            }
                         }
                     }
                 }
             }
-        }
 
-        if(currentTask !== undefined){
-            var taskData = c2stem.loadTaskData(currentTask);
-            currentTask = taskData.name + " (" + taskData.parent.name + ")";
-        }else{
-            currentTask = "";
-        }
-        return `
+            if (currentTask !== undefined) {
+                var taskData = c2stem.loadTaskData(currentTask);
+                currentTask = taskData.name + " (" + taskData.parent.name + ")";
+            } else {
+                currentTask = "";
+            }
+            return `
             <li>
                 <div class="collapsible-header">
                      <div class="row">
@@ -133,27 +141,42 @@
                 </div>
             </li>
         `;
-    }
+        };
 
-    c2stem.getUserRole(function (err) {
-        if(!err){
-            if(c2stem.userRole.role === "teacher"){
-                $("#students").show();
-                c2stem.getStudentStatus(c2stem.userRole.study, function (err) {
-                    if(!err){
-                        $("#std_total").html(c2stem.studentsStatus.length);
-                        c2stem.studentsStatus.forEach(function (s) {
-                            console.log(s);
-                            $("#students").append(getStudentItem(s));
-                        });
-                    }
-                })
-            }else{
-                $("#students").html("NOT ALLOWED");
-            }
+        function export_assessment_data(studentList) {
+            console.log("studentList:" + studentList);
+            console.log(studentList);
+            c2stem.getStudentAssessmentData(studentList, function (err) {
+                if (!err) {
+                    console.log("StudentAssessmentData: " );
+                    console.log(c2stem.studentAssessmentData);
+                }
+            })
         }
-    })
+        var studentTaskList = {};
+        c2stem.getUserRole(function (err) {
+            if (!err) {
+                if (c2stem.userRole.role === "teacher") {
+                    $("#students").show();
+                    c2stem.getStudentStatus(c2stem.userRole.study, function (err) {
+                        if (!err) {
 
+                            $("#std_total").html(c2stem.studentsStatus.length);
+                            c2stem.studentsStatus.forEach(function (s) {
+//                                console.log(s);
+                                $("#students").append(getStudentItem(s));
+                            });
+                        }
+                    })
+                } else {
+                    $("#students").html("NOT ALLOWED");
+                }
+            }
+        });
 
+        $("#export").click(function () {
+            export_assessment_data(studentTaskList);
+        });
+    });
 </script>
 </html>

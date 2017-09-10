@@ -68,7 +68,7 @@ C2Cloud.prototype.getData = function (
         if(id)
             u = u + '?'
                 + id;
-        console.log("making GET request: ", u);
+        // console.log("making GET request: ", u);
         request.open("GET", u, true);
         request.setRequestHeader(
             "Content-Type",
