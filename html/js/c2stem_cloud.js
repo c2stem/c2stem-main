@@ -52,6 +52,27 @@ C2Cloud.prototype.deleteUserProgress = function (projectName, callBack, errorCal
     );
 };
 
+
+C2Cloud.prototype.getStudentAssessmentData = function (studentList, callBack, errorCall) {
+    var myself = this;
+    c2stem.reconnect(
+        function () {
+            myself.callService(
+                'getStudentAssessmentData',
+                function (response, url) {
+                    callBack.call(null, response, url);
+                },
+                errorCall,
+                [
+                    studentList
+                ]
+            );
+        },
+        errorCall
+    );
+
+};
+
 C2Cloud.prototype.getData = function (
     service,
     id,
@@ -233,7 +254,10 @@ C2Cloud.prototype.callService = function (
                 }
                 if (serviceName === 'getRawProject') {
                     responseList = request.responseText;
-                } else {
+                }else if (serviceName === 'getStudentAssessmentData'){
+                    responseList = request.responseText;
+                }
+                else {
                     responseList = myself.parseResponse(
                         request.responseText
                     );

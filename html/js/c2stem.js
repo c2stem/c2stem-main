@@ -34,6 +34,14 @@ C2Stem.prototype.parseAPI = function (src) {
     return api;
 };
 
+// user name is not stored locally, server checks if connected
+C2Stem.prototype.reconnect = function (callBack, errorCall) {
+    c2stem.login(null, null, null, callBack);
+    // this.login(null, null, null, function (err) {
+    //     callback(err, err ? null : res);
+    // });
+};
+
 C2Stem.prototype.login = function (username, password, remember, callback) {
     var myself = this;
     try {
@@ -546,18 +554,35 @@ C2Stem.prototype.loadModulesState = function (callback) {
 
 C2Stem.prototype.getStudentAssessmentData =function(studentList, callback){
     var cloud = C2StemCloud;
-    cloud.getData("getStudentAssessmentData", cloud.encodeDict({
-        studentList: JSON.stringify(studentList)
-    }), function (assessmentData) {
-        c2stem.studentAssessmentData = JSON.parse(assessmentData);
-        if(callback)
-            callback(null);
-    }, function (err) {
-        console.log("getStudentAssessmentData err:",err);
-        c2stem.studentAssessmentData = {};
-        if(callback)
-            callback(err);
-    });
+    // cloud.getData("getStudentAssessmentData", cloud.encodeDict({
+    //     studentList: JSON.stringify(studentList)
+    // }), function (assessmentData) {
+    //     c2stem.studentAssessmentData = JSON.parse(assessmentData);
+    //     if(callback)
+    //         callback(null);
+    // }, function (err) {
+    //     console.log("getStudentAssessmentData err:",err);
+    //     c2stem.studentAssessmentData = {};
+    //     if(callback)
+    //         callback(err);
+    // });
+
+    cloud.getStudentAssessmentData(
+        JSON.stringify(studentList),
+        function (response) {
+            // console.log("response");
+            // console.log(response);
+            c2stem.studentAssessmentData = JSON.parse(response);
+            if(callback)
+                callback(null);
+        },
+        function (msg) {
+            console.log("getStudentAssessmentData err:",msg);
+            c2stem.studentAssessmentData = {};
+            if(callback)
+                callback(msg);
+        }
+    );
 }
 
 

@@ -253,13 +253,9 @@ function init_c2stem_server(router, projects, users, studentStatus) {
         });
     });
 
-
-    router.get('/getStudentAssessmentData', function rawPublic(req, res) {
-        var studentList = JSON.parse(req.query.studentList) ;
-
+    router.addSnapApi('getStudentAssessmentData', ['studentList'], 'Post', function (req, res) {
+        var studentList = JSON.parse(req.body.studentList);
         console.log("getStudentAssessmentData: " );
-        // console.log(studentList);
-
 
         var fetchAssessmentData = function (taskFetchList, index) {
             console.log(taskFetchList.length, "fetchAssessmentData index:", index);
@@ -284,7 +280,7 @@ function init_c2stem_server(router, projects, users, studentStatus) {
                     }
                 }
                 if(index >= taskFetchList.length-1 ){
-                    res.send(JSON.stringify(studentList));
+                    res.status(200).send(JSON.stringify(studentList));
                 }else{
                     fetchAssessmentData(taskFetchList, index+1);
                 }
@@ -305,6 +301,7 @@ function init_c2stem_server(router, projects, users, studentStatus) {
 
         fetchAssessmentData(taskFetchList, 0);
     });
+
 
     router.addSnapApi('recordTaskModified', ['taskID','study'], 'Post', function (req, res) {
         var userName = req.session.user,
