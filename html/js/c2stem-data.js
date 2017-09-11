@@ -560,7 +560,7 @@ C2Stem.prototype.loadTaskData = function (id, callback) {
             }, {
                 id: 'assess',
                 type: 'snap1',
-                name: 'Task_2.1',
+                name: 'Checkin_2_1_1',
                 template: {
                     user: 'satabdi27',
                     proj: 'AirportTask'

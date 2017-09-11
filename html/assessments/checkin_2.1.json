@@ -3,7 +3,7 @@
     "title": "Question 1.1",
     "firstLine": "Josh and Kate start walking together from Point A at the same speed of 1.5m/s towards Point C (see figure).",
     "secondLine": "At Point B, Josh steps onto a moving walkway that is traveling at 1m/s in the direction of Point C. Josh continues walking at his previous pace while on the moving walkway, which takes him all the way to Point C. Kate does not step onto the moving walkway. Instead, she keeps walking at the speed of 1.5m/s till she reaches Point C.",
-    "thirdLine": "Open the given code for “Checkin2.1.1”. The program currently simulates Kate’s motion from Point A to Point C, and simulates Josh’s motion only from Point A to Point B.",
+    "thirdLine": "Open the given code for “Checkin_2_1_1”. The program currently simulates Kate’s motion from Point A to Point C, and simulates Josh’s motion only from Point A to Point B.",
     "fourthLine": "Complete the procedure called “Set Josh’s resultant velocity” so that the program simulates Josh’s motion on the moving walkway until he reaches Point C.",
     "fifthLine": "The simulation should stop when Josh reaches Point C.",
     "firstImage": "/img/Assessment/2d-Water/item2.1.1a.jpg"
