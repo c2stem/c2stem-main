@@ -219,6 +219,9 @@ function on_snap_project_loading_done(ide, snapData, callback) {
         }
         callback(null);
     } else {
+        console.log("Invalid snap project loaded!");
+        c2stem.isCorruptedProject = true;
+        c2stem.untitled_project_loaded();
         callback('Invalid project');
     }
 }

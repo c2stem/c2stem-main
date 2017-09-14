@@ -55,10 +55,13 @@ var autoSave = debounce(function() {
     c2stem.saveUserProgress();
 }, 2000);
 
-C2StemActions.addEventListener(function (event) {
-    if(event.namespace === 'periodical-state-saver')
-        return;
-    autoLog();
-    autoSave();
-});
+setTimeout(function () {
+    console.log("started PeriodicalStateSaver");
+    C2StemActions.addEventListener(function (event) {
+        if(event.namespace === 'periodical-state-saver')
+            return;
+        autoLog();
+        autoSave();
+    });
+}, 10000);
 
