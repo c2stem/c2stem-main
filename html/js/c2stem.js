@@ -206,6 +206,17 @@ function on_snap_project_loading_done(ide, snapData, callback) {
         if (window.snap.callme) {
             window.snap.callme();
         }
+        parser = new DOMParser();
+        xmlDoc = parser.parseFromString(snapData,"text/xml");
+
+        var snapProjectName = xmlDoc.getElementsByTagName("project")[0].getAttribute("name");
+        // console.log("checking snapProjectName: " + snapProjectName);
+        console.log("snap project loaded:", snapProjectName, ", is it corrupted: " , snapProjectName.toLowerCase() === "untitled");
+        if(snapProjectName.toLowerCase() === "untitled" && c2stem.mode !== "teacher") {
+            console.log("Loaded Corrupted or Unwanted snap project!");
+            c2stem.isCorruptedProject = true;
+            c2stem.untitled_project_loaded();
+        }
         callback(null);
     } else {
         callback('Invalid project');
@@ -367,7 +378,8 @@ C2Stem.prototype.saveUserProgress = function(callback){
     var s = JSON.stringify(userTaskData);
 
 
-    if(s.toLowerCase().indexOf('untitled') !== -1 ) {
+
+    if(c2stem.isCorruptedProject) {
         console.log("Corrupted or unwanted snap project, will not save user progress at this point");
         return;
     }
@@ -714,3 +726,9 @@ C2Stem.prototype.recordCurrentTask = function(callback){
         }
     );
 };
+
+
+C2Stem.prototype.untitled_project_loaded =function(){
+    var modalReload = document.getElementById('modal-reload');
+        modalReload.style.display = "block";
+}
