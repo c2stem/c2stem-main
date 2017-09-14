@@ -153,8 +153,8 @@ function init_c2stem_server(router, projects, users, studentStatus) {
         debug('sessionUserName', sessionUserName);
 
         if (typeof userName !== 'string' ||
-            typeof projectName !== 'string') {Invalid project
-
+            typeof projectName !== 'string') {
+            console.log("Invalid request, username and project name both null");
             sendSnapError(res, 'Invalid request');
         } else {
             debug('Trying to load user version of the project');
