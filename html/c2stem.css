@@ -405,7 +405,7 @@ form p{
 }
 
 
-#mr-reload{
+.mr-reload-button{
     position: relative;
     display: block;
     margin: 0 auto;

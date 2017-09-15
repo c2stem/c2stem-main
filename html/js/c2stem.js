@@ -409,6 +409,13 @@ C2Stem.prototype.saveUserProgress = function(callback){
         },
         function (msg) {
             console.log("User data could not be saved, error:",msg);
+            if(msg === "ERROR: User not logged in"){
+                console.log("taking user to the login page");
+                // c2stem.logout(function (err) {
+                //     window.location.href = "login.html";
+                // });
+                c2stem.relogin();
+            }
         }
     );
 };
@@ -732,6 +739,11 @@ C2Stem.prototype.recordCurrentTask = function(callback){
 
 
 C2Stem.prototype.untitled_project_loaded =function(){
-    var modalReload = document.getElementById('modal-reload');
+    var modalReload = document.getElementById('modal-reload-corrupted');
         modalReload.style.display = "block";
+}
+
+C2Stem.prototype.relogin =function(){
+    var modalReload = document.getElementById('modal-reload-login');
+    modalReload.style.display = "block";
 }

@@ -79,11 +79,13 @@ function init_c2stem_server(router, projects, users, studentStatus) {
             userTaskData = req.body.UserTaskData;
         debug('Save project', userName, projectName);
 
-        if (typeof userName !== 'string' ||
-            typeof projectName !== 'string' ||
+        if( typeof projectName !== 'string' ||
             typeof userTaskData !== 'string') {
             sendSnapError(res, 'Invalid request');
-        } else {
+        }else if (typeof userName !== 'string') {
+            sendSnapError(res, 'User not logged in');
+        }
+        else {
             var fields = {
                 updated: new Date(),
                 userTaskData: userTaskData,

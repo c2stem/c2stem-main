@@ -5,6 +5,12 @@ $( window ).on( "load", function() {
     console.log( "ready!" );
 
     c2stem.loadTaskData(c2stem.query.id, function (err, res) {
+        if(res === null){
+            // c2stem.logout(function (err) {
+            window.location.href = "login.html";
+            // });
+            return;
+        }
         console.log("loading task",res.id);
         c2stem.task_id = res.id;
         c2stem.module_id = res.parent.id;
