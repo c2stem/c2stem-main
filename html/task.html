@@ -564,6 +564,28 @@
             <button id="m1t5e" class="waves-effect waves-light btn" onclick="CloseModal()">CLOSE</button>
         </div>
     </div>
+
+
+    <div id="modal-reload-corrupted" class="modal-reload" class="modal-reload">
+        <!-- Modal content -->
+        <div class="modal-reload-content">
+                <p style="font-size:2em ;" >Failed to load the task properly. Please reload the page.</p>
+                <p style="font-size:1em ;">If the problem persists after few trials of reloading, please Reset the task. Resetting would erase all the progress made on this task.</p>
+            <button class="mr-reload-button waves-effect waves-light btn" onclick="ReloadPage()">Reload</button>
+            <!--<button id="mr-reset" class="waves-effect waves-light btn" onclick="ResetProject()">Reset</button>-->
+        </div>
+    </div>
+
+
+    <div id="modal-reload-login" class="modal-reload" class="modal-reload">
+        <!-- Modal content -->
+        <div class="modal-reload-content">
+            <p style="font-size:2em ;" >Session timed out! You have to login again.</p>
+            <button class="mr-reload-button waves-effect waves-light btn" onclick="loadLoginPage()">Login</button>
+            <!--<button id="mr-reset" class="waves-effect waves-light btn" onclick="ResetProject()">Reset</button>-->
+        </div>
+    </div>
+
 </body>
 
 <script type="text/javascript " src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -618,10 +640,20 @@
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script>
+
+    function loadLoginPage() {
+        window.location.href = "login.html";
+    }
+
+    function ReloadPage() {
+        location.reload();
+    }
+
     $(function () {
         $('.modal').draggable();
         $('.modal').resizable();
     });
+
 
     var current = "none";
     $(".btn-minimize").click(function () {

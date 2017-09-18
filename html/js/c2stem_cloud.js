@@ -186,20 +186,26 @@ C2Cloud.prototype.saveUserProgress = function (projectName, userTaskData, callBa
     userTaskDataString = userTaskData? JSON.stringify(userTaskData): "";
     userTaskDataSize = userTaskDataString? userTaskDataString.length : 0;
 
+    c2stem.reconnect(
+        function () {
 
-    myself.callService(
-        'saveUserProgress',
-        function (response, url) {
-            callBack.call(null, response, url);
+            myself.callService(
+                'saveUserProgress',
+                function (response, url) {
+                    callBack.call(null, response, url);
+                },
+                errorCall,
+                [
+                    projectName,
+                    userTaskDataString,
+                    userTaskDataString? userTaskDataString.length : 0
+                ]
+            );
+
+
         },
-        errorCall,
-        [
-            projectName,
-            userTaskDataString,
-            userTaskDataString? userTaskDataString.length : 0
-        ]
+        errorCall
     );
-
 };
 
 

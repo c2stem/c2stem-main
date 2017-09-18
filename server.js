@@ -79,11 +79,13 @@ function init_c2stem_server(router, projects, users, studentStatus) {
             userTaskData = req.body.UserTaskData;
         debug('Save project', userName, projectName);
 
-        if (typeof userName !== 'string' ||
-            typeof projectName !== 'string' ||
+        if( typeof projectName !== 'string' ||
             typeof userTaskData !== 'string') {
             sendSnapError(res, 'Invalid request');
-        } else {
+        }else if (typeof userName !== 'string') {
+            sendSnapError(res, 'User not logged in');
+        }
+        else {
             var fields = {
                 updated: new Date(),
                 userTaskData: userTaskData,
@@ -154,6 +156,7 @@ function init_c2stem_server(router, projects, users, studentStatus) {
 
         if (typeof userName !== 'string' ||
             typeof projectName !== 'string') {
+            console.log("Invalid request, username and project name both null");
             sendSnapError(res, 'Invalid request');
         } else {
             debug('Trying to load user version of the project');
