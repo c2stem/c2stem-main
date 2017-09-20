@@ -88,7 +88,7 @@ C2Cloud.prototype.getData = function (
         var u = this.url + service;
         if(id)
             u = u + '?'
-                + id;
+                + id + '&t=' + new Date().getTime();
         // console.log("making GET request: ", u);
         request.open("GET", u, true);
         request.setRequestHeader(
@@ -141,7 +141,7 @@ C2Cloud.prototype.loadUserProgress = function (
         request.open(
             "GET", this.url + 'getUserProgress'
             + '?'
-            + id,
+            + id + '&t=' + new Date().getTime(),
             true
         );
         request.setRequestHeader(
@@ -234,7 +234,7 @@ C2Cloud.prototype.callService = function (
     try {
         stickyUrl = this.url +
             '/' +
-            service.url;
+            service.url + '?t=' + new Date().getTime() ;
         request.open(service.method, stickyUrl, true);
         request.withCredentials = true;
         request.setRequestHeader(
