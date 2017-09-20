@@ -41,7 +41,7 @@ C2Cloud.prototype.deleteUserProgress = function (projectName, callBack, errorCal
     var myself = this;
 
     myself.callService(
-        'deleteProject',
+        'deleteUserProgress',
         function (response, url) {
             callBack.call(null, response, url);
         },

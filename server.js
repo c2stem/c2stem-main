@@ -306,6 +306,31 @@ function init_c2stem_server(router, projects, users, studentStatus) {
     });
 
 
+    router.addSnapApi('deleteUserProgress', ['ProjectName'], 'Post', function (req, res) {
+        var userName = req.session.user,
+            projectName = req.body.ProjectName;
+        debug('Deleting user progress', userName, projectName);
+
+        if (typeof userName !== 'string' ||
+            typeof projectName !== 'string') {
+            debug('Deleting user progress: Invalid Request', userName, projectName);
+            sendSnapError(res, 'Invalid request');
+        } else {
+            projects.remove({
+                user: userName,
+                name: projectName
+            }, function (err) {
+                if (err) {
+                    sendSnapError(res, 'Database error');
+                    debug('Deleting user progress: Database error', userName, projectName);
+                } else {
+                    debug('Deleting user progress successful', userName, projectName);
+                    res.sendStatus(200);
+                }
+            });
+        }
+    });
+
     router.addSnapApi('recordTaskModified', ['taskID','study'], 'Post', function (req, res) {
         var userName = req.session.user,
             taskID = req.body.taskID,

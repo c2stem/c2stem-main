@@ -63,5 +63,5 @@ setTimeout(function () {
         autoLog();
         autoSave();
     });
-}, 10000);
+}, 5000);
 
