@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="c2stem.css">
+    <script type="text/javascript" src="http://cdn.rawgit.com/h2non/jsHashes/master/hashes.js"></script>
 </head>
 <body>
 <nav class="c2stem-nav">
@@ -79,6 +80,7 @@
             var td = "";
             var studentTask = {
                 user: student.user,
+                hashID: student.hashID,
                 tasks: {}
             }
             for (var key in student.tasks) {
@@ -101,7 +103,7 @@
             return td;
         }
 
-        function getStudentItem(student) {
+        function getStudentItem(student, MD5) {
             var totalWorking = 0;
             var currentTask = student.currentTask;
             var totalSubmitted = 0;
@@ -126,24 +128,56 @@
             } else {
                 currentTask = "";
             }
-            return `
-            <li>
-                <div class="collapsible-header">
-                     <div class="row">
-                        <div class="col l1" ><p style="font-size: 1.3em;">${student.user}</p></div>
-                        <div class="col l7"><p style="font-size: 1em; padding-top: 3px;">${currentTask}</p></div>
-                        <div class="col l2"><p style="font-size: 1em; padding-top: 3px;">#submitted: ${totalSubmitted}</p></div>
-                        <div class="col l2"><p style="font-size: 1em; padding-top: 3px;">#opened: ${totalWorking}</p></div>
-                      </div>
-                 </div>
-                <div class="collapsible-body">
-                    ${getStudentDetails(student)}
-                </div>
-            </li>
-        `;
+
+
+            if (c2stem.userRole.role === "teacher" ) {
+                return `
+                    <li>
+                        <div class="collapsible-header">
+                             <div class="row">
+                                <div class="col" ><p style="font-size: 1.3em;">${student.user}</p></div>
+                                <div class="col" ><p style="font-size: 1.3em;">${student.hashID}</p></div>
+                                <div class="col"><p style="font-size: 1em; padding-top: 3px;">${currentTask}</p></div>
+                                <div class="col"><p style="font-size: 1em; padding-top: 3px;">#submitted: ${totalSubmitted}</p></div>
+                                <div class="col"><p style="font-size: 1em; padding-top: 3px;">#opened: ${totalWorking}</p></div>
+                              </div>
+                         </div>
+                        <div class="collapsible-body">
+                            ${getStudentDetails(student)}
+                        </div>
+                    </li>
+                `;
+            }else if (c2stem.userRole.role === "researcher"){
+                return `
+                    <li>
+                        <div class="collapsible-header">
+                             <div class="row">
+                                <div class="col" ><p style="font-size: 1.3em;">${student.hashID}</p></div>
+                                <div class="col"><p style="font-size: 1em; padding-top: 3px;">${currentTask}</p></div>
+                                <div class="col"><p style="font-size: 1em; padding-top: 3px;">#submitted: ${totalSubmitted}</p></div>
+                                <div class="col"><p style="font-size: 1em; padding-top: 3px;">#opened: ${totalWorking}</p></div>
+                              </div>
+                         </div>
+                        <div class="collapsible-body">
+                            ${getStudentDetails(student)}
+                        </div>
+                    </li>
+                `;
+            }
+
+
         };
 
         function export_assessment_data(studentList) {
+//            console.log("Student user ids");
+//            var sc = {};
+//            for(var s in studentList){
+//                if(studentList.hasOwnProperty(s)){
+//
+//                    sc[s] = studentList[s].hashID;
+//                }
+//            }
+//            console.log(sc);
             console.log("studentList:" + studentList);
             console.log(studentList);
             c2stem.getStudentAssessmentData(studentList, function (err) {
@@ -156,13 +190,17 @@
         var studentTaskList = {};
         c2stem.getUserRole(function (err) {
             if (!err) {
-                if (c2stem.userRole.role === "teacher") {
+                if(c2stem.userRole.role !== "teacher" )
+                    $("#export").hide();
+
+                if (c2stem.userRole.role === "teacher" || c2stem.userRole.role === "researcher") {
+                    var MD5 = new Hashes.MD5;
                     $("#students").show();
                     c2stem.getStudentStatus(c2stem.userRole.study, function (err) {
                         if (!err) {
-
                             $("#std_total").html(c2stem.studentsStatus.length);
                             c2stem.studentsStatus.forEach(function (s) {
+                                s.hashID = MD5.hex(s.user);
 //                                console.log(s);
                                 $("#students").append(getStudentItem(s));
                             });

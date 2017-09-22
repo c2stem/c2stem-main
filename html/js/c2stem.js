@@ -212,7 +212,7 @@ function on_snap_project_loading_done(ide, snapData, callback) {
         var snapProjectName = xmlDoc.getElementsByTagName("project")[0].getAttribute("name");
         // console.log("checking snapProjectName: " + snapProjectName);
         console.log("snap project loaded:", snapProjectName, ", is it corrupted: " , snapProjectName.toLowerCase() === "untitled");
-        if(snapProjectName.toLowerCase() === "untitled" && c2stem.mode !== "teacher") {
+        if(snapProjectName.toLowerCase() === "untitled" ) {
             console.log("Loaded Corrupted or Unwanted snap project!");
             c2stem.isCorruptedProject = true;
             c2stem.untitled_project_loaded();

@@ -151,7 +151,7 @@
     $("#dashboard").hide();
     c2stem.getUserRole(function (err) {
         if(!err){
-            if(c2stem.userRole.role === "teacher"){
+            if(c2stem.userRole.role === "teacher" || c2stem.userRole.role === "researcher"){
                 $("#dashboard").show();
                 console.log("showing dashboard button");
             }

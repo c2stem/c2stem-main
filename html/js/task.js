@@ -18,7 +18,7 @@ $( window ).on( "load", function() {
         TaskViewActionManger.pageLoaded(c2stem.task_id, c2stem.module_id);
 
 
-        if(c2stem.mode !== null && c2stem.mode === 'teacher')
+        if(c2stem.mode !== null && (c2stem.mode === 'teacher' ))
             $('#reset_to_template').hide();
 
         c2stem.getUserRole(function () {
@@ -27,7 +27,7 @@ $( window ).on( "load", function() {
             }
 
             $("#dashboard").hide();
-            if(c2stem.userRole.role === "teacher"){
+            if(c2stem.userRole.role === "teacher" || c2stem.userRole.role !== 'researcher'){
                 $("#dashboard").show();
             }
 
