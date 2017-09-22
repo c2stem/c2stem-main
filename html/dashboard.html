@@ -14,6 +14,7 @@
     <div class="nav-wrapper c2stem-nav-wrapper">
         <a href="index.html" class="breadcrumb">Home</a>
         <ul class="right">
+            <li><a id="studentIDs" href="#">Student IDs</a></li>
             <li><a id="export" href="#">Export</a></li>
             <li><a id="logout" href="login.html">Logout</a></li>
         </ul>
@@ -168,16 +169,44 @@
 
         };
 
+        function download(filename, text) {
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+
+            element.style.display = 'none';
+            document.body.appendChild(element);
+
+            element.click();
+
+            document.body.removeChild(element);
+        }
+
+        function export_students_ids(studentList) {
+            console.log("Student user ids");
+            var sc = [];
+            for(var s in studentList){
+                if(studentList.hasOwnProperty(s)){
+                    sc.push("\n" + studentList[s].user +  "," + studentList[s].hashID );
+                }
+            }
+            console.log(sc);
+
+            download("user_ids.csv", sc);
+        }
+
         function export_assessment_data(studentList) {
-//            console.log("Student user ids");
-//            var sc = {};
-//            for(var s in studentList){
-//                if(studentList.hasOwnProperty(s)){
-//
-//                    sc[s] = studentList[s].hashID;
-//                }
-//            }
-//            console.log(sc);
+            console.log("Student user ids");
+            var sc = [];
+            for(var s in studentList){
+                if(studentList.hasOwnProperty(s)){
+                    sc.push("\n" + studentList[s].user +  "," + studentList[s].hashID );
+                }
+            }
+            console.log(sc);
+
+            download("user_ids.csv", sc);
+
             console.log("studentList:" + studentList);
             console.log(studentList);
             c2stem.getStudentAssessmentData(studentList, function (err) {
@@ -190,8 +219,10 @@
         var studentTaskList = {};
         c2stem.getUserRole(function (err) {
             if (!err) {
-                if(c2stem.userRole.role !== "teacher" )
+                if(c2stem.userRole.role !== "teacher" ) {
                     $("#export").hide();
+                    $("#studentIDs").hide();
+                }
 
                 if (c2stem.userRole.role === "teacher" || c2stem.userRole.role === "researcher") {
                     var MD5 = new Hashes.MD5;
@@ -214,6 +245,10 @@
 
         $("#export").click(function () {
             export_assessment_data(studentTaskList);
+        });
+
+        $("#studentIDs").click(function () {
+            export_students_ids(studentTaskList);
         });
     });
 </script>
