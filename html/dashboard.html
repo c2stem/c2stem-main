@@ -203,9 +203,9 @@
                     sc.push("\n" + studentList[s].user +  "," + studentList[s].hashID );
                 }
             }
-            console.log(sc);
+            //console.log(sc);
 
-            download("user_ids.csv", sc);
+            //download("user_ids.csv", sc);
 
             console.log("studentList:" + studentList);
             console.log(studentList);
@@ -213,6 +213,7 @@
                 if (!err) {
                     console.log("StudentAssessmentData: " );
                     console.log(c2stem.studentAssessmentData);
+                    c2stem.createCSV(c2stem.studentAssessmentData, studentList);
                 }
             })
         }

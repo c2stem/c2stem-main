@@ -1,5 +1,107 @@
 window.snap = {}
 
+var firstCsvList= [["Question", "Answer",""]];
+var csvRows=[];
+var QuestionSheet={
+    item_1_1_1:"\"a. A sprite travels a distance of 20m at a constant speed of 0.5m/s.In order to program the motion of the sprite, indicate which of the following blocks should be used to initialize the model under the 'When clicked' block (to set the starting values),which should be executed in each simulation step under the 'simulation step' block (to be repeated in each ∆t time step),and which need not be used at all.\"",
+    item_1_1_2a:"\"a. If ∆t is doubled to 0.4 instead of 0.2 in the program, which of the following tables will represent the new simulation data?\"",
+    item_1_1_2b:"\"b. For the given program, we see that at 2 seconds, the x-position of the sprite is 2 meters. When ∆t is doubled to 0.4 instead of 0.2, what will the x-position of the sprite be at 3 seconds? \"",
+    item_1_1_3:"\"A program for simulating the motion of a sprite traveling a distance of 25 meters with a speed of 2 meters/second is initialized. Which of the following code segments correctly models the motion of the sprite at every simulation step?\"",
+    item_1_2_1:"\"Identify the objects that you would need in order to create a simulation for this motion.\"",
+    item_1_2_3a:"\"a.  Which direction does the sprite travel in?\"",
+    item_1_2_3b:"\"b. What is the sprite’s speed while in motion?\"",
+    item_1_2_3c:"\"c. What is the total distance traveled that the sprite will have traveled when the simulation ends?\"",
+    item_1_2_3d:"\"d. For how much time will the sprite have traveled when the simulation ends?\"",
+    item_1_3_1:"\"The given program should simulate the motion of a sprite starting from rest and traveling a distance of 25 meters with an acceleration of 2 m/s per second. Which of the following expressions should be placed in the block in Line 1?\"",
+    item_1_3_2:"\"Which of the following expressions should be placed in the block in Line 2?\"",
+    item_1_4_1a:"\"a.  Based on the graph, determine whether each of the following motion segments is correctly or incorrectly modeled in Sara’s program.\"",
+    item_1_4_1b:"\"b.  Some of the blocks of code in Sara’s model are shown below. Select the blocks that could be causes of errors in Sara’s model. Select all that apply.\"",
+    item_1_4_2a:"\"The original code is modified as shown, setting ∆t to 0.1 instead of 0.5. What would the graph produced by the modified code look like?\"",
+    item_1_4_2b:"\"Explain your choice:\"",
+    item_1_4_2c:"\"Explain how the motion simulation based on the modified code (∆t=0.1) will look different from the motion simulation based on the original code (∆t=0.5):\"",
+    item_1_4_2d:"\"Which of the following blocks of code do you think were modified in the original code to produce the graph shown above? \"",
+    item_1_4_2e:"\"Explain your answer:\"",
+    item_2_1_2a:"\"When Josh is halfway across the walkway, how far away from Josh is Kate?\"",
+    item_2_1_2b:"\"Explain how you arrived at your answer.\"",
+    item_2_1_3a:"\"Which boat will take longer to cross the river?\"",
+    item_2_2_1:"\"In a simulation of the airplane’s motion, which of the following sets of blocks should be used to set the x and y components of the airplane’s resultant velocity?\"",
+    item_2_2_2a:"\"a. Determining whether the car will need to be refueled before the end of the trip\"",
+    item_2_2_2b:"\"Use the given procedure to explain your choice.\"",
+    trainingbasics_1_A:"\"Try changing the values of Delta T - Do you notice any difference when you run the simulation? If so, please describe.\"",
+    trainingbasics_1_B:"\"Describe how you might program the turtle to draw a 20-sided figure:\"",
+    trainingbasics_1_C:"\"In order to draw the circle, which loop structure did you use and why? How many times did your program run through the loop before the circle was drawn?\"",
+    trainingbasics_1_D:"\"What happens to your circle if you change velocity using a negative acceleration?\"",
+    activity_1_1_A:"\"Which control structure did you use to program the sloth (if, if-else, repeat, etc) and why?\"",
+    activity_1_1_B:"\"Make sure the [time in s] variable is selected. Set delta t to .5 and run your program. How long does it take the sloth to complete the journey in seconds?\"",
+    activity_1_1_C:"\"Set the velocity to 4m/s. How much time does it take for the sloth to finish?\"",
+    activity_1_1_D:"\"In your own words, describe what a simulation step is:\"",
+    activity_1_2_B:"\"Without changing the positions of the cones given, how much time does it take to travel from cone1 to cone3?\"",
+    activity_1_2_C:"\"Submit the the speed you used to allow Robbie to cover the distance between cone1 and cone3 in 8 minutes. Use your graph to determine, how long it would take the truck to travel 1.8 m at this speed?  2.2 m?\"",
+    activity_1_3_A:"\"What is the sloth’s x velocity in m/s and x position be after 5 seconds?  How about after 23 seconds?\"",
+    activity_1_3_B:"\"Run the program and use the “graphing view” buttons to answer the following questions: (1) What is the position of the sloth after 3 seconds? (2) at what time does the sloth cross the 10m mark?\"",
+    activity_1_3_C:"\"Try reversing the order of your change position and change velocity blocks. What happens?\"",
+    activity_1_4_B:"\"What is the x velocity of the truck in m/s after 3 seconds?\"",
+    activity_1_4_C:"\"How long should the truck be in speed up mode before it changes in order to maintain target speed?\"",
+    activity_1_4_D:"\"How long does it take the truck to move from the starting position to the stop sign?\"",
+}
+
+var trainingbasicsQuestion={
+    textarea1: QuestionSheet.trainingbasics_1_A, textarea2: QuestionSheet.trainingbasics_1_B, textarea3: QuestionSheet.trainingbasics_1_C, textarea4: QuestionSheet.trainingbasics_1_D
+
+}
+
+var elaborateQuestion={
+    textarea1: QuestionSheet.activity_1_1_A, textarea2: QuestionSheet.activity_1_1_B, textarea3: QuestionSheet.activity_1_1_C, textarea4: QuestionSheet.activity_1_1_D
+}
+
+var constantQuestion={
+    textarea2a: QuestionSheet.activity_1_2_B, textarea2b: QuestionSheet.activity_1_2_C
+}
+
+var liftoffQuestion={
+    textarea3a: QuestionSheet.activity_1_3_A, textarea3b: QuestionSheet.activity_1_3_B, textarea3c: QuestionSheet.activity_1_3_C
+}
+
+var stopQuestion={
+    textarea4a: QuestionSheet.activity_1_4_B, textarea4b: QuestionSheet.activity_1_4_C, textarea4c: QuestionSheet.activity_1_4_D
+}
+
+var checkin1question={
+    radio_1_1_1_a: QuestionSheet.item_1_1_1, radio_1_1_1_b: QuestionSheet.item_1_1_1, radio_1_1_1_c: QuestionSheet.item_1_1_1, radio_1_1_1_d: QuestionSheet.item_1_1_1, radio_1_1_1_e: QuestionSheet.item_1_1_1, radio_1_1_1_f: QuestionSheet.item_1_1_1, radio_1_1_1_g: QuestionSheet.item_1_1_1, radio_1_1_1_h: QuestionSheet.item_1_1_1, radio_1_1_1_i: QuestionSheet.item_1_1_1, radio_1_1_1_j: QuestionSheet.item_1_1_1, radio_1_1_1_k: QuestionSheet.item_1_1_1, radio_1_1_1_l: QuestionSheet.item_1_1_1, radio_1_1_1_m: QuestionSheet.item_1_1_1, radio_1_1_1_n: QuestionSheet.item_1_1_1, radio_1_1_1_o: QuestionSheet.item_1_1_1, radio_1_1_1_p: QuestionSheet.item_1_1_1, radio_1_1_1_q: QuestionSheet.item_1_1_1, radio_1_1_1_r: QuestionSheet.item_1_1_1, radio_1_1_1_s: QuestionSheet.item_1_1_1, radio_1_1_1_t: QuestionSheet.item_1_1_1, radio_1_1_1_u: QuestionSheet.item_1_1_1, radio_1_1_1_v: QuestionSheet.item_1_1_1, radio_1_1_1_w: QuestionSheet.item_1_1_1, radio_1_1_1_x: QuestionSheet.item_1_1_1, radio1_1_2_a: QuestionSheet.item_1_1_2a, radio1_1_2_b: QuestionSheet.item_1_1_2a, radio1_1_2_c: QuestionSheet.item_1_1_2a, radio1_1_2_d: QuestionSheet.item_1_1_2b, radio1_1_2_e: QuestionSheet.item_1_1_2b, radio1_1_2_f: QuestionSheet.item_1_1_2b, text1_1_2_b: QuestionSheet.item_1_1_2b, radio1_1_3_a: QuestionSheet.item_1_1_3, radio1_1_3_b: QuestionSheet.item_1_1_3, radio1_1_3_c: QuestionSheet.item_1_1_3, radio1_1_3_d: QuestionSheet.item_1_1_3, radio1_1_3_e: QuestionSheet.item_1_1_3, radio1_1_3_f: QuestionSheet.item_1_1_3
+}
+
+var checkin2Question={ objects: QuestionSheet.item_1_2_1, radio1_2_3_a: QuestionSheet.item_1_2_3a, radio1_2_3_b: QuestionSheet.item_1_2_3a, radio1_2_3_c: QuestionSheet.item_1_2_3a, radio1_2_3_d: QuestionSheet.item_1_2_3a, text_1_2_3_a: QuestionSheet.item_1_2_3b, text_1_2_3_b: QuestionSheet.item_1_2_3c, text_1_2_3_c: QuestionSheet.item_1_2_3c};
+
+var checkin3Question={ radio1_3_1_a: QuestionSheet.item_1_3_1, radio1_3_1_b: QuestionSheet.item_1_3_1, radio1_3_1_c: QuestionSheet.item_1_3_1, radio1_3_1_d: QuestionSheet.item_1_3_1, radio1_3_1_e: QuestionSheet.item_1_3_1, radio1_3_1_f: QuestionSheet.item_1_3_2, radio1_3_1_g: QuestionSheet.item_1_3_2, radio1_3_1_h: QuestionSheet.item_1_3_2, radio1_3_1_i: QuestionSheet.item_1_3_2, radio1_3_1_j: QuestionSheet.item_1_3_2};
+
+var checkin4Question={ radio_1_4_1a_a: QuestionSheet.item_1_4_1a,
+    radio_1_4_1a_b: QuestionSheet.item_1_4_1a, radio_1_4_1a_c: QuestionSheet.item_1_4_1a, radio_1_4_1a_d: QuestionSheet.item_1_4_1a, radio_1_4_1a_e: QuestionSheet.item_1_4_1a, radio_1_4_1a_f: QuestionSheet.item_1_4_1a, radio_1_4_1a_g: QuestionSheet.item_1_4_1a, radio_1_4_1a_h: QuestionSheet.item_1_4_1a, checkbox1_4_1b_a: QuestionSheet.item_1_4_1b, checkbox1_4_1b_b: QuestionSheet.item_1_4_1b , checkbox1_4_1b_c: QuestionSheet.item_1_4_1b, checkbox1_4_1b_d: QuestionSheet.item_1_4_1b, radio1_4_2a_a: QuestionSheet.item_1_4_2a, radio1_4_2a_b: QuestionSheet.item_1_4_2a, radio1_4_2a_c: QuestionSheet.item_1_4_2a, text_1_4_2a_a: QuestionSheet.item_1_4_2b, text_1_4_2c: QuestionSheet.item_1_4_1a, checkbox1_4_2b_a: QuestionSheet.item_1_4_2d, checkbox1_4_2b_b: QuestionSheet.item_1_4_2d, checkbox1_4_2b_c: QuestionSheet.item_1_4_2d, checkbox1_4_2b_d: QuestionSheet.item_1_4_12d, text_1_4_2b_a: QuestionSheet.item_1_4_2c};
+
+var checkin1answer={
+    radio_1_1_1_a: "Incorrect", radio_1_1_1_b:  "Correct", radio_1_1_1_c:  "Incorrect", radio_1_1_1_d:  "Correct", radio_1_1_1_e:  "Incorrect", radio_1_1_1_f:  "Incorrect", radio_1_1_1_g:  "Incorrect", radio_1_1_1_h:  "Correct", radio_1_1_1_i:  "Incorrect", radio_1_1_1_j:  "Correct", radio_1_1_1_k:  "Incorrect", radio_1_1_1_l:  "Incorrect", radio_1_1_1_m:  "Incorrect", radio_1_1_1_n: "Incorrect", radio_1_1_1_o: "Correct", radio_1_1_1_p: "Incorrect", radio_1_1_1_q: "Correct", radio_1_1_1_r: "Incorrect", radio_1_1_1_s: "Incorrect", radio_1_1_1_t: "Correct", radio_1_1_1_u: "Incorrect", radio_1_1_1_v: "Correct", radio_1_1_1_w: "Incorrect", radio_1_1_1_x: "Incorrect", radio1_1_2_a: "Incorrect", radio1_1_2_b: "Correct", radio1_1_2_c: "Incorrect", radio1_1_2_d: "Incorrect", radio1_1_2_e: "Incorrect", radio1_1_2_f: "Correct", radio1_1_3_a:  "Incorrect", radio1_1_3_b:  "Correct", radio1_1_3_c:  "Incorrect", radio1_1_3_d:  "Incorrect", radio1_1_3_e:  "Incorrect", radio1_1_3_f:  "Incorrect"
+}
+
+var checkin2Answer={  radio1_2_3_a:"Correct", radio1_2_3_b:"Incorrect", radio1_2_3_c:"Incorrect", radio1_2_3_d:"Incorrect"};
+
+var checkin3Answer={ radio1_3_1_a: "Incorrect", radio1_3_1_b:"Incorrect", radio1_3_1_c:"Correct", radio1_3_1_d:"Incorrect", radio1_3_1_e:"Incorrect", radio1_3_1_f:"Incorrect", radio1_3_1_g:"Incorrect", radio1_3_1_h:"Incorrect", radio1_3_1_i:"Incorrect", radio1_3_1_j:"Correct"};
+
+var checkin4Answer={ radio_1_4_1a_a: "Correct",
+    radio_1_4_1a_b:"Incorrect", radio_1_4_1a_c: "Correct", radio_1_4_1a_d:"Incorrect", radio_1_4_1a_e: "Incorrect", radio_1_4_1a_f:"Correct", radio_1_4_1a_g:"Incorrect", radio_1_4_1a_h:"Correct", checkbox1_4_1b_a:"Incorrect", checkbox1_4_1b_b:"Correct", checkbox1_4_1b_c:"Incorrect", checkbox1_4_1b_d:"Correct", radio1_4_2a_a:"Incorrect", radio1_4_2a_b: "Correct", radio1_4_2a_c: "Incorrect", checkbox1_4_2b_a:"Incorrect", checkbox1_4_2b_b:"Incorrect", checkbox1_4_2b_c: "Correct", checkbox1_4_2b_d:"Incorrect"};
+
+//var studentList= [ "abreha_nathan", "kelso_micheal", "jackie"];
+var instructionList= [ "trainingbasics", "checkin1", "constant", "elaborate", "liftoff", "checkin2", "checkin3", "checkin4", "stop"];
+var trainingList=[ "textarea1", "textarea2", "textarea3", "textarea4"];
+var checkin1List={ radio_1_1_1_a:"Under \"When Clicked\"", radio_1_1_1_b:"Under \"Simulation Step\"", radio_1_1_1_c:"Unnecessary block", radio_1_1_1_d:"Under \"When Clicked\"", radio_1_1_1_e:"Under \"Simulation Step\"", radio_1_1_1_f:"Unnecessary block", radio_1_1_1_g:"Under \"When Clicked\"", radio_1_1_1_h:"Under \"Simulation Step\"", radio_1_1_1_i:"Unnecessary block", radio_1_1_1_j:"Under \"When Clicked\"", radio_1_1_1_k:"Under \"Simulation Step\"", radio_1_1_1_l:"Unnecessary block", radio_1_1_1_m:"Under \"When Clicked\"", radio_1_1_1_n:"Under \"Simulation Step\"", radio_1_1_1_o:"Unnecessary block", radio_1_1_1_p:"Under \"When Clicked\"", radio_1_1_1_q:"Under \"Simulation Step\"", radio_1_1_1_r:"Unnecessary block", radio_1_1_1_s:"Under \"When Clicked\"", radio_1_1_1_t:"Under \"Simulation Step\"", radio_1_1_1_u:"Unnecessary block", radio_1_1_1_v:"Under \"When Clicked\"", radio_1_1_1_w:"Under \"Simulation Step\"", radio_1_1_1_x:"Unnecessary block", radio1_1_2_a:"Sprite X Position(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2)", radio1_1_2_b:"Sprite X Position(0, 0.4, 0.8, 1.2, 1.6, 2, 2.4)", radio1_1_2_c:"Sprite X Position(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6)", radio1_1_2_d:"Less than 2 meters", radio1_1_2_e:"More than 2 meters", radio1_1_2_f:"Equal to 2 meters", text1_1_2_b: "text1_1_2_b", radio1_1_3_a:"a", radio1_1_3_b:"b", radio1_1_3_c:"c", radio1_1_3_d:"d", radio1_1_3_e:"e", radio1_1_3_f:"f"};
+var checkin2List={ objects:"", row_1_object:"", row_1_property:"", row_1_behaviour:"", radio1_2_3_a:"", radio1_2_3_b:"", radio1_2_3_c:"", radio1_2_3_d:"", text_1_2_3_a:"", text_1_2_3_b:"", text_1_2_3_c:""};
+var checkin3List={ radio1_3_1_a:"", radio1_3_1_b:"", radio1_3_1_c:"", radio1_3_1_d:"", radio1_3_1_e:"", radio1_3_1_f:"", radio1_3_1_g:"", radio1_3_1_h:"", radio1_3_1_i:"", radio1_3_1_j:""};
+var checkin4List={ radio_1_4_1a_a:"", radio_1_4_1a_b:"", radio_1_4_1a_c:"", radio_1_4_1a_d:"", radio_1_4_1a_e:"", radio_1_4_1a_f:"", radio_1_4_1a_g:"", radio_1_4_1a_h:"", checkbox1_4_1b_a:"", checkbox1_4_1b_b :"", checkbox1_4_1b_c:"", checkbox1_4_1b_d:"", radio1_4_2a_a:"", radio1_4_2a_b:"", radio1_4_2a_c:"", text_1_4_2a_a:"", text_1_4_2a_b:"", checkbox1_4_2b_a:"", checkbox1_4_2b_b:"", checkbox1_4_2b_c:"", checkbox1_4_2b_d:"", text_1_4_2b_a:""};
+var elaborate=["textarea1", "textarea2", "textarea3", "textarea4"];
+var constant=["textarea2a", "textarea2b"];
+var liftoff=["textarea3a", "textarea3b", "textarea3c"];
+var stop=["textarea4a", "textarea4b", "textarea4c"];
+var studentName;
+var questionTracker="first";
+
 function C2Stem(snapCloudUrl) {
     this.snapCloudUrl = snapCloudUrl || "";
     this.withCredentials = false;
@@ -746,4 +848,154 @@ C2Stem.prototype.untitled_project_loaded =function(){
 C2Stem.prototype.relogin =function(){
     var modalReload = document.getElementById('modal-reload-login');
     modalReload.style.display = "block";
+}
+
+C2Stem.prototype.createCSV=function(data, studentList){
+    for(var stu in studentList){
+        studentName= studentList[stu];
+        firstCsvList.push(studentName);
+        var Q=data[studentName];
+        var A=Q.tasks;
+        for(var inst in instructionList){
+            var instruction= instructionList[inst];
+            if( instruction in A){
+                var specificInst=A[instruction].assessmentData;
+                switch(instruction){
+
+                    case "trainingbasics":
+                        for(var obj in trainingList){
+                            if( trainingList[obj] in specificInst){
+                                console.log(trainingbasicsQuestion[trainingList[obj]]);
+                                var element=trainingbasicsQuestion[trainingList[obj]];
+                                console.log(element);
+                                firstCsvList.push([trainingbasicsQuestion[trainingList[obj]], specificInst[trainingList[obj]]]);
+                            }
+                        }
+                        break;
+                    case "checkin1":
+                        for(var obj in checkin1List){
+                            if( obj in specificInst){
+                                if(questionTracker===checkin1question[obj]){
+                                    if(obj.includes("text")){
+                                        firstCsvList.push(["same Question" , specificInst[checkin1List[obj]], ""]);
+                                    }else{
+                                        firstCsvList.push(["same Question" , checkin1List[obj], checkin1answer[obj]]);
+                                    }
+                                }else{
+                                    if(obj.includes("text")){
+                                        firstCsvList.push([checkin1question[obj] , specificInst[checkin1List[obj]], ""]);
+                                    }else{
+                                        firstCsvList.push([checkin1question[obj] , checkin1List[obj], checkin1answer[obj]]);
+                                    }
+                                }
+                                questionTracker=checkin1question[obj];
+                            }
+                        }
+                        break;
+                    case "checkin2":
+                        for(var obj in checkin2List){
+                            if( obj in specificInst){
+
+                                if(questionTracker===checkin1question[obj]){
+                                    if(obj.includes("text")){
+                                        firstCsvList.push([checkin2Question[obj] , specificInst[checkin2List[obj]], ""]);
+                                    }else{
+                                        firstCsvList.push([checkin2Question[obj]  , specificInst[checkin2List[obj]], checkin2Answer[obj]]);
+                                    }
+                                }else{
+                                    if(obj.includes("text")){
+                                        firstCsvList.push([checkin2Question[obj] , specificInst[checkin2List[obj]], ""]);
+                                    }else{
+                                        firstCsvList.push([checkin2Question[obj]  , specificInst[checkin2List[obj]], checkin2Answer[obj]]);
+                                    }
+                                }
+                                questionTracker=checkin1question[obj];
+                            }
+                        }
+                        break;
+                    case "checkin3":
+                        for(var obj in checkin3List){
+                            if( obj in specificInst){
+                                if(questionTracker===checkin1question[obj]){
+                                    if(obj.includes("text")){
+                                        firstCsvList.push([checkin3Question[obj] , specificInst[checkin3List[obj]], ""]);
+                                    }else{
+                                        firstCsvList.push([checkin3Question[obj]  , specificInst[checkin3List[obj]], checkin3Answer[obj]]);
+                                    }
+                                }else{
+                                    if(obj.includes("text")){
+                                        firstCsvList.push([checkin3Question[obj] , specificInst[checkin3List[obj]], ""]);
+                                    }else{
+                                        firstCsvList.push([checkin3Question[obj]  , specificInst[checkin3List[obj]], checkin3Answer[obj]]);
+                                    }
+                                }
+                                questionTracker=checkin1question[obj];
+                            }
+                        }
+                        break;
+                    case "checkin4":
+                        for(var obj in checkin4List){
+                            if( checkin4List[obj] in specificInst){
+                                if(questionTracker===checkin1question[obj]){
+                                    if(obj.includes("text")){
+                                        firstCsvList.push([checkin4Question[obj] , specificInst[checkin4List[obj]], ""]);
+                                    }else{
+                                        firstCsvList.push([checkin4Question[obj]  , specificInst[checkin4List[obj]], checkin4Answer[obj]]);
+                                    }
+                                }else{
+
+                                    if(obj.includes("text")){
+                                        firstCsvList.push([checkin4Question[obj] , specificInst[checkin4List[obj]], ""]);
+                                    }else{
+                                        firstCsvList.push([checkin4Question[obj]  , specificInst[checkin4List[obj]], checkin4Answer[obj]]);
+                                    }
+                                }
+                                questionTracker=checkin1question[obj];
+                            }
+                        }
+                        break;
+
+                    case "constant":
+                        for(var obj in constant){
+                            if( constant[obj] in specificInst){
+                                firstCsvList.push([constantQuestion[constant[obj]],  specificInst[constant[obj]]]);
+                            }
+                        }
+                        break;
+                    case "elaborate":
+                        for(var obj in elaborate){
+                            if( elaborate[obj] in specificInst){
+                                firstCsvList.push([elaborateQuestion[elaborate[obj]]  ,  specificInst[elaborate[obj]]]);
+                            }
+                        }
+                        break;
+                    case "liftoff":
+                        for(var obj in liftoff){
+                            if( liftoff[obj] in specificInst){
+                                firstCsvList.push([liftoffQuestion[liftoff[obj]] ,  specificInst[elaborate[obj]]]);
+                            }
+                        }
+                        break;
+
+                    case "stop":
+                        for(var obj in stop){
+                            if( stop[obj] in specificInst){
+                                firstCsvList.push([stopQuestion[stop[obj]],  specificInst[elaborate[obj]]]);
+                            }
+                        }
+                        break;
+                }
+            }
+        }
+        firstCsvList.push('\n');
+
+    }
+    csvRows=firstCsvList.join('\n');
+    function downloadCS(){
+        var a         =  document.getElementById('a');
+        a.href        = 'data:attachment/csv,' + encodeURI(csvRows);
+        a.target      = '_blank';
+        a.download    = 'myFile.csv';
+    }
+
 }
