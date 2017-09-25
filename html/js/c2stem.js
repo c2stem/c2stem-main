@@ -852,140 +852,543 @@ C2Stem.prototype.relogin =function(){
 
 C2Stem.prototype.createCSV=function(data, studentList){
     for(var stu in studentList){
-        studentName= studentList[stu];
+        if(studentList[stu]){
+            studentName= studentList[stu];
+            console.log("studentList[stu]");
+        }else if(studentList.stu){
+            studentName= studentList.stu;
+            console.log("studentList.stu");
+        }else if(studentList["stu"]){
+            studentName= studentList["stu"];
+            console.log("studentList[\"stu\"]");
+        }
         firstCsvList.push(studentName);
-        var Q=data[studentName];
-        console.log("Q"+ Q);
-        console.log("Q tasks"+ Q[tasks]);
-        var A=Q.tasks;
-
+        var Q;
+        if(data[studentName]){
+            Q=data[studentName];
+            console.log("data[studentName]");
+        }else if(data.studentName){
+            Q=data.studentName;
+            console.log("data.studentName");
+        }else if(data["studentName"]){
+            Q=data["studentName"];
+            console.log("data[\"studentName\"]");
+        }
+        var A;
+        if(Q.tasks){
+            A=Q.tasks;
+            console.log("Q.tasks");
+        }else if(Q[tasks]){
+            A=Q[tasks];
+            console.log("Q[tasks]");
+        }else if(Q["tasks"]){
+            A=Q["tasks"];
+            console.log("Q[\"tasks\"]");
+        }
         for(var inst in instructionList){
-            var instruction= instructionList[inst];
-            console.log("instruction"+ instruction);
+            var instruction;
+            if(instructionList[inst]){
+                instruction= instructionList[inst];
+                console.log("instructionList[inst]");
+            }else if(instructionList.inst){
+                instruction= instructionList.inst;
+                console.log("instructionList.inst");
+            }else if(instructionList["inst"]){
+                instruction= instructionList["inst"];
+                console.log("instructionList[\"inst\"]");
+            }
             if( instruction in A){
-                console.log("specific"+ A[instruction][assessmentData]);
-                var specificInst=A[instruction].assessmentData;
+                var instruct;
+                if(A[instruction]){
+                    instruct= A[instruction];
+                    console.log("A[instruction]");
+                }else if(A.instruction){
+                    instruct= A.instruction;
+                    console.log("A.instruction");
+                }else if(A["instruction"]){
+                    instruct= A["instruction"];
+                    console.log("A[\"instruction\"]");
+                }
+
+                var specificInst;
+                if(instruct.assessmentData){
+                    specificInst=instruct.assessmentData;
+                    console.log("instruct.assessmentData");
+                }else if(instruct[assessmentData]){
+                    specificInst=instruct[assessmentData];
+                    console.log("instruct[assessmentData]");
+                }else if(instruct["assessmentData"]){
+                    specificInst= instruct["assessmentData"];
+                    console.log("instruct[\"assessmentData\"]");
+                }
+
                 switch(instruction){
 
                     case "trainingbasics":
                         for(var obj in trainingList){
-                            if( trainingList[obj] in specificInst){
-                                console.log(trainingbasicsQuestion[trainingList[obj]]);
-                                var element=trainingbasicsQuestion[trainingList[obj]];
-                                console.log(element);
-                                firstCsvList.push([trainingbasicsQuestion[trainingList[obj]], specificInst[trainingList[obj]]]);
+                            var train;
+                            if(trainingList[obj] ){
+                                train= trainingList[obj] ;
+                                console.log("trainingList[obj] ");
+                            }else if(trainingList.obj ){
+                                train= trainingList.obj ;
+                                console.log("trainingList.obj");
+                            }else if(trainingList["obj"] ){
+                                train= trainingList["obj"] ;
+                                console.log("trainingList[\"obj\"]");
+                            }
+                            if( train in specificInst){
+                                var quest;
+                                var answ;
+                                if(trainingbasicsQuestion[train]){
+                                    quest= trainingbasicsQuestion[train] ;
+                                    console.log("trainingbasicsQuestion[train]");
+                                }else if(trainingbasicsQuestion.train){
+                                    quest= trainingbasicsQuestion.train ;
+                                    console.log("trainingbasicsQuestion.train");
+                                }else if(trainingbasicsQuestion["train"]){
+                                    quest= trainingbasicsQuestion["train"] ;
+                                    console.log("trainingbasicsQuestion[\"train\"]");
+                                }
+
+                                if(specificInst[train]){
+                                    answ= specificInst[train] ;
+                                    console.log("specificInst[train]");
+                                }else if(specificInst.train){
+                                    answ= specificInst.train ;
+                                    console.log("specificInst.train");
+                                }else if(specificInst["train"]){
+                                    answ= specificInst["train"] ;
+                                    console.log("specificInst[\"train\"]");
+                                }
+
+                                firstCsvList.push([quest, answ]);
                             }
                         }
                         break;
                     case "checkin1":
                         for(var obj in checkin1List){
-                            if( obj in specificInst){
-                                if(questionTracker===checkin1question[obj]){
+                             var answ;
+                            if(checkin1List[obj] ){
+                                answ= checkin1List[obj] ;
+                                console.log("checkin1List[obj] ");
+                            }else if(checkin1List.obj ){
+                                answ= checkin1List.obj ;
+                                console.log("checkin1List.obj");
+                            }else if(checkin1List["obj"] ){
+                                answ= checkin1List["obj"] ;
+                                console.log("checkin1List[\"obj\"]");
+                            }
+
+                            if( answ in specificInst){
+                                var quest, grade, specificAnswer;
+                                if(specificInst[answ]){
+                                    specificAnswer= specificInst[answ] ;
+                                    console.log("specificInst[answ]");
+                                }else if(specificInst.answ){
+                                    specificAnswer= specificInst.answ;
+                                    console.log("specificInst.answ");
+                                }else if(specificInst["answ"]){
+                                    specificAnswer= specificInst["answ"] ;
+                                    console.log("specificInst[\"answ\"]");
+                                }
+
+                                if(checkin1question[obj] ){
+                                    quest= checkin1question[obj] ;
+                                    console.log("checkin1question[obj] ");
+                                }else if(checkin1question.obj ){
+                                    quest= checkin1question.obj ;
+                                    console.log("checkin1question.obj");
+                                }else if(checkin1question["obj"] ){
+                                    quest= checkin1question["obj"] ;
+                                    console.log("checkin1question[\"obj\"]");
+                                }
+
+                                if(checkin1answer[obj] ){
+                                    grade= checkin1answer[obj] ;
+                                    console.log("checkin1answer[obj] ");
+                                }else if(checkin1answer.obj ){
+                                    grade= checkin1answer.obj ;
+                                    console.log("checkin1answer.obj");
+                                }else if(checkin1answer["obj"] ){
+                                    grade= checkin1answer["obj"] ;
+                                    console.log("checkin1answer[\"obj\"]");
+                                }
+
+                                if(questionTracker===quest){
                                     if(obj.includes("text")){
-                                        firstCsvList.push(["same Question" , specificInst[checkin1List[obj]], ""]);
+                                        firstCsvList.push(["same Question" , specificAnswer, ""]);
                                     }else{
-                                        firstCsvList.push(["same Question" , checkin1List[obj], checkin1answer[obj]]);
+                                        firstCsvList.push(["same Question" , answ, grade]);
                                     }
                                 }else{
                                     if(obj.includes("text")){
-                                        firstCsvList.push([checkin1question[obj] , specificInst[checkin1List[obj]], ""]);
+                                        firstCsvList.push([quest , specificAnswer, ""]);
                                     }else{
-                                        firstCsvList.push([checkin1question[obj] , checkin1List[obj], checkin1answer[obj]]);
+                                        firstCsvList.push([quest, answ, grade]);
                                     }
                                 }
-                                questionTracker=checkin1question[obj];
+                                questionTracker=quest;
                             }
                         }
                         break;
                     case "checkin2":
                         for(var obj in checkin2List){
-                            if( obj in specificInst){
+                            var answ;
+                            if(checkin2List[obj] ){
+                                answ= checkin2List[obj] ;
+                                console.log("checkin2List[obj] ");
+                            }else if(checkin2List.obj ){
+                                answ= checkin2List.obj ;
+                                console.log("checkin2List.obj");
+                            }else if(checkin2List["obj"] ){
+                                answ= checkin2List["obj"] ;
+                                console.log("checkin2List[\"obj\"]");
+                            }
+                            if( answ in specificInst){
+                                var quest, grade, specificAnswer;
 
-                                if(questionTracker===checkin1question[obj]){
+
+                                if(specificInst[answ]){
+                                    specificAnswer= specificInst[answ] ;
+                                    console.log("specificInst[answ]");
+                                }else if(specificInst.answ){
+                                    specificAnswer= specificInst.answ;
+                                    console.log("specificInst.answ");
+                                }else if(specificInst["answ"]){
+                                    specificAnswer= specificInst["answ"] ;
+                                    console.log("specificInst[\"answ\"]");
+                                }
+
+                                if(checkin2Question[obj] ){
+                                    quest= checkin2Question[obj] ;
+                                    console.log("checkin2Question[obj] ");
+                                }else if(checkin2Question.obj ){
+                                    quest= checkin2Question.obj ;
+                                    console.log("checkin2Question.obj");
+                                }else if(checkin2Question["obj"] ){
+                                    quest= checkin2Question["obj"] ;
+                                    console.log("checkin2Question[\"obj\"]");
+                                }
+
+                                if(checkin2Answer[obj] ){
+                                    grade= checkin2Answer[obj] ;
+                                    console.log("checkin2Answer[obj] ");
+                                }else if(checkin2Answer.obj ){
+                                    grade= checkin2Answer.obj ;
+                                    console.log("checkin2Answer.obj");
+                                }else if(checkin2Answer["obj"] ){
+                                    grade= checkin2Answer["obj"] ;
+                                    console.log("checkin2Answer[\"obj\"]");
+                                }
+                                if(questionTracker===quest){
                                     if(obj.includes("text")){
-                                        firstCsvList.push([checkin2Question[obj] , specificInst[checkin2List[obj]], ""]);
+                                        firstCsvList.push(["same Question" , specificAnswer, ""]);
                                     }else{
-                                        firstCsvList.push([checkin2Question[obj]  , specificInst[checkin2List[obj]], checkin2Answer[obj]]);
+                                        firstCsvList.push(["same Question" , answ, grade]);
                                     }
                                 }else{
                                     if(obj.includes("text")){
-                                        firstCsvList.push([checkin2Question[obj] , specificInst[checkin2List[obj]], ""]);
+                                        firstCsvList.push([quest , specificAnswer, ""]);
                                     }else{
-                                        firstCsvList.push([checkin2Question[obj]  , specificInst[checkin2List[obj]], checkin2Answer[obj]]);
+                                        firstCsvList.push([quest, answ, grade]);
                                     }
                                 }
-                                questionTracker=checkin1question[obj];
+                                questionTracker=quest;
                             }
                         }
                         break;
                     case "checkin3":
                         for(var obj in checkin3List){
-                            if( obj in specificInst){
-                                if(questionTracker===checkin1question[obj]){
+                            var answ;
+                            if(checkin3List[obj] ){
+                                answ= checkin3List[obj] ;
+                                console.log("checkin3List[obj] ");
+                            }else if(checkin3List.obj ){
+                                answ= checkin3List.obj ;
+                                console.log("checkin3List.obj");
+                            }else if(checkin3List["obj"] ){
+                                answ= checkin3List["obj"] ;
+                                console.log("checkin3List[\"obj\"]");
+                            }
+
+                            if( answ in specificInst){
+                                var quest, grade, specificAnswer;
+
+                                if(specificInst[answ]){
+                                    specificAnswer= specificInst[answ] ;
+                                    console.log("specificInst[answ]");
+                                }else if(specificInst.answ){
+                                    specificAnswer= specificInst.answ;
+                                    console.log("specificInst.answ");
+                                }else if(specificInst["answ"]){
+                                    specificAnswer= specificInst["answ"] ;
+                                    console.log("specificInst[\"answ\"]");
+                                }
+
+                                if(checkin3Question[obj] ){
+                                    quest= checkin3Question[obj] ;
+                                    console.log("checkin3Question[obj] ");
+                                }else if(checkin3Question.obj ){
+                                    quest= checkin3Question.obj ;
+                                    console.log("checkin3Question.obj");
+                                }else if(checkin3Question["obj"] ){
+                                    quest= checkin3Question["obj"] ;
+                                    console.log("checkin3Question[\"obj\"]");
+                                }
+
+                                if(checkin3Answer[obj] ){
+                                    grade= checkin3Answer[obj] ;
+                                    console.log("checkin3Answer[obj] ");
+                                }else if(checkin3Answer.obj ){
+                                    grade= checkin3Answer.obj ;
+                                    console.log("checkin3Answer.obj");
+                                }else if(checkin3Answer["obj"] ){
+                                    grade= checkin3Answer["obj"] ;
+                                    console.log("checkin3Answer[\"obj\"]");
+                                }
+
+                                if(questionTracker===quest){
                                     if(obj.includes("text")){
-                                        firstCsvList.push([checkin3Question[obj] , specificInst[checkin3List[obj]], ""]);
+                                        firstCsvList.push(["same Question" , specificAnswer, ""]);
                                     }else{
-                                        firstCsvList.push([checkin3Question[obj]  , specificInst[checkin3List[obj]], checkin3Answer[obj]]);
+                                        firstCsvList.push(["same Question" , answ, grade]);
                                     }
                                 }else{
                                     if(obj.includes("text")){
-                                        firstCsvList.push([checkin3Question[obj] , specificInst[checkin3List[obj]], ""]);
+                                        firstCsvList.push([quest , specificAnswer, ""]);
                                     }else{
-                                        firstCsvList.push([checkin3Question[obj]  , specificInst[checkin3List[obj]], checkin3Answer[obj]]);
+                                        firstCsvList.push([quest, answ, grade]);
                                     }
                                 }
-                                questionTracker=checkin1question[obj];
+                                questionTracker=quest;
                             }
                         }
                         break;
                     case "checkin4":
                         for(var obj in checkin4List){
-                            if( checkin4List[obj] in specificInst){
-                                if(questionTracker===checkin1question[obj]){
+                            var answ;
+                            if(checkin4List[obj] ){
+                                answ= checkin4List[obj] ;
+                                console.log("checkin4List[obj] ");
+                            }else if(checkin4List.obj ){
+                                answ= checkin4List.obj ;
+                                console.log("checkin4List.obj");
+                            }else if(checkin4List["obj"] ){
+                                answ= checkin4List["obj"] ;
+                                console.log("checkin4List[\"obj\"]");
+                            }
+
+                            if( answ in specificInst){
+                                var quest, grade, specificAnswer;
+
+                                if(specificInst[answ]){
+                                    specificAnswer= specificInst[answ] ;
+                                    console.log("specificInst[answ]");
+                                }else if(specificInst.answ){
+                                    specificAnswer= specificInst.answ;
+                                    console.log("specificInst.answ");
+                                }else if(specificInst["answ"]){
+                                    specificAnswer= specificInst["answ"] ;
+                                    console.log("specificInst[\"answ\"]");
+                                }
+
+                                if(checkin4Question[obj] ){
+                                    quest= checkin4Question[obj] ;
+                                    console.log("checkin4Question[obj] ");
+                                }else if(checkin4Question.obj ){
+                                    quest= checkin4Question.obj ;
+                                    console.log("checkin4Question.obj");
+                                }else if(checkin4Question["obj"] ){
+                                    quest= checkin4Question["obj"] ;
+                                    console.log("checkin4Question[\"obj\"]");
+                                }
+
+                                if(checkin4Answer[obj] ){
+                                    grade= checkin4Answer[obj] ;
+                                    console.log("checkin4Answer[obj] ");
+                                }else if(checkin4Answer.obj ){
+                                    grade= checkin4Answer.obj ;
+                                    console.log("checkin4Answer.obj");
+                                }else if(checkin4Answer["obj"] ){
+                                    grade= checkin4Answer["obj"] ;
+                                    console.log("checkin4Answer[\"obj\"]");
+                                }
+
+
+                                if(questionTracker===quest){
                                     if(obj.includes("text")){
-                                        firstCsvList.push([checkin4Question[obj] , specificInst[checkin4List[obj]], ""]);
+                                        firstCsvList.push(["same Question" , specificAnswer, ""]);
                                     }else{
-                                        firstCsvList.push([checkin4Question[obj]  , specificInst[checkin4List[obj]], checkin4Answer[obj]]);
+                                        firstCsvList.push(["same Question" , answ, grade]);
                                     }
                                 }else{
-
                                     if(obj.includes("text")){
-                                        firstCsvList.push([checkin4Question[obj] , specificInst[checkin4List[obj]], ""]);
+                                        firstCsvList.push([quest , specificAnswer, ""]);
                                     }else{
-                                        firstCsvList.push([checkin4Question[obj]  , specificInst[checkin4List[obj]], checkin4Answer[obj]]);
+                                        firstCsvList.push([quest, answ, grade]);
                                     }
                                 }
-                                questionTracker=checkin1question[obj];
+                                questionTracker=quest;
                             }
                         }
                         break;
 
                     case "constant":
                         for(var obj in constant){
-                            if( constant[obj] in specificInst){
-                                firstCsvList.push([constantQuestion[constant[obj]],  specificInst[constant[obj]]]);
+                            var con;
+                            if(constant[obj] ){
+                                con= constant[obj] ;
+                                console.log("constant[obj] ");
+                            }else if(constant.obj ){
+                                con= constant.obj ;
+                                console.log("constant.obj");
+                            }else if(constant["obj"] ){
+                                con= constant["obj"] ;
+                                console.log("constant[\"obj\"]");
+                            }
+                            if( con in specificInst){
+                                var answ, quest;
+                                if(specificInst[con]){
+                                    answ= specificInst[con] ;
+                                    console.log("specificInst[con]");
+                                }else if(specificInst.con){
+                                    answ= specificInst.con;
+                                    console.log("specificInst.con");
+                                }else if(specificInst["con"]){
+                                    answ= specificInst["con"] ;
+                                    console.log("specificInst[\"con\"]");
+                                }
+                                if(constantQuestion[con]){
+                                    quest= constantQuestion[con] ;
+                                    console.log("constantQuestion[con]");
+                                }else if(constantQuestion.con){
+                                    quest= constantQuestion.con;
+                                    console.log("constantQuestion.con");
+                                }else if(constantQuestion["con"]){
+                                    quest= constantQuestion["con"] ;
+                                    console.log("constantQuestion[\"con\"]");
+                                }
+
+                                firstCsvList.push([quest,  answ]);
                             }
                         }
                         break;
                     case "elaborate":
                         for(var obj in elaborate){
-                            if( elaborate[obj] in specificInst){
-                                firstCsvList.push([elaborateQuestion[elaborate[obj]]  ,  specificInst[elaborate[obj]]]);
+                            var elab;
+                            if(elaborate[obj] ){
+                                elab= elaborate[obj] ;
+                                console.log("elaborate[obj] ");
+                            }else if(elaborate.obj ){
+                                elab= elaborate.obj ;
+                                console.log("elaborate.obj");
+                            }else if(elaborate["obj"] ){
+                                elab= elaborate["obj"] ;
+                                console.log("elaborate[\"obj\"]");
+                            }
+                            if( elab in specificInst){
+                                var answ, quest;
+                                if(specificInst[elab]){
+                                    answ= specificInst[elab] ;
+                                    console.log("specificInst[elab]");
+                                }else if(specificInst.elab){
+                                    answ= specificInst.elab;
+                                    console.log("specificInst.elab");
+                                }else if(specificInst["elab"]){
+                                    answ= specificInst["elab"] ;
+                                    console.log("specificInst[\"elab\"]");
+                                }
+                                if(elaborateQuestion[elab]){
+                                    quest= elaborateQuestion[elab] ;
+                                    console.log("elaborateQuestion[elab]");
+                                }else if(elaborateQuestion.elab){
+                                    quest= elaborateQuestion.elab;
+                                    console.log("elaborateQuestion.elab");
+                                }else if(elaborateQuestion["elab"]){
+                                    quest= elaborateQuestion["elab"] ;
+                                    console.log("elaborateQuestion[\"elab\"]");
+                                }
+                                firstCsvList.push([quest,  answ]);
                             }
                         }
                         break;
                     case "liftoff":
                         for(var obj in liftoff){
-                            if( liftoff[obj] in specificInst){
-                                firstCsvList.push([liftoffQuestion[liftoff[obj]] ,  specificInst[elaborate[obj]]]);
+                            var lift;
+                            if(liftoff[obj] ){
+                                lift= liftoff[obj] ;
+                                console.log("liftoff[obj] ");
+                            }else if(liftoff.obj ){
+                                lift= liftoff.obj ;
+                                console.log("liftoff.obj");
+                            }else if(liftoff["obj"] ){
+                                lift= liftoff["obj"] ;
+                                console.log("liftoff[\"obj\"]");
+                            }
+                            if( lift in specificInst){
+                                var answ, quest;
+                                if(specificInst[lift]){
+                                    answ= specificInst[lift] ;
+                                    console.log("specificInst[lift]");
+                                }else if(specificInst.lift){
+                                    answ= specificInst.lift;
+                                    console.log("specificInst.lift");
+                                }else if(specificInst["lift"]){
+                                    answ= specificInst["lift"] ;
+                                    console.log("specificInst[\"lift\"]");
+                                }
+                                if(liftoffQuestion[lift]){
+                                    quest= liftoffQuestion[lift] ;
+                                    console.log("liftoffQuestion[lift]");
+                                }else if(liftoffQuestion.lift){
+                                    quest= liftoffQuestion.lift;
+                                    console.log("liftoffQuestion.lift");
+                                }else if(liftoffQuestion["lift"]){
+                                    quest= liftoffQuestion["lift"] ;
+                                    console.log("liftoffQuestion[\"lift\"]");
+                                }
+                                firstCsvList.push([quest,  answ]);
                             }
                         }
                         break;
 
                     case "stop":
                         for(var obj in stop){
-                            if( stop[obj] in specificInst){
-                                firstCsvList.push([stopQuestion[stop[obj]],  specificInst[elaborate[obj]]]);
+                            var stp;
+                            if(stop[obj] ){
+                                stp= stop[obj] ;
+                                console.log("stop[obj] ");
+                            }else if(stop.obj ){
+                                stp= stop.obj ;
+                                console.log("stop.obj");
+                            }else if(stop["obj"] ){
+                                stp= stop["obj"] ;
+                                console.log("stop[\"obj\"]");
+                            }
+                            if( stp in specificInst){
+                                var answ, quest;
+                                if(specificInst[stp]){
+                                    answ= specificInst[stp] ;
+                                    console.log("specificInst[stp]");
+                                }else if(specificInst.stp){
+                                    answ= specificInst.stp;
+                                    console.log("specificInst.stp");
+                                }else if(specificInst["stp"]){
+                                    answ= specificInst["stp"] ;
+                                    console.log("specificInst[\"stp\"]");
+                                }
+                                if(stopQuestion[stp]){
+                                    quest= stopQuestion[stp] ;
+                                    console.log("stopQuestion[stp]");
+                                }else if(stopQuestion.stp){
+                                    quest= stopQuestion.stp;
+                                    console.log("stopQuestion.stp");
+                                }else if(stopQuestion["stp"]){
+                                    quest= stopQuestion["stp"] ;
+                                    console.log("stopQuestion[\"stp\"]");
+                                }
+                                firstCsvList.push([quest,  answ]);
                             }
                         }
                         break;
