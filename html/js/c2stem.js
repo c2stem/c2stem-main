@@ -855,10 +855,15 @@ C2Stem.prototype.createCSV=function(data, studentList){
         studentName= studentList[stu];
         firstCsvList.push(studentName);
         var Q=data[studentName];
+        console.log("Q"+ Q);
+        console.log("Q tasks"+ Q[tasks]);
         var A=Q.tasks;
+
         for(var inst in instructionList){
             var instruction= instructionList[inst];
+            console.log("instruction"+ instruction);
             if( instruction in A){
+                console.log("specific"+ A[instruction][assessmentData]);
                 var specificInst=A[instruction].assessmentData;
                 switch(instruction){
 

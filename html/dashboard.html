@@ -182,6 +182,23 @@
             document.body.removeChild(element);
         }
 
+        function downloadJSON(filename, text) {
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:text/json;charset=utf-8,' + encodeURIComponent(text));
+            element.setAttribute('download', filename);
+
+            element.style.display = 'none';
+            document.body.appendChild(element);
+
+            element.click();
+
+            document.body.removeChild(element);
+
+            c2stem.createCSV(text, studentTaskList);
+        }
+
+
+
         function export_students_ids(studentList) {
             console.log("Student user ids");
             var sc = [];
@@ -206,14 +223,14 @@
             //console.log(sc);
 
             //download("user_ids.csv", sc);
-
             console.log("studentList:" + studentList);
             console.log(studentList);
             c2stem.getStudentAssessmentData(studentList, function (err) {
                 if (!err) {
                     console.log("StudentAssessmentData: " );
                     console.log(c2stem.studentAssessmentData);
-                    c2stem.createCSV(c2stem.studentAssessmentData, studentList);
+                    downloadJSON("JSONFile.txt", c2stem.studentAssessmentData);/*
+                    c2stem.createCSV(c2stem.studentAssessmentData, studentList);*/
                 }
             })
         }
