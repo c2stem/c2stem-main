@@ -89,7 +89,7 @@ var checkin4Answer={ radio_1_4_1a_a: "Correct",
     radio_1_4_1a_b:"Incorrect", radio_1_4_1a_c: "Correct", radio_1_4_1a_d:"Incorrect", radio_1_4_1a_e: "Incorrect", radio_1_4_1a_f:"Correct", radio_1_4_1a_g:"Incorrect", radio_1_4_1a_h:"Correct", checkbox1_4_1b_a:"Incorrect", checkbox1_4_1b_b:"Correct", checkbox1_4_1b_c:"Incorrect", checkbox1_4_1b_d:"Correct", radio1_4_2a_a:"Incorrect", radio1_4_2a_b: "Correct", radio1_4_2a_c: "Incorrect", checkbox1_4_2b_a:"Incorrect", checkbox1_4_2b_b:"Incorrect", checkbox1_4_2b_c: "Correct", checkbox1_4_2b_d:"Incorrect"};
 
 //var studentList= [ "abreha_nathan", "kelso_micheal", "jackie"];
-var instructionList= [ "trainingbasics", "checkin1", "constant", "elaborate", "liftoff", "checkin2", "checkin3", "checkin4", "stop"];
+var instructionList= [ "training-basics", "1d-checkin1", "1d-constant", "1d-elaborate", "1d-liftoff", "1d-checkin2", "1d-checkin3", "1d-checkin4", "1d-stop"];
 var trainingList=[ "textarea1", "textarea2", "textarea3", "textarea4"];
 var checkin1List={ radio_1_1_1_a:"Under \"When Clicked\"", radio_1_1_1_b:"Under \"Simulation Step\"", radio_1_1_1_c:"Unnecessary block", radio_1_1_1_d:"Under \"When Clicked\"", radio_1_1_1_e:"Under \"Simulation Step\"", radio_1_1_1_f:"Unnecessary block", radio_1_1_1_g:"Under \"When Clicked\"", radio_1_1_1_h:"Under \"Simulation Step\"", radio_1_1_1_i:"Unnecessary block", radio_1_1_1_j:"Under \"When Clicked\"", radio_1_1_1_k:"Under \"Simulation Step\"", radio_1_1_1_l:"Unnecessary block", radio_1_1_1_m:"Under \"When Clicked\"", radio_1_1_1_n:"Under \"Simulation Step\"", radio_1_1_1_o:"Unnecessary block", radio_1_1_1_p:"Under \"When Clicked\"", radio_1_1_1_q:"Under \"Simulation Step\"", radio_1_1_1_r:"Unnecessary block", radio_1_1_1_s:"Under \"When Clicked\"", radio_1_1_1_t:"Under \"Simulation Step\"", radio_1_1_1_u:"Unnecessary block", radio_1_1_1_v:"Under \"When Clicked\"", radio_1_1_1_w:"Under \"Simulation Step\"", radio_1_1_1_x:"Unnecessary block", radio1_1_2_a:"Sprite X Position(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2)", radio1_1_2_b:"Sprite X Position(0, 0.4, 0.8, 1.2, 1.6, 2, 2.4)", radio1_1_2_c:"Sprite X Position(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6)", radio1_1_2_d:"Less than 2 meters", radio1_1_2_e:"More than 2 meters", radio1_1_2_f:"Equal to 2 meters", text1_1_2_b: "text1_1_2_b", radio1_1_3_a:"a", radio1_1_3_b:"b", radio1_1_3_c:"c", radio1_1_3_d:"d", radio1_1_3_e:"e", radio1_1_3_f:"f"};
 var checkin2List={ objects:"", row_1_object:"", row_1_property:"", row_1_behaviour:"", radio1_2_3_a:"", radio1_2_3_b:"", radio1_2_3_c:"", radio1_2_3_d:"", text_1_2_3_a:"", text_1_2_3_b:"", text_1_2_3_c:""};
@@ -853,8 +853,8 @@ C2Stem.prototype.relogin =function(){
 C2Stem.prototype.createCSV=function(data, studentList){
     for(var stu in studentList){
         if(studentList[stu]){
-            studentName= studentList[stu];
-            console.log("studentList[stu]");
+            studentName= studentList[stu].user;
+            console.log(studentName);
         }else if(studentList.stu){
             studentName= studentList.stu;
             console.log("studentList.stu");
@@ -866,7 +866,7 @@ C2Stem.prototype.createCSV=function(data, studentList){
         var Q;
         if(data[studentName]){
             Q=data[studentName];
-            console.log("data[studentName]");
+            console.log(Q);
         }else if(data.studentName){
             Q=data.studentName;
             console.log("data.studentName");
