@@ -214,7 +214,8 @@
                 if (!err) {
                     console.log("StudentAssessmentData: " );
                     console.log(c2stem.studentAssessmentData);
-                    c2stem.createCSV(c2stem.studentAssessmentData, studentList);
+                    var csvRows=c2stem.createCSV(c2stem.studentAssessmentData, studentList);
+                    download("Assessment.csv",csvRows);
                 }
             })
         }

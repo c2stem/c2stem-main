@@ -1393,11 +1393,6 @@ C2Stem.prototype.createCSV=function(data, studentList){
 
     }
     csvRows=firstCsvList.join('\n');
-    function downloadCS(){
-        var a         =  document.getElementById('a');
-        a.href        = 'data:attachment/csv,' + encodeURI(csvRows);
-        a.target      = '_blank';
-        a.download    = 'myFile.csv';
-    }
+ return csvRows;
 
 }
