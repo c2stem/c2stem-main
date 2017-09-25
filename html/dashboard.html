@@ -182,7 +182,18 @@
             document.body.removeChild(element);
         }
 
+        function downloadCSV(filename, text) {
+            var element = document.createElement('a');
+            element.setAttribute('href', 'data:attachment/csv,' + encodeURI(text));
+            element.setAttribute('download', filename);
 
+            element.style.display = 'none';
+            document.body.appendChild(element);
+
+            element.click();
+
+            document.body.removeChild(element);
+        }
 
         function export_students_ids(studentList) {
             console.log("Student user ids");
@@ -215,7 +226,7 @@
                     console.log("StudentAssessmentData: " );
                     console.log(c2stem.studentAssessmentData);
                     var csvRows=c2stem.createCSV(c2stem.studentAssessmentData, studentList);
-                    download("Assessment.csv",csvRows);
+                    downloadCSV("Assessment.csv",csvRows);
                 }
             })
         }
