@@ -913,18 +913,12 @@ C2Stem.prototype.createCSV=function(data, studentList){
                 var specificInst;
                 if(instruct.assessmentData){
                     specificInst=instruct.assessmentData;
-                    console.log("instruct.assessmentData");
-                }else if(instruct[assessmentData]){
-                    specificInst=instruct[assessmentData];
-                    console.log("instruct[assessmentData]");
-                }else if(instruct["assessmentData"]){
-                    specificInst= instruct["assessmentData"];
-                    console.log("instruct[\"assessmentData\"]");
+                    console.log(specificInst);
                 }
 
                 switch(instruction){
 
-                    case "trainingbasics":
+                    case "training-basics":
                         for(var obj in trainingList){
                             var train;
                             if(trainingList[obj] ){
@@ -966,7 +960,7 @@ C2Stem.prototype.createCSV=function(data, studentList){
                             }
                         }
                         break;
-                    case "checkin1":
+                    case "1d-checkin1":
                         for(var obj in checkin1List){
                              var answ;
                             if(checkin1List[obj] ){
@@ -1032,7 +1026,7 @@ C2Stem.prototype.createCSV=function(data, studentList){
                             }
                         }
                         break;
-                    case "checkin2":
+                    case "1d-checkin2":
                         for(var obj in checkin2List){
                             var answ;
                             if(checkin2List[obj] ){
@@ -1098,7 +1092,7 @@ C2Stem.prototype.createCSV=function(data, studentList){
                             }
                         }
                         break;
-                    case "checkin3":
+                    case "1d-checkin3":
                         for(var obj in checkin3List){
                             var answ;
                             if(checkin3List[obj] ){
@@ -1165,7 +1159,7 @@ C2Stem.prototype.createCSV=function(data, studentList){
                             }
                         }
                         break;
-                    case "checkin4":
+                    case "1d-checkin4":
                         for(var obj in checkin4List){
                             var answ;
                             if(checkin4List[obj] ){
@@ -1234,7 +1228,7 @@ C2Stem.prototype.createCSV=function(data, studentList){
                         }
                         break;
 
-                    case "constant":
+                    case "1d-constant":
                         for(var obj in constant){
                             var con;
                             if(constant[obj] ){
@@ -1274,7 +1268,7 @@ C2Stem.prototype.createCSV=function(data, studentList){
                             }
                         }
                         break;
-                    case "elaborate":
+                    case "1d-elaborate":
                         for(var obj in elaborate){
                             var elab;
                             if(elaborate[obj] ){
@@ -1313,7 +1307,7 @@ C2Stem.prototype.createCSV=function(data, studentList){
                             }
                         }
                         break;
-                    case "liftoff":
+                    case "1d-liftoff":
                         for(var obj in liftoff){
                             var lift;
                             if(liftoff[obj] ){
@@ -1353,7 +1347,7 @@ C2Stem.prototype.createCSV=function(data, studentList){
                         }
                         break;
 
-                    case "stop":
+                    case "1d-stop":
                         for(var obj in stop){
                             var stp;
                             if(stop[obj] ){
