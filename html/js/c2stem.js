@@ -72,7 +72,7 @@ var checkin1question={
 
 var checkin2Question={ objects: QuestionSheet.item_1_2_1, radio1_2_3_a: QuestionSheet.item_1_2_3a, radio1_2_3_b: QuestionSheet.item_1_2_3a, radio1_2_3_c: QuestionSheet.item_1_2_3a, radio1_2_3_d: QuestionSheet.item_1_2_3a, text_1_2_3_a: QuestionSheet.item_1_2_3b, text_1_2_3_b: QuestionSheet.item_1_2_3c, text_1_2_3_c: QuestionSheet.item_1_2_3c};
 
-var checkin3Question={ radio1_3_1_a: QuestionSheet.item_1_3_1, radio1_3_1_b: QuestionSheet.item_1_3_1, radio1_3_1_c: QuestionSheet.item_1_3_1, radio1_3_1_d: QuestionSheet.item_1_3_1, radio1_3_1_e: QuestionSheet.item_1_3_1, radio1_3_1_f: QuestionSheet.item_1_3_2, radio1_3_1_g: QuestionSheet.item_1_3_2, radio1_3_1_h: QuestionSheet.item_1_3_2, radio1_3_1_i: QuestionSheet.item_1_3_2, radio1_3_1_j: QuestionSheet.item_1_3_2};
+var checkin3Question={ radio1_3_1_a: QuestionSheet.item_1_3_1, radio1_3_1_b: QuestionSheet.item_1_3_1, radio1_3_1_c: QuestionSheet.item_1_3_1, radio1_3_1_d: QuestionSheet.item_1_3_1, radio1_3_1_e: QuestionSheet.item_1_3_1, radio1_3_2_f: QuestionSheet.item_1_3_2, radio1_3_2_g: QuestionSheet.item_1_3_2, radio1_3_2_h: QuestionSheet.item_1_3_2, radio1_3_2_i: QuestionSheet.item_1_3_2, radio1_3_2_j: QuestionSheet.item_1_3_2};
 
 var checkin4Question={ radio_1_4_1a_a: QuestionSheet.item_1_4_1a,
     radio_1_4_1a_b: QuestionSheet.item_1_4_1a, radio_1_4_1a_c: QuestionSheet.item_1_4_1a, radio_1_4_1a_d: QuestionSheet.item_1_4_1a, radio_1_4_1a_e: QuestionSheet.item_1_4_1a, radio_1_4_1a_f: QuestionSheet.item_1_4_1a, radio_1_4_1a_g: QuestionSheet.item_1_4_1a, radio_1_4_1a_h: QuestionSheet.item_1_4_1a, checkbox1_4_1b_a: QuestionSheet.item_1_4_1b, checkbox1_4_1b_b: QuestionSheet.item_1_4_1b , checkbox1_4_1b_c: QuestionSheet.item_1_4_1b, checkbox1_4_1b_d: QuestionSheet.item_1_4_1b, radio1_4_2a_a: QuestionSheet.item_1_4_2a, radio1_4_2a_b: QuestionSheet.item_1_4_2a, radio1_4_2a_c: QuestionSheet.item_1_4_2a, text_1_4_2a_a: QuestionSheet.item_1_4_2b, text_1_4_2c: QuestionSheet.item_1_4_1a, checkbox1_4_2b_a: QuestionSheet.item_1_4_2d, checkbox1_4_2b_b: QuestionSheet.item_1_4_2d, checkbox1_4_2b_c: QuestionSheet.item_1_4_2d, checkbox1_4_2b_d: QuestionSheet.item_1_4_12d, text_1_4_2b_a: QuestionSheet.item_1_4_2c};
@@ -854,66 +854,50 @@ C2Stem.prototype.createCSV=function(data, studentList){
     for(var stu in studentList){
         if(studentList[stu]){
             studentName= studentList[stu].user;
-            console.log(studentName);
         }else if(studentList.stu){
             studentName= studentList.stu;
-            console.log("studentList.stu");
         }else if(studentList["stu"]){
             studentName= studentList["stu"];
-            console.log("studentList[\"stu\"]");
         }
         firstCsvList.push(studentName);
         var Q;
         if(data[studentName]){
             Q=data[studentName];
-            console.log(Q);
         }else if(data.studentName){
             Q=data.studentName;
-            console.log("data.studentName");
         }else if(data["studentName"]){
             Q=data["studentName"];
-            console.log("data[\"studentName\"]");
         }
         var A;
         if(Q.tasks){
             A=Q.tasks;
-            console.log("Q.tasks");
         }else if(Q[tasks]){
             A=Q[tasks];
-            console.log("Q[tasks]");
         }else if(Q["tasks"]){
             A=Q["tasks"];
-            console.log("Q[\"tasks\"]");
         }
         for(var inst in instructionList){
             var instruction;
             if(instructionList[inst]){
                 instruction= instructionList[inst];
-                console.log("instructionList[inst]");
             }else if(instructionList.inst){
                 instruction= instructionList.inst;
-                console.log("instructionList.inst");
             }else if(instructionList["inst"]){
                 instruction= instructionList["inst"];
-                console.log("instructionList[\"inst\"]");
             }
             if( instruction in A){
                 var instruct;
                 if(A[instruction]){
                     instruct= A[instruction];
-                    console.log("A[instruction]");
                 }else if(A.instruction){
                     instruct= A.instruction;
-                    console.log("A.instruction");
                 }else if(A["instruction"]){
                     instruct= A["instruction"];
-                    console.log("A[\"instruction\"]");
                 }
 
                 var specificInst;
                 if(instruct.assessmentData){
                     specificInst=instruct.assessmentData;
-                    console.log(specificInst);
                 }
 
                 switch(instruction){
@@ -927,37 +911,28 @@ C2Stem.prototype.createCSV=function(data, studentList){
                             var train;
                             if(trainingList[obj] ){
                                 train= trainingList[obj] ;
-                                console.log("trainingList[obj] ");
                             }else if(trainingList.obj ){
                                 train= trainingList.obj ;
-                                console.log("trainingList.obj");
                             }else if(trainingList["obj"] ){
                                 train= trainingList["obj"] ;
-                                console.log("trainingList[\"obj\"]");
                             }
                             if( train in specificInst){
                                 var quest;
                                 var answ;
                                 if(trainingbasicsQuestion[train]){
                                     quest= trainingbasicsQuestion[train] ;
-                                    console.log("trainingbasicsQuestion[train]");
                                 }else if(trainingbasicsQuestion.train){
                                     quest= trainingbasicsQuestion.train ;
-                                    console.log("trainingbasicsQuestion.train");
                                 }else if(trainingbasicsQuestion["train"]){
                                     quest= trainingbasicsQuestion["train"] ;
-                                    console.log("trainingbasicsQuestion[\"train\"]");
                                 }
 
                                 if(specificInst[train]){
-                                    answ= specificInst[train].toString().replace(",","_").replace(/\r?\n|\r/g, " ");
-                                    console.log("specificInst[train]");
+                                    answ= specificInst[train].toString().replace(/,/g,"_").replace(/\r?\n|\r/g, " ");
                                 }else if(specificInst.train){
                                     answ= specificInst.train ;
-                                    console.log("specificInst.train");
                                 }else if(specificInst["train"]){
                                     answ= specificInst["train"] ;
-                                    console.log("specificInst[\"train\"]");
                                 }
 
                                 firstCsvList.push([quest, answ]);
@@ -972,49 +947,37 @@ C2Stem.prototype.createCSV=function(data, studentList){
                         for(var obj in checkin1List){
                              var answ;
                             if(checkin1List[obj] ){
-                                answ= checkin1List[obj].toString().replace(",","_") ;
-                                console.log("checkin1List[obj] ");
+                                answ= checkin1List[obj].toString().replace(/,/g,"_") ;
                             }else if(checkin1List.obj ){
                                 answ= checkin1List.obj ;
-                                console.log("checkin1List.obj");
                             }else if(checkin1List["obj"] ){
                                 answ= checkin1List["obj"] ;
-                                console.log("checkin1List[\"obj\"]");
                             }
 
                             if( obj in specificInst){
                                 var quest, grade, specificAnswer;
                                 if(specificInst[obj]){
-                                    specificAnswer= specificInst[obj].toString().replace(","," ").replace(/\r?\n|\r/g, " ");
-                                    console.log("specificInst[obj]");
+                                    specificAnswer= specificInst[obj].toString().replace(/,/g,"_").replace(/\r?\n|\r/g, " ");
                                 }else if(specificInst.obj){
                                     specificAnswer= specificInst.obj;
-                                    console.log("specificInst.obj");
                                 }else if(specificInst["obj"]){
                                     specificAnswer= specificInst["obj"] ;
-                                    console.log("specificInst[\"obj\"]");
                                 }
 
                                 if(checkin1question[obj] ){
                                     quest= checkin1question[obj] ;
-                                    console.log("checkin1question[obj] ");
                                 }else if(checkin1question.obj ){
                                     quest= checkin1question.obj ;
-                                    console.log("checkin1question.obj");
                                 }else if(checkin1question["obj"] ){
                                     quest= checkin1question["obj"] ;
-                                    console.log("checkin1question[\"obj\"]");
                                 }
 
                                 if(checkin1answer[obj] ){
                                     grade= checkin1answer[obj] ;
-                                    console.log("checkin1answer[obj] ");
                                 }else if(checkin1answer.obj ){
                                     grade= checkin1answer.obj ;
-                                    console.log("checkin1answer.obj");
                                 }else if(checkin1answer["obj"] ){
                                     grade= checkin1answer["obj"] ;
-                                    console.log("checkin1answer[\"obj\"]");
                                 }
 
                                 if(questionTracker===quest){
@@ -1042,50 +1005,38 @@ C2Stem.prototype.createCSV=function(data, studentList){
                         for(var obj in checkin2List){
                             var answ;
                             if(checkin2List[obj] ){
-                                answ= checkin2List[obj].toString().replace(",","_") ;
-                                console.log("checkin2List[obj] ");
+                                answ= checkin2List[obj].toString().replace(/,/g,"_") ;
                             }else if(checkin2List.obj ){
                                 answ= checkin2List.obj ;
-                                console.log("checkin2List.obj");
                             }else if(checkin2List["obj"] ){
                                 answ= checkin2List["obj"] ;
-                                console.log("checkin2List[\"obj\"]");
                             }
                             if( obj in specificInst){
                                 var quest, grade, specificAnswer;
 
 
                                 if(specificInst[obj]){
-                                    specificAnswer= specificInst[obj].toString().replace(","," ").replace(/\r?\n|\r/g, " ");
-                                    console.log("specificInst[obj]");
+                                    specificAnswer= specificInst[obj].toString().replace(/,/g,"_").replace(/\r?\n|\r/g, " ");
                                 }else if(specificInst.answ){
                                     specificAnswer= specificInst.answ;
-                                    console.log("specificInst.answ");
                                 }else if(specificInst["answ"]){
                                     specificAnswer= specificInst["answ"] ;
-                                    console.log("specificInst[\"answ\"]");
                                 }
 
                                 if(checkin2Question[obj] ){
                                     quest= checkin2Question[obj] ;
-                                    console.log("checkin2Question[obj] ");
                                 }else if(checkin2Question.obj ){
                                     quest= checkin2Question.obj ;
-                                    console.log("checkin2Question.obj");
                                 }else if(checkin2Question["obj"] ){
                                     quest= checkin2Question["obj"] ;
-                                    console.log("checkin2Question[\"obj\"]");
                                 }
 
                                 if(checkin2Answer[obj] ){
                                     grade= checkin2Answer[obj] ;
-                                    console.log("checkin2Answer[obj] ");
                                 }else if(checkin2Answer.obj ){
                                     grade= checkin2Answer.obj ;
-                                    console.log("checkin2Answer.obj");
                                 }else if(checkin2Answer["obj"] ){
                                     grade= checkin2Answer["obj"] ;
-                                    console.log("checkin2Answer[\"obj\"]");
                                 }
                                 if(questionTracker===quest){
                                     if(obj.includes("text") || obj.includes("objects") || obj.includes("row_1_object") || obj.includes("row_1_property")
@@ -1114,55 +1065,49 @@ C2Stem.prototype.createCSV=function(data, studentList){
                         for(var obj in checkin3List){
                             var answ;
                             if(checkin3List[obj] ){
-                                answ= checkin3List[obj].toString().replace(",","_") ;
-                                console.log("checkin3List[obj] ");
+                                answ= checkin3List[obj].toString().replace(/,/g,"_") ;
                             }else if(checkin3List.obj ){
                                 answ= checkin3List.obj ;
-                                console.log("checkin3List.obj");
                             }else if(checkin3List["obj"] ){
                                 answ= checkin3List["obj"] ;
-                                console.log("checkin3List[\"obj\"]");
                             }
 
                             if(checkin3Question[obj] ){
                                 quest= checkin3Question[obj] ;
-                                console.log("checkin3Question[obj] ");
                             }else if(checkin3Question.obj ){
                                 quest= checkin3Question.obj ;
-                                console.log("checkin3Question.obj");
                             }else if(checkin3Question["obj"] ){
                                 quest= checkin3Question["obj"] ;
-                                console.log("checkin3Question[\"obj\"]");
                             }
 
                             if(checkin3Answer[obj] ){
                                 grade= checkin3Answer[obj] ;
-                                console.log("checkin3Answer[obj] ");
                             }else if(checkin3Answer.obj ){
                                 grade= checkin3Answer.obj ;
-                                console.log("checkin3Answer.obj");
                             }else if(checkin3Answer["obj"] ){
                                 grade= checkin3Answer["obj"] ;
-                                console.log("checkin3Answer[\"obj\"]");
                             }
 
                             if(obj==="radio1_3_1_a" ||obj==="radio1_3_1_b" ||obj==="radio1_3_1_c" ||obj==="radio1_3_1_d" ||obj==="radio1_3_1_e"){
-                                obj="radio1_3_1_";
+                                var label="radio1_3_1_";
+                                if(specificInst[label]===obj) {
+                                    obj = label;
+                                }
                             }else if(obj==="radio1_3_2_f" ||obj==="radio1_3_2_g" ||obj==="radio1_3_2_h" ||obj==="radio1_3_2_i" ||obj==="radio1_3_2_j"){
-                                obj="radio1_3_2_";
+                                var label="radio1_3_2_";
+                                if(specificInst[label]===obj) {
+                                    obj = label;
+                                }
                             }
                             if( obj in specificInst){
                                 var quest, grade, specificAnswer;
 
                                 if(specificInst[obj]){
-                                    specificAnswer= specificInst[obj].toString().replace(","," ").replace(/\r?\n|\r/g, " ") ;
-                                    console.log("specificInst[obj]");
+                                    specificAnswer= specificInst[obj].toString().replace(/,/g,"_").replace(/\r?\n|\r/g, " ") ;
                                 }else if(specificInst.answ){
                                     specificAnswer= specificInst.answ;
-                                    console.log("specificInst.answ");
                                 }else if(specificInst["answ"]){
                                     specificAnswer= specificInst["answ"] ;
-                                    console.log("specificInst[\"answ\"]");
                                 }
 
                                 if(questionTracker===quest){
@@ -1190,50 +1135,38 @@ C2Stem.prototype.createCSV=function(data, studentList){
                         for(var obj in checkin4List){
                             var answ;
                             if(checkin4List[obj] ){
-                                answ= checkin4List[obj].toString().replace(",","_") ;
-                                console.log("checkin4List[obj] ");
+                                answ= checkin4List[obj].toString().replace(/,/g,"_") ;
                             }else if(checkin4List.obj ){
                                 answ= checkin4List.obj ;
-                                console.log("checkin4List.obj");
                             }else if(checkin4List["obj"] ){
                                 answ= checkin4List["obj"] ;
-                                console.log("checkin4List[\"obj\"]");
                             }
 
                             if( obj in specificInst){
                                 var quest, grade, specificAnswer;
 
                                 if(specificInst[obj]){
-                                    specificAnswer= specificInst[obj].toString().replace(","," ").replace(/\r?\n|\r/g, " ");
-                                    console.log("specificInst[answ]");
+                                    specificAnswer= specificInst[obj].toString().replace(/,/g,"_").replace(/\r?\n|\r/g, " ");
                                 }else if(specificInst.answ){
                                     specificAnswer= specificInst.answ;
-                                    console.log("specificInst.answ");
                                 }else if(specificInst["answ"]){
                                     specificAnswer= specificInst["answ"] ;
-                                    console.log("specificInst[\"answ\"]");
                                 }
 
                                 if(checkin4Question[obj] ){
                                     quest= checkin4Question[obj] ;
-                                    console.log("checkin4Question[obj] ");
                                 }else if(checkin4Question.obj ){
                                     quest= checkin4Question.obj ;
-                                    console.log("checkin4Question.obj");
                                 }else if(checkin4Question["obj"] ){
                                     quest= checkin4Question["obj"] ;
-                                    console.log("checkin4Question[\"obj\"]");
                                 }
 
                                 if(checkin4Answer[obj] ){
                                     grade= checkin4Answer[obj] ;
-                                    console.log("checkin4Answer[obj] ");
                                 }else if(checkin4Answer.obj ){
                                     grade= checkin4Answer.obj ;
-                                    console.log("checkin4Answer.obj");
                                 }else if(checkin4Answer["obj"] ){
                                     grade= checkin4Answer["obj"] ;
-                                    console.log("checkin4Answer[\"obj\"]");
                                 }
 
 
@@ -1264,35 +1197,26 @@ C2Stem.prototype.createCSV=function(data, studentList){
                             var con;
                             if(constant[obj] ){
                                 con= constant[obj] ;
-                                console.log("constant[obj] ");
                             }else if(constant.obj ){
                                 con= constant.obj ;
-                                console.log("constant.obj");
                             }else if(constant["obj"] ){
                                 con= constant["obj"] ;
-                                console.log("constant[\"obj\"]");
                             }
                             if( con in specificInst){
                                 var answ, quest;
                                 if(specificInst[con]){
-                                    answ= specificInst[con].toString().replace(","," ").replace(/\r?\n|\r/g, " ");
-                                    console.log("specificInst[con]");
+                                    answ= specificInst[con].toString().replace(/,/g,"_").replace(/\r?\n|\r/g, " ");
                                 }else if(specificInst.con){
                                     answ= specificInst.con;
-                                    console.log("specificInst.con");
                                 }else if(specificInst["con"]){
                                     answ= specificInst["con"] ;
-                                    console.log("specificInst[\"con\"]");
                                 }
                                 if(constantQuestion[con]){
                                     quest= constantQuestion[con] ;
-                                    console.log("constantQuestion[con]");
                                 }else if(constantQuestion.con){
                                     quest= constantQuestion.con;
-                                    console.log("constantQuestion.con");
                                 }else if(constantQuestion["con"]){
                                     quest= constantQuestion["con"] ;
-                                    console.log("constantQuestion[\"con\"]");
                                 }
 
                                 firstCsvList.push([quest,  answ]);
@@ -1308,35 +1232,26 @@ C2Stem.prototype.createCSV=function(data, studentList){
                             var elab;
                             if(elaborate[obj] ){
                                 elab= elaborate[obj] ;
-                                console.log("elaborate[obj] ");
                             }else if(elaborate.obj ){
                                 elab= elaborate.obj ;
-                                console.log("elaborate.obj");
                             }else if(elaborate["obj"] ){
                                 elab= elaborate["obj"] ;
-                                console.log("elaborate[\"obj\"]");
                             }
                             if( elab in specificInst){
                                 var answ, quest;
                                 if(specificInst[elab]){
-                                    answ= specificInst[elab].toString().replace(","," ").replace(/\r?\n|\r/g, " ");
-                                    console.log("specificInst[elab]");
+                                    answ= specificInst[elab].toString().replace(/,/g,"_").replace(/\r?\n|\r/g, " ");
                                 }else if(specificInst.elab){
                                     answ= specificInst.elab;
-                                    console.log("specificInst.elab");
                                 }else if(specificInst["elab"]){
                                     answ= specificInst["elab"] ;
-                                    console.log("specificInst[\"elab\"]");
                                 }
                                 if(elaborateQuestion[elab]){
                                     quest= elaborateQuestion[elab] ;
-                                    console.log("elaborateQuestion[elab]");
                                 }else if(elaborateQuestion.elab){
                                     quest= elaborateQuestion.elab;
-                                    console.log("elaborateQuestion.elab");
                                 }else if(elaborateQuestion["elab"]){
                                     quest= elaborateQuestion["elab"] ;
-                                    console.log("elaborateQuestion[\"elab\"]");
                                 }
                                 firstCsvList.push([quest,  answ]);
                             }
@@ -1351,35 +1266,26 @@ C2Stem.prototype.createCSV=function(data, studentList){
                             var lift;
                             if(liftoff[obj] ){
                                 lift= liftoff[obj] ;
-                                console.log("liftoff[obj] ");
                             }else if(liftoff.obj ){
                                 lift= liftoff.obj ;
-                                console.log("liftoff.obj");
                             }else if(liftoff["obj"] ){
                                 lift= liftoff["obj"] ;
-                                console.log("liftoff[\"obj\"]");
                             }
                             if( lift in specificInst){
                                 var answ, quest;
                                 if(specificInst[lift]){
-                                    answ= specificInst[lift].toString().replace(","," ").replace(/\r?\n|\r/g, " ");
-                                    console.log("specificInst[lift]");
+                                    answ= specificInst[lift].toString().replace(/,/g,"_").replace(/\r?\n|\r/g, " ");
                                 }else if(specificInst.lift){
                                     answ= specificInst.lift;
-                                    console.log("specificInst.lift");
                                 }else if(specificInst["lift"]){
                                     answ= specificInst["lift"] ;
-                                    console.log("specificInst[\"lift\"]");
                                 }
                                 if(liftoffQuestion[lift]){
                                     quest= liftoffQuestion[lift] ;
-                                    console.log("liftoffQuestion[lift]");
                                 }else if(liftoffQuestion.lift){
                                     quest= liftoffQuestion.lift;
-                                    console.log("liftoffQuestion.lift");
                                 }else if(liftoffQuestion["lift"]){
                                     quest= liftoffQuestion["lift"] ;
-                                    console.log("liftoffQuestion[\"lift\"]");
                                 }
                                 firstCsvList.push([quest,  answ]);
                             }
@@ -1395,35 +1301,26 @@ C2Stem.prototype.createCSV=function(data, studentList){
                             var stp;
                             if(stop[obj] ){
                                 stp= stop[obj] ;
-                                console.log("stop[obj] ");
                             }else if(stop.obj ){
                                 stp= stop.obj ;
-                                console.log("stop.obj");
                             }else if(stop["obj"] ){
                                 stp= stop["obj"] ;
-                                console.log("stop[\"obj\"]");
                             }
                             if( stp in specificInst){
                                 var answ, quest;
                                 if(specificInst[stp]){
-                                    answ= specificInst[stp].toString().replace(","," ").replace(/\r?\n|\r/g, " ");
-                                    console.log("specificInst[stp]");
+                                    answ= specificInst[stp].toString().replace(/,/g,"_").replace(/\r?\n|\r/g, " ");
                                 }else if(specificInst.stp){
                                     answ= specificInst.stp;
-                                    console.log("specificInst.stp");
                                 }else if(specificInst["stp"]){
                                     answ= specificInst["stp"] ;
-                                    console.log("specificInst[\"stp\"]");
                                 }
                                 if(stopQuestion[stp]){
                                     quest= stopQuestion[stp] ;
-                                    console.log("stopQuestion[stp]");
                                 }else if(stopQuestion.stp){
                                     quest= stopQuestion.stp;
-                                    console.log("stopQuestion.stp");
                                 }else if(stopQuestion["stp"]){
                                     quest= stopQuestion["stp"] ;
-                                    console.log("stopQuestion[\"stp\"]");
                                 }
                                 firstCsvList.push([quest,  answ]);
                             }
