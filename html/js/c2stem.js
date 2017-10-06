@@ -88,13 +88,13 @@ var checkin3Answer={ radio1_3_1_a: "Incorrect", radio1_3_1_b:"Incorrect", radio1
 var checkin4Answer={ radio_1_4_1a_a: "Correct",
     radio_1_4_1a_b:"Incorrect", radio_1_4_1a_c: "Correct", radio_1_4_1a_d:"Incorrect", radio_1_4_1a_e: "Incorrect", radio_1_4_1a_f:"Correct", radio_1_4_1a_g:"Incorrect", radio_1_4_1a_h:"Correct", checkbox1_4_1b_a:"Incorrect", checkbox1_4_1b_b:"Correct", checkbox1_4_1b_c:"Incorrect", checkbox1_4_1b_d:"Correct", radio1_4_2a_a:"Incorrect", radio1_4_2a_b: "Correct", radio1_4_2a_c: "Incorrect", checkbox1_4_2b_a:"Incorrect", checkbox1_4_2b_b:"Incorrect", checkbox1_4_2b_c: "Correct", checkbox1_4_2b_d:"Incorrect"};
 
-//var studentList= [ "abreha_nathan", "kelso_micheal", "jackie"];
+
 var instructionList= [ "training-basics", "1d-checkin1", "1d-constant", "1d-elaborate", "1d-liftoff", "1d-checkin2", "1d-checkin3", "1d-checkin4", "1d-stop"];
 var trainingList=[ "textarea1", "textarea2", "textarea3", "textarea4"];
 var checkin1List={ radio_1_1_1_a:"Under \"When Clicked\"", radio_1_1_1_b:"Under \"Simulation Step\"", radio_1_1_1_c:"Unnecessary block", radio_1_1_1_d:"Under \"When Clicked\"", radio_1_1_1_e:"Under \"Simulation Step\"", radio_1_1_1_f:"Unnecessary block", radio_1_1_1_g:"Under \"When Clicked\"", radio_1_1_1_h:"Under \"Simulation Step\"", radio_1_1_1_i:"Unnecessary block", radio_1_1_1_j:"Under \"When Clicked\"", radio_1_1_1_k:"Under \"Simulation Step\"", radio_1_1_1_l:"Unnecessary block", radio_1_1_1_m:"Under \"When Clicked\"", radio_1_1_1_n:"Under \"Simulation Step\"", radio_1_1_1_o:"Unnecessary block", radio_1_1_1_p:"Under \"When Clicked\"", radio_1_1_1_q:"Under \"Simulation Step\"", radio_1_1_1_r:"Unnecessary block", radio_1_1_1_s:"Under \"When Clicked\"", radio_1_1_1_t:"Under \"Simulation Step\"", radio_1_1_1_u:"Unnecessary block", radio_1_1_1_v:"Under \"When Clicked\"", radio_1_1_1_w:"Under \"Simulation Step\"", radio_1_1_1_x:"Unnecessary block", radio1_1_2_a:"Sprite X Position(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2)", radio1_1_2_b:"Sprite X Position(0, 0.4, 0.8, 1.2, 1.6, 2, 2.4)", radio1_1_2_c:"Sprite X Position(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6)", radio1_1_2_d:"Less than 2 meters", radio1_1_2_e:"More than 2 meters", radio1_1_2_f:"Equal to 2 meters", text1_1_2_b: "text1_1_2_b", radio1_1_3_a:"a", radio1_1_3_b:"b", radio1_1_3_c:"c", radio1_1_3_d:"d", radio1_1_3_e:"e", radio1_1_3_f:"f"};
-var checkin2List={ objects:"", row_1_object:"", row_1_property:"", row_1_behaviour:"", radio1_2_3_a:"", radio1_2_3_b:"", radio1_2_3_c:"", radio1_2_3_d:"", text_1_2_3_a:"", text_1_2_3_b:"", text_1_2_3_c:""};
-var checkin3List={ radio1_3_1_a:"", radio1_3_1_b:"", radio1_3_1_c:"", radio1_3_1_d:"", radio1_3_1_e:"", radio1_3_1_f:"", radio1_3_1_g:"", radio1_3_1_h:"", radio1_3_1_i:"", radio1_3_1_j:""};
-var checkin4List={ radio_1_4_1a_a:"", radio_1_4_1a_b:"", radio_1_4_1a_c:"", radio_1_4_1a_d:"", radio_1_4_1a_e:"", radio_1_4_1a_f:"", radio_1_4_1a_g:"", radio_1_4_1a_h:"", checkbox1_4_1b_a:"", checkbox1_4_1b_b :"", checkbox1_4_1b_c:"", checkbox1_4_1b_d:"", radio1_4_2a_a:"", radio1_4_2a_b:"", radio1_4_2a_c:"", text_1_4_2a_a:"", text_1_4_2a_b:"", checkbox1_4_2b_a:"", checkbox1_4_2b_b:"", checkbox1_4_2b_c:"", checkbox1_4_2b_d:"", text_1_4_2b_a:""};
+var checkin2List={ objects:"", row_1_object:"", row_1_property:"", row_1_behaviour:"", radio1_2_3_a:"Left", radio1_2_3_b:"Right", radio1_2_3_c:"Up", radio1_2_3_d:"Down", text_1_2_3_a:"", text_1_2_3_b:"", text_1_2_3_c:""};
+var checkin3List={ radio1_3_1_a:"2* x velocity in m/s", radio1_3_1_b:"25 * x velocity in m/s", radio1_3_1_c:"2 * delta_t in s", radio1_3_1_d:"acc * delta_t in s", radio1_3_1_e:"x velocity in m/s * delta_t in s", radio1_3_1_f:"2 * delta_t in s", radio1_3_1_g:"25 * delta_t in s", radio1_3_1_h:"2* x velocity in m/s", radio1_3_1_i:"25* x velocity in m/s", radio1_3_1_j:"x velocity in m/s * delta_t in s"};
+var checkin4List={ radio_1_4_1a_a:"Correctly modeled", radio_1_4_1a_b:"Incorrectly modeled", radio_1_4_1a_c:"Correctly modeled", radio_1_4_1a_d:"Incorrectly modeled", radio_1_4_1a_e:"Correctly modeled", radio_1_4_1a_f:"Incorrectly modeled", radio_1_4_1a_g:"Correctly modeled", radio_1_4_1a_h:"Incorrectly modeled", checkbox1_4_1b_a:"set x veelocity to 5 m/s", checkbox1_4_1b_b :"if x position in m >0", checkbox1_4_1b_c:"change x velocity by -1 * delta_t in s m/s", checkbox1_4_1b_d:"change x velocity by 1 * delta_t in s m/s", radio1_4_2a_a:"first graph", radio1_4_2a_b:"second graph", radio1_4_2a_c:"third graph", text_1_4_2a_a:"", text_1_4_2a_b:"", checkbox1_4_2b_a:"Set acceleration to 6", checkbox1_4_2b_b:"set x velocity to 1.5 m/s", checkbox1_4_2b_c:"Set x position to -10 m", checkbox1_4_2b_d:"Set delta_t to 0.5 in s", text_1_4_2b_a:""};
 var elaborate=["textarea1", "textarea2", "textarea3", "textarea4"];
 var constant=["textarea2a", "textarea2b"];
 var liftoff=["textarea3a", "textarea3b", "textarea3c"];
@@ -919,6 +919,10 @@ C2Stem.prototype.createCSV=function(data, studentList){
                 switch(instruction){
 
                     case "training-basics":
+                        if(Object.keys(specificInst).length > 1){
+                        firstCsvList.push(" ");
+                        firstCsvList.push("training-basics");
+                    }
                         for(var obj in trainingList){
                             var train;
                             if(trainingList[obj] ){
@@ -946,7 +950,7 @@ C2Stem.prototype.createCSV=function(data, studentList){
                                 }
 
                                 if(specificInst[train]){
-                                    answ= specificInst[train] ;
+                                    answ= specificInst[train].replace(",","_").replace(/\r?\n|\r/g, " ");
                                     console.log("specificInst[train]");
                                 }else if(specificInst.train){
                                     answ= specificInst.train ;
@@ -961,10 +965,12 @@ C2Stem.prototype.createCSV=function(data, studentList){
                         }
                         break;
                     case "1d-checkin1":
+                        firstCsvList.push(" ");
+                        firstCsvList.push("1d-checkin1");
                         for(var obj in checkin1List){
                              var answ;
                             if(checkin1List[obj] ){
-                                answ= checkin1List[obj] ;
+                                answ= checkin1List[obj].replace(",","_") ;
                                 console.log("checkin1List[obj] ");
                             }else if(checkin1List.obj ){
                                 answ= checkin1List.obj ;
@@ -974,17 +980,17 @@ C2Stem.prototype.createCSV=function(data, studentList){
                                 console.log("checkin1List[\"obj\"]");
                             }
 
-                            if( answ in specificInst){
+                            if( obj in specificInst){
                                 var quest, grade, specificAnswer;
-                                if(specificInst[answ]){
-                                    specificAnswer= specificInst[answ] ;
-                                    console.log("specificInst[answ]");
-                                }else if(specificInst.answ){
-                                    specificAnswer= specificInst.answ;
-                                    console.log("specificInst.answ");
-                                }else if(specificInst["answ"]){
-                                    specificAnswer= specificInst["answ"] ;
-                                    console.log("specificInst[\"answ\"]");
+                                if(specificInst[obj]){
+                                    specificAnswer= specificInst[obj].replace(","," ").replace(/\r?\n|\r/g, " ");
+                                    console.log("specificInst[obj]");
+                                }else if(specificInst.obj){
+                                    specificAnswer= specificInst.obj;
+                                    console.log("specificInst.obj");
+                                }else if(specificInst["obj"]){
+                                    specificAnswer= specificInst["obj"] ;
+                                    console.log("specificInst[\"obj\"]");
                                 }
 
                                 if(checkin1question[obj] ){
@@ -1027,10 +1033,12 @@ C2Stem.prototype.createCSV=function(data, studentList){
                         }
                         break;
                     case "1d-checkin2":
+                        firstCsvList.push(" ");
+                        firstCsvList.push("1d-checkin2");
                         for(var obj in checkin2List){
                             var answ;
                             if(checkin2List[obj] ){
-                                answ= checkin2List[obj] ;
+                                answ= checkin2List[obj].replace(",","_") ;
                                 console.log("checkin2List[obj] ");
                             }else if(checkin2List.obj ){
                                 answ= checkin2List.obj ;
@@ -1039,13 +1047,13 @@ C2Stem.prototype.createCSV=function(data, studentList){
                                 answ= checkin2List["obj"] ;
                                 console.log("checkin2List[\"obj\"]");
                             }
-                            if( answ in specificInst){
+                            if( obj in specificInst){
                                 var quest, grade, specificAnswer;
 
 
-                                if(specificInst[answ]){
-                                    specificAnswer= specificInst[answ] ;
-                                    console.log("specificInst[answ]");
+                                if(specificInst[obj]){
+                                    specificAnswer= specificInst[obj].replace(","," ").replace(/\r?\n|\r/g, " ");
+                                    console.log("specificInst[obj]");
                                 }else if(specificInst.answ){
                                     specificAnswer= specificInst.answ;
                                     console.log("specificInst.answ");
@@ -1076,13 +1084,15 @@ C2Stem.prototype.createCSV=function(data, studentList){
                                     console.log("checkin2Answer[\"obj\"]");
                                 }
                                 if(questionTracker===quest){
-                                    if(obj.includes("text")){
+                                    if(obj.includes("text") || obj.includes("objects") || obj.includes("row_1_object") || obj.includes("row_1_property")
+                                    || obj.includes("row_1_behaviour")){
                                         firstCsvList.push(["same Question" , specificAnswer, ""]);
                                     }else{
                                         firstCsvList.push(["same Question" , answ, grade]);
                                     }
                                 }else{
-                                    if(obj.includes("text")){
+                                    if(obj.includes("text") || obj.includes("objects") || obj.includes("row_1_object") || obj.includes("row_1_property")
+                                        || obj.includes("row_1_behaviour")){
                                         firstCsvList.push([quest , specificAnswer, ""]);
                                     }else{
                                         firstCsvList.push([quest, answ, grade]);
@@ -1093,10 +1103,12 @@ C2Stem.prototype.createCSV=function(data, studentList){
                         }
                         break;
                     case "1d-checkin3":
+                        firstCsvList.push(" ");
+                        firstCsvList.push("1d-checkin3");
                         for(var obj in checkin3List){
                             var answ;
                             if(checkin3List[obj] ){
-                                answ= checkin3List[obj] ;
+                                answ= checkin3List[obj].replace(",","_") ;
                                 console.log("checkin3List[obj] ");
                             }else if(checkin3List.obj ){
                                 answ= checkin3List.obj ;
@@ -1106,12 +1118,17 @@ C2Stem.prototype.createCSV=function(data, studentList){
                                 console.log("checkin3List[\"obj\"]");
                             }
 
-                            if( answ in specificInst){
+                            if(obj==="radio1_3_1_a" ||obj==="radio1_3_1_b" ||obj==="radio1_3_1_c" ||obj==="radio1_3_1_d" ||obj==="radio1_3_1_e"){
+                                obj="radio1_3_1_";
+                            }else if(obj==="radio1_3_2_f" ||obj==="radio1_3_2_g" ||obj==="radio1_3_2_h" ||obj==="radio1_3_2_i" ||obj==="radio1_3_2_j"){
+                                obj="radio1_3_2_";
+                            }
+                            if( obj in specificInst){
                                 var quest, grade, specificAnswer;
 
                                 if(specificInst[answ]){
-                                    specificAnswer= specificInst[answ] ;
-                                    console.log("specificInst[answ]");
+                                    specificAnswer= specificInst[obj].replace(","," ").replace(/\r?\n|\r/g, " ") ;
+                                    console.log("specificInst[obj]");
                                 }else if(specificInst.answ){
                                     specificAnswer= specificInst.answ;
                                     console.log("specificInst.answ");
@@ -1160,10 +1177,12 @@ C2Stem.prototype.createCSV=function(data, studentList){
                         }
                         break;
                     case "1d-checkin4":
+                        firstCsvList.push(" ");
+                        firstCsvList.push("1d-checkin4");
                         for(var obj in checkin4List){
                             var answ;
                             if(checkin4List[obj] ){
-                                answ= checkin4List[obj] ;
+                                answ= checkin4List[obj].replace(",","_") ;
                                 console.log("checkin4List[obj] ");
                             }else if(checkin4List.obj ){
                                 answ= checkin4List.obj ;
@@ -1173,11 +1192,11 @@ C2Stem.prototype.createCSV=function(data, studentList){
                                 console.log("checkin4List[\"obj\"]");
                             }
 
-                            if( answ in specificInst){
+                            if( obj in specificInst){
                                 var quest, grade, specificAnswer;
 
-                                if(specificInst[answ]){
-                                    specificAnswer= specificInst[answ] ;
+                                if(specificInst[obj]){
+                                    specificAnswer= specificInst[obj].replace(","," ").replace(/\r?\n|\r/g, " ");
                                     console.log("specificInst[answ]");
                                 }else if(specificInst.answ){
                                     specificAnswer= specificInst.answ;
@@ -1229,6 +1248,8 @@ C2Stem.prototype.createCSV=function(data, studentList){
                         break;
 
                     case "1d-constant":
+                        firstCsvList.push(" ");
+                        firstCsvList.push("1d-constant");
                         for(var obj in constant){
                             var con;
                             if(constant[obj] ){
@@ -1244,7 +1265,7 @@ C2Stem.prototype.createCSV=function(data, studentList){
                             if( con in specificInst){
                                 var answ, quest;
                                 if(specificInst[con]){
-                                    answ= specificInst[con] ;
+                                    answ= specificInst[con].replace(","," ").replace(/\r?\n|\r/g, " ");
                                     console.log("specificInst[con]");
                                 }else if(specificInst.con){
                                     answ= specificInst.con;
@@ -1269,6 +1290,8 @@ C2Stem.prototype.createCSV=function(data, studentList){
                         }
                         break;
                     case "1d-elaborate":
+                        firstCsvList.push(" ");
+                        firstCsvList.push("1d-elaborate");
                         for(var obj in elaborate){
                             var elab;
                             if(elaborate[obj] ){
@@ -1284,7 +1307,7 @@ C2Stem.prototype.createCSV=function(data, studentList){
                             if( elab in specificInst){
                                 var answ, quest;
                                 if(specificInst[elab]){
-                                    answ= specificInst[elab] ;
+                                    answ= specificInst[elab].replace(","," ").replace(/\r?\n|\r/g, " ");
                                     console.log("specificInst[elab]");
                                 }else if(specificInst.elab){
                                     answ= specificInst.elab;
@@ -1308,6 +1331,8 @@ C2Stem.prototype.createCSV=function(data, studentList){
                         }
                         break;
                     case "1d-liftoff":
+                        firstCsvList.push(" ");
+                        firstCsvList.push("1d-liftoff");
                         for(var obj in liftoff){
                             var lift;
                             if(liftoff[obj] ){
@@ -1323,7 +1348,7 @@ C2Stem.prototype.createCSV=function(data, studentList){
                             if( lift in specificInst){
                                 var answ, quest;
                                 if(specificInst[lift]){
-                                    answ= specificInst[lift] ;
+                                    answ= specificInst[lift].replace(","," ").replace(/\r?\n|\r/g, " ");
                                     console.log("specificInst[lift]");
                                 }else if(specificInst.lift){
                                     answ= specificInst.lift;
@@ -1348,6 +1373,8 @@ C2Stem.prototype.createCSV=function(data, studentList){
                         break;
 
                     case "1d-stop":
+                        firstCsvList.push(" ");
+                        firstCsvList.push("1d-stop");
                         for(var obj in stop){
                             var stp;
                             if(stop[obj] ){
@@ -1363,7 +1390,7 @@ C2Stem.prototype.createCSV=function(data, studentList){
                             if( stp in specificInst){
                                 var answ, quest;
                                 if(specificInst[stp]){
-                                    answ= specificInst[stp] ;
+                                    answ= specificInst[stp].replace(","," ").replace(/\r?\n|\r/g, " ");
                                     console.log("specificInst[stp]");
                                 }else if(specificInst.stp){
                                     answ= specificInst.stp;
